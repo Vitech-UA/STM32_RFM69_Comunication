@@ -54,7 +54,7 @@ int main(void)
 
 	while (1)
 	{
-
+		// check if a packet has been received
 
 			bytesReceived = Modem.receive(rx, sizeof(rx));
 
@@ -72,7 +72,10 @@ extern "C" void SysTick_Handler()
 	uptime_ms++;
 }
 
-
+/** Wait for X milliseconds.
+ *
+ * @param ms Milliseconds
+ */
 void delay_ms(unsigned ms)
 {
 	uint32_t start = uptime_ms;
@@ -80,12 +83,16 @@ void delay_ms(unsigned ms)
 		;
 }
 
+/** Initialize the millisecond timer. */
 void mstimer_init(void)
 {
 	SysTick_Config(SystemCoreClock / 1000);
 }
 
-
+/** Return the number of milliseconds since start.
+ *
+ * @return Milliseconds
+ */
 uint32_t mstimer_get(void)
 {
 	return uptime_ms;

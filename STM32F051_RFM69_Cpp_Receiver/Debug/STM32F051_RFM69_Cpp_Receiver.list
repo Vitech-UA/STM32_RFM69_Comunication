@@ -37,13 +37,13 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, READONLY, DEBUGGING, OCTETS
  16 .debug_macro  0000d8b7  00000000  00000000  00025fa8  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 17 .debug_line   00002ebe  00000000  00000000  0003385f  2**0
+ 17 .debug_line   00002ebc  00000000  00000000  0003385f  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 18 .debug_str    000441c5  00000000  00000000  0003671d  2**0
+ 18 .debug_str    000441c5  00000000  00000000  0003671b  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 19 .comment      00000053  00000000  00000000  0007a8e2  2**0
+ 19 .comment      00000053  00000000  00000000  0007a8e0  2**0
                   CONTENTS, READONLY
- 20 .debug_frame  00001314  00000000  00000000  0007a938  2**2
+ 20 .debug_frame  00001314  00000000  00000000  0007a934  2**2
                   CONTENTS, READONLY, DEBUGGING, OCTETS
 
 Disassembly of section .text:
@@ -4736,7 +4736,7 @@ int main(void)
 
 	while (1)
 	{
-		// check if a packet has been received
+
 
 			bytesReceived = Modem.receive(rx, sizeof(rx));
  8001e58:	1d39      	adds	r1, r7, #4
@@ -4795,10 +4795,8 @@ extern "C" void SysTick_Handler()
  8001eb0:	20000084 	.word	0x20000084
 
 08001eb4 <_Z8delay_msj>:
-/** Wait for X milliseconds.
- *
- * @param ms Milliseconds
- */
+
+
 void delay_ms(unsigned ms)
 {
  8001eb4:	b580      	push	{r7, lr}
@@ -4833,7 +4831,6 @@ void delay_ms(unsigned ms)
 
 08001ee8 <_Z12mstimer_initv>:
 
-/** Initialize the millisecond timer. */
 void mstimer_init(void)
 {
  8001ee8:	b580      	push	{r7, lr}
@@ -4855,10 +4852,8 @@ void mstimer_init(void)
  8001f08:	20000000 	.word	0x20000000
 
 08001f0c <_Z11mstimer_getv>:
-/** Return the number of milliseconds since start.
- *
- * @return Milliseconds
- */
+
+
 uint32_t mstimer_get(void)
 {
  8001f0c:	b580      	push	{r7, lr}

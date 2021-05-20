@@ -1641,11 +1641,11 @@ LOAD c:/st/stm32cubeide_1.6.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.exte
  .debug_macro   0x000000000000d45a       0xcc Src/system_stm32f0xx.o
  .debug_macro   0x000000000000d526      0x391 Src/system_stm32f0xx.o
 
-.debug_line     0x0000000000000000     0x2ebe
- .debug_line    0x0000000000000000     0x24ba Src/main.o
- .debug_line    0x00000000000024ba      0x4f3 Src/sysmem.o
- .debug_line    0x00000000000029ad      0x48d Src/system_stm32f0xx.o
- .debug_line    0x0000000000002e3a       0x84 Startup/startup_stm32f051r8tx.o
+.debug_line     0x0000000000000000     0x2ebc
+ .debug_line    0x0000000000000000     0x24b8 Src/main.o
+ .debug_line    0x00000000000024b8      0x4f3 Src/sysmem.o
+ .debug_line    0x00000000000029ab      0x48d Src/system_stm32f0xx.o
+ .debug_line    0x0000000000002e38       0x84 Startup/startup_stm32f051r8tx.o
 
 .debug_str      0x0000000000000000    0x441c5
  .debug_str     0x0000000000000000    0x43a07 Src/main.o
