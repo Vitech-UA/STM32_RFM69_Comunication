@@ -39,10 +39,14 @@ int main(void) {
 	Modem.setFrequency(868000000);
 
 	Modem.SetResetPin(GPIOA, 4);
+
+	Modem.writeRegister(REG_BITRATEMSB, 0x68);//1.2 kbps
+	Modem.writeRegister(REG_BITRATELSB, 0x2B);
+	Modem.setFrequency(915000000);
 	Modem.reset();
 	Modem.init();
 	Modem.sleep();
-	Modem.setPowerDBm(10);
+	Modem.setPowerDBm(13);
 	Modem.setCSMA(true);
 
 	char testdata[] = { 'H', 'e', 'l', 'l', 'o' };

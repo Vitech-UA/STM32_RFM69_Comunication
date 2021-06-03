@@ -51,12 +51,13 @@ RFM69.cpp:450:6:void RFM69::setDataMode(RFM69DataMode)	16	static
 RFM69.cpp:479:5:int RFM69::setPowerDBm(int8_t)	24	static
 RFM69.cpp:536:6:bool RFM69::channelFree()	16	static
 RFM69.cpp:544:5:int RFM69::send(char*, unsigned int)	48	static
-RFM69.cpp:629:6:void RFM69::SetResetPin(GPIO_TypeDef*, uint16_t)	40	static
-RFM69.cpp:637:9:uint8_t RFM69::ReadTemperature(uint8_t)	16	static
-RFM69.cpp:647:10:uint32_t RFM69::getFrequency()	24	static
-RFM69.cpp:654:6:void RFM69::setAddress(uint16_t)	16	static
-RFM69.cpp:660:6:void RFM69::setNetwork(uint8_t)	16	static
-RFM69.cpp:664:6:void RFM69::readAllRegs()	80	static
+RFM69.cpp:630:6:void RFM69::SetResetPin(GPIO_TypeDef*, uint16_t)	40	static
+RFM69.cpp:638:9:uint8_t RFM69::ReadTemperature(uint8_t)	16	static
+RFM69.cpp:648:10:uint32_t RFM69::getFrequency()	24	static
+RFM69.cpp:655:6:void RFM69::setAddress(uint16_t)	16	static
+RFM69.cpp:661:6:void RFM69::setNetwork(uint8_t)	16	static
+RFM69.cpp:665:10:uint32_t RFM69::getBitRateKbps()	40	static
+RFM69.cpp:680:6:void RFM69::readAllRegs()	80	static
 uart.cpp:25:1:Uart::Uart(USART_TypeDef*, uint32_t)	24	static
 uart.cpp:35:6:void Uart::RingBufferClear()	16	static
 uart.cpp:42:9:uint8_t Uart::ReadRingBuffer()	24	static
@@ -96,9 +97,9 @@ SPI.cpp:242:6:void SPI::EnableIRQ()	16	static
 SPI.cpp:251:10:uint16_t SPI::TransmitReceive16B(uint16_t)	16	static
 SPI.cpp:263:9:uint8_t SPI::TransmitReceive8B(uint8_t)	24	static
 main.cpp:37:5:int main()	184	static
-main.cpp:70:17:void SysTick_Handler()	8	static
-main.cpp:76:6:void delay_ms(unsigned int)	24	static
-main.cpp:83:6:void mstimer_init()	8	static
-main.cpp:89:10:uint32_t mstimer_get()	8	static
-main.cpp:92:1:void __static_initialization_and_destruction_0(int, int)	16	static
-main.cpp:92:1:cpp)	8	static
+main.cpp:83:17:void SysTick_Handler()	8	static
+main.cpp:87:6:void delay_ms(unsigned int)	24	static
+main.cpp:93:6:void mstimer_init()	8	static
+main.cpp:97:10:uint32_t mstimer_get()	8	static
+main.cpp:99:1:void __static_initialization_and_destruction_0(int, int)	16	static
+main.cpp:99:1:cpp)	8	static

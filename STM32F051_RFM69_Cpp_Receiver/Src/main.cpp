@@ -31,62 +31,69 @@ Uart Debug = Uart(USART1, 115200);
 
 uint8_t ReceiveRegValue = 0;
 uint8_t Temperature = 0;
-int32_t freq=0;
+int32_t freq = 0;
 char UART_BUFFER[30];
-int bytesReceived=0;
-int main(void)
-{
+int bytesReceived = 0;
+int main(void) {
+
+
 
 	mstimer_init();
-    Debug.Printf("Hello\n");
+	Debug.Printf("Hello\n");
 	RFM69 Modem = RFM69(SPI1, GPIOA, 3, true, DataSize_8B);
-	Modem.readAllRegs();
+	Modem.setFrequency(915000000);
+	//Modem.readAllRegs();
 	Modem.SetResetPin(GPIOA, 4);
+
+
+
+	Modem.writeRegister(REG_BITRATEMSB, 0x68);
+	Modem.writeRegister(REG_BITRATELSB, 0x2B);
+
+    uint32_t val = Modem.getBitRateKbps();
+	Debug.Printf("Current BitRate %i kbps\n", val);
+
+	val = Modem.getFrequency();
+	Debug.Printf("Current Frequency %i Hz\n", val);
+
+
 	Modem.reset();
 	Modem.init();
 	Modem.sleep();
-	Modem.setPowerDBm(3);
+	Modem.setPowerDBm(13);
 	Modem.setCSMA(true);
 
 	char rx[5];
 
+	while (1) {
 
 
-	while (1)
-	{
+		 bytesReceived = Modem.receive(rx, sizeof(rx));
 
-
-			bytesReceived = Modem.receive(rx, sizeof(rx));
-
-			if (bytesReceived > 0)
-			{
-				Debug.Printf(rx);
-				Debug.SendByte('\n');
-			}
+		 if (bytesReceived > 0)
+		 {
+		 Debug.Printf(rx);
+		 Debug.SendByte('\n');
+		 }
 
 	}
+	return 0;
 }
 
-extern "C" void SysTick_Handler()
-{
+extern "C" void SysTick_Handler() {
 	uptime_ms++;
 }
 
-
-void delay_ms(unsigned ms)
-{
+void delay_ms(unsigned ms) {
 	uint32_t start = uptime_ms;
 	while (uptime_ms - start < ms)
 		;
 }
 
-void mstimer_init(void)
-{
+void mstimer_init(void) {
 	SysTick_Config(SystemCoreClock / 1000);
 }
 
-
-uint32_t mstimer_get(void)
-{
+uint32_t mstimer_get(void) {
 	return uptime_ms;
 }

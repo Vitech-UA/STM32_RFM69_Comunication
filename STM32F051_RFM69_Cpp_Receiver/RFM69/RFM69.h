@@ -35,7 +35,7 @@ class RFM69: public SPI {
 public:
 	RFM69(SPI_TypeDef *spi, GPIO_TypeDef *csGPIO, uint16_t csPin,
 			bool highPowerDevice, SPI_DataSize_t);
-	void WriteReg(uint8_t addr, uint8_t val);
+
 	void reset();
 	bool init();
 	void setFrequency(unsigned int frequency);
@@ -68,6 +68,7 @@ public:
 	void setAddress(uint16_t addr);
 	void setNetwork(uint8_t networkID);
 	void readAllRegs();
+    uint32_t getBitRateKbps(void);
 private:
 
 	void transmit(uint8_t rx);

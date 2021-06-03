@@ -77,7 +77,7 @@ SPI.cpp:247:6:void SPI::EnableIRQ()	16	static
 SPI.cpp:256:10:uint16_t SPI::TransmitReceive16B(uint16_t)	16	static
 SPI.cpp:268:9:uint8_t SPI::TransmitReceive8B(uint8_t)	24	static
 main.cpp:35:5:int main()	184	static
-main.cpp:58:17:void SysTick_Handler()	8	static
-main.cpp:66:6:void delay_ms(unsigned int)	24	static
-main.cpp:73:6:void mstimer_init()	8	static
-main.cpp:81:10:uint32_t mstimer_get()	8	static
+main.cpp:62:17:void SysTick_Handler()	8	static
+main.cpp:70:6:void delay_ms(unsigned int)	24	static
+main.cpp:77:6:void mstimer_init()	8	static
+main.cpp:85:10:uint32_t mstimer_get()	8	static

@@ -1,7 +1,10 @@
 LaunchTargetManager/org.eclipse.launchbar.core.launchTargetType.local,Local/arch=x86_64
 LaunchTargetManager/org.eclipse.launchbar.core.launchTargetType.local,Local/name=Local
 LaunchTargetManager/org.eclipse.launchbar.core.launchTargetType.local,Local/os=win32
-configDescList=org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:STM32F051_RFM69_Cpp Debug,org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:STM32F051_RFM69_Cpp_Receiver Debug,org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:STM32F051_RFM69_Cpp_Rx Debug
+configDescList=org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:STM32F030_RFM69_Cpp_Transmitter Debug,org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:STM32F030_RFM69_Cpp_Tx Debug,org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:STM32F051_RFM69_Cpp Debug,org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:STM32F051_RFM69_Cpp_Receiver Debug,org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:STM32F051_RFM69_Cpp_Rx Debug,org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:STM32F030_RFM69_Cpp_Transmitter
 eclipse.preferences.version=1
+org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:STM32F030_RFM69_Cpp_Transmitter\ Debug/activeLaunchMode=run
+org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:STM32F030_RFM69_Cpp_Transmitter/activeLaunchMode=run
 org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:STM32F051_RFM69_Cpp\ Debug/activeLaunchMode=run
 org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:STM32F051_RFM69_Cpp\ Debug/activeLaunchTarget=null\:---
+org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:STM32F051_RFM69_Cpp_Receiver\ Debug/activeLaunchMode=run
