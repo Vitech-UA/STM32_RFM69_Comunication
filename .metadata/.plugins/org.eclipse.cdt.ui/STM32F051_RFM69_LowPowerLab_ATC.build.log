@@ -1,0 +1,40 @@
+23:49:51 **** Incremental Build of configuration Debug for project STM32F051_RFM69_LowPowerLab_ATC ****
+make -j4 all 
+arm-none-eabi-g++ "../Src/main.cpp" -mcpu=cortex-m0 -std=gnu++14 -g3 -DSTM32 -DSTM32F0 -DDEBUG -DSTM32F051R8Tx -c -I../Inc -I"C:/STM32 workspace/STM32 RFM69 SPI TxRx/STM32F051_RFM69_LowPowerLab_ATC/RFM69" -I"C:/STM32 workspace/STM32 RFM69 SPI TxRx/STM32F051_RFM69_LowPowerLab_ATC/uart" -I"C:/STM32 workspace/STM32 RFM69 SPI TxRx/STM32F051_RFM69_LowPowerLab_ATC/spi" -I"C:/STM32 workspace/STM32 RFM69 SPI TxRx/STM32F051_RFM69_LowPowerLab_ATC/gpio" -include"C:/STM32 workspace/STM32 RFM69 SPI TxRx/STM32F051_RFM69_LowPowerLab_ATC/gpio/Gpio.cpp" -include"C:/STM32 workspace/STM32 RFM69 SPI TxRx/STM32F051_RFM69_LowPowerLab_ATC/uart/uart.cpp" -include"C:/STM32 workspace/STM32 RFM69 SPI TxRx/STM32F051_RFM69_LowPowerLab_ATC/spi/SPI.cpp" -O0 -ffunction-sections -fdata-sections -fno-exceptions -fno-rtti -fno-use-cxa-atexit -Wall -fstack-usage -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Src/main.o"
+In file included from <command-line>:
+C:/STM32 workspace/STM32 RFM69 SPI TxRx/STM32F051_RFM69_LowPowerLab_ATC/uart/uart.cpp: In member function 'uint8_t Uart::ReceiveByte()':
+C:/STM32 workspace/STM32 RFM69 SPI TxRx/STM32F051_RFM69_LowPowerLab_ATC/uart/uart.cpp:164:1: warning: no return statement in function returning non-void [-Wreturn-type]
+  164 | }
+      | ^
+In file included from <command-line>:
+C:/STM32 workspace/STM32 RFM69 SPI TxRx/STM32F051_RFM69_LowPowerLab_ATC/spi/SPI.cpp: In member function 'void SPI::SetClockPolarity(ClockPol_t)':
+C:/STM32 workspace/STM32 RFM69 SPI TxRx/STM32F051_RFM69_LowPowerLab_ATC/spi/SPI.cpp:150:11: warning: suggest parentheses around assignment used as truth value [-Wparentheses]
+  150 |  if (cpol = CPOL1)
+      |      ~~~~~^~~~~~~
+C:/STM32 workspace/STM32 RFM69 SPI TxRx/STM32F051_RFM69_LowPowerLab_ATC/spi/SPI.cpp:154:11: warning: suggest parentheses around assignment used as truth value [-Wparentheses]
+  154 |  if (cpol = CPOL0)
+      |      ~~~~~^~~~~~~
+C:/STM32 workspace/STM32 RFM69 SPI TxRx/STM32F051_RFM69_LowPowerLab_ATC/spi/SPI.cpp: In member function 'void SPI::SetClockPhase(ClockPhase_t)':
+C:/STM32 workspace/STM32 RFM69 SPI TxRx/STM32F051_RFM69_LowPowerLab_ATC/spi/SPI.cpp:163:11: warning: suggest parentheses around assignment used as truth value [-Wparentheses]
+  163 |  if (cpha = CPHA1)
+      |      ~~~~~^~~~~~~
+C:/STM32 workspace/STM32 RFM69 SPI TxRx/STM32F051_RFM69_LowPowerLab_ATC/spi/SPI.cpp:167:11: warning: suggest parentheses around assignment used as truth value [-Wparentheses]
+  167 |  if (cpha = CPHA0)
+      |      ~~~~~^~~~~~~
+arm-none-eabi-g++ -o "STM32F051_RFM69_LowPowerLab_ATC.elf" @"objects.list"   -mcpu=cortex-m0 -T"C:\STM32 workspace\STM32 RFM69 SPI TxRx\STM32F051_RFM69_LowPowerLab_ATC\STM32F051R8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="STM32F051_RFM69_LowPowerLab_ATC.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -lstdc++ -lsupc++ -Wl,--end-group
+Finished building target: STM32F051_RFM69_LowPowerLab_ATC.elf
+ 
+arm-none-eabi-size   STM32F051_RFM69_LowPowerLab_ATC.elf 
+arm-none-eabi-objdump -h -S  STM32F051_RFM69_LowPowerLab_ATC.elf  > "STM32F051_RFM69_LowPowerLab_ATC.list"
+arm-none-eabi-objcopy  -O binary  STM32F051_RFM69_LowPowerLab_ATC.elf  "STM32F051_RFM69_LowPowerLab_ATC.bin"
+   text	   data	    bss	    dec	    hex	filename
+   5048	    116	   1736	   6900	   1af4	STM32F051_RFM69_LowPowerLab_ATC.elf
+Finished building: default.size.stdout
+ 
+Finished building: STM32F051_RFM69_LowPowerLab_ATC.bin
+Finished building: STM32F051_RFM69_LowPowerLab_ATC.list
+ 
+ 
+
+23:49:52 Build Finished. 0 errors, 5 warnings. (took 997ms)
+

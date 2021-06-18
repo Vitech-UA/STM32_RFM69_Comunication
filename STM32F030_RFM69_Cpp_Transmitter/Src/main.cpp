@@ -35,26 +35,26 @@ int bytesReceived = 0;
 int main(void) {
 
 	mstimer_init();
-	RFM69 Modem = RFM69(SPI1, GPIOA, 3, false, DataSize_8B);
-	Modem.setFrequency(868000000);
+	RFM69 Modem = RFM69(SPI1, GPIOA, 3, true, DataSize_8B);
 
 	Modem.SetResetPin(GPIOA, 4);
 
 	Modem.writeRegister(REG_BITRATEMSB, 0x68);//1.2 kbps
 	Modem.writeRegister(REG_BITRATELSB, 0x2B);
-	Modem.setFrequency(915000000);
+	Modem.setFrequency(433000000);
+	Modem.setCSMA(true);
+
 	Modem.reset();
 	Modem.init();
 	Modem.sleep();
 	Modem.setPowerDBm(13);
-	Modem.setCSMA(true);
 
 	char testdata[] = { 'H', 'e', 'l', 'l', 'o' };
 
 	while (1) {
 
-		Modem.send(testdata, 5);
-		Modem.sleep();
+		Modem.send(testdata, 6);
+
 		delay_ms(500);
 	}
 }

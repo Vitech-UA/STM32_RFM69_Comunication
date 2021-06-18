@@ -1,58 +1,10 @@
-22:08:54 **** Incremental Build of configuration Debug for project STM32F051_RFM69_Cpp_Receiver ****
+23:49:50 **** Incremental Build of configuration Debug for project STM32F051_RFM69_Cpp_Receiver ****
 make -j4 all 
-arm-none-eabi-g++ "../Src/main.cpp" -mcpu=cortex-m0 -std=gnu++14 -g3 -DSTM32 -DSTM32F0 -DDEBUG -DSTM32F051R8Tx -c -I../Inc -I"C:/STM32 workspace/STM32 RFM69 SPI TxRx/STM32F051_RFM69_Cpp_Receiver/RFM69" -I"C:/STM32 workspace/STM32 RFM69 SPI TxRx/STM32F051_RFM69_Cpp_Receiver/uart" -I"C:/STM32 workspace/STM32 RFM69 SPI TxRx/STM32F051_RFM69_Cpp_Receiver/spi" -I"C:/STM32 workspace/STM32 RFM69 SPI TxRx/STM32F051_RFM69_Cpp_Receiver/gpio" -include"C:/STM32 workspace/STM32 RFM69 SPI TxRx/STM32F051_RFM69_Cpp_Receiver/gpio/Gpio.cpp" -include"C:/STM32 workspace/STM32 RFM69 SPI TxRx/STM32F051_RFM69_Cpp_Receiver/RFM69/RFM69.cpp" -include"C:/STM32 workspace/STM32 RFM69 SPI TxRx/STM32F051_RFM69_Cpp_Receiver/uart/uart.cpp" -include"C:/STM32 workspace/STM32 RFM69 SPI TxRx/STM32F051_RFM69_Cpp_Receiver/spi/SPI.cpp" -O0 -ffunction-sections -fdata-sections -fno-exceptions -fno-rtti -fno-use-cxa-atexit -Wall -fstack-usage -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Src/main.o"
-In file included from <command-line>:
-C:/STM32 workspace/STM32 RFM69 SPI TxRx/STM32F051_RFM69_Cpp_Receiver/RFM69/RFM69.cpp: In member function 'void RFM69::writeRegister(uint8_t, uint8_t)':
-C:/STM32 workspace/STM32 RFM69 SPI TxRx/STM32F051_RFM69_Cpp_Receiver/RFM69/RFM69.cpp:180:10: warning: unused variable 'i' [-Wunused-variable]
-  180 |  uint8_t i;
-      |          ^
-C:/STM32 workspace/STM32 RFM69 SPI TxRx/STM32F051_RFM69_Cpp_Receiver/RFM69/RFM69.cpp: In member function 'void RFM69::readAllRegs()':
-C:/STM32 workspace/STM32 RFM69 SPI TxRx/STM32F051_RFM69_Cpp_Receiver/RFM69/RFM69.cpp:730:22: warning: suggest parentheses around assignment used as truth value [-Wparentheses]
-  730 |    } else if (capVal = 0b001) {
-      |               ~~~~~~~^~~~~~~
-C:/STM32 workspace/STM32 RFM69 SPI TxRx/STM32F051_RFM69_Cpp_Receiver/RFM69/RFM69.cpp:732:22: warning: suggest parentheses around assignment used as truth value [-Wparentheses]
-  732 |    } else if (capVal = 0b010) {
-      |               ~~~~~~~^~~~~~~
-C:/STM32 workspace/STM32 RFM69 SPI TxRx/STM32F051_RFM69_Cpp_Receiver/RFM69/RFM69.cpp:734:22: warning: suggest parentheses around assignment used as truth value [-Wparentheses]
-  734 |    } else if (capVal = 0b011) {
-      |               ~~~~~~~^~~~~~~
-C:/STM32 workspace/STM32 RFM69 SPI TxRx/STM32F051_RFM69_Cpp_Receiver/RFM69/RFM69.cpp:736:22: warning: suggest parentheses around assignment used as truth value [-Wparentheses]
-  736 |    } else if (capVal = 0b100) {
-      |               ~~~~~~~^~~~~~~
-In file included from <command-line>:
-C:/STM32 workspace/STM32 RFM69 SPI TxRx/STM32F051_RFM69_Cpp_Receiver/uart/uart.cpp: In member function 'uint8_t Uart::ReceiveByte()':
-C:/STM32 workspace/STM32 RFM69 SPI TxRx/STM32F051_RFM69_Cpp_Receiver/uart/uart.cpp:164:1: warning: no return statement in function returning non-void [-Wreturn-type]
-  164 | }
-      | ^
-In file included from <command-line>:
-C:/STM32 workspace/STM32 RFM69 SPI TxRx/STM32F051_RFM69_Cpp_Receiver/spi/SPI.cpp: In member function 'void SPI::SetClockPolarity(ClockPol_t)':
-C:/STM32 workspace/STM32 RFM69 SPI TxRx/STM32F051_RFM69_Cpp_Receiver/spi/SPI.cpp:150:11: warning: suggest parentheses around assignment used as truth value [-Wparentheses]
-  150 |  if (cpol = CPOL1)
-      |      ~~~~~^~~~~~~
-C:/STM32 workspace/STM32 RFM69 SPI TxRx/STM32F051_RFM69_Cpp_Receiver/spi/SPI.cpp:154:11: warning: suggest parentheses around assignment used as truth value [-Wparentheses]
-  154 |  if (cpol = CPOL0)
-      |      ~~~~~^~~~~~~
-C:/STM32 workspace/STM32 RFM69 SPI TxRx/STM32F051_RFM69_Cpp_Receiver/spi/SPI.cpp: In member function 'void SPI::SetClockPhase(ClockPhase_t)':
-C:/STM32 workspace/STM32 RFM69 SPI TxRx/STM32F051_RFM69_Cpp_Receiver/spi/SPI.cpp:163:11: warning: suggest parentheses around assignment used as truth value [-Wparentheses]
-  163 |  if (cpha = CPHA1)
-      |      ~~~~~^~~~~~~
-C:/STM32 workspace/STM32 RFM69 SPI TxRx/STM32F051_RFM69_Cpp_Receiver/spi/SPI.cpp:167:11: warning: suggest parentheses around assignment used as truth value [-Wparentheses]
-  167 |  if (cpha = CPHA0)
-      |      ~~~~~^~~~~~~
-arm-none-eabi-g++ -o "STM32F051_RFM69_Cpp_Receiver.elf" @"objects.list"   -mcpu=cortex-m0 -T"C:\STM32 workspace\STM32 RFM69 SPI TxRx\STM32F051_RFM69_Cpp_Receiver\STM32F051R8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="STM32F051_RFM69_Cpp_Receiver.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -lstdc++ -lsupc++ -Wl,--end-group
-Finished building target: STM32F051_RFM69_Cpp_Receiver.elf
- 
-arm-none-eabi-objdump -h -S  STM32F051_RFM69_Cpp_Receiver.elf  > "STM32F051_RFM69_Cpp_Receiver.list"
-arm-none-eabi-objcopy  -O binary  STM32F051_RFM69_Cpp_Receiver.elf  "STM32F051_RFM69_Cpp_Receiver.bin"
 arm-none-eabi-size   STM32F051_RFM69_Cpp_Receiver.elf 
    text	   data	    bss	    dec	    hex	filename
-  17588	    116	   1744	  19448	   4bf8	STM32F051_RFM69_Cpp_Receiver.elf
+  19752	    116	   1744	  21612	   546c	STM32F051_RFM69_Cpp_Receiver.elf
 Finished building: default.size.stdout
  
-Finished building: STM32F051_RFM69_Cpp_Receiver.bin
-Finished building: STM32F051_RFM69_Cpp_Receiver.list
- 
- 
 
-22:08:55 Build Finished. 0 errors, 10 warnings. (took 917ms)
+23:49:50 Build Finished. 0 errors, 0 warnings. (took 267ms)
 

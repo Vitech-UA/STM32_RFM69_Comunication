@@ -1,6 +1,6 @@
-22:10:54 **** Incremental Build of configuration Debug for project STM32F030_RFM69_Cpp_Transmitter ****
+23:27:13 **** Incremental Build of configuration Debug for project STM32F030_RFM69_Cpp_Transmitter ****
 make -j4 all 
-arm-none-eabi-g++ "../Src/main.cpp" -mcpu=cortex-m0 -std=gnu++14 -g3 -DDEBUG -DSTM32 -DSTM32F0 -DSTM32F030F4Px -c -I../Inc -I"C:/STM32 workspace/STM32 RFM69 SPI TxRx/STM32F030_RFM69_Cpp_Transmitter/RFM69" -I"C:/STM32 workspace/STM32 RFM69 SPI TxRx/STM32F030_RFM69_Cpp_Transmitter/spi" -I"C:/STM32 workspace/STM32 RFM69 SPI TxRx/STM32F030_RFM69_Cpp_Transmitter/gpio" -include"C:/STM32 workspace/STM32 RFM69 SPI TxRx/STM32F030_RFM69_Cpp_Transmitter/gpio/Gpio.cpp" -include"C:/STM32 workspace/STM32 RFM69 SPI TxRx/STM32F030_RFM69_Cpp_Transmitter/RFM69/RFM69.cpp" -include"C:/STM32 workspace/STM32 RFM69 SPI TxRx/STM32F030_RFM69_Cpp_Transmitter/spi/SPI.cpp" -O0 -ffunction-sections -fdata-sections -fno-exceptions -fno-rtti -fno-use-cxa-atexit -Wall -fstack-usage -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Src/main.o"
+arm-none-eabi-g++ "../Src/main.cpp" -mcpu=cortex-m0 -std=gnu++14 -g3 -DDEBUG -DSTM32 -DSTM32F0 -DSTM32F030F4Px -c -I../Inc -I"C:/STM32 workspace/STM32 RFM69 SPI TxRx/STM32F030_RFM69_Cpp_Transmitter/RFM69" -I"C:/STM32 workspace/STM32 RFM69 SPI TxRx/STM32F030_RFM69_Cpp_Transmitter/spi" -I"C:/STM32 workspace/STM32 RFM69 SPI TxRx/STM32F030_RFM69_Cpp_Transmitter/gpio" -include"C:/STM32 workspace/STM32 RFM69 SPI TxRx/STM32F030_RFM69_Cpp_Transmitter/gpio/Gpio.cpp" -include"C:/STM32 workspace/STM32 RFM69 SPI TxRx/STM32F030_RFM69_Cpp_Transmitter/RFM69/RFM69.cpp" -include"C:/STM32 workspace/STM32 RFM69 SPI TxRx/STM32F030_RFM69_Cpp_Transmitter/spi/SPI.cpp" -Os -ffunction-sections -fdata-sections -fno-exceptions -fno-rtti -fno-use-cxa-atexit -Wall -fstack-usage -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Src/main.o"
 In file included from <command-line>:
 C:/STM32 workspace/STM32 RFM69 SPI TxRx/STM32F030_RFM69_Cpp_Transmitter/RFM69/RFM69.cpp: In member function 'void RFM69::readAllRegs()':
 C:/STM32 workspace/STM32 RFM69 SPI TxRx/STM32F030_RFM69_Cpp_Transmitter/RFM69/RFM69.cpp:658:10: warning: variable 'regVal' set but not used [-Wunused-but-set-variable]
@@ -28,7 +28,7 @@ arm-none-eabi-objdump -h -S  STM32F030_RFM69_Cpp_Transmitter.elf  > "STM32F030_R
 arm-none-eabi-objcopy  -O binary  STM32F030_RFM69_Cpp_Transmitter.elf  "STM32F030_RFM69_Cpp_Transmitter.bin"
 arm-none-eabi-size   STM32F030_RFM69_Cpp_Transmitter.elf 
    text	   data	    bss	    dec	    hex	filename
-  15688	    112	   1600	  17400	   43f8	STM32F030_RFM69_Cpp_Transmitter.elf
+  13180	    112	   1600	  14892	   3a2c	STM32F030_RFM69_Cpp_Transmitter.elf
 Finished building: default.size.stdout
  
 Finished building: STM32F030_RFM69_Cpp_Transmitter.bin
@@ -36,5 +36,5 @@ Finished building: STM32F030_RFM69_Cpp_Transmitter.bin
 Finished building: STM32F030_RFM69_Cpp_Transmitter.list
  
 
-22:10:55 Build Finished. 0 errors, 5 warnings. (took 817ms)
+23:27:15 Build Finished. 0 errors, 5 warnings. (took 1s.245ms)
 
