@@ -1,9 +1,0 @@
-#include <main.h>
-#include "stm32f051x8.h"
-
-
-int main(void)
-{
-    /* Loop forever */
-	for(;;);
-}
