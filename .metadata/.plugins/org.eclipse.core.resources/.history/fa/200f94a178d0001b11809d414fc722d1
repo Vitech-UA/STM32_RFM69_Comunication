@@ -1,0 +1,19 @@
+
+#include "RFM69.h"
+#include "RFM69registers.h"
+#include "uart.h"
+#include "SPI.h"
+#include "stdbool.h"
+
+uint8_t RFM69::DATA[RF69_MAX_DATA_LEN+1];
+uint8_t RFM69::_mode;        // current transceiver state
+uint8_t RFM69::DATALEN;
+uint16_t RFM69::SENDERID;
+uint16_t RFM69::TARGETID;     // should match _address
+uint8_t RFM69::PAYLOADLEN;
+uint8_t RFM69::ACK_REQUESTED;
+uint8_t RFM69::ACK_RECEIVED; // should be polled immediately after sending a packet with ACK request
+int16_t RFM69::RSSI;          // most accurate RSSI during reception (closest to the reception)
+
+
+

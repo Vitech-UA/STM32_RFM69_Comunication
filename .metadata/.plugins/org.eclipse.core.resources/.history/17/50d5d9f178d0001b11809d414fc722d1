@@ -1,0 +1,15 @@
+
+#include "RFM69.h"
+#include "RFM69registers.h"
+#include "uart.h"
+#include "SPI.h"
+#include "stdbool.h"
+
+      // most accurate RSSI during reception (closest to the reception)
+
+RFM69::RFM69(SPI_TypeDef *spi, GPIO_TypeDef *csGPIO, uint16_t csPin,
+		bool highPowerDevice, SPI_DataSize_t size) :
+		SPI(spi, size){
+
+}
+

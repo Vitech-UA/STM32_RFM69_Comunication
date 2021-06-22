@@ -7,6 +7,7 @@
 		<item key="WizardProjectsImportPage.STORE_CLOSE_CREATED_PROJECTS_ID" value="false"/>
 		<item key="WizardProjectsImportPage.STORE_HIDE_CONFLICTING_PROJECTS_ID" value="false"/>
 		<list key="WizardProjectsImportPage.STORE_DIRECTORIES">
+			<item value="C:\STM32 workspace\STM32 RFM69 SPI TxRx\STM32F051_RFM69_LowPowerLab"/>
 			<item value="C:\STM32 workspace\STM32 RFM69 SPI TxRx\STM32F051_RFM69_Cpp_Receiver"/>
 		</list>
 		<list key="WizardProjectsImportPage.STORE_ARCHIVES">
