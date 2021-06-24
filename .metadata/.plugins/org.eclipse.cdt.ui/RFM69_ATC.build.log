@@ -1,0 +1,10 @@
+21:06:20 **** Incremental Build of configuration Debug for project RFM69_ATC ****
+make -j4 all 
+arm-none-eabi-size   RFM69_ATC.elf 
+   text	   data	    bss	    dec	    hex	filename
+     96	      8	   1568	   1672	    688	RFM69_ATC.elf
+Finished building: default.size.stdout
+ 
+
+21:06:21 Build Finished. 0 errors, 0 warnings. (took 253ms)
+

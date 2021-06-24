@@ -1,0 +1,17 @@
+/*
+ * main.cpp
+ *
+ *  Created on: Jun 22, 2021
+ *      Author: Vitech-UA
+ */
+#include "main.h"
+
+
+
+int main(){
+
+
+	while(1){
+
+	}
+}

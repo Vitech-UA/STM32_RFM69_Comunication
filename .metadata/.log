@@ -1337,3 +1337,304 @@ Command-line arguments:  -os win32 -ws win32 -arch x86_64
 
 !ENTRY com.st.stm32cube.ide.mcu.ide 4 4 2021-06-22 22:06:54.526
 !MESSAGE com.st.stm32cube.ide.mcu.ide/META-INF/version/build_ref file not found, build reference will not be reported into properties
+
+!ENTRY org.eclipse.cdt.core 1 0 2021-06-22 22:12:23.207
+!MESSAGE Indexed 'RFM69_ATC' (0 sources, 0 headers) in 0.001 sec: 0 declarations; 0 references; 0 unresolved inclusions; 0 syntax errors; 0 unresolved names (0%)
+
+!ENTRY org.eclipse.cdt.core 1 0 2021-06-22 22:12:28.696
+!MESSAGE Indexed 'RFM69_ATC' (3 sources, 53 headers) in 1.23 sec: 1,964 declarations; 2,809 references; 0 unresolved inclusions; 1 syntax errors; 2 unresolved names (0.042%)
+
+!ENTRY org.eclipse.cdt.core 1 0 2021-06-22 22:21:44.740
+!MESSAGE Indexed 'RFM69_ATC' (2 sources, 16 headers) in 0.806 sec: 578 declarations; 1,468 references; 0 unresolved inclusions; 0 syntax errors; 0 unresolved names (0%)
+
+!ENTRY org.eclipse.cdt.core 1 0 2021-06-22 22:22:08.891
+!MESSAGE Indexed 'RFM69_ATC' (2 sources, 16 headers) in 0.524 sec: 578 declarations; 1,468 references; 0 unresolved inclusions; 0 syntax errors; 0 unresolved names (0%)
+
+!ENTRY com.st.stm32cube.ide.mcu.stackanalyzer 2 0 2021-06-22 22:23:34.872
+!MESSAGE Error while determining symbol addresses
+!STACK 0
+java.lang.NumberFormatException: For input string: ""
+	at java.base/java.lang.NumberFormatException.forInputString(Unknown Source)
+	at java.base/java.lang.Long.parseLong(Unknown Source)
+	at java.base/java.lang.Long.valueOf(Unknown Source)
+	at java.base/java.lang.Long.decode(Unknown Source)
+	at org.eclipse.cdt.utils.Addr32.<init>(Addr32.java:74)
+	at org.eclipse.cdt.utils.Addr32.<init>(Addr32.java:70)
+	at com.st.stm32cube.ide.mcu.stackanalyzer.ui.StackAnalyzerView.lambda$6(StackAnalyzerView.java:864)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(Unknown Source)
+	at java.base/java.util.ArrayList$ArrayListSpliterator.forEachRemaining(Unknown Source)
+	at java.base/java.util.stream.AbstractPipeline.copyInto(Unknown Source)
+	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(Unknown Source)
+	at java.base/java.util.stream.ReduceOps$ReduceOp.evaluateSequential(Unknown Source)
+	at java.base/java.util.stream.AbstractPipeline.evaluate(Unknown Source)
+	at java.base/java.util.stream.ReferencePipeline.collect(Unknown Source)
+	at com.st.stm32cube.ide.mcu.stackanalyzer.ui.StackAnalyzerView.inputChanged(StackAnalyzerView.java:874)
+	at com.st.stm32cube.ide.mcu.stackanalyzer.ui.StackAnalyzerView.lambda$15(StackAnalyzerView.java:1232)
+	at java.base/java.lang.Thread.run(Unknown Source)
+
+!ENTRY org.eclipse.cdt.dsf.gdb 4 5012 2021-06-22 22:24:20.726
+!MESSAGE Error with command: gdb --version
+!STACK 0
+java.io.IOException: Cannot run program "gdb": Launching failed
+	at org.eclipse.cdt.utils.spawner.Spawner.exec(Spawner.java:352)
+	at org.eclipse.cdt.utils.spawner.Spawner.<init>(Spawner.java:94)
+	at org.eclipse.cdt.utils.spawner.Spawner.<init>(Spawner.java:124)
+	at org.eclipse.cdt.utils.spawner.ProcessFactory.exec(ProcessFactory.java:73)
+	at org.eclipse.cdt.dsf.gdb.launching.LaunchUtils.getGDBVersion(LaunchUtils.java:320)
+	at org.eclipse.cdt.dsf.gdb.launching.GdbLaunch.getGDBVersion(GdbLaunch.java:511)
+	at org.eclipse.cdt.dsf.gdb.launching.GdbLaunchDelegate.launchDebugSession(GdbLaunchDelegate.java:147)
+	at org.eclipse.cdt.dsf.gdb.launching.GdbLaunchDelegate.launchDebugger(GdbLaunchDelegate.java:106)
+	at org.eclipse.cdt.dsf.gdb.launching.GdbLaunchDelegate.launch(GdbLaunchDelegate.java:94)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:807)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:718)
+	at org.eclipse.debug.internal.ui.DebugUIPlugin.buildAndLaunch(DebugUIPlugin.java:1021)
+	at org.eclipse.debug.internal.ui.DebugUIPlugin$2.run(DebugUIPlugin.java:1224)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+
+!ENTRY com.st.stm32cube.ide.mcu.stackanalyzer 2 0 2021-06-22 22:26:13.861
+!MESSAGE Error while determining symbol addresses
+!STACK 0
+java.lang.NumberFormatException: For input string: ""
+	at java.base/java.lang.NumberFormatException.forInputString(Unknown Source)
+	at java.base/java.lang.Long.parseLong(Unknown Source)
+	at java.base/java.lang.Long.valueOf(Unknown Source)
+	at java.base/java.lang.Long.decode(Unknown Source)
+	at org.eclipse.cdt.utils.Addr32.<init>(Addr32.java:74)
+	at org.eclipse.cdt.utils.Addr32.<init>(Addr32.java:70)
+	at com.st.stm32cube.ide.mcu.stackanalyzer.ui.StackAnalyzerView.lambda$6(StackAnalyzerView.java:864)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(Unknown Source)
+	at java.base/java.util.ArrayList$ArrayListSpliterator.forEachRemaining(Unknown Source)
+	at java.base/java.util.stream.AbstractPipeline.copyInto(Unknown Source)
+	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(Unknown Source)
+	at java.base/java.util.stream.ReduceOps$ReduceOp.evaluateSequential(Unknown Source)
+	at java.base/java.util.stream.AbstractPipeline.evaluate(Unknown Source)
+	at java.base/java.util.stream.ReferencePipeline.collect(Unknown Source)
+	at com.st.stm32cube.ide.mcu.stackanalyzer.ui.StackAnalyzerView.inputChanged(StackAnalyzerView.java:874)
+	at com.st.stm32cube.ide.mcu.stackanalyzer.ui.StackAnalyzerView.lambda$16(StackAnalyzerView.java:1252)
+	at java.base/java.lang.Thread.run(Unknown Source)
+
+!ENTRY com.st.stm32cube.ide.mcu.stackanalyzer 2 0 2021-06-22 22:26:42.440
+!MESSAGE Error while determining symbol addresses
+!STACK 0
+java.lang.NumberFormatException: For input string: ""
+	at java.base/java.lang.NumberFormatException.forInputString(Unknown Source)
+	at java.base/java.lang.Long.parseLong(Unknown Source)
+	at java.base/java.lang.Long.valueOf(Unknown Source)
+	at java.base/java.lang.Long.decode(Unknown Source)
+	at org.eclipse.cdt.utils.Addr32.<init>(Addr32.java:74)
+	at org.eclipse.cdt.utils.Addr32.<init>(Addr32.java:70)
+	at com.st.stm32cube.ide.mcu.stackanalyzer.ui.StackAnalyzerView.lambda$6(StackAnalyzerView.java:864)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(Unknown Source)
+	at java.base/java.util.ArrayList$ArrayListSpliterator.forEachRemaining(Unknown Source)
+	at java.base/java.util.stream.AbstractPipeline.copyInto(Unknown Source)
+	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(Unknown Source)
+	at java.base/java.util.stream.ReduceOps$ReduceOp.evaluateSequential(Unknown Source)
+	at java.base/java.util.stream.AbstractPipeline.evaluate(Unknown Source)
+	at java.base/java.util.stream.ReferencePipeline.collect(Unknown Source)
+	at com.st.stm32cube.ide.mcu.stackanalyzer.ui.StackAnalyzerView.inputChanged(StackAnalyzerView.java:874)
+	at com.st.stm32cube.ide.mcu.stackanalyzer.ui.StackAnalyzerView.lambda$16(StackAnalyzerView.java:1252)
+	at java.base/java.lang.Thread.run(Unknown Source)
+
+!ENTRY com.st.stm32cube.ide.mcu.stackanalyzer 2 0 2021-06-22 22:27:40.782
+!MESSAGE Error while determining symbol addresses
+!STACK 0
+java.lang.NumberFormatException: For input string: ""
+	at java.base/java.lang.NumberFormatException.forInputString(Unknown Source)
+	at java.base/java.lang.Long.parseLong(Unknown Source)
+	at java.base/java.lang.Long.valueOf(Unknown Source)
+	at java.base/java.lang.Long.decode(Unknown Source)
+	at org.eclipse.cdt.utils.Addr32.<init>(Addr32.java:74)
+	at org.eclipse.cdt.utils.Addr32.<init>(Addr32.java:70)
+	at com.st.stm32cube.ide.mcu.stackanalyzer.ui.StackAnalyzerView.lambda$6(StackAnalyzerView.java:864)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(Unknown Source)
+	at java.base/java.util.ArrayList$ArrayListSpliterator.forEachRemaining(Unknown Source)
+	at java.base/java.util.stream.AbstractPipeline.copyInto(Unknown Source)
+	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(Unknown Source)
+	at java.base/java.util.stream.ReduceOps$ReduceOp.evaluateSequential(Unknown Source)
+	at java.base/java.util.stream.AbstractPipeline.evaluate(Unknown Source)
+	at java.base/java.util.stream.ReferencePipeline.collect(Unknown Source)
+	at com.st.stm32cube.ide.mcu.stackanalyzer.ui.StackAnalyzerView.inputChanged(StackAnalyzerView.java:874)
+	at com.st.stm32cube.ide.mcu.stackanalyzer.ui.StackAnalyzerView.lambda$16(StackAnalyzerView.java:1252)
+	at java.base/java.lang.Thread.run(Unknown Source)
+
+!ENTRY com.st.stm32cube.ide.mcu.stackanalyzer 2 0 2021-06-22 22:28:03.641
+!MESSAGE Error while determining symbol addresses
+!STACK 0
+java.lang.NumberFormatException: For input string: ""
+	at java.base/java.lang.NumberFormatException.forInputString(Unknown Source)
+	at java.base/java.lang.Long.parseLong(Unknown Source)
+	at java.base/java.lang.Long.valueOf(Unknown Source)
+	at java.base/java.lang.Long.decode(Unknown Source)
+	at org.eclipse.cdt.utils.Addr32.<init>(Addr32.java:74)
+	at org.eclipse.cdt.utils.Addr32.<init>(Addr32.java:70)
+	at com.st.stm32cube.ide.mcu.stackanalyzer.ui.StackAnalyzerView.lambda$6(StackAnalyzerView.java:864)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(Unknown Source)
+	at java.base/java.util.ArrayList$ArrayListSpliterator.forEachRemaining(Unknown Source)
+	at java.base/java.util.stream.AbstractPipeline.copyInto(Unknown Source)
+	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(Unknown Source)
+	at java.base/java.util.stream.ReduceOps$ReduceOp.evaluateSequential(Unknown Source)
+	at java.base/java.util.stream.AbstractPipeline.evaluate(Unknown Source)
+	at java.base/java.util.stream.ReferencePipeline.collect(Unknown Source)
+	at com.st.stm32cube.ide.mcu.stackanalyzer.ui.StackAnalyzerView.inputChanged(StackAnalyzerView.java:874)
+	at com.st.stm32cube.ide.mcu.stackanalyzer.ui.StackAnalyzerView.lambda$16(StackAnalyzerView.java:1252)
+	at java.base/java.lang.Thread.run(Unknown Source)
+
+!ENTRY com.st.stm32cube.ide.mcu.stackanalyzer 2 0 2021-06-22 22:28:27.057
+!MESSAGE Error while determining symbol addresses
+!STACK 0
+java.lang.NumberFormatException: For input string: ""
+	at java.base/java.lang.NumberFormatException.forInputString(Unknown Source)
+	at java.base/java.lang.Long.parseLong(Unknown Source)
+	at java.base/java.lang.Long.valueOf(Unknown Source)
+	at java.base/java.lang.Long.decode(Unknown Source)
+	at org.eclipse.cdt.utils.Addr32.<init>(Addr32.java:74)
+	at org.eclipse.cdt.utils.Addr32.<init>(Addr32.java:70)
+	at com.st.stm32cube.ide.mcu.stackanalyzer.ui.StackAnalyzerView.lambda$6(StackAnalyzerView.java:864)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(Unknown Source)
+	at java.base/java.util.ArrayList$ArrayListSpliterator.forEachRemaining(Unknown Source)
+	at java.base/java.util.stream.AbstractPipeline.copyInto(Unknown Source)
+	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(Unknown Source)
+	at java.base/java.util.stream.ReduceOps$ReduceOp.evaluateSequential(Unknown Source)
+	at java.base/java.util.stream.AbstractPipeline.evaluate(Unknown Source)
+	at java.base/java.util.stream.ReferencePipeline.collect(Unknown Source)
+	at com.st.stm32cube.ide.mcu.stackanalyzer.ui.StackAnalyzerView.inputChanged(StackAnalyzerView.java:874)
+	at com.st.stm32cube.ide.mcu.stackanalyzer.ui.StackAnalyzerView.lambda$16(StackAnalyzerView.java:1252)
+	at java.base/java.lang.Thread.run(Unknown Source)
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2021-06-22 22:28:51.073
+!MESSAGE Request for monitor: 'RequestMonitor (org.eclipse.cdt.dsf.debug.ui.viewmodel.SteppingController$3@174f7f95): Status ERROR: org.eclipse.cdt.dsf.gdb code=10004 Failed to execute MI command:
+-exec-next 1
+Error message from debugger back end:
+Cannot find bounds of current function java.lang.Exception: Cannot find bounds of current function' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf.gdb 4 10004 2021-06-22 22:28:51.073
+!MESSAGE Failed to execute MI command:
+-exec-next 1
+Error message from debugger back end:
+Cannot find bounds of current function
+!STACK 0
+java.lang.Exception: Cannot find bounds of current function
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.processMIOutput(AbstractMIControl.java:993)
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.run(AbstractMIControl.java:822)
+
+!ENTRY com.st.stm32cube.ide.mcu.debug 4 0 2021-06-22 22:29:05.192
+!MESSAGE Error - No active DSF-Session. tmpSessionId = 6 (contextManager row 121)
+
+!ENTRY com.st.stm32cube.ide.mcu.debug 4 0 2021-06-22 22:29:05.193
+!MESSAGE Existing sessions are:
+
+!ENTRY com.st.stm32cube.ide.mcu.debug 4 0 2021-06-22 22:29:05.193
+!MESSAGE Error - No active DSF-Session. tmpSessionId = 6 (contextManager row 121)
+
+!ENTRY com.st.stm32cube.ide.mcu.debug 4 0 2021-06-22 22:29:05.194
+!MESSAGE Existing sessions are:
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2021-06-22 22:29:25.734
+!MESSAGE Request for monitor: 'RequestMonitor (org.eclipse.cdt.dsf.debug.ui.viewmodel.SteppingController$3@36eaae6c): Status ERROR: org.eclipse.cdt.dsf.gdb code=10004 Failed to execute MI command:
+-exec-next 1
+Error message from debugger back end:
+Cannot find bounds of current function java.lang.Exception: Cannot find bounds of current function' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf.gdb 4 10004 2021-06-22 22:29:25.734
+!MESSAGE Failed to execute MI command:
+-exec-next 1
+Error message from debugger back end:
+Cannot find bounds of current function
+!STACK 0
+java.lang.Exception: Cannot find bounds of current function
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.processMIOutput(AbstractMIControl.java:993)
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.run(AbstractMIControl.java:822)
+!SESSION 2021-06-24 21:03:34.961 -----------------------------------------------
+eclipse.buildId=Version 1.6.1
+java.version=11.0.9.1
+java.vendor=AdoptOpenJDK
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=ru_RU
+Command-line arguments:  -os win32 -ws win32 -arch x86_64
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 4 4 2021-06-24 21:04:19.278
+!MESSAGE CubeMX plugin appears to be active, Log4j initialization might be too late.
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 1 1 2021-06-24 21:04:19.381
+!MESSAGE Log4j initialized with config file C:\STM32 workspace\STM32 RFM69 SPI TxRx\.metadata\.log4j.xml
+
+!ENTRY com.st.stm32cube.ide.mcu.ide 1 1 2021-06-24 21:04:29.229
+!MESSAGE Started RMI Server, listening on port 41337
+
+!ENTRY com.st.stm32cube.ide.mcu.ide 4 4 2021-06-24 21:04:30.156
+!MESSAGE com.st.stm32cube.ide.mcu.ide/META-INF/version/build_ref file not found, build reference will not be reported into properties
+
+!ENTRY com.st.stm32cube.ide.mcu.stackanalyzer 2 0 2021-06-24 21:04:54.889
+!MESSAGE Error while determining symbol addresses
+!STACK 0
+java.lang.NumberFormatException: For input string: ""
+	at java.base/java.lang.NumberFormatException.forInputString(Unknown Source)
+	at java.base/java.lang.Long.parseLong(Unknown Source)
+	at java.base/java.lang.Long.valueOf(Unknown Source)
+	at java.base/java.lang.Long.decode(Unknown Source)
+	at org.eclipse.cdt.utils.Addr32.<init>(Addr32.java:74)
+	at org.eclipse.cdt.utils.Addr32.<init>(Addr32.java:70)
+	at com.st.stm32cube.ide.mcu.stackanalyzer.ui.StackAnalyzerView.lambda$6(StackAnalyzerView.java:864)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(Unknown Source)
+	at java.base/java.util.ArrayList$ArrayListSpliterator.forEachRemaining(Unknown Source)
+	at java.base/java.util.stream.AbstractPipeline.copyInto(Unknown Source)
+	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(Unknown Source)
+	at java.base/java.util.stream.ReduceOps$ReduceOp.evaluateSequential(Unknown Source)
+	at java.base/java.util.stream.AbstractPipeline.evaluate(Unknown Source)
+	at java.base/java.util.stream.ReferencePipeline.collect(Unknown Source)
+	at com.st.stm32cube.ide.mcu.stackanalyzer.ui.StackAnalyzerView.inputChanged(StackAnalyzerView.java:874)
+	at com.st.stm32cube.ide.mcu.stackanalyzer.ui.StackAnalyzerView.lambda$15(StackAnalyzerView.java:1232)
+	at java.base/java.lang.Thread.run(Unknown Source)
+
+!ENTRY com.st.stm32cube.ide.mcu.stackanalyzer 2 0 2021-06-24 21:05:23.261
+!MESSAGE Error while determining symbol addresses
+!STACK 0
+java.lang.NumberFormatException: For input string: ""
+	at java.base/java.lang.NumberFormatException.forInputString(Unknown Source)
+	at java.base/java.lang.Long.parseLong(Unknown Source)
+	at java.base/java.lang.Long.valueOf(Unknown Source)
+	at java.base/java.lang.Long.decode(Unknown Source)
+	at org.eclipse.cdt.utils.Addr32.<init>(Addr32.java:74)
+	at org.eclipse.cdt.utils.Addr32.<init>(Addr32.java:70)
+	at com.st.stm32cube.ide.mcu.stackanalyzer.ui.StackAnalyzerView.lambda$6(StackAnalyzerView.java:864)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(Unknown Source)
+	at java.base/java.util.ArrayList$ArrayListSpliterator.forEachRemaining(Unknown Source)
+	at java.base/java.util.stream.AbstractPipeline.copyInto(Unknown Source)
+	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(Unknown Source)
+	at java.base/java.util.stream.ReduceOps$ReduceOp.evaluateSequential(Unknown Source)
+	at java.base/java.util.stream.AbstractPipeline.evaluate(Unknown Source)
+	at java.base/java.util.stream.ReferencePipeline.collect(Unknown Source)
+	at com.st.stm32cube.ide.mcu.stackanalyzer.ui.StackAnalyzerView.inputChanged(StackAnalyzerView.java:874)
+	at com.st.stm32cube.ide.mcu.stackanalyzer.ui.StackAnalyzerView.lambda$16(StackAnalyzerView.java:1252)
+	at java.base/java.lang.Thread.run(Unknown Source)
+
+!ENTRY com.st.stm32cube.ide.mcu.stackanalyzer 2 0 2021-06-24 21:05:40.525
+!MESSAGE Error while determining symbol addresses
+!STACK 0
+java.lang.NumberFormatException: For input string: ""
+	at java.base/java.lang.NumberFormatException.forInputString(Unknown Source)
+	at java.base/java.lang.Long.parseLong(Unknown Source)
+	at java.base/java.lang.Long.valueOf(Unknown Source)
+	at java.base/java.lang.Long.decode(Unknown Source)
+	at org.eclipse.cdt.utils.Addr32.<init>(Addr32.java:74)
+	at org.eclipse.cdt.utils.Addr32.<init>(Addr32.java:70)
+	at com.st.stm32cube.ide.mcu.stackanalyzer.ui.StackAnalyzerView.lambda$6(StackAnalyzerView.java:864)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(Unknown Source)
+	at java.base/java.util.ArrayList$ArrayListSpliterator.forEachRemaining(Unknown Source)
+	at java.base/java.util.stream.AbstractPipeline.copyInto(Unknown Source)
+	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(Unknown Source)
+	at java.base/java.util.stream.ReduceOps$ReduceOp.evaluateSequential(Unknown Source)
+	at java.base/java.util.stream.AbstractPipeline.evaluate(Unknown Source)
+	at java.base/java.util.stream.ReferencePipeline.collect(Unknown Source)
+	at com.st.stm32cube.ide.mcu.stackanalyzer.ui.StackAnalyzerView.inputChanged(StackAnalyzerView.java:874)
+	at com.st.stm32cube.ide.mcu.stackanalyzer.ui.StackAnalyzerView.lambda$16(StackAnalyzerView.java:1252)
+	at java.base/java.lang.Thread.run(Unknown Source)
+
+!ENTRY org.eclipse.cdt.core 1 0 2021-06-24 21:54:36.388
+!MESSAGE Indexed 'STM32F051_RFM69_ATC' (21 sources, 81 headers) in 2.92 sec: 4,118 declarations; 21,366 references; 0 unresolved inclusions; 1 syntax errors; 2 unresolved names (0.0078%)
+
+!ENTRY org.eclipse.cdt.core 1 0 2021-06-24 22:00:46.149
+!MESSAGE Indexed 'STM32F051_RFM69_ATC' (23 sources, 117 headers) in 3.14 sec: 5,497 declarations; 24,705 references; 0 unresolved inclusions; 1 syntax errors; 2 unresolved names (0.0066%)
+
+!ENTRY org.eclipse.cdt.core 1 0 2021-06-24 22:04:35.459
+!MESSAGE Indexed 'STM32F051_RFM69_ATC' (24 sources, 120 headers) in 2.6 sec: 5,715 declarations; 25,388 references; 0 unresolved inclusions; 1 syntax errors; 3 unresolved names (0.0096%)
+
+!ENTRY org.eclipse.cdt.core 1 0 2021-06-24 22:12:26.129
+!MESSAGE Indexed 'STM32F051_RFM69_ATC' (24 sources, 148 headers) in 3.34 sec: 6,754 declarations; 26,817 references; 0 unresolved inclusions; 1 syntax errors; 2 unresolved names (0.006%)
