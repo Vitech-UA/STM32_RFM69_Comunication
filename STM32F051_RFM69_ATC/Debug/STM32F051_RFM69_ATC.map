@@ -121,6 +121,7 @@ Discarded input sections
  .group         0x0000000000000000        0xc Core/Src/main.o
  .group         0x0000000000000000        0xc Core/Src/main.o
  .group         0x0000000000000000        0xc Core/Src/main.o
+ .group         0x0000000000000000        0xc Core/Src/main.o
  .text          0x0000000000000000        0x0 Core/Src/main.o
  .data          0x0000000000000000        0x0 Core/Src/main.o
  .bss           0x0000000000000000        0x0 Core/Src/main.o
@@ -2219,6 +2220,181 @@ Discarded input sections
  .comment       0x0000000000000000       0x54 Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_tim_ex.o
  .ARM.attributes
                 0x0000000000000000       0x31 Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_tim_ex.o
+ .group         0x0000000000000000        0xc RFM69/RFM69.o
+ .group         0x0000000000000000        0xc RFM69/RFM69.o
+ .group         0x0000000000000000        0xc RFM69/RFM69.o
+ .group         0x0000000000000000        0xc RFM69/RFM69.o
+ .group         0x0000000000000000        0xc RFM69/RFM69.o
+ .group         0x0000000000000000        0xc RFM69/RFM69.o
+ .group         0x0000000000000000        0xc RFM69/RFM69.o
+ .group         0x0000000000000000        0xc RFM69/RFM69.o
+ .group         0x0000000000000000        0xc RFM69/RFM69.o
+ .group         0x0000000000000000        0xc RFM69/RFM69.o
+ .group         0x0000000000000000        0xc RFM69/RFM69.o
+ .group         0x0000000000000000        0xc RFM69/RFM69.o
+ .group         0x0000000000000000        0xc RFM69/RFM69.o
+ .group         0x0000000000000000        0xc RFM69/RFM69.o
+ .group         0x0000000000000000        0xc RFM69/RFM69.o
+ .group         0x0000000000000000        0xc RFM69/RFM69.o
+ .group         0x0000000000000000        0xc RFM69/RFM69.o
+ .group         0x0000000000000000        0xc RFM69/RFM69.o
+ .group         0x0000000000000000        0xc RFM69/RFM69.o
+ .group         0x0000000000000000        0xc RFM69/RFM69.o
+ .group         0x0000000000000000        0xc RFM69/RFM69.o
+ .group         0x0000000000000000        0xc RFM69/RFM69.o
+ .group         0x0000000000000000        0xc RFM69/RFM69.o
+ .group         0x0000000000000000        0xc RFM69/RFM69.o
+ .group         0x0000000000000000        0xc RFM69/RFM69.o
+ .group         0x0000000000000000        0xc RFM69/RFM69.o
+ .group         0x0000000000000000        0xc RFM69/RFM69.o
+ .group         0x0000000000000000        0xc RFM69/RFM69.o
+ .group         0x0000000000000000        0xc RFM69/RFM69.o
+ .group         0x0000000000000000        0xc RFM69/RFM69.o
+ .group         0x0000000000000000        0xc RFM69/RFM69.o
+ .group         0x0000000000000000        0xc RFM69/RFM69.o
+ .group         0x0000000000000000        0xc RFM69/RFM69.o
+ .group         0x0000000000000000        0xc RFM69/RFM69.o
+ .group         0x0000000000000000        0xc RFM69/RFM69.o
+ .group         0x0000000000000000        0xc RFM69/RFM69.o
+ .group         0x0000000000000000        0xc RFM69/RFM69.o
+ .group         0x0000000000000000        0xc RFM69/RFM69.o
+ .group         0x0000000000000000        0xc RFM69/RFM69.o
+ .group         0x0000000000000000        0xc RFM69/RFM69.o
+ .group         0x0000000000000000        0xc RFM69/RFM69.o
+ .group         0x0000000000000000        0xc RFM69/RFM69.o
+ .group         0x0000000000000000        0xc RFM69/RFM69.o
+ .group         0x0000000000000000        0xc RFM69/RFM69.o
+ .group         0x0000000000000000        0xc RFM69/RFM69.o
+ .group         0x0000000000000000        0xc RFM69/RFM69.o
+ .group         0x0000000000000000        0xc RFM69/RFM69.o
+ .group         0x0000000000000000        0xc RFM69/RFM69.o
+ .group         0x0000000000000000        0xc RFM69/RFM69.o
+ .group         0x0000000000000000        0xc RFM69/RFM69.o
+ .group         0x0000000000000000        0xc RFM69/RFM69.o
+ .group         0x0000000000000000        0xc RFM69/RFM69.o
+ .group         0x0000000000000000        0xc RFM69/RFM69.o
+ .group         0x0000000000000000        0xc RFM69/RFM69.o
+ .group         0x0000000000000000        0xc RFM69/RFM69.o
+ .group         0x0000000000000000        0xc RFM69/RFM69.o
+ .group         0x0000000000000000        0xc RFM69/RFM69.o
+ .group         0x0000000000000000        0xc RFM69/RFM69.o
+ .group         0x0000000000000000        0xc RFM69/RFM69.o
+ .group         0x0000000000000000        0xc RFM69/RFM69.o
+ .group         0x0000000000000000        0xc RFM69/RFM69.o
+ .group         0x0000000000000000        0xc RFM69/RFM69.o
+ .group         0x0000000000000000        0xc RFM69/RFM69.o
+ .group         0x0000000000000000        0xc RFM69/RFM69.o
+ .group         0x0000000000000000        0xc RFM69/RFM69.o
+ .group         0x0000000000000000        0xc RFM69/RFM69.o
+ .group         0x0000000000000000        0xc RFM69/RFM69.o
+ .group         0x0000000000000000        0xc RFM69/RFM69.o
+ .group         0x0000000000000000        0xc RFM69/RFM69.o
+ .group         0x0000000000000000        0xc RFM69/RFM69.o
+ .group         0x0000000000000000        0xc RFM69/RFM69.o
+ .group         0x0000000000000000        0xc RFM69/RFM69.o
+ .group         0x0000000000000000        0xc RFM69/RFM69.o
+ .group         0x0000000000000000        0xc RFM69/RFM69.o
+ .group         0x0000000000000000        0xc RFM69/RFM69.o
+ .group         0x0000000000000000        0xc RFM69/RFM69.o
+ .group         0x0000000000000000        0xc RFM69/RFM69.o
+ .group         0x0000000000000000        0xc RFM69/RFM69.o
+ .text          0x0000000000000000        0x0 RFM69/RFM69.o
+ .data          0x0000000000000000        0x0 RFM69/RFM69.o
+ .bss           0x0000000000000000        0x0 RFM69/RFM69.o
+ .text._ZN5RFM69C2EP11SPI_TypeDef12SPI_DataSize
+                0x0000000000000000       0x26 RFM69/RFM69.o
+ .text._ZN5RFM698rfm_initEv
+                0x0000000000000000       0x10 RFM69/RFM69.o
+ .debug_info    0x0000000000000000     0x17de RFM69/RFM69.o
+ .debug_abbrev  0x0000000000000000      0x3ea RFM69/RFM69.o
+ .debug_aranges
+                0x0000000000000000       0x28 RFM69/RFM69.o
+ .debug_ranges  0x0000000000000000       0x18 RFM69/RFM69.o
+ .debug_macro   0x0000000000000000      0x3f1 RFM69/RFM69.o
+ .debug_macro   0x0000000000000000      0xb56 RFM69/RFM69.o
+ .debug_macro   0x0000000000000000      0x127 RFM69/RFM69.o
+ .debug_macro   0x0000000000000000       0x2e RFM69/RFM69.o
+ .debug_macro   0x0000000000000000       0x22 RFM69/RFM69.o
+ .debug_macro   0x0000000000000000       0x1c RFM69/RFM69.o
+ .debug_macro   0x0000000000000000       0x22 RFM69/RFM69.o
+ .debug_macro   0x0000000000000000       0x8e RFM69/RFM69.o
+ .debug_macro   0x0000000000000000       0x51 RFM69/RFM69.o
+ .debug_macro   0x0000000000000000      0x103 RFM69/RFM69.o
+ .debug_macro   0x0000000000000000       0x6a RFM69/RFM69.o
+ .debug_macro   0x0000000000000000      0x1df RFM69/RFM69.o
+ .debug_macro   0x0000000000000000       0x1c RFM69/RFM69.o
+ .debug_macro   0x0000000000000000       0x22 RFM69/RFM69.o
+ .debug_macro   0x0000000000000000       0xb5 RFM69/RFM69.o
+ .debug_macro   0x0000000000000000      0x391 RFM69/RFM69.o
+ .debug_macro   0x0000000000000000     0x8cdd RFM69/RFM69.o
+ .debug_macro   0x0000000000000000       0x3c RFM69/RFM69.o
+ .debug_macro   0x0000000000000000     0x3461 RFM69/RFM69.o
+ .debug_macro   0x0000000000000000      0x17b RFM69/RFM69.o
+ .debug_macro   0x0000000000000000       0x55 RFM69/RFM69.o
+ .debug_macro   0x0000000000000000      0x924 RFM69/RFM69.o
+ .debug_macro   0x0000000000000000      0x251 RFM69/RFM69.o
+ .debug_macro   0x0000000000000000      0x12f RFM69/RFM69.o
+ .debug_macro   0x0000000000000000      0x114 RFM69/RFM69.o
+ .debug_macro   0x0000000000000000      0x1a0 RFM69/RFM69.o
+ .debug_macro   0x0000000000000000      0x1ed RFM69/RFM69.o
+ .debug_macro   0x0000000000000000       0x34 RFM69/RFM69.o
+ .debug_macro   0x0000000000000000       0x43 RFM69/RFM69.o
+ .debug_macro   0x0000000000000000       0x28 RFM69/RFM69.o
+ .debug_macro   0x0000000000000000       0xb0 RFM69/RFM69.o
+ .debug_macro   0x0000000000000000      0x199 RFM69/RFM69.o
+ .debug_macro   0x0000000000000000      0x22c RFM69/RFM69.o
+ .debug_macro   0x0000000000000000       0x60 RFM69/RFM69.o
+ .debug_macro   0x0000000000000000       0xa5 RFM69/RFM69.o
+ .debug_macro   0x0000000000000000       0x4c RFM69/RFM69.o
+ .debug_macro   0x0000000000000000      0x112 RFM69/RFM69.o
+ .debug_macro   0x0000000000000000      0x114 RFM69/RFM69.o
+ .debug_macro   0x0000000000000000       0x52 RFM69/RFM69.o
+ .debug_macro   0x0000000000000000       0x52 RFM69/RFM69.o
+ .debug_macro   0x0000000000000000       0x18 RFM69/RFM69.o
+ .debug_macro   0x0000000000000000       0x3c RFM69/RFM69.o
+ .debug_macro   0x0000000000000000       0x34 RFM69/RFM69.o
+ .debug_macro   0x0000000000000000       0x16 RFM69/RFM69.o
+ .debug_macro   0x0000000000000000       0x35 RFM69/RFM69.o
+ .debug_macro   0x0000000000000000      0x356 RFM69/RFM69.o
+ .debug_macro   0x0000000000000000       0x10 RFM69/RFM69.o
+ .debug_macro   0x0000000000000000       0x16 RFM69/RFM69.o
+ .debug_macro   0x0000000000000000       0x43 RFM69/RFM69.o
+ .debug_macro   0x0000000000000000       0x34 RFM69/RFM69.o
+ .debug_macro   0x0000000000000000       0x10 RFM69/RFM69.o
+ .debug_macro   0x0000000000000000       0x58 RFM69/RFM69.o
+ .debug_macro   0x0000000000000000       0x71 RFM69/RFM69.o
+ .debug_macro   0x0000000000000000       0x16 RFM69/RFM69.o
+ .debug_macro   0x0000000000000000      0x12a RFM69/RFM69.o
+ .debug_macro   0x0000000000000000       0x10 RFM69/RFM69.o
+ .debug_macro   0x0000000000000000       0x1c RFM69/RFM69.o
+ .debug_macro   0x0000000000000000       0x52 RFM69/RFM69.o
+ .debug_macro   0x0000000000000000       0x22 RFM69/RFM69.o
+ .debug_macro   0x0000000000000000       0x10 RFM69/RFM69.o
+ .debug_macro   0x0000000000000000       0x40 RFM69/RFM69.o
+ .debug_macro   0x0000000000000000       0xd5 RFM69/RFM69.o
+ .debug_macro   0x0000000000000000       0x1c RFM69/RFM69.o
+ .debug_macro   0x0000000000000000       0x3d RFM69/RFM69.o
+ .debug_macro   0x0000000000000000       0x16 RFM69/RFM69.o
+ .debug_macro   0x0000000000000000      0x137 RFM69/RFM69.o
+ .debug_macro   0x0000000000000000      0x17c RFM69/RFM69.o
+ .debug_macro   0x0000000000000000       0x10 RFM69/RFM69.o
+ .debug_macro   0x0000000000000000      0x410 RFM69/RFM69.o
+ .debug_macro   0x0000000000000000       0x10 RFM69/RFM69.o
+ .debug_macro   0x0000000000000000       0x16 RFM69/RFM69.o
+ .debug_macro   0x0000000000000000       0x16 RFM69/RFM69.o
+ .debug_macro   0x0000000000000000       0x29 RFM69/RFM69.o
+ .debug_macro   0x0000000000000000       0x1c RFM69/RFM69.o
+ .debug_macro   0x0000000000000000       0xde RFM69/RFM69.o
+ .debug_macro   0x0000000000000000       0x16 RFM69/RFM69.o
+ .debug_macro   0x0000000000000000       0x20 RFM69/RFM69.o
+ .debug_macro   0x0000000000000000       0x4c RFM69/RFM69.o
+ .debug_macro   0x0000000000000000       0x16 RFM69/RFM69.o
+ .debug_line    0x0000000000000000      0xccb RFM69/RFM69.o
+ .debug_str     0x0000000000000000    0x6576d RFM69/RFM69.o
+ .comment       0x0000000000000000       0x54 RFM69/RFM69.o
+ .debug_frame   0x0000000000000000       0x50 RFM69/RFM69.o
+ .ARM.attributes
+                0x0000000000000000       0x2c RFM69/RFM69.o
  .group         0x0000000000000000        0xc gpio/Gpio.o
  .group         0x0000000000000000        0xc gpio/Gpio.o
  .group         0x0000000000000000        0xc gpio/Gpio.o
@@ -2572,13 +2748,20 @@ Discarded input sections
  .debug_macro   0x0000000000000000      0x114 uart/uart.o
  .debug_macro   0x0000000000000000       0x58 uart/uart.o
  .debug_macro   0x0000000000000000       0x16 uart/uart.o
+ .debug_macro   0x0000000000000000       0x52 uart/uart.o
  .debug_macro   0x0000000000000000       0x18 uart/uart.o
  .debug_macro   0x0000000000000000       0x3c uart/uart.o
+ .debug_macro   0x0000000000000000       0x34 uart/uart.o
  .debug_macro   0x0000000000000000       0x16 uart/uart.o
+ .debug_macro   0x0000000000000000       0x35 uart/uart.o
+ .debug_macro   0x0000000000000000      0x356 uart/uart.o
+ .debug_macro   0x0000000000000000       0x16 uart/uart.o
+ .debug_macro   0x0000000000000000       0x43 uart/uart.o
  .debug_macro   0x0000000000000000       0x34 uart/uart.o
  .debug_macro   0x0000000000000000       0x10 uart/uart.o
  .debug_macro   0x0000000000000000       0x58 uart/uart.o
  .debug_macro   0x0000000000000000       0x71 uart/uart.o
+ .debug_macro   0x0000000000000000       0x16 uart/uart.o
  .debug_macro   0x0000000000000000      0x12a uart/uart.o
  .debug_macro   0x0000000000000000       0x10 uart/uart.o
  .debug_macro   0x0000000000000000       0x1c uart/uart.o
@@ -2590,6 +2773,7 @@ Discarded input sections
  .debug_macro   0x0000000000000000       0x1c uart/uart.o
  .debug_macro   0x0000000000000000       0x3d uart/uart.o
  .debug_macro   0x0000000000000000       0x16 uart/uart.o
+ .debug_macro   0x0000000000000000      0x137 uart/uart.o
  .text          0x0000000000000000        0x0 c:/st/stm32cubeide_1.6.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.win32_1.5.0.202011040924/tools/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp\libc_nano.a(lib_a-errno.o)
  .data          0x0000000000000000        0x0 c:/st/stm32cubeide_1.6.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.win32_1.5.0.202011040924/tools/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp\libc_nano.a(lib_a-errno.o)
  .bss           0x0000000000000000        0x0 c:/st/stm32cubeide_1.6.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.win32_1.5.0.202011040924/tools/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp\libc_nano.a(lib_a-errno.o)
@@ -2725,6 +2909,7 @@ LOAD Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_rcc.o
 LOAD Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_rcc_ex.o
 LOAD Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_tim.o
 LOAD Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_tim_ex.o
+LOAD RFM69/RFM69.o
 LOAD gpio/Gpio.o
 LOAD spi/SPI.o
 LOAD uart/uart.o
@@ -3297,104 +3482,97 @@ LOAD c:/st/stm32cubeide_1.6.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.exte
  .debug_ranges  0x0000000000000290       0x70 gpio/Gpio.o
  .debug_ranges  0x0000000000000300       0x98 uart/uart.o
 
-.debug_macro    0x0000000000000000    0x11c4b
- .debug_macro   0x0000000000000000      0x1cb Core/Src/main.o
- .debug_macro   0x00000000000001cb      0xb56 Core/Src/main.o
- .debug_macro   0x0000000000000d21      0x127 Core/Src/main.o
- .debug_macro   0x0000000000000e48       0x2e Core/Src/main.o
- .debug_macro   0x0000000000000e76       0x22 Core/Src/main.o
- .debug_macro   0x0000000000000e98       0x1c Core/Src/main.o
- .debug_macro   0x0000000000000eb4       0x22 Core/Src/main.o
- .debug_macro   0x0000000000000ed6       0x8e Core/Src/main.o
- .debug_macro   0x0000000000000f64       0x51 Core/Src/main.o
- .debug_macro   0x0000000000000fb5      0x103 Core/Src/main.o
- .debug_macro   0x00000000000010b8       0x6a Core/Src/main.o
- .debug_macro   0x0000000000001122      0x1df Core/Src/main.o
- .debug_macro   0x0000000000001301       0x1c Core/Src/main.o
- .debug_macro   0x000000000000131d       0x22 Core/Src/main.o
- .debug_macro   0x000000000000133f       0xb5 Core/Src/main.o
- .debug_macro   0x00000000000013f4      0x391 Core/Src/main.o
- .debug_macro   0x0000000000001785     0x8cdd Core/Src/main.o
- .debug_macro   0x000000000000a462       0x3c Core/Src/main.o
- .debug_macro   0x000000000000a49e     0x3461 Core/Src/main.o
- .debug_macro   0x000000000000d8ff      0x17b Core/Src/main.o
- .debug_macro   0x000000000000da7a       0x55 Core/Src/main.o
- .debug_macro   0x000000000000dacf      0x924 Core/Src/main.o
- .debug_macro   0x000000000000e3f3      0x251 Core/Src/main.o
- .debug_macro   0x000000000000e644      0x12f Core/Src/main.o
- .debug_macro   0x000000000000e773      0x114 Core/Src/main.o
- .debug_macro   0x000000000000e887      0x1a0 Core/Src/main.o
- .debug_macro   0x000000000000ea27      0x1ed Core/Src/main.o
- .debug_macro   0x000000000000ec14       0x34 Core/Src/main.o
- .debug_macro   0x000000000000ec48       0x43 Core/Src/main.o
- .debug_macro   0x000000000000ec8b       0x28 Core/Src/main.o
- .debug_macro   0x000000000000ecb3       0xb0 Core/Src/main.o
- .debug_macro   0x000000000000ed63      0x199 Core/Src/main.o
- .debug_macro   0x000000000000eefc      0x22c Core/Src/main.o
- .debug_macro   0x000000000000f128       0x60 Core/Src/main.o
- .debug_macro   0x000000000000f188       0xa5 Core/Src/main.o
- .debug_macro   0x000000000000f22d       0x4c Core/Src/main.o
- .debug_macro   0x000000000000f279      0x112 Core/Src/main.o
- .debug_macro   0x000000000000f38b      0x114 Core/Src/main.o
- .debug_macro   0x000000000000f49f       0x58 Core/Src/main.o
- .debug_macro   0x000000000000f4f7       0x16 Core/Src/main.o
- .debug_macro   0x000000000000f50d      0x1a4 Core/Src/stm32f0xx_hal_msp.o
- .debug_macro   0x000000000000f6b1      0xa7e Core/Src/stm32f0xx_hal_msp.o
- .debug_macro   0x000000000001012f      0x391 Core/Src/stm32f0xx_hal_msp.o
- .debug_macro   0x00000000000104c0      0x174 Core/Src/stm32f0xx_hal_msp.o
- .debug_macro   0x0000000000010634      0x1ae Core/Src/stm32f0xx_it.o
- .debug_macro   0x00000000000107e2       0xff Core/Src/sysmem.o
- .debug_macro   0x00000000000108e1      0x23b Core/Src/sysmem.o
- .debug_macro   0x0000000000010b1c      0x19a Core/Src/system_stm32f0xx.o
- .debug_macro   0x0000000000010cb6      0x1be Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal.o
- .debug_macro   0x0000000000010e74      0x19a Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_cortex.o
- .debug_macro   0x000000000001100e      0x1ac Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_rcc.o
- .debug_macro   0x00000000000111ba      0x1b3 gpio/Gpio.o
- .debug_macro   0x000000000001136d      0x327 uart/uart.o
- .debug_macro   0x0000000000011694       0x52 uart/uart.o
- .debug_macro   0x00000000000116e6       0x34 uart/uart.o
- .debug_macro   0x000000000001171a       0x16 uart/uart.o
- .debug_macro   0x0000000000011730       0x35 uart/uart.o
- .debug_macro   0x0000000000011765      0x356 uart/uart.o
- .debug_macro   0x0000000000011abb       0x43 uart/uart.o
- .debug_macro   0x0000000000011afe       0x16 uart/uart.o
- .debug_macro   0x0000000000011b14      0x137 uart/uart.o
+.debug_macro    0x0000000000000000    0x116ff
+ .debug_macro   0x0000000000000000      0x1de Core/Src/main.o
+ .debug_macro   0x00000000000001de      0xb56 Core/Src/main.o
+ .debug_macro   0x0000000000000d34      0x127 Core/Src/main.o
+ .debug_macro   0x0000000000000e5b       0x2e Core/Src/main.o
+ .debug_macro   0x0000000000000e89       0x22 Core/Src/main.o
+ .debug_macro   0x0000000000000eab       0x1c Core/Src/main.o
+ .debug_macro   0x0000000000000ec7       0x22 Core/Src/main.o
+ .debug_macro   0x0000000000000ee9       0x8e Core/Src/main.o
+ .debug_macro   0x0000000000000f77       0x51 Core/Src/main.o
+ .debug_macro   0x0000000000000fc8      0x103 Core/Src/main.o
+ .debug_macro   0x00000000000010cb       0x6a Core/Src/main.o
+ .debug_macro   0x0000000000001135      0x1df Core/Src/main.o
+ .debug_macro   0x0000000000001314       0x1c Core/Src/main.o
+ .debug_macro   0x0000000000001330       0x22 Core/Src/main.o
+ .debug_macro   0x0000000000001352       0xb5 Core/Src/main.o
+ .debug_macro   0x0000000000001407      0x391 Core/Src/main.o
+ .debug_macro   0x0000000000001798     0x8cdd Core/Src/main.o
+ .debug_macro   0x000000000000a475       0x3c Core/Src/main.o
+ .debug_macro   0x000000000000a4b1     0x3461 Core/Src/main.o
+ .debug_macro   0x000000000000d912      0x17b Core/Src/main.o
+ .debug_macro   0x000000000000da8d       0x55 Core/Src/main.o
+ .debug_macro   0x000000000000dae2      0x924 Core/Src/main.o
+ .debug_macro   0x000000000000e406      0x251 Core/Src/main.o
+ .debug_macro   0x000000000000e657      0x12f Core/Src/main.o
+ .debug_macro   0x000000000000e786      0x114 Core/Src/main.o
+ .debug_macro   0x000000000000e89a      0x1a0 Core/Src/main.o
+ .debug_macro   0x000000000000ea3a      0x1ed Core/Src/main.o
+ .debug_macro   0x000000000000ec27       0x34 Core/Src/main.o
+ .debug_macro   0x000000000000ec5b       0x43 Core/Src/main.o
+ .debug_macro   0x000000000000ec9e       0x28 Core/Src/main.o
+ .debug_macro   0x000000000000ecc6       0xb0 Core/Src/main.o
+ .debug_macro   0x000000000000ed76      0x199 Core/Src/main.o
+ .debug_macro   0x000000000000ef0f      0x22c Core/Src/main.o
+ .debug_macro   0x000000000000f13b       0x60 Core/Src/main.o
+ .debug_macro   0x000000000000f19b       0xa5 Core/Src/main.o
+ .debug_macro   0x000000000000f240       0x4c Core/Src/main.o
+ .debug_macro   0x000000000000f28c      0x112 Core/Src/main.o
+ .debug_macro   0x000000000000f39e      0x114 Core/Src/main.o
+ .debug_macro   0x000000000000f4b2       0x58 Core/Src/main.o
+ .debug_macro   0x000000000000f50a       0x16 Core/Src/main.o
+ .debug_macro   0x000000000000f520       0x58 Core/Src/main.o
+ .debug_macro   0x000000000000f578      0x1a4 Core/Src/stm32f0xx_hal_msp.o
+ .debug_macro   0x000000000000f71c      0xa7e Core/Src/stm32f0xx_hal_msp.o
+ .debug_macro   0x000000000001019a      0x391 Core/Src/stm32f0xx_hal_msp.o
+ .debug_macro   0x000000000001052b      0x174 Core/Src/stm32f0xx_hal_msp.o
+ .debug_macro   0x000000000001069f      0x1ae Core/Src/stm32f0xx_it.o
+ .debug_macro   0x000000000001084d       0xff Core/Src/sysmem.o
+ .debug_macro   0x000000000001094c      0x23b Core/Src/sysmem.o
+ .debug_macro   0x0000000000010b87      0x19a Core/Src/system_stm32f0xx.o
+ .debug_macro   0x0000000000010d21      0x1be Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal.o
+ .debug_macro   0x0000000000010edf      0x19a Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_cortex.o
+ .debug_macro   0x0000000000011079      0x1ac Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_rcc.o
+ .debug_macro   0x0000000000011225      0x1b3 gpio/Gpio.o
+ .debug_macro   0x00000000000113d8      0x327 uart/uart.o
 
-.debug_line     0x0000000000000000     0x578c
- .debug_line    0x0000000000000000      0x7c4 Core/Src/main.o
- .debug_line    0x00000000000007c4      0x67f Core/Src/stm32f0xx_hal_msp.o
- .debug_line    0x0000000000000e43      0x6e3 Core/Src/stm32f0xx_it.o
- .debug_line    0x0000000000001526      0x4f8 Core/Src/sysmem.o
- .debug_line    0x0000000000001a1e      0x6ee Core/Src/system_stm32f0xx.o
- .debug_line    0x000000000000210c       0x89 Core/Startup/startup_stm32f051r8tx.o
- .debug_line    0x0000000000002195      0x8f9 Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal.o
- .debug_line    0x0000000000002a8e      0x9a5 Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_cortex.o
- .debug_line    0x0000000000003433      0xce5 Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_rcc.o
- .debug_line    0x0000000000004118      0xa21 gpio/Gpio.o
- .debug_line    0x0000000000004b39      0xc53 uart/uart.o
+.debug_line     0x0000000000000000     0x5822
+ .debug_line    0x0000000000000000      0x85a Core/Src/main.o
+ .debug_line    0x000000000000085a      0x67f Core/Src/stm32f0xx_hal_msp.o
+ .debug_line    0x0000000000000ed9      0x6e3 Core/Src/stm32f0xx_it.o
+ .debug_line    0x00000000000015bc      0x4f8 Core/Src/sysmem.o
+ .debug_line    0x0000000000001ab4      0x6ee Core/Src/system_stm32f0xx.o
+ .debug_line    0x00000000000021a2       0x89 Core/Startup/startup_stm32f051r8tx.o
+ .debug_line    0x000000000000222b      0x8f9 Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal.o
+ .debug_line    0x0000000000002b24      0x9a5 Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_cortex.o
+ .debug_line    0x00000000000034c9      0xce5 Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_rcc.o
+ .debug_line    0x00000000000041ae      0xa21 gpio/Gpio.o
+ .debug_line    0x0000000000004bcf      0xc53 uart/uart.o
 
-.debug_str      0x0000000000000000    0x64bb6
- .debug_str     0x0000000000000000    0x5f985 Core/Src/main.o
-                                      0x5fd44 (size before relaxing)
- .debug_str     0x000000000005f985      0x1ce Core/Src/stm32f0xx_hal_msp.o
+.debug_str      0x0000000000000000    0x64c17
+ .debug_str     0x0000000000000000    0x5f9e6 Core/Src/main.o
+                                      0x5fda5 (size before relaxing)
+ .debug_str     0x000000000005f9e6      0x1ce Core/Src/stm32f0xx_hal_msp.o
                                       0x5efa6 (size before relaxing)
- .debug_str     0x000000000005fb53       0x76 Core/Src/stm32f0xx_it.o
+ .debug_str     0x000000000005fbb4       0x76 Core/Src/stm32f0xx_it.o
                                       0x5ef96 (size before relaxing)
- .debug_str     0x000000000005fbc9     0x2219 Core/Src/sysmem.o
+ .debug_str     0x000000000005fc2a     0x2219 Core/Src/sysmem.o
                                        0x61b6 (size before relaxing)
- .debug_str     0x0000000000061de2       0x5f Core/Src/system_stm32f0xx.o
+ .debug_str     0x0000000000061e43       0x5f Core/Src/system_stm32f0xx.o
                                       0x5efc8 (size before relaxing)
- .debug_str     0x0000000000061e41       0x36 Core/Startup/startup_stm32f051r8tx.o
+ .debug_str     0x0000000000061ea2       0x36 Core/Startup/startup_stm32f051r8tx.o
                                          0x78 (size before relaxing)
- .debug_str     0x0000000000061e77      0x44f Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal.o
+ .debug_str     0x0000000000061ed8      0x44f Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal.o
                                       0x5f502 (size before relaxing)
- .debug_str     0x00000000000622c6      0x1d3 Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_cortex.o
+ .debug_str     0x0000000000062327      0x1d3 Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_cortex.o
                                       0x5f3ba (size before relaxing)
- .debug_str     0x0000000000062499      0x260 Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_rcc.o
+ .debug_str     0x00000000000624fa      0x260 Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_rcc.o
                                       0x5f3d2 (size before relaxing)
- .debug_str     0x00000000000626f9       0x8d gpio/Gpio.o
+ .debug_str     0x000000000006275a       0x8d gpio/Gpio.o
                                       0x5f788 (size before relaxing)
- .debug_str     0x0000000000062786     0x2430 uart/uart.o
+ .debug_str     0x00000000000627e7     0x2430 uart/uart.o
                                       0x63f6a (size before relaxing)
 
 .comment        0x0000000000000000       0x53

@@ -25,7 +25,9 @@ Core/Src/main.o: ../Core/Src/main.cpp ../Core/Inc/main.h \
  ../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_pwr.h \
  ../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_pwr_ex.h \
  C:/STM32\ workspace/STM32\ RFM69\ SPI\ TxRx/STM32F051_RFM69_ATC/gpio/Gpio.h \
- C:/STM32\ workspace/STM32\ RFM69\ SPI\ TxRx/STM32F051_RFM69_ATC/uart/uart.h
+ C:/STM32\ workspace/STM32\ RFM69\ SPI\ TxRx/STM32F051_RFM69_ATC/uart/uart.h \
+ C:/STM32\ workspace/STM32\ RFM69\ SPI\ TxRx/STM32F051_RFM69_ATC/RFM69/RFM69.h \
+ C:/STM32\ workspace/STM32\ RFM69\ SPI\ TxRx/STM32F051_RFM69_ATC/spi/SPI.h
 
 ../Core/Inc/main.h:
 
@@ -82,3 +84,7 @@ Core/Src/main.o: ../Core/Src/main.cpp ../Core/Inc/main.h \
 C:/STM32\ workspace/STM32\ RFM69\ SPI\ TxRx/STM32F051_RFM69_ATC/gpio/Gpio.h:
 
 C:/STM32\ workspace/STM32\ RFM69\ SPI\ TxRx/STM32F051_RFM69_ATC/uart/uart.h:
+
+C:/STM32\ workspace/STM32\ RFM69\ SPI\ TxRx/STM32F051_RFM69_ATC/RFM69/RFM69.h:
+
+C:/STM32\ workspace/STM32\ RFM69\ SPI\ TxRx/STM32F051_RFM69_ATC/spi/SPI.h:

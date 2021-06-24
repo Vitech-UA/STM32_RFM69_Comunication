@@ -20,6 +20,7 @@
 "Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_rcc_ex.o"
 "Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_tim.o"
 "Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_tim_ex.o"
+"RFM69/RFM69.o"
 "gpio/Gpio.o"
 "spi/SPI.o"
 "uart/uart.o"

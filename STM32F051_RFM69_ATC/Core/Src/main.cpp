@@ -24,6 +24,7 @@
 /* USER CODE BEGIN Includes */
 #include "Gpio.h"
 #include "uart.h"
+#include "RFM69.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/

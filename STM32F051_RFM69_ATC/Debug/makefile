@@ -12,6 +12,7 @@ RM := rm -rf
 -include uart/subdir.mk
 -include spi/subdir.mk
 -include gpio/subdir.mk
+-include RFM69/subdir.mk
 -include Drivers/STM32F0xx_HAL_Driver/Src/subdir.mk
 -include Core/Startup/subdir.mk
 -include Core/Src/subdir.mk
