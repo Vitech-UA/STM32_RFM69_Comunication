@@ -1,10 +1,78 @@
-22:13:44 **** Incremental Build of configuration Debug for project STM32F051_RFM69_ATC ****
+21:24:04 **** Incremental Build of configuration Debug for project STM32F051_RFM69_ATC ****
 make -j4 all 
-arm-none-eabi-size   STM32F051_RFM69_ATC.elf 
-   text	   data	    bss	    dec	    hex	filename
-   8028	    120	   1600	   9748	   2614	STM32F051_RFM69_ATC.elf
-Finished building: default.size.stdout
- 
+arm-none-eabi-g++ "../RFM69/RFM69.cpp" -mcpu=cortex-m0 -std=gnu++14 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F051x8 -c -I../Core/Inc -I"C:/STM32 workspace/STM32 RFM69 SPI TxRx/STM32F051_RFM69_ATC/spi" -I"C:/STM32 workspace/STM32 RFM69 SPI TxRx/STM32F051_RFM69_ATC/RFM69" -I"C:/STM32 workspace/STM32 RFM69 SPI TxRx/STM32F051_RFM69_ATC/uart" -I"C:/STM32 workspace/STM32 RFM69 SPI TxRx/STM32F051_RFM69_ATC/gpio" -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -fno-exceptions -fno-rtti -fno-use-cxa-atexit -Wall -fstack-usage -MMD -MP -MF"RFM69/RFM69.d" -MT"RFM69/RFM69.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "RFM69/RFM69.o"
+../RFM69/RFM69.cpp: In member function 'bool RFM69::rfm_init(uint8_t, uint16_t, uint8_t)':
+../RFM69/RFM69.cpp:46:23: error: 'digitalPinToInterrupt' was not declared in this scope
+   46 |       _interruptNum = digitalPinToInterrupt(_interruptPin);
+      |                       ^~~~~~~~~~~~~~~~~~~~~
+../RFM69/RFM69.cpp:47:34: error: 'NOT_AN_INTERRUPT' was not declared in this scope; did you mean 'IS_TAMPER_INTERRUPT'?
+   47 |    if (_interruptNum == (uint8_t)NOT_AN_INTERRUPT) return false;
+      |                                  ^~~~~~~~~~~~~~~~
+      |                                  IS_TAMPER_INTERRUPT
+../RFM69/RFM69.cpp:95:34: error: 'HIGH' was not declared in this scope
+   95 |    digitalWrite(_slaveSelectPin, HIGH);
+      |                                  ^~~~
+../RFM69/RFM69.cpp:95:4: error: 'digitalWrite' was not declared in this scope
+   95 |    digitalWrite(_slaveSelectPin, HIGH);
+      |    ^~~~~~~~~~~~
+../RFM69/RFM69.cpp:96:29: error: 'OUTPUT' was not declared in this scope; did you mean 'OUTPUT_OD'?
+   96 |    pinMode(_slaveSelectPin, OUTPUT);
+      |                             ^~~~~~
+      |                             OUTPUT_OD
+../RFM69/RFM69.cpp:96:4: error: 'pinMode' was not declared in this scope
+   96 |    pinMode(_slaveSelectPin, OUTPUT);
+      |    ^~~~~~~
+../RFM69/RFM69.cpp:97:7: error: '_spi' was not declared in this scope
+   97 |    if(_spi == nullptr){
+      |       ^~~~
+../RFM69/RFM69.cpp:98:17: error: expected primary-expression before ';' token
+   98 |      _spi = &SPI;
+      |                 ^
+../RFM69/RFM69.cpp:104:4: error: '_spi' was not declared in this scope
+  104 |    _spi->begin();
+      |    ^~~~
+../RFM69/RFM69.cpp:111:21: error: 'millis' was not declared in this scope
+  111 |    uint32_t start = millis();
+      |                     ^~~~~~
+../RFM69/RFM69.cpp:113:7: error: 'writeReg' was not declared in this scope; did you mean 'WriteReg'?
+  113 |    do writeReg(REG_SYNCVALUE1, 0xAA); while (readReg(REG_SYNCVALUE1) != 0xaa && millis()-start < timeout);
+      |       ^~~~~~~~
+      |       WriteReg
+../RFM69/RFM69.cpp:113:46: error: 'readReg' was not declared in this scope
+  113 |    do writeReg(REG_SYNCVALUE1, 0xAA); while (readReg(REG_SYNCVALUE1) != 0xaa && millis()-start < timeout);
+      |                                              ^~~~~~~
+../RFM69/RFM69.cpp:115:7: error: 'writeReg' was not declared in this scope; did you mean 'WriteReg'?
+  115 |    do writeReg(REG_SYNCVALUE1, 0x55); while (readReg(REG_SYNCVALUE1) != 0x55 && millis()-start < timeout);
+      |       ^~~~~~~~
+      |       WriteReg
+../RFM69/RFM69.cpp:118:6: error: 'writeReg' was not declared in this scope; did you mean 'WriteReg'?
+  118 |      writeReg(CONFIG[i][0], CONFIG[i][1]);
+      |      ^~~~~~~~
+      |      WriteReg
+../RFM69/RFM69.cpp:122:4: error: 'encrypt' was not declared in this scope
+  122 |    encrypt(0);
+      |    ^~~~~~~
+../RFM69/RFM69.cpp:124:4: error: 'setHighPower' was not declared in this scope
+  124 |    setHighPower(_isRFM69HW); // called regardless if it's a RFM69W or RFM69HW
+      |    ^~~~~~~~~~~~
+../RFM69/RFM69.cpp:125:4: error: 'setMode' was not declared in this scope
+  125 |    setMode(RF69_MODE_STANDBY);
+      |    ^~~~~~~
+../RFM69/RFM69.cpp:130:42: error: 'isr0' is not a member of 'RFM69'
+  130 |    attachInterrupt(_interruptNum, RFM69::isr0, RISING);
+      |                                          ^~~~
+../RFM69/RFM69.cpp:130:48: error: 'RISING' was not declared in this scope
+  130 |    attachInterrupt(_interruptNum, RFM69::isr0, RISING);
+      |                                                ^~~~~~
+../RFM69/RFM69.cpp:130:4: error: 'attachInterrupt' was not declared in this scope
+  130 |    attachInterrupt(_interruptNum, RFM69::isr0, RISING);
+      |    ^~~~~~~~~~~~~~~
+../RFM69/RFM69.cpp: At global scope:
+../RFM69/RFM69.cpp:140:1: error: expected declaration before '}' token
+  140 | }
+      | ^
+make: *** [RFM69/subdir.mk:19: RFM69/RFM69.o] Error 1
+"make -j4 all" terminated with exit code 2. Build might be incomplete.
 
-22:13:45 Build Finished. 0 errors, 0 warnings. (took 383ms)
+21:24:07 Build Failed. 22 errors, 0 warnings. (took 3s.274ms)
 

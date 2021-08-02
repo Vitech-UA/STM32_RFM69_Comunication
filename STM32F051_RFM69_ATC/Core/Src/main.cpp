@@ -95,6 +95,9 @@ int main(void)
   Uart debug = Uart(USART1, 115200);
   debug.Printf("Hello\r\n");
 
+  RFM69 radio = RFM69(SPI1, DataSize_8B, GPIOA, 4, GPIOA, 5, true);
+
+
 
   /* USER CODE END 2 */
 
