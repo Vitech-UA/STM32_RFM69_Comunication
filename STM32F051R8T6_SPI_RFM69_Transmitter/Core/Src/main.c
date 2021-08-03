@@ -92,12 +92,27 @@ int main(void) {
 	MX_SPI1_Init();
 	MX_USART1_UART_Init();
 	/* USER CODE BEGIN 2 */
-	HAL_UART_Transmit(&huart1, "Hello STM\r\n", strlen("Hello STM\r\n"), 100);
-	SET_BIT(RCC->APB2ENR, RCC_APB2ENR_SPI1EN);
-	HAL_SPI_Transmit(&hspi1, (uint8_t)tx_spi, 1, 100);
+
+	rfm69_select();
+	uint8_t rfm_rx_byte = 0;
+
+	rfm_rx_byte = rfm69_read_register(REG_AGCTHRESH2);
+
 	rfm69_release();
-	rfm69_up_reset_pin();
-	rfm69_read_register(0x1);
+
+	uint8_t RxBuffer[20] = { };
+	sprintf(RxBuffer, "Received: 0x%X\r\n", rfm_rx_byte);
+	HAL_UART_Transmit(&huart1, RxBuffer, strlen(RxBuffer), 100);
+
+	uint32_t rfm_freq = rfm69_get_frequency();
+	sprintf(RxBuffer, "RFM Freq: %d Hz\r\n", rfm_freq);
+	HAL_UART_Transmit(&huart1, RxBuffer, strlen(RxBuffer), 100);
+
+	rfm69_set_frequency(433000000);
+	rfm_freq = rfm69_get_frequency();
+	sprintf(RxBuffer, "RFM Freq: %d Hz\r\n", rfm_freq);
+	HAL_UART_Transmit(&huart1, RxBuffer, strlen(RxBuffer), 100);
+
 	/* USER CODE END 2 */
 
 	/* Infinite loop */
@@ -167,7 +182,7 @@ static void MX_SPI1_Init(void) {
 	hspi1.Init.Direction = SPI_DIRECTION_2LINES;
 	hspi1.Init.DataSize = SPI_DATASIZE_8BIT;
 	hspi1.Init.CLKPolarity = SPI_POLARITY_LOW;
-	hspi1.Init.CLKPhase = SPI_PHASE_1EDGE;
+	hspi1.Init.CLKPhase = SPI_PHASE_2EDGE;
 	hspi1.Init.NSS = SPI_NSS_SOFT;
 	hspi1.Init.BaudRatePrescaler = SPI_BAUDRATEPRESCALER_8;
 	hspi1.Init.FirstBit = SPI_FIRSTBIT_MSB;
@@ -175,7 +190,7 @@ static void MX_SPI1_Init(void) {
 	hspi1.Init.CRCCalculation = SPI_CRCCALCULATION_DISABLE;
 	hspi1.Init.CRCPolynomial = 7;
 	hspi1.Init.CRCLength = SPI_CRC_LENGTH_DATASIZE;
-	hspi1.Init.NSSPMode = SPI_NSS_PULSE_ENABLE;
+	hspi1.Init.NSSPMode = SPI_NSS_PULSE_DISABLE;
 	if (HAL_SPI_Init(&hspi1) != HAL_OK) {
 		Error_Handler();
 	}

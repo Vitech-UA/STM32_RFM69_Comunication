@@ -27,7 +27,8 @@ Core/Src/rfm69.o: ../Core/Src/rfm69.c ../Core/Inc/rfm69.h \
  ../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_spi.h \
  ../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_spi_ex.h \
  ../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_uart.h \
- ../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_uart_ex.h
+ ../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_uart_ex.h \
+ ../Core/Inc/rfm69_registers.h
 
 ../Core/Inc/rfm69.h:
 
@@ -90,3 +91,5 @@ Core/Src/rfm69.o: ../Core/Src/rfm69.c ../Core/Inc/rfm69.h \
 ../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_uart.h:
 
 ../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_uart_ex.h:
+
+../Core/Inc/rfm69_registers.h:

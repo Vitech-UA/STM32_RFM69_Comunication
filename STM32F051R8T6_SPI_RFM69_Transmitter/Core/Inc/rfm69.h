@@ -9,6 +9,7 @@
 #define INC_RFM69_H_
 
 #include "main.h"
+#include "rfm69_registers.h"
 
 #define SPI1_DR_8bit          (*(__IO uint8_t *)((uint32_t)&(SPI1->DR)))
 #define SPI2_DR_8bit          (*(__IO uint8_t *)((uint32_t)&(SPI2->DR)))
@@ -28,5 +29,7 @@ void rfm69_release(void);
 void rfm69_up_reset_pin(void);
 void rfm69_down_reset_pin(void);
 uint8_t spi_transfer(uint8_t data);
+uint8_t rfm69_read_register(uint8_t reg);
+uint32_t rfm69_get_frequency(void);
 
 #endif /* INC_RFM69_H_ */

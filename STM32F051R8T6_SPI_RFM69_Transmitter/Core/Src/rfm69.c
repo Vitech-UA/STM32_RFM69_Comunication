@@ -8,6 +8,9 @@
 #include "rfm69.h"
 
 extern SPI_HandleTypeDef hspi1;
+// Clock constants. DO NOT CHANGE THESE!
+#define RFM69_XO               32000000    ///< Internal clock frequency [Hz]
+#define RFM69_FSTEP            61.03515625 ///< Step width of synthesizer [Hz]
 
 void rfm69_select(void) {
 
@@ -30,10 +33,12 @@ void rfm69_down_reset_pin(void) {
 uint8_t rfm69_read_register(uint8_t reg) {
 
 	uint8_t regval = 0;
+	uint8_t zero_byte = 0;
+	uint8_t read_data = reg & 0x7F;
 
 	rfm69_select();
-	spi_transfer(reg & 0x7F);
-    regval = spi_transfer(0);
+	HAL_SPI_Transmit(&hspi1, &read_data, 1, 100);
+	HAL_SPI_TransmitReceive(&hspi1, (uint8_t*)&zero_byte , (uint8_t*)&regval, 1, 100);
 	rfm69_release();
 
 	return regval;
@@ -42,18 +47,27 @@ uint8_t rfm69_read_register(uint8_t reg) {
 
 void rfm69_write_register(uint8_t reg, uint8_t value) {
 	rfm69_select();
-	spi_transfer(reg | 0x80);
-	spi_transfer(value);
+	uint8_t write_data = reg | 0x80;
+	HAL_SPI_Transmit(&hspi1, (uint8_t*) &write_data, 1, 100);
+	HAL_SPI_Transmit(&hspi1, (uint8_t*) &value, 1, 100);
 	rfm69_release();
 
 }
 
-uint8_t spi_transfer(uint8_t data){
-		while (!(RFM69_SPI_PORT.Instance->SR & SPI_SR_TXE))
-			; // Очікую спустошення передавального буфера.
-		SPI1_DR_8bit = data;
+uint32_t rfm69_get_frequency(void){
+	return RFM69_FSTEP
+				* (((uint32_t)rfm69_read_register(REG_FRFMSB) << 16)
+						+ ((uint16_t) rfm69_read_register(REG_FRFMID) << 8)
+						+ rfm69_read_register(REG_FRFLSB));
+}
 
-		while (!(RFM69_SPI_PORT.Instance->SR & SPI_SR_RXNE))
-			; // Очікую заповнення приймального буфера.
-		return (SPI1_DR_8bit);
+void rfm69_set_frequency(unsigned int frequency) {
+
+	// calculate register value
+	frequency /= RFM69_FSTEP;
+
+	// set new frequency
+	rfm69_write_register(0x07, frequency >> 16);
+	rfm69_write_register(0x08, frequency >> 8);
+	rfm69_write_register(0x09, frequency);
 }
