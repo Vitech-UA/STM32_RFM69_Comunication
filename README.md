@@ -11,4 +11,7 @@
 ![photo_2021-05-20_23-16-26](https://user-images.githubusercontent.com/74230330/119043272-89ffc700-b9c1-11eb-9cdb-25a997d5d83e.jpg)
 2)  Ресівер на STM32F051, з UART у який він випльовує прийняті дані.
 ![photo_2021-05-20_23-15-57 (2)](https://user-images.githubusercontent.com/74230330/119043282-8b30f400-b9c1-11eb-863a-0d6382a9d1b8.jpg)
-
+3) Призначення виводів STM32
+![Снимок](https://user-images.githubusercontent.com/74230330/128074874-38a1fd05-f855-40c2-ac01-00b0569efd6f.JPG)
+4) Налаштування SPI
+5) ![SPI_Settings](https://user-images.githubusercontent.com/74230330/128081021-bec453f8-cec2-41f5-8124-864e07bdbdc8.JPG)
