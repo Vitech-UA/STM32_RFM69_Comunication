@@ -8,6 +8,7 @@
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
 		<list key="findhistory">
+			<item value="/*"/>
 			<item value="_csmaEnabled"/>
 			<item value="dbm"/>
 		</list>

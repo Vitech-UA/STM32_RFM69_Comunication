@@ -95,23 +95,26 @@ int main(void) {
 
 	rfm69_select();
 	uint8_t rfm_rx_byte = 0;
+	uint8_t network_id = 0x11;
+	uint8_t node_id = 0x01;
 
-	rfm_rx_byte = rfm69_read_register(REG_AGCTHRESH2);
+	rfm69_init(12, node_id, network_id);
 
-	rfm69_release();
-
-	uint8_t RxBuffer[20] = { };
-	sprintf(RxBuffer, "Received: 0x%X\r\n", rfm_rx_byte);
-	HAL_UART_Transmit(&huart1, RxBuffer, strlen(RxBuffer), 100);
+	uint8_t RxBuffer[30] = { };
 
 	uint32_t rfm_freq = rfm69_get_frequency();
-	sprintf(RxBuffer, "RFM Freq: %d Hz\r\n", rfm_freq);
+	sprintf(RxBuffer, "RFM Freq: %u Hz\r\n", rfm_freq);
 	HAL_UART_Transmit(&huart1, RxBuffer, strlen(RxBuffer), 100);
 
-	rfm69_set_frequency(433000000);
-	rfm_freq = rfm69_get_frequency();
-	sprintf(RxBuffer, "RFM Freq: %d Hz\r\n", rfm_freq);
+	uint8_t rfm_temperature = rfm69_readTemperature();
+	sprintf(RxBuffer, "RFM Temperature: %u degree\r\n", rfm_temperature);
 	HAL_UART_Transmit(&huart1, RxBuffer, strlen(RxBuffer), 100);
+
+	uint8_t rfm_power_level = rfm69_getPowerLevel();
+	sprintf(RxBuffer, "RFM Power level: %u dBm\r\n", rfm_power_level);
+	HAL_UART_Transmit(&huart1, RxBuffer, strlen(RxBuffer), 100);
+
+    rfm69_send(0x02, RxBuffer, strlen(RxBuffer), false);
 
 	/* USER CODE END 2 */
 
