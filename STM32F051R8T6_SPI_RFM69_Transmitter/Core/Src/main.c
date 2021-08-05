@@ -27,7 +27,15 @@
 
 /* Private typedef -----------------------------------------------------------*/
 /* USER CODE BEGIN PTD */
-
+#define NODEID        1    //unique for each node on same network
+#define NETWORKID     100  //the same on all nodes that talk to each other
+//Match frequency to the hardware version of the radio on your Moteino (uncomment one):
+// #define FREQUENCY     RF69_433MHZ
+#define FREQUENCY     RF69_868MHZ
+// #define FREQUENCY     RF69_915MHZ
+#define ENCRYPTKEY    "sampleEncryptKey" //exactly the same 16 characters/bytes on all nodes!
+//#define IS_RFM69HW    //uncomment only for RFM69HW! Leave out if you have RFM69W!
+//#define ENABLE_ATC    //comment out this line to disable AUTO TRANSMISSION CONTROL
 /* USER CODE END PTD */
 
 /* Private define ------------------------------------------------------------*/
@@ -84,7 +92,6 @@ int main(void) {
 	SystemClock_Config();
 
 	/* USER CODE BEGIN SysInit */
-	uint8_t tx_spi[1] = { 0xFF };
 	/* USER CODE END SysInit */
 
 	/* Initialize all configured peripherals */
@@ -93,12 +100,9 @@ int main(void) {
 	MX_USART1_UART_Init();
 	/* USER CODE BEGIN 2 */
 
-	rfm69_select();
-	uint8_t rfm_rx_byte = 0;
-	uint8_t network_id = 0x11;
-	uint8_t node_id = 0x01;
 
-	rfm69_init(12, node_id, network_id);
+
+	rfm69_init(12, NODEID, NETWORKID);
 
 	uint8_t RxBuffer[30] = { };
 
@@ -114,13 +118,18 @@ int main(void) {
 	sprintf(RxBuffer, "RFM Power level: %u dBm\r\n", rfm_power_level);
 	HAL_UART_Transmit(&huart1, RxBuffer, strlen(RxBuffer), 100);
 
-    rfm69_send(0x02, RxBuffer, strlen(RxBuffer), false);
+    rfm69_encrypt(ENCRYPTKEY);
+    rfm69_promiscuous(true);
 
 	/* USER CODE END 2 */
 
 	/* Infinite loop */
 	/* USER CODE BEGIN WHILE */
 	while (1) {
+		if(rfm69_receiveDone()){
+			sprintf(RxBuffer, "Received Data!!!\r\n");
+				HAL_UART_Transmit(&huart1, RxBuffer, strlen(RxBuffer), 100);
+		}
 		/* USER CODE END WHILE */
 
 		/* USER CODE BEGIN 3 */

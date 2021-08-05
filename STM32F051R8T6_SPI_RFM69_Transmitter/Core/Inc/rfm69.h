@@ -53,4 +53,6 @@ void rfm69_sendFrame(uint8_t toAddress, const void *buffer, uint8_t bufferSize,
 int16_t rfm69_readRSSI(bool forceTrigger);
 bool rfm69_canSend();
 bool rfm69_receiveDone();
+void rfm69_promiscuous(bool onOff);
+void rfm69_receive_begin(void);
 #endif /* INC_RFM69_H_ */

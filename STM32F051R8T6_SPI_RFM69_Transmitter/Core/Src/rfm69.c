@@ -30,12 +30,22 @@ volatile uint8_t _mode;        // current transceiver state
 volatile bool _inISR;
 volatile uint8_t PAYLOADLEN;
 
+volatile uint8_t DATALEN;
+volatile uint8_t SENDERID;
+volatile uint8_t TARGETID;
+volatile uint8_t PAYLOADLEN;
+volatile uint8_t ACK_REQUESTED;
+volatile uint8_t ACK_RECEIVED;
+volatile int16_t RSSI;          // most accurate RSSI during reception (closest to the reception)
+volatile bool _inISR;
+
 uint8_t _powerLevel;
 uint8_t _address;
 uint8_t _interruptPin;
 uint8_t _interruptNum;
 uint8_t _address;
 bool _isRFM69HW = false;
+bool _promiscuousMode;
 
 void rfm69_select(void) {
 
@@ -175,12 +185,6 @@ bool rfm69_init(uint8_t freqBand, uint8_t nodeID, uint8_t networkID) {
 
 }
 
-void rfm69_encrypt(const char *key) {
-
-	if (key != 0) {
-
-	}
-}
 void rfm69_set_mode(uint8_t newMode) {
 	if (newMode == _mode)
 		return;
@@ -229,7 +233,7 @@ void rfm69_setHighPowerRegs(bool onOff) {
 	rfm69_write_register(REG_TESTPA2, onOff ? 0x7C : 0x70);
 }
 
-// for RFM69HW only: you must call setHighPower(true) after initialize() or else transmission won't work
+// for RFM69HW only: you must call rfm69_set_hi_power(true) after initialize() or else transmission won't work
 void rfm69_set_hi_power(bool onOff) {
 	_isRFM69HW = onOff;
 	rfm69_write_register(REG_OCP, _isRFM69HW ? RF_OCP_OFF : RF_OCP_ON);
@@ -302,57 +306,73 @@ uint8_t rfm69_getNetwork() {
 
 // get the received signal strength indicator (RSSI)
 int16_t rfm69_readRSSI(bool forceTrigger) {
-  int16_t rssi = 0;
-  if (forceTrigger)
-  {
-    // RSSI trigger not needed if DAGC is in continuous mode
-    rfm69_write_register(REG_RSSICONFIG, RF_RSSI_START);
-    while ((rfm69_read_register(REG_RSSICONFIG) & RF_RSSI_DONE) == 0x00); // wait for RSSI_Ready
-  }
-  rssi = -rfm69_read_register(REG_RSSIVALUE);
-  rssi >>= 1;
-  return rssi;
+	int16_t rssi = 0;
+	if (forceTrigger) {
+		// RSSI trigger not needed if DAGC is in continuous mode
+		rfm69_write_register(REG_RSSICONFIG, RF_RSSI_START);
+		while ((rfm69_read_register(REG_RSSICONFIG) & RF_RSSI_DONE) == 0x00)
+			; // wait for RSSI_Ready
+	}
+	rssi = -rfm69_read_register(REG_RSSIVALUE);
+	rssi >>= 1;
+	return rssi;
 }
 
-bool rfm69_canSend()
-{
-  if (_mode == RF69_MODE_RX && PAYLOADLEN == 0 && rfm69_readRSSI(true) < CSMA_LIMIT) // if signal stronger than -100dBm is detected assume channel activity
-  {
-    rfm69_set_mode(RF69_MODE_STANDBY);
-    return true;
-  }
-  return false;
+bool rfm69_canSend() {
+	if (_mode == RF69_MODE_RX
+			&& PAYLOADLEN == 0&& rfm69_readRSSI(true) < CSMA_LIMIT) // if signal stronger than -100dBm is detected assume channel activity
+					{
+		rfm69_set_mode(RF69_MODE_STANDBY);
+		return true;
+	}
+	return false;
 }
 
 // checks if a packet was received and/or puts transceiver in receive (ie RX or listen) mode
 bool rfm69_receiveDone() {
-//ATOMIC_BLOCK(ATOMIC_FORCEON)
-//{
-  //noInterrupts(); // re-enabled in unselect() via setMode() or via receiveBegin()
-  if (_mode == RF69_MODE_RX && PAYLOADLEN > 0)
-  {
-    rfm69_set_mode(RF69_MODE_STANDBY); // enables interrupts
-    return true;
-  }
-  else if (_mode == RF69_MODE_RX) // already in RX no payload yet
-  {
-    //interrupts(); // explicitly re-enable interrupts
-    return false;
-  }
-  //receiveBegin();
-  return false;
-//}
+	//ATOMIC_BLOCK(ATOMIC_FORCEON)
+	//{
+	//noInterrupts(); // re-enabled in unselect() via setMode() or via receiveBegin()
+	if (_mode == RF69_MODE_RX && PAYLOADLEN > 0) {
+		rfm69_set_mode(RF69_MODE_STANDBY); // enables interrupts
+		return true;
+	} else if (_mode == RF69_MODE_RX) // already in RX no payload yet
+	{
+		//interrupts(); // explicitly re-enable interrupts
+		return false;
+	}
+	rfm69_receive_begin();
+	return false;
+	//}
 }
 
-void rfm69_send(uint8_t toAddress, const void* buffer, uint8_t bufferSize, bool requestACK)
-{
-  rfm69_write_register(REG_PACKETCONFIG2, (rfm69_read_register(REG_PACKETCONFIG2) & 0xFB) | RF_PACKET2_RXRESTART); // avoid RX deadlocks
-  uint32_t now = HAL_GetTick();
-  while (!rfm69_canSend && HAL_GetTick() - now < RF69_CSMA_LIMIT_MS) rfm69_receiveDone();
-  rfm69_sendFrame(toAddress, buffer, bufferSize, requestACK, false);
+void rfm69_receive_begin(void) {
+	DATALEN = 0;
+	SENDERID = 0;
+	TARGETID = 0;
+	PAYLOADLEN = 0;
+	ACK_REQUESTED = 0;
+	ACK_RECEIVED = 0;
+	RSSI = 0;
+	if (rfm69_read_register(REG_IRQFLAGS2) & RF_IRQFLAGS2_PAYLOADREADY)
+		rfm69_write_register(REG_PACKETCONFIG2,
+				(rfm69_read_register(REG_PACKETCONFIG2) & 0xFB) | RF_PACKET2_RXRESTART); // avoid RX deadlocks
+	rfm69_write_register(REG_DIOMAPPING1, RF_DIOMAPPING1_DIO0_01); // set DIO0 to "PAYLOADREADY" in receive mode
+	rfm69_set_mode(RF69_MODE_RX);
+}
+
+void rfm69_send(uint8_t toAddress, const void *buffer, uint8_t bufferSize,
+bool requestACK) {
+	rfm69_write_register(REG_PACKETCONFIG2,
+			(rfm69_read_register(REG_PACKETCONFIG2) & 0xFB)
+					| RF_PACKET2_RXRESTART); // avoid RX deadlocks
+	uint32_t now = HAL_GetTick();
+	while (!rfm69_canSend && HAL_GetTick() - now < RF69_CSMA_LIMIT_MS)
+		rfm69_receiveDone();
+	rfm69_sendFrame(toAddress, buffer, bufferSize, requestACK, false);
 }
 void rfm69_sendFrame(uint8_t toAddress, const void *buffer, uint8_t bufferSize,
-		bool requestACK, bool sendACK) {
+bool requestACK, bool sendACK) {
 	rfm69_set_mode(RF69_MODE_STANDBY); // turn off receiver to prevent reception while filling fifo
 	while ((rfm69_read_register(REG_IRQFLAGS1) & RF_IRQFLAGS1_MODEREADY) == 0x00)
 		; // wait for ModeReady
@@ -376,8 +396,7 @@ void rfm69_sendFrame(uint8_t toAddress, const void *buffer, uint8_t bufferSize,
 	HAL_SPI_Transmit(&RFM69_SPI_PORT, (uint8_t) CTLbyte, 1, 100);
 
 	for (uint8_t i = 0; i < bufferSize; i++) {
-		HAL_SPI_Transmit(&RFM69_SPI_PORT,((uint8_t*) &buffer)[i], 1,
-				100);
+		HAL_SPI_Transmit(&RFM69_SPI_PORT, ((uint8_t*) &buffer)[i], 1, 100);
 	}
 	rfm69_release();
 
@@ -385,8 +404,31 @@ void rfm69_sendFrame(uint8_t toAddress, const void *buffer, uint8_t bufferSize,
 	rfm69_set_mode(RF69_MODE_TX);
 	uint32_t txStart = HAL_GetTick();
 
-	while (rfm69_read_register(REG_IRQFLAGS2) & RF_IRQFLAGS2_PACKETSENT == 0x00); // wait for ModeReady
+	while (rfm69_read_register(REG_IRQFLAGS2) & RF_IRQFLAGS2_PACKETSENT == 0x00)
+		; // wait for ModeReady
 	rfm69_set_mode(RF69_MODE_STANDBY);
 }
 
+// To enable encryption: radio.encrypt("ABCDEFGHIJKLMNOP");
+// To disable encryption: radio.encrypt(null) or radio.encrypt(0)
+// KEY HAS TO BE 16 bytes !!!
+void rfm69_encrypt(const char *key) {
+	rfm69_set_mode(RF69_MODE_STANDBY);
+	if (key != 0) {
+		rfm69_select();
+		uint8_t send_data[1] = { REG_AESKEY1 | 0x80 };
 
+		HAL_SPI_Transmit(&RFM69_SPI_PORT, (uint8_t*) &send_data, 1, 100);
+
+		for (uint8_t i = 0; i < 16; i++) {
+			HAL_SPI_Transmit(&RFM69_SPI_PORT, (uint8_t*) &key[i], 1, 100);
+		}
+		rfm69_release();
+	}
+	rfm69_write_register(REG_PACKETCONFIG2,
+			(rfm69_read_register(REG_PACKETCONFIG2) & 0xFE) | (key ? 1 : 0));
+}
+void rfm69_promiscuous(bool onOff) {
+  _promiscuousMode = onOff;
+  //writeReg(REG_PACKETCONFIG1, (readReg(REG_PACKETCONFIG1) & 0xF9) | (onOff ? RF_PACKET1_ADRSFILTERING_OFF : RF_PACKET1_ADRSFILTERING_NODEBROADCAST));
+}
