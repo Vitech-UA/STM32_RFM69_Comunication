@@ -50,6 +50,8 @@ bool rfm69_init(uint8_t freqBand, uint8_t nodeID, uint8_t networkID);
 void setMode(uint8_t newMode, bool waitForReady);
 void setAddress(uint8_t addr);
 uint32_t getFrequency(void);
+uint32_t send(uint8_t toAddress, uint8_t *buffer, uint16_t bufferSize,
+bool requestACK, bool sendACK);
 uint8_t readTemperature (uint8_t calFactor);
 void setHighPowerRegs(bool onOff);
 int16_t readRSSI(bool forceTrigger);

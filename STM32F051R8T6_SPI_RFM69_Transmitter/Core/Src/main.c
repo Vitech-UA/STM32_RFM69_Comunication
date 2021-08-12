@@ -27,12 +27,11 @@
 
 /* Private typedef -----------------------------------------------------------*/
 /* USER CODE BEGIN PTD */
-#define NODEID        1    //unique for each node on same network
+#define NODEID        3    //unique for each node on same network
 #define NETWORKID     100  //the same on all nodes that talk to each other
 //Match frequency to the hardware version of the radio on your Moteino (uncomment one):
-// #define FREQUENCY     RF69_433MHZ
-#define FREQUENCY     RF69_868MHZ
-// #define FREQUENCY     RF69_915MHZ
+#define FREQUENCY     RF69_433MHZ
+
 #define ENCRYPTKEY    "sampleEncryptKey" //exactly the same 16 characters/bytes on all nodes!
 //#define IS_RFM69HW    //uncomment only for RFM69HW! Leave out if you have RFM69W!
 //#define ENABLE_ATC    //comment out this line to disable AUTO TRANSMISSION CONTROL
@@ -99,37 +98,40 @@ int main(void) {
 	MX_SPI1_Init();
 	MX_USART1_UART_Init();
 	/* USER CODE BEGIN 2 */
+	uint8_t RxBuffer[100] = { };
+	if (rfm69_init(FREQUENCY, NODEID, NETWORKID)) {
+		HAL_GPIO_WritePin(LED_GPIO_Port, LED_Pin, GPIO_PIN_SET);
+	} else {
+		sprintf(RxBuffer, "RFM69 Init() -> false\r\n");
+	}
+	HAL_UART_Transmit(&huart1, RxBuffer, strlen(RxBuffer), 100);
 
-
-
-	rfm69_init(12, NODEID, NETWORKID);
-
-	uint8_t RxBuffer[30] = { };
-
-	uint32_t rfm_freq = rfm69_get_frequency();
+	uint32_t rfm_freq = getFrequency();
 	sprintf(RxBuffer, "RFM Freq: %u Hz\r\n", rfm_freq);
 	HAL_UART_Transmit(&huart1, RxBuffer, strlen(RxBuffer), 100);
+	Payload receive_data;
 
-	uint8_t rfm_temperature = rfm69_readTemperature();
-	sprintf(RxBuffer, "RFM Temperature: %u degree\r\n", rfm_temperature);
-	HAL_UART_Transmit(&huart1, RxBuffer, strlen(RxBuffer), 100);
-
-	uint8_t rfm_power_level = rfm69_getPowerLevel();
-	sprintf(RxBuffer, "RFM Power level: %u dBm\r\n", rfm_power_level);
-	HAL_UART_Transmit(&huart1, RxBuffer, strlen(RxBuffer), 100);
-
-    rfm69_encrypt(ENCRYPTKEY);
-    rfm69_promiscuous(true);
+	receiveBegin();
 
 	/* USER CODE END 2 */
 
 	/* Infinite loop */
 	/* USER CODE BEGIN WHILE */
 	while (1) {
-		if(rfm69_receiveDone()){
-			sprintf(RxBuffer, "Received Data!!!\r\n");
-				HAL_UART_Transmit(&huart1, RxBuffer, strlen(RxBuffer), 100);
+
+		if (waitForResponce(&receive_data, 5)) {
+			sprintf(RxBuffer, "Received from sender: %d\r\n Received length: %d bytes\r\nRSSI: %d",
+					receive_data.senderId, receive_data.size, receive_data.signalStrength);
+
+			HAL_UART_Transmit(&huart1, RxBuffer, strlen(RxBuffer), 100);
+			sprintf(RxBuffer, "Data: %s\r\n", receive_data.data);
+
+						HAL_UART_Transmit(&huart1, RxBuffer, strlen(RxBuffer), 100);
+
+			HAL_GPIO_WritePin(LED2_GPIO_Port, LED2_Pin, GPIO_PIN_SET);
+
 		}
+
 		/* USER CODE END WHILE */
 
 		/* USER CODE BEGIN 3 */
@@ -256,10 +258,14 @@ static void MX_GPIO_Init(void) {
 	/* GPIO Ports Clock Enable */
 	__HAL_RCC_GPIOF_CLK_ENABLE();
 	__HAL_RCC_GPIOA_CLK_ENABLE();
+	__HAL_RCC_GPIOC_CLK_ENABLE();
 	__HAL_RCC_GPIOB_CLK_ENABLE();
 
 	/*Configure GPIO pin Output Level */
 	HAL_GPIO_WritePin(GPIOA, RFM_NSEL_Pin | RFM_RESET_Pin, GPIO_PIN_RESET);
+
+	/*Configure GPIO pin Output Level */
+	HAL_GPIO_WritePin(GPIOC, LED2_Pin | LED_Pin, GPIO_PIN_RESET);
 
 	/*Configure GPIO pins : RFM_NSEL_Pin RFM_RESET_Pin */
 	GPIO_InitStruct.Pin = RFM_NSEL_Pin | RFM_RESET_Pin;
@@ -267,6 +273,19 @@ static void MX_GPIO_Init(void) {
 	GPIO_InitStruct.Pull = GPIO_NOPULL;
 	GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
 	HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
+
+	/*Configure GPIO pins : LED2_Pin LED_Pin */
+	GPIO_InitStruct.Pin = LED2_Pin | LED_Pin;
+	GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
+	GPIO_InitStruct.Pull = GPIO_NOPULL;
+	GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
+	HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
+
+	/*Configure GPIO pin : DIO0_Pin */
+	GPIO_InitStruct.Pin = DIO0_Pin;
+	GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
+	GPIO_InitStruct.Pull = GPIO_NOPULL;
+	HAL_GPIO_Init(DIO0_GPIO_Port, &GPIO_InitStruct);
 
 }
 

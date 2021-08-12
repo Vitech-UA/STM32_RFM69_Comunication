@@ -68,6 +68,12 @@ void Error_Handler(void);
 #define RFM_MISO_GPIO_Port GPIOA
 #define RFM_MOSI_Pin GPIO_PIN_7
 #define RFM_MOSI_GPIO_Port GPIOA
+#define LED2_Pin GPIO_PIN_8
+#define LED2_GPIO_Port GPIOC
+#define LED_Pin GPIO_PIN_9
+#define LED_GPIO_Port GPIOC
+#define DIO0_Pin GPIO_PIN_9
+#define DIO0_GPIO_Port GPIOB
 /* USER CODE BEGIN Private defines */
 
 /* USER CODE END Private defines */
