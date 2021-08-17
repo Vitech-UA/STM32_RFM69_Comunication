@@ -133,7 +133,7 @@ bool rfm69_init(uint8_t freqBand, uint8_t nodeID, uint8_t networkID) {
 					// +13dBm formula: Pout = -18 + OutputPower (with PA0 or PA1**)
 					// +17dBm formula: Pout = -14 + OutputPower (with PA1 and PA2)**
 					// +20dBm formula: Pout = -11 + OutputPower (with PA1 and PA2)** and high power PA settings (section 3.3.7 in datasheet)
-					///* 0x11 */ { REG_PALEVEL, RF_PALEVEL_PA0_ON | RF_PALEVEL_PA1_OFF | RF_PALEVEL_PA2_OFF | RF_PALEVEL_OUTPUTPOWER_11111},
+				    { REG_PALEVEL, RF_PALEVEL_PA0_ON | RF_PALEVEL_PA1_OFF | RF_PALEVEL_PA2_OFF | RF_PALEVEL_OUTPUTPOWER_11111},
 					///* 0x13 */ { REG_OCP, RF_OCP_ON | RF_OCP_TRIM_95 }, // over current protection (default is 95mA)
 
 					// RXBW defaults are { REG_RXBW, RF_RXBW_DCCFREQ_010 | RF_RXBW_MANT_24 | RF_RXBW_EXP_5} (RxBw: 10.4KHz)
@@ -385,6 +385,41 @@ void setHighPower(bool onOff)
         writeReg(REG_PALEVEL,
                  RF_PALEVEL_PA0_ON | RF_PALEVEL_PA1_OFF | RF_PALEVEL_PA2_OFF | _powerLevel); // enable P0 only
     }
+}
+
+bool setAESEncryption(const void* aesKey, unsigned int keyLength)
+{
+  bool enable = false;
+
+  // check if encryption shall be enabled or disabled
+  if ((0 != aesKey) && (16 == keyLength))
+    enable = true;
+
+  // switch to standby
+  setMode(RF69_MODE_STANDBY, false);
+
+  if (true == enable)
+  {
+    // transfer AES key to AES key register
+    rfm69_select();
+
+    // address first AES MSB register
+
+    HAL_SPI_Transmit(&RFM69_SPI_PORT, 0x3E|0x80, 1, 100);
+
+    // transfer key (0x3E..0x4D)
+    for (unsigned int i = 0; i < keyLength; i++){
+    	//HAL_SPI_Transmit(&RFM69_SPI_PORT, aesKey[i], 1, 100);
+    	HAL_SPI_Transmit(&hspi1, (uint8_t*)&aesKey[i], 1, 100);
+    }
+
+    rfm69_release();
+  }
+
+  // set/reset AesOn Bit in packet config
+  writeReg(0x3D, (readReg(0x3D) & 0xFE) | (enable ? 1 : 0));
+
+  return enable;
 }
 
 void setHighPowerRegs(bool onOff)

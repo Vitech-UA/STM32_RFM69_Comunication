@@ -28,9 +28,9 @@
 
 /* Private typedef -----------------------------------------------------------*/
 /* USER CODE BEGIN PTD */
-#define MYID        45    //must be unique for each node on same network (range up to 254, 255 is used for broadcast)
-#define NETWORKID     100  //the same on all nodes that talk to each other (range up to 255)
-#define GATEWAYID     3
+#define MYID        0xCB    //must be unique for each node on same network (range up to 254, 255 is used for broadcast)
+#define NETWORKID     0x10  //the same on all nodes that talk to each other (range up to 255)
+#define GATEWAYID     0xAB
 //Match frequency to the hardware version of the radio on your Moteino (uncomment one):
 #define FREQUENCY   RF69_433MHZ
 
@@ -108,19 +108,26 @@ int main(void) {
 	if (rfm69_init(FREQUENCY, MYID, NETWORKID)) {
 		setFrequency(433000000);
 
+
 		uint32_t rfm_freq = getFrequency();
 		sprintf(TxBuffer, "Freq: %d Mhz\r\n", rfm_freq / 1000000);
 		HAL_UART_Transmit(&huart1, (uint8_t*) &TxBuffer, strlen(TxBuffer), 100);
 
 	}
+	if(!setAESEncryption(ENCRYPTKEY, 16)){
+		Error_Handler();
+	}
 
+	char data_to_transmit[] = {'H', 'e', 'l', 'l', 'o'};
 	/* USER CODE END 2 */
 
 	/* Infinite loop */
 	/* USER CODE BEGIN WHILE */
 	while (1) {
 
-		send(GATEWAYID, (uint8_t*)&TxBuffer, strlen(TxBuffer), false, false);
+		send(GATEWAYID, (const char*)&data_to_transmit, sizeof(data_to_transmit), true,
+				true);
+		HAL_GPIO_TogglePin(LED_GPIO_Port, LED_Pin);
 		HAL_Delay(1000);
 
 		/* USER CODE END WHILE */

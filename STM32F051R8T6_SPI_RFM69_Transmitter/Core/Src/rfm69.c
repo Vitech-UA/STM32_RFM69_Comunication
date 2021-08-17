@@ -313,20 +313,27 @@ bool readData(Payload *data) {
 	        setMode(RF69_MODE_STANDBY, /*waitForReady=*/ true);
 	        data->size = readReg(REG_FIFO);
 	        rfm69_select();
-	        HAL_StatusTypeDef errorCode = HAL_SPI_Receive(&RFM69_SPI_PORT, (uint8_t*)&frame, data->size, HAL_MAX_DELAY);
+	        HAL_StatusTypeDef errorCode = HAL_SPI_Receive(&RFM69_SPI_PORT, frame, data->size, HAL_MAX_DELAY);
 	        rfm69_release();
 	        setMode(RF69_MODE_RX, false);
 
 	        // parse frame
+	        data->targetId = frame[0];
+	        data->senderId = frame[2];
+
 	        if (errorCode == HAL_OK)
 	        {
-	            data->targetId = frame[0];
-	            data->senderId = frame[1];
+	        	for(int8_t i = 0; i<15; i++){
+	        		data->data[i] = frame[i];
+	        	}
+
+	           /*
+
 	            data->ctlByte = frame[2];
 	            for (int i = 3; i < data->size; i++)
 	            {
 	                data->data[i - 3] = frame[i];
-	            }
+	            }*/
 	            return true;
 	        }
 	    }
@@ -349,6 +356,42 @@ bool waitForResponce(Payload *data , uint32_t timeout)
     }
     return false;
 }
+
+bool setAESEncryption(const void* aesKey, unsigned int keyLength)
+{
+  bool enable = false;
+
+  // check if encryption shall be enabled or disabled
+  if ((0 != aesKey) && (16 == keyLength))
+    enable = true;
+
+  // switch to standby
+  setMode(RF69_MODE_STANDBY, false);
+
+  if (true == enable)
+  {
+    // transfer AES key to AES key register
+    rfm69_select();
+
+    // address first AES MSB register
+
+    HAL_SPI_Transmit(&RFM69_SPI_PORT, 0x3E|0x80, 1, 100);
+
+    // transfer key (0x3E..0x4D)
+    for (unsigned int i = 0; i < keyLength; i++){
+    	//HAL_SPI_Transmit(&RFM69_SPI_PORT, aesKey[i], 1, 100);
+    	HAL_SPI_Transmit(&hspi1, (uint8_t*)&aesKey[i], 1, 100);
+    }
+
+    rfm69_release();
+  }
+
+  // set/reset AesOn Bit in packet config
+  writeReg(0x3D, (readReg(0x3D) & 0xFE) | (enable ? 1 : 0));
+
+  return enable;
+}
+
 void receiveBegin()
 {
     if (readReg(REG_IRQFLAGS2) & RF_IRQFLAGS2_PAYLOADREADY)

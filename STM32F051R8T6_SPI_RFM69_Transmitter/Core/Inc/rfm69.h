@@ -55,5 +55,6 @@ void setHighPowerRegs(bool onOff);
 int16_t readRSSI(bool forceTrigger);
 bool readData(Payload *data);
 bool waitForResponce(Payload *data , uint32_t timeout);
+bool setAESEncryption(const void* aesKey, unsigned int keyLength);
 void receiveBegin();
 #endif /* INC_RFM69_H_ */

@@ -62,8 +62,8 @@ void Error_Handler(void);
 #define RFM_NSEL_GPIO_Port GPIOC
 #define RFM_RESET_Pin GPIO_PIN_4
 #define RFM_RESET_GPIO_Port GPIOA
-#define LED_Pin GPIO_PIN_12
-#define LED_GPIO_Port GPIOB
+#define LED_Pin GPIO_PIN_5
+#define LED_GPIO_Port GPIOA
 #define DIO0_Pin GPIO_PIN_9
 #define DIO0_GPIO_Port GPIOC
 #define RFM_SCK_Pin GPIO_PIN_3

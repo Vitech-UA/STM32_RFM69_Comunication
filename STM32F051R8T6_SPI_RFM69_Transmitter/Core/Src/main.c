@@ -27,8 +27,8 @@
 
 /* Private typedef -----------------------------------------------------------*/
 /* USER CODE BEGIN PTD */
-#define NODEID        3    //unique for each node on same network
-#define NETWORKID     100  //the same on all nodes that talk to each other
+#define RECEIVER_ID        0xAB    //unique for each node on same network
+#define NETWORKID     0x10  //the same on all nodes that talk to each other
 //Match frequency to the hardware version of the radio on your Moteino (uncomment one):
 #define FREQUENCY     RF69_433MHZ
 
@@ -98,12 +98,17 @@ int main(void) {
 	MX_SPI1_Init();
 	MX_USART1_UART_Init();
 	/* USER CODE BEGIN 2 */
-	uint8_t RxBuffer[100] = { };
-	if (rfm69_init(FREQUENCY, NODEID, NETWORKID)) {
+	uint8_t RxBuffer[150] = { };
+	if (rfm69_init(FREQUENCY, RECEIVER_ID, NETWORKID)) {
 		HAL_GPIO_WritePin(LED_GPIO_Port, LED_Pin, GPIO_PIN_SET);
 	} else {
 		sprintf(RxBuffer, "RFM69 Init() -> false\r\n");
 	}
+
+	if(!setAESEncryption(ENCRYPTKEY, 16)){
+			Error_Handler();
+		}
+
 	HAL_UART_Transmit(&huart1, RxBuffer, strlen(RxBuffer), 100);
 
 	uint32_t rfm_freq = getFrequency();
@@ -119,16 +124,19 @@ int main(void) {
 	/* USER CODE BEGIN WHILE */
 	while (1) {
 
-		if (waitForResponce(&receive_data, 5)) {
-			sprintf(RxBuffer, "Received from sender: %d\r\n Received length: %d bytes\r\nRSSI: %d",
-					receive_data.senderId, receive_data.size, receive_data.signalStrength);
+		if (waitForResponce(&receive_data, 1000)) {
+			sprintf(RxBuffer,
+					"Received from sender: 0x%X\r\n Received length: %d bytes\r\nRSSI: %d\r\nReceive to 0x%X\r\n",
+					receive_data.senderId, receive_data.size,
+					receive_data.signalStrength,receive_data.targetId);
 
 			HAL_UART_Transmit(&huart1, RxBuffer, strlen(RxBuffer), 100);
-			sprintf(RxBuffer, "Data: %s\r\n", receive_data.data);
+			for (uint8_t i = 0; i <= 15; i++) {
+				sprintf(RxBuffer, "Data[%d]: 0x%X\r\n", i, receive_data.data[i]);
+				HAL_UART_Transmit(&huart1, RxBuffer, strlen(RxBuffer), 100);
+			}
 
-						HAL_UART_Transmit(&huart1, RxBuffer, strlen(RxBuffer), 100);
 
-			HAL_GPIO_WritePin(LED2_GPIO_Port, LED2_Pin, GPIO_PIN_SET);
 
 		}
 
