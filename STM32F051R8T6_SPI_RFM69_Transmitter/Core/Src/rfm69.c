@@ -82,6 +82,24 @@ uint8_t readReg(uint8_t reg) {
 	return regval;
 
 }
+
+uint8_t readReg_withselect(uint8_t reg, bool _unselect) {
+
+	uint8_t out[2] = { (uint8_t) (reg & 0x7F), 0 };
+	uint8_t in[2] = { 0, 0 };
+	rfm69_select();
+	HAL_SPI_Transmit(&rfm_spi, (uint8_t*) &out, 1, 100);
+	HAL_Delay(10);
+	HAL_SPI_TransmitReceive(&rfm_spi, 0, (uint8_t*) &in, 1, 100);
+
+	if (_unselect) {
+		rfm69_release();
+	}
+
+	return in[0];
+
+}
+
 void writeReg(uint8_t reg, uint8_t value) {
 	rfm69_select();
 	uint8_t write_data = reg | 0x80;
@@ -284,7 +302,7 @@ bool requestACK, bool sendACK) {
 	// write to FIFO
 	rfm69_select();
 	HAL_SPI_Transmit(&RFM69_SPI_PORT, (uint8_t*) &cmd, 5, 1000);
-	HAL_SPI_Transmit(&RFM69_SPI_PORT, (uint8_t*) &buffer, bufferSize, 1000);
+	HAL_SPI_Transmit(&RFM69_SPI_PORT, (uint8_t*) buffer, bufferSize, 1000);
 	rfm69_release();
 
 	// no need to wait for transmit mode to be ready since its handled by the radio
@@ -301,151 +319,144 @@ bool requestACK, bool sendACK) {
 }
 
 bool readData(Payload *data) {
-	if (_mode == RF69_MODE_RX && (readReg(REG_IRQFLAGS2) & RF_IRQFLAGS2_PAYLOADREADY))
-	    {
-	        // clear output frame
-	        data->targetId = data->senderId = data->ctlByte = 0xFF;
+	if (_mode == RF69_MODE_RX
+			&& (readReg(REG_IRQFLAGS2) & RF_IRQFLAGS2_PAYLOADREADY)) {
+		// clear output frame
+		data->targetId = data->senderId = data->ctlByte = 0xFF;
 
-	        data->signalStrength = readRSSI(false);
-	        memset(data->data, 0, RF69_MAX_DATA_LEN);
+		data->signalStrength = readRSSI(false);
+		memset(data->data, 0, RF69_MAX_DATA_LEN);
 
-	        // read frame
-	        setMode(RF69_MODE_STANDBY, /*waitForReady=*/ true);
-	        data->size = readReg(REG_FIFO);
-	        rfm69_select();
-	        HAL_StatusTypeDef errorCode = HAL_SPI_Receive(&RFM69_SPI_PORT, frame, data->size, HAL_MAX_DELAY);
-	        rfm69_release();
-	        setMode(RF69_MODE_RX, false);
+		// read frame
+		setMode(RF69_MODE_STANDBY, /*waitForReady=*/true);
 
-	        // parse frame
-	        data->targetId = frame[0];
-	        data->senderId = frame[2];
+		rfm69_select();
+		uint8_t zero_byte = 0;
+		uint8_t read_data = REG_FIFO & 0x7F;
 
-	        if (errorCode == HAL_OK)
-	        {
-	        	for(int8_t i = 0; i<15; i++){
-	        		data->data[i] = frame[i];
-	        	}
+		rfm69_select();
+		HAL_SPI_Transmit(&rfm_spi, &read_data, 1, 100);
+		HAL_SPI_TransmitReceive(&rfm_spi, (uint8_t*) &zero_byte,
+				(uint8_t*) &data->size, 1, 100);
 
-	           /*
+		HAL_StatusTypeDef errorCode = HAL_SPI_Receive(&RFM69_SPI_PORT, frame,
+				data->size, HAL_MAX_DELAY);
 
-	            data->ctlByte = frame[2];
-	            for (int i = 3; i < data->size; i++)
-	            {
-	                data->data[i - 3] = frame[i];
-	            }*/
-	            return true;
-	        }
-	    }
-	    return false;
+		rfm69_release();
+		setMode(RF69_MODE_RX, false);
+
+		//Парсим кадр
+
+		if (errorCode == HAL_OK) {
+			data->targetId = frame[0];
+			data->senderId = frame[1];
+			data->ctlByte = frame[2];
+			for (int8_t i = 3; i < data->size; i++) {
+				data->data[i - 3] = frame[i];
+			}
+
+			return true;
+		}
+	}
+	return false;
 }
-bool waitForResponce(Payload *data , uint32_t timeout)
-{
-    uint32_t start = HAL_GetTick();
-    while (timeout == __UINT32_MAX__ || HAL_GetTick() - start < timeout)
-    {
-        if (!HAL_GPIO_ReadPin(DIO0_GPIO_Port, DIO0_Pin))
-        {
-            continue;
-        }
+bool waitForResponce(Payload *data, uint32_t timeout) {
+	uint32_t start = HAL_GetTick();
+	while (timeout == __UINT32_MAX__ || HAL_GetTick() - start < timeout) {
+		if (!HAL_GPIO_ReadPin(DIO0_GPIO_Port, DIO0_Pin)) {
+			continue;
+		}
 
-        if (readData(data))
-        {
-            return true;
-        }
-    }
-    return false;
-}
-
-bool setAESEncryption(const void* aesKey, unsigned int keyLength)
-{
-  bool enable = false;
-
-  // check if encryption shall be enabled or disabled
-  if ((0 != aesKey) && (16 == keyLength))
-    enable = true;
-
-  // switch to standby
-  setMode(RF69_MODE_STANDBY, false);
-
-  if (true == enable)
-  {
-    // transfer AES key to AES key register
-    rfm69_select();
-
-    // address first AES MSB register
-
-    HAL_SPI_Transmit(&RFM69_SPI_PORT, 0x3E|0x80, 1, 100);
-
-    // transfer key (0x3E..0x4D)
-    for (unsigned int i = 0; i < keyLength; i++){
-    	//HAL_SPI_Transmit(&RFM69_SPI_PORT, aesKey[i], 1, 100);
-    	HAL_SPI_Transmit(&hspi1, (uint8_t*)&aesKey[i], 1, 100);
-    }
-
-    rfm69_release();
-  }
-
-  // set/reset AesOn Bit in packet config
-  writeReg(0x3D, (readReg(0x3D) & 0xFE) | (enable ? 1 : 0));
-
-  return enable;
+		if (readData(data)) {
+			return true;
+		}
+	}
+	return false;
 }
 
-void receiveBegin()
-{
-    if (readReg(REG_IRQFLAGS2) & RF_IRQFLAGS2_PAYLOADREADY)
-    {
-        writeReg(REG_PACKETCONFIG2, (readReg(REG_PACKETCONFIG2) & 0xFB) | RF_PACKET2_RXRESTART); // avoid RX deadlocks
-    }
-    writeReg(REG_DIOMAPPING1, RF_DIOMAPPING1_DIO0_01); // set DIO0 to "PAYLOADREADY" in receive mode
-    setMode(RF69_MODE_RX,false);
-}
-int16_t readRSSI(bool forceTrigger)
-{
-    int16_t rssi = 0;
-    if (forceTrigger)
-    {
-        // RSSI trigger not needed if DAGC is in continuous mode
-        writeReg(REG_RSSICONFIG, RF_RSSI_START);
-        while ((readReg(REG_RSSICONFIG) & RF_RSSI_DONE) == 0x00); // wait for RSSI_Ready
-    }
-    rssi = -readReg(REG_RSSIVALUE);
-    rssi >>= 1;
-    return rssi;
-}
-void setHighPower(bool onOff)
-{
-    _isRFM69HW = onOff;
-    writeReg(REG_OCP, _isRFM69HW ? RF_OCP_OFF : RF_OCP_ON);
-    if (_isRFM69HW) // turning ON
-    {
-        writeReg(REG_PALEVEL,
-                 (readReg(REG_PALEVEL) & 0x1F) | RF_PALEVEL_PA1_ON | RF_PALEVEL_PA2_ON); // enable P1 & P2 amplifier stages
-    }
-    else
-    {
-        writeReg(REG_PALEVEL,
-                 RF_PALEVEL_PA0_ON | RF_PALEVEL_PA1_OFF | RF_PALEVEL_PA2_OFF | _powerLevel); // enable P0 only
-    }
+bool setAESEncryption(const void *aesKey, unsigned int keyLength) {
+	bool enable = false;
+
+	// check if encryption shall be enabled or disabled
+	if ((0 != aesKey) && (16 == keyLength))
+		enable = true;
+
+	// switch to standby
+	setMode(RF69_MODE_STANDBY, false);
+
+	if (true == enable) {
+		// transfer AES key to AES key register
+		rfm69_select();
+
+		// address first AES MSB register
+
+		HAL_SPI_Transmit(&RFM69_SPI_PORT, 0x3E | 0x80, 1, 100);
+
+		// transfer key (0x3E..0x4D)
+		for (unsigned int i = 0; i < keyLength; i++) {
+			//HAL_SPI_Transmit(&RFM69_SPI_PORT, aesKey[i], 1, 100);
+			HAL_SPI_Transmit(&hspi1, (uint8_t*) &aesKey[i], 1, 100);
+		}
+
+		rfm69_release();
+	}
+
+	// set/reset AesOn Bit in packet config
+	writeReg(0x3D, (readReg(0x3D) & 0xFE) | (enable ? 1 : 0));
+
+	return enable;
 }
 
-void setHighPowerRegs(bool onOff)
-{
-    writeReg(REG_TESTPA1, onOff ? 0x5D : 0x55);
-    writeReg(REG_TESTPA2, onOff ? 0x7C : 0x70);
+void receiveBegin() {
+	if (readReg(REG_IRQFLAGS2) & RF_IRQFLAGS2_PAYLOADREADY) {
+		writeReg(REG_PACKETCONFIG2,
+				(readReg(REG_PACKETCONFIG2) & 0xFB) | RF_PACKET2_RXRESTART); // avoid RX deadlocks
+	}
+	writeReg(REG_DIOMAPPING1, RF_DIOMAPPING1_DIO0_01); // set DIO0 to "PAYLOADREADY" in receive mode
+	setMode(RF69_MODE_RX, false);
 }
-uint8_t readTemperature (uint8_t calFactor) // returns centigrade
-{
-    setMode(RF69_MODE_STANDBY, /*waitForReady=*/ true);
-    writeReg(REG_TEMP1, RF_TEMP1_MEAS_START);
-    while ((readReg(REG_TEMP1) & RF_TEMP1_MEAS_RUNNING));
-    return ~readReg(REG_TEMP2) + COURSE_TEMP_COEF + calFactor; // 'complement' corrects the slope, rising temp = rising val
+int16_t readRSSI(bool forceTrigger) {
+	int16_t rssi = 0;
+	if (forceTrigger) {
+		// RSSI trigger not needed if DAGC is in continuous mode
+		writeReg(REG_RSSICONFIG, RF_RSSI_START);
+		while ((readReg(REG_RSSICONFIG) & RF_RSSI_DONE) == 0x00)
+			; // wait for RSSI_Ready
+	}
+	rssi = -readReg(REG_RSSIVALUE);
+	rssi >>= 1;
+	return rssi;
+}
+void setHighPower(bool onOff) {
+	_isRFM69HW = onOff;
+	writeReg(REG_OCP, _isRFM69HW ? RF_OCP_OFF : RF_OCP_ON);
+	if (_isRFM69HW) // turning ON
+	{
+		writeReg(REG_PALEVEL,
+				(readReg(REG_PALEVEL) & 0x1F) | RF_PALEVEL_PA1_ON
+						| RF_PALEVEL_PA2_ON); // enable P1 & P2 amplifier stages
+	} else {
+		writeReg(REG_PALEVEL,
+				RF_PALEVEL_PA0_ON | RF_PALEVEL_PA1_OFF | RF_PALEVEL_PA2_OFF
+						| _powerLevel); // enable P0 only
+	}
 }
 
-
-void rcCalibration ()
+void setHighPowerRegs(bool onOff) {
+	writeReg(REG_TESTPA1, onOff ? 0x5D : 0x55);
+	writeReg(REG_TESTPA2, onOff ? 0x7C : 0x70);
+}
+uint8_t readTemperature(uint8_t calFactor) // returns centigrade
 {
-    writeReg(REG_OSC1, RF_OSC1_RCCAL_START);
-    while ((readReg(REG_OSC1) & RF_OSC1_RCCAL_DONE) == 0x00);
+	setMode(RF69_MODE_STANDBY, /*waitForReady=*/true);
+	writeReg(REG_TEMP1, RF_TEMP1_MEAS_START);
+	while ((readReg(REG_TEMP1) & RF_TEMP1_MEAS_RUNNING))
+		;
+	return ~readReg(REG_TEMP2) + COURSE_TEMP_COEF + calFactor; // 'complement' corrects the slope, rising temp = rising val
+}
+
+void rcCalibration() {
+	writeReg(REG_OSC1, RF_OSC1_RCCAL_START);
+	while ((readReg(REG_OSC1) & RF_OSC1_RCCAL_DONE) == 0x00)
+		;
 }

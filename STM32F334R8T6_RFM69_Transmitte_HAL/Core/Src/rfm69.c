@@ -47,7 +47,7 @@ uint8_t _powerLevel;
 uint8_t _address;
 uint8_t _interruptPin;
 uint8_t _interruptNum;
-uint8_t _address;
+
 bool _isRFM69HW = false;
 bool _promiscuousMode;
 uint8_t frame[256];
@@ -283,8 +283,8 @@ bool requestACK, bool sendACK) {
 
 	// write to FIFO
 	rfm69_select();
-	HAL_SPI_Transmit(&RFM69_SPI_PORT, (uint8_t*) &cmd, 5, 1000);
-	HAL_SPI_Transmit(&RFM69_SPI_PORT, (uint8_t*) &buffer, bufferSize, 1000);
+	HAL_SPI_Transmit(&RFM69_SPI_PORT, (uint8_t*) &cmd, 5, HAL_MAX_DELAY);
+	HAL_SPI_Transmit(&RFM69_SPI_PORT, (uint8_t*) buffer, bufferSize, HAL_MAX_DELAY);
 	rfm69_release();
 
 	// no need to wait for transmit mode to be ready since its handled by the radio

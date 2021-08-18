@@ -126,15 +126,21 @@ int main(void) {
 
 		if (waitForResponce(&receive_data, 1000)) {
 			sprintf(RxBuffer,
-					"Received from sender: 0x%X\r\n Received length: %d bytes\r\nRSSI: %d\r\nReceive to 0x%X\r\n",
+					"-------------------------------\r\n"
+					"Received from sender: 0x%X\r\n"
+					"Received length: %d bytes\r\n"
+					"RSSI: %d\r\n"
+					"Receive to: 0x%X\r\n"
+					"CTL_BYTE: 0x%X\r\n",
 					receive_data.senderId, receive_data.size,
-					receive_data.signalStrength,receive_data.targetId);
+					receive_data.signalStrength,receive_data.targetId, receive_data.ctlByte);
 
 			HAL_UART_Transmit(&huart1, RxBuffer, strlen(RxBuffer), 100);
-			for (uint8_t i = 0; i <= 15; i++) {
+			for (uint8_t i = 0; i <= receive_data.size; i++) {
 				sprintf(RxBuffer, "Data[%d]: 0x%X\r\n", i, receive_data.data[i]);
 				HAL_UART_Transmit(&huart1, RxBuffer, strlen(RxBuffer), 100);
 			}
+
 
 
 
