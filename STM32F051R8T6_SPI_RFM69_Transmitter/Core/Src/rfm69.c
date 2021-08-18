@@ -367,7 +367,7 @@ bool waitForResponce(Payload *data, uint32_t timeout) {
 			continue;
 		}
 
-		if (readData(data)) {
+		if (readData(*&data)) {
 			return true;
 		}
 	}
