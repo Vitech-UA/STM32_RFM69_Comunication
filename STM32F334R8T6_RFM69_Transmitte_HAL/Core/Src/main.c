@@ -118,15 +118,14 @@ int main(void) {
 		Error_Handler();
 	}
 
-	char data_to_transmit[] = {0xAA, 0xBB, 0xCC, 0xDD, 0xEE, 0xFF};
+	char data_to_transmit[] = {0xAA, 0xBB, 0xCC, 0xDD, 0xEE, 0xFF, 0x01, 0x02, 0x03};
 	/* USER CODE END 2 */
 
 	/* Infinite loop */
 	/* USER CODE BEGIN WHILE */
 	while (1) {
 
-		send(GATEWAYID, data_to_transmit, sizeof(data_to_transmit), true,
-				false);
+		send(GATEWAYID, (uint8_t*)&data_to_transmit, sizeof(data_to_transmit), false, true);
 		HAL_GPIO_TogglePin(LED_GPIO_Port, LED_Pin);
 		HAL_Delay(1000);
 

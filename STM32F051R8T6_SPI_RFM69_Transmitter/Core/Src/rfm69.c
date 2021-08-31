@@ -319,7 +319,8 @@ bool requestACK, bool sendACK) {
 }
 
 bool readData(Payload *data) {
-	if (_mode == RF69_MODE_RX && (readReg(REG_IRQFLAGS2) & RF_IRQFLAGS2_PAYLOADREADY)) {
+	if (_mode == RF69_MODE_RX
+			&& (readReg(REG_IRQFLAGS2) & RF_IRQFLAGS2_PAYLOADREADY)) {
 
 		data->targetId = data->senderId = data->ctlByte = 0xFF;
 
@@ -351,7 +352,8 @@ bool readData(Payload *data) {
 			for (int8_t i = 3; i < data->size; i++) {
 				data->data[i - 3] = frame[i];
 			}
-
+			writeReg(REG_DIOMAPPING1, RF_DIOMAPPING1_DIO0_01); // set DIO0 to "PAYLOADREADY" in receive mode
+			setMode(RF69_MODE_RX, false);
 			return true;
 		}
 	}
