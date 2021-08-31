@@ -319,18 +319,15 @@ bool requestACK, bool sendACK) {
 }
 
 bool readData(Payload *data) {
-	if (_mode == RF69_MODE_RX
-			&& (readReg(REG_IRQFLAGS2) & RF_IRQFLAGS2_PAYLOADREADY)) {
-		// clear output frame
+	if (_mode == RF69_MODE_RX && (readReg(REG_IRQFLAGS2) & RF_IRQFLAGS2_PAYLOADREADY)) {
+
 		data->targetId = data->senderId = data->ctlByte = 0xFF;
 
 		data->signalStrength = readRSSI(false);
 		memset(data->data, 0, RF69_MAX_DATA_LEN);
 
-		// read frame
+		// Читаю кадр
 		setMode(RF69_MODE_STANDBY, /*waitForReady=*/true);
-
-		rfm69_select();
 		uint8_t zero_byte = 0;
 		uint8_t read_data = REG_FIFO & 0x7F;
 
@@ -339,11 +336,11 @@ bool readData(Payload *data) {
 		HAL_SPI_TransmitReceive(&rfm_spi, (uint8_t*) &zero_byte,
 				(uint8_t*) &data->size, 1, 100);
 
-		HAL_StatusTypeDef errorCode = HAL_SPI_Receive(&RFM69_SPI_PORT, frame,
+		HAL_StatusTypeDef errorCode = HAL_SPI_Receive(&RFM69_SPI_PORT, *&frame,
 				data->size, HAL_MAX_DELAY);
 
 		rfm69_release();
-		setMode(RF69_MODE_RX, false);
+		setMode(RF69_MODE_RX, true);
 
 		//Парсим кадр
 
@@ -394,7 +391,6 @@ bool setAESEncryption(const void *aesKey, unsigned int keyLength) {
 
 		// transfer key (0x3E..0x4D)
 		for (unsigned int i = 0; i < keyLength; i++) {
-			//HAL_SPI_Transmit(&RFM69_SPI_PORT, aesKey[i], 1, 100);
 			HAL_SPI_Transmit(&hspi1, (uint8_t*) &aesKey[i], 1, 100);
 		}
 

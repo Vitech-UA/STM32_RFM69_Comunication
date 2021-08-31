@@ -118,7 +118,7 @@ int main(void) {
 		Error_Handler();
 	}
 
-	char data_to_transmit[] = {0xCC, 0xCC, 0xCC, 0xCC, 0xCC, 0xC};
+	char data_to_transmit[] = {0xAA, 0xBB, 0xCC, 0xDD, 0xEE, 0xFF};
 	/* USER CODE END 2 */
 
 	/* Infinite loop */
