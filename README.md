@@ -1,9 +1,60 @@
-# STM32F0_RFM69_Cpp_rx-tx
-Проєкт C++ STM32 CMSIS бібліотеки для роботи  з радіомодулями RFM69W
-Початково шматок коду, що працює з RFM було взято у цього товариша: https://github.com/ahessling/RFM69-STM32
-Переписано, низькорівневі ф-ї роботи з RCC, GPIO, UART, SPI. Зокрема використано мої C++ CMSIS ліби. В цьому вигляді заведено демо проєкт.
-Далі планується переписати/дописати лібу під свої потреби.
+# STM32 RFM69 HAL Library
+Проєкт бібліотеки радіомодуля RFM69 на С, для мікроконтролерів STM32. Використовує HAL.
+Протестовано на STM32F051R8 та STM32F334R8.
 
+# Установка
+1) Тягнемо у проєкт файли: 
+-rfm69_registers.h
+-rfm69.h
+-rfm69.с
+2) інклудимо rfm69.h в main.c
+3) Описуємо необхідні налаштування.
+ ``` c
+        #define MYID        0xCB    /* (range up to 254)*/
+        #define NETWORKID     0x10  /* (range up to 255)*/
+        #define GATEWAYID     0xAB
+        #define FREQUENCY   RF69_433MHZ
+        #define ENCRYPTKEY    "sampleEncryptKey"
+```
+4)
+    a) Для передавача оголошуємо буфер, Ініціалізуємо модуль. Сетимо за необхідності ENCRYPTKEY, І пуляємо дані в ефір
+```C
+    char data_to_transmit[] = { 0xAA, 0xBB, 0xCC, 0xDD, 0xEE, 0xFF, 0x01, 0x02,
+			0x03 };
+	rfm69_down_reset_pin();
+	if (rfm69_init(FREQUENCY, MYID, NETWORKID)) 
+	{
+		setFrequency(433000000);
+	}
+	if (!setAESEncryption(ENCRYPTKEY, 16)) {
+		Error_Handler();
+	}
+	send(GATEWAYID, (uint8_t*) &data_to_transmit, sizeof(data_to_transmit),false, true);
+```
+b) Для приймача, оголошуємо елемент структури Payload і ресівимо дані в її поля.
+```c
+    Payload receive_data;
+	receiveBegin();
+
+	while (1) {
+
+		if (waitForResponce(&receive_data, 1000)) {
+			sprintf(RxBuffer,
+					"-------------------------------\r\n"
+					"Received from sender: 0x%X\r\n"
+					"Received length: %d bytes\r\n"
+					"RSSI: %d\r\n"
+					"Receive to: 0x%X\r\n"
+					"CTL_BYTE: 0x%X\r\n",
+					receive_data.senderId, receive_data.size,
+					receive_data.signalStrength,receive_data.targetId, receive_data.ctlByte);
+
+			HAL_UART_Transmit(&huart1, RxBuffer, strlen(RxBuffer), 100);
+			for (uint8_t i = 0; i <= receive_data.size; i++) {
+				sprintf(RxBuffer, "Data[%d]: 0x%X\r\n", i, receive_data.data[i]);
+				HAL_UART_Transmit(&huart1, RxBuffer, strlen(RxBuffer), 100);
+			}
+```
 Парочка фоток процесу:
 1) Трансмітер на STM32F030.
 ![photo_2021-05-20_23-15-57](https://user-images.githubusercontent.com/74230330/119043283-8bc98a80-b9c1-11eb-9ceb-1076bc3d625c.jpg)
