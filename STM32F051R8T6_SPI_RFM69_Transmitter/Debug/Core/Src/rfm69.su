@@ -15,10 +15,10 @@ rfm69.c:276:6:setPowerLevel	16	static
 rfm69.c:282:10:send	40	static
 rfm69.c:321:6:readData	40	static
 rfm69.c:362:6:waitForResponce	24	static
-rfm69.c:376:6:setAESEncryption	32	static
-rfm69.c:408:6:receiveBegin	8	static
-rfm69.c:416:9:readRSSI	24	static
-rfm69.c:428:6:setHighPower	16	static
-rfm69.c:443:6:setHighPowerRegs	16	static
-rfm69.c:447:9:readTemperature	16	static
-rfm69.c:456:6:rcCalibration	8	static
+rfm69.c:376:6:setAESEncryption	40	static
+rfm69.c:405:6:receiveBegin	8	static
+rfm69.c:413:9:readRSSI	24	static
+rfm69.c:425:6:setHighPower	16	static
+rfm69.c:440:6:setHighPowerRegs	16	static
+rfm69.c:444:9:readTemperature	16	static
+rfm69.c:453:6:rcCalibration	8	static

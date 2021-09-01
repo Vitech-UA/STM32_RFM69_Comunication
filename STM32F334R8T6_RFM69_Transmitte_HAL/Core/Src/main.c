@@ -28,15 +28,12 @@
 
 /* Private typedef -----------------------------------------------------------*/
 /* USER CODE BEGIN PTD */
-#define MYID        0xCB    //must be unique for each node on same network (range up to 254, 255 is used for broadcast)
-#define NETWORKID     0x10  //the same on all nodes that talk to each other (range up to 255)
+#define MYID        0xCB    /* (range up to 254)*/
+#define NETWORKID     0x10  /* (range up to 255)*/
 #define GATEWAYID     0xAB
-//Match frequency to the hardware version of the radio on your Moteino (uncomment one):
 #define FREQUENCY   RF69_433MHZ
+#define ENCRYPTKEY    "sampleEncryptKey"
 
-#define ENCRYPTKEY    "sampleEncryptKey" //exactly the same 16 characters/bytes on all nodes!
-//#define IS_RFM69HW    //uncomment only for RFM69HW! Leave out if you have RFM69W!
-//#define ENABLE_ATC    //comment out this line to disable AUTO TRANSMISSION CONTROL
 /* USER CODE END PTD */
 
 /* Private define ------------------------------------------------------------*/
@@ -104,28 +101,27 @@ int main(void) {
 
 	uint8_t TxBuffer[30] = { };
 	rfm69_down_reset_pin();
-
 	if (rfm69_init(FREQUENCY, MYID, NETWORKID)) {
 		setFrequency(433000000);
-
 
 		uint32_t rfm_freq = getFrequency();
 		sprintf(TxBuffer, "Freq: %d Mhz\r\n", rfm_freq / 1000000);
 		HAL_UART_Transmit(&huart1, (uint8_t*) &TxBuffer, strlen(TxBuffer), 100);
 
 	}
-	if(!setAESEncryption(ENCRYPTKEY, 16)){
+	if (!setAESEncryption(ENCRYPTKEY, 16)) {
 		Error_Handler();
 	}
 
-	char data_to_transmit[] = {0xAA, 0xBB, 0xCC, 0xDD, 0xEE, 0xFF, 0x01, 0x02, 0x03};
+	char data_to_transmit[] = { 0xAA, 0xBB, 0xCC, 0xDD, 0xEE, 0xFF, 0x01, 0x02,
+			0x03 };
 	/* USER CODE END 2 */
 
 	/* Infinite loop */
 	/* USER CODE BEGIN WHILE */
 	while (1) {
 
-		send(GATEWAYID, (uint8_t*)&data_to_transmit, sizeof(data_to_transmit), false, true);
+		send(GATEWAYID, (uint8_t*) &data_to_transmit, sizeof(data_to_transmit),false, true);
 		HAL_GPIO_TogglePin(LED_GPIO_Port, LED_Pin);
 		HAL_Delay(1000);
 

@@ -27,14 +27,11 @@
 
 /* Private typedef -----------------------------------------------------------*/
 /* USER CODE BEGIN PTD */
-#define RECEIVER_ID        0xAB    //unique for each node on same network
-#define NETWORKID     0x10  //the same on all nodes that talk to each other
-//Match frequency to the hardware version of the radio on your Moteino (uncomment one):
+#define RECEIVER_ID        0xAB
+#define NETWORKID     0x10
 #define FREQUENCY     RF69_433MHZ
-
 #define ENCRYPTKEY    "sampleEncryptKey" //exactly the same 16 characters/bytes on all nodes!
-//#define IS_RFM69HW    //uncomment only for RFM69HW! Leave out if you have RFM69W!
-//#define ENABLE_ATC    //comment out this line to disable AUTO TRANSMISSION CONTROL
+
 /* USER CODE END PTD */
 
 /* Private define ------------------------------------------------------------*/

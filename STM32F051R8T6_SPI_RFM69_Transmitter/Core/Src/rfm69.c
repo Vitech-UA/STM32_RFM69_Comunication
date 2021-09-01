@@ -376,30 +376,27 @@ bool waitForResponce(Payload *data, uint32_t timeout) {
 bool setAESEncryption(const void *aesKey, unsigned int keyLength) {
 	bool enable = false;
 
-	// check if encryption shall be enabled or disabled
+
 	if ((0 != aesKey) && (16 == keyLength))
 		enable = true;
 
-	// switch to standby
+
 	setMode(RF69_MODE_STANDBY, false);
 
+	uint8_t set_AES_cmd[] = {0x3E | 0x80};
 	if (true == enable) {
-		// transfer AES key to AES key register
+
 		rfm69_select();
+		HAL_SPI_Transmit(&RFM69_SPI_PORT, (uint8_t*)&set_AES_cmd[0], 1, 100);
 
-		// address first AES MSB register
-
-		HAL_SPI_Transmit(&RFM69_SPI_PORT, 0x3E | 0x80, 1, 100);
-
-		// transfer key (0x3E..0x4D)
 		for (unsigned int i = 0; i < keyLength; i++) {
-			HAL_SPI_Transmit(&hspi1, (uint8_t*) &aesKey[i], 1, 100);
+			HAL_SPI_Transmit(&RFM69_SPI_PORT, &aesKey[i], 1, 100);
 		}
 
 		rfm69_release();
 	}
 
-	// set/reset AesOn Bit in packet config
+
 	writeReg(0x3D, (readReg(0x3D) & 0xFE) | (enable ? 1 : 0));
 
 	return enable;

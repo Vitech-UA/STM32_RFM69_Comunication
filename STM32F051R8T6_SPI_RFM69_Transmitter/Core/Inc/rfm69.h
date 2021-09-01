@@ -57,4 +57,5 @@ bool readData(Payload *data);
 bool waitForResponce(Payload *data , uint32_t timeout);
 bool setAESEncryption(const void* aesKey, unsigned int keyLength);
 void receiveBegin();
+void setFrequency(uint32_t freqHz);
 #endif /* INC_RFM69_H_ */

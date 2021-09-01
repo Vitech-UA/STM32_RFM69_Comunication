@@ -6924,3 +6924,1625 @@ arm-none-eabi-size   STM32F334R8T6_RFM69_Transmitte_HAL.elf
   20084	    120	   2112	  22316	   572c	STM32F334R8T6_RFM69_Transmitte_HAL.elf
 Finished building: default.size.stdout
  
+21:36:56 **** Incremental Build of configuration Debug for project STM32F051R8T6_SPI_RFM69_Receiver ****
+make -j4 all 
+arm-none-eabi-size   STM32F051R8T6_SPI_RFM69_Receiver.elf 
+   text	   data	    bss	    dec	    hex	filename
+  20796	    120	   2112	  23028	   59f4	STM32F051R8T6_SPI_RFM69_Receiver.elf
+Finished building: default.size.stdout
+ 
+21:36:58 **** Incremental Build of configuration Debug for project STM32F334R8T6_RFM69_Transmitte_HAL ****
+make -j4 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F334x8 -c -I../Core/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F3xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:106:3: warning: implicit declaration of function 'setFrequency'; did you mean 'getFrequency'? [-Wimplicit-function-declaration]
+  106 |   setFrequency(433000000);
+      |   ^~~~~~~~~~~~
+      |   getFrequency
+../Core/Src/main.c:110:3: warning: implicit declaration of function 'sprintf' [-Wimplicit-function-declaration]
+  110 |   sprintf(TxBuffer, "Freq: %d Mhz\r\n", rfm_freq / 1000000);
+      |   ^~~~~~~
+../Core/Src/main.c:110:3: warning: incompatible implicit declaration of built-in function 'sprintf'
+../Core/Src/main.c:27:1: note: include '<stdio.h>' or provide a declaration of 'sprintf'
+   26 | #include "string.h"
+  +++ |+#include <stdio.h>
+   27 | /* USER CODE END Includes */
+../Core/Src/main.c:110:11: warning: pointer targets in passing argument 1 of 'sprintf' differ in signedness [-Wpointer-sign]
+  110 |   sprintf(TxBuffer, "Freq: %d Mhz\r\n", rfm_freq / 1000000);
+      |           ^~~~~~~~
+      |           |
+      |           uint8_t * {aka unsigned char *}
+../Core/Src/main.c:110:11: note: expected 'char *' but argument is of type 'uint8_t *' {aka 'unsigned char *'}
+../Core/Src/main.c:110:29: warning: format '%d' expects argument of type 'int', but argument 3 has type 'long unsigned int' [-Wformat=]
+  110 |   sprintf(TxBuffer, "Freq: %d Mhz\r\n", rfm_freq / 1000000);
+      |                            ~^           ~~~~~~~~~~~~~~~~~~
+      |                             |                    |
+      |                             int                  long unsigned int
+      |                            %ld
+../Core/Src/main.c:111:59: warning: pointer targets in passing argument 1 of 'strlen' differ in signedness [-Wpointer-sign]
+  111 |   HAL_UART_Transmit(&huart1, (uint8_t*) &TxBuffer, strlen(TxBuffer), 100);
+      |                                                           ^~~~~~~~
+      |                                                           |
+      |                                                           uint8_t * {aka unsigned char *}
+In file included from ../Core/Src/main.c:26:
+c:\st\stm32cubeide_1.6.0\stm32cubeide\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.win32_2.0.0.202105311346\tools\arm-none-eabi\include\string.h:41:17: note: expected 'const char *' but argument is of type 'uint8_t *' {aka 'unsigned char *'}
+   41 | size_t  strlen (const char *);
+      |                 ^~~~~~~~~~~~
+arm-none-eabi-gcc -o "STM32F334R8T6_RFM69_Transmitte_HAL.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\STM32 workspace\STM32 RFM69 SPI TxRx\STM32F334R8T6_RFM69_Transmitte_HAL\STM32F334R8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="STM32F334R8T6_RFM69_Transmitte_HAL.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: STM32F334R8T6_RFM69_Transmitte_HAL.elf
+ 
+arm-none-eabi-size   STM32F334R8T6_RFM69_Transmitte_HAL.elf 
+arm-none-eabi-objdump -h -S  STM32F334R8T6_RFM69_Transmitte_HAL.elf  > "STM32F334R8T6_RFM69_Transmitte_HAL.list"
+arm-none-eabi-objcopy  -O binary  STM32F334R8T6_RFM69_Transmitte_HAL.elf  "STM32F334R8T6_RFM69_Transmitte_HAL.bin"
+   text	   data	    bss	    dec	    hex	filename
+  20084	    120	   2112	  22316	   572c	STM32F334R8T6_RFM69_Transmitte_HAL.elf
+Finished building: default.size.stdout
+ 
+Finished building: STM32F334R8T6_RFM69_Transmitte_HAL.bin
+ 
+Finished building: STM32F334R8T6_RFM69_Transmitte_HAL.list
+ 
+21:41:26 **** Incremental Build of configuration Debug for project STM32F051R8T6_SPI_RFM69_Receiver ****
+make -j4 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F051x8 -c -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc "../Core/Src/rfm69.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F051x8 -c -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/rfm69.d" -MT"Core/Src/rfm69.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/rfm69.o"
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:105:3: warning: implicit declaration of function 'sprintf' [-Wimplicit-function-declaration]
+  105 |   sprintf(RxBuffer, "RFM69 Init() -> false\r\n");
+      |   ^~~~~~~
+../Core/Src/main.c:105:3: warning: incompatible implicit declaration of built-in function 'sprintf'
+../Core/Src/main.c:26:1: note: include '<stdio.h>' or provide a declaration of 'sprintf'
+   25 | #include "rfm69.h"
+  +++ |+#include <stdio.h>
+   26 | /* USER CODE END Includes */
+../Core/Src/main.c:105:11: warning: pointer targets in passing argument 1 of 'sprintf' differ in signedness [-Wpointer-sign]
+  105 |   sprintf(RxBuffer, "RFM69 Init() -> false\r\n");
+      |           ^~~~~~~~
+      |           |
+      |           uint8_t * {aka unsigned char *}
+../Core/Src/main.c:105:11: note: expected 'char *' but argument is of type 'uint8_t *' {aka 'unsigned char *'}
+../Core/Src/main.c:112:39: warning: implicit declaration of function 'strlen' [-Wimplicit-function-declaration]
+  112 |  HAL_UART_Transmit(&huart1, RxBuffer, strlen(RxBuffer), 100);
+      |                                       ^~~~~~
+../Core/Src/main.c:112:39: warning: incompatible implicit declaration of built-in function 'strlen'
+../Core/Src/main.c:26:1: note: include '<string.h>' or provide a declaration of 'strlen'
+   25 | #include "rfm69.h"
+  +++ |+#include <string.h>
+   26 | /* USER CODE END Includes */
+../Core/Src/main.c:112:46: warning: pointer targets in passing argument 1 of 'strlen' differ in signedness [-Wpointer-sign]
+  112 |  HAL_UART_Transmit(&huart1, RxBuffer, strlen(RxBuffer), 100);
+      |                                              ^~~~~~~~
+      |                                              |
+      |                                              uint8_t * {aka unsigned char *}
+../Core/Src/main.c:112:46: note: expected 'const char *' but argument is of type 'uint8_t *' {aka 'unsigned char *'}
+../Core/Src/main.c:115:2: warning: incompatible implicit declaration of built-in function 'sprintf'
+  115 |  sprintf(RxBuffer, "RFM Freq: %u Hz\r\n", rfm_freq);
+      |  ^~~~~~~
+../Core/Src/main.c:115:2: note: include '<stdio.h>' or provide a declaration of 'sprintf'
+../Core/Src/main.c:115:10: warning: pointer targets in passing argument 1 of 'sprintf' differ in signedness [-Wpointer-sign]
+  115 |  sprintf(RxBuffer, "RFM Freq: %u Hz\r\n", rfm_freq);
+      |          ^~~~~~~~
+      |          |
+      |          uint8_t * {aka unsigned char *}
+../Core/Src/main.c:115:10: note: expected 'char *' but argument is of type 'uint8_t *' {aka 'unsigned char *'}
+../Core/Src/main.c:115:32: warning: format '%u' expects argument of type 'unsigned int', but argument 3 has type 'uint32_t' {aka 'long unsigned int'} [-Wformat=]
+  115 |  sprintf(RxBuffer, "RFM Freq: %u Hz\r\n", rfm_freq);
+      |                               ~^          ~~~~~~~~
+      |                                |          |
+      |                                |          uint32_t {aka long unsigned int}
+      |                                unsigned int
+      |                               %lu
+../Core/Src/main.c:116:46: warning: pointer targets in passing argument 1 of 'strlen' differ in signedness [-Wpointer-sign]
+  116 |  HAL_UART_Transmit(&huart1, RxBuffer, strlen(RxBuffer), 100);
+      |                                              ^~~~~~~~
+      |                                              |
+      |                                              uint8_t * {aka unsigned char *}
+../Core/Src/main.c:116:46: note: expected 'const char *' but argument is of type 'uint8_t *' {aka 'unsigned char *'}
+../Core/Src/main.c:128:12: warning: pointer targets in passing argument 1 of 'sprintf' differ in signedness [-Wpointer-sign]
+  128 |    sprintf(RxBuffer,
+      |            ^~~~~~~~
+      |            |
+      |            uint8_t * {aka unsigned char *}
+../Core/Src/main.c:128:12: note: expected 'char *' but argument is of type 'uint8_t *' {aka 'unsigned char *'}
+../Core/Src/main.c:138:48: warning: pointer targets in passing argument 1 of 'strlen' differ in signedness [-Wpointer-sign]
+  138 |    HAL_UART_Transmit(&huart1, RxBuffer, strlen(RxBuffer), 100);
+      |                                                ^~~~~~~~
+      |                                                |
+      |                                                uint8_t * {aka unsigned char *}
+../Core/Src/main.c:138:48: note: expected 'const char *' but argument is of type 'uint8_t *' {aka 'unsigned char *'}
+../Core/Src/main.c:140:13: warning: pointer targets in passing argument 1 of 'sprintf' differ in signedness [-Wpointer-sign]
+  140 |     sprintf(RxBuffer, "Data[%d]: 0x%X\r\n", i, receive_data.data[i]);
+      |             ^~~~~~~~
+      |             |
+      |             uint8_t * {aka unsigned char *}
+../Core/Src/main.c:140:13: note: expected 'char *' but argument is of type 'uint8_t *' {aka 'unsigned char *'}
+../Core/Src/rfm69.c: In function 'setAESEncryption':
+../Core/Src/rfm69.c:392:37: warning: passing argument 2 of 'HAL_SPI_Transmit' makes pointer from integer without a cast [-Wint-conversion]
+  392 |   HAL_SPI_Transmit(&RFM69_SPI_PORT, 0x3E | 0x80, 1, 100);
+      |                                     ^~~~~~~~~~~
+      |                                     |
+      |                                     int
+../Core/Src/main.c:141:49: warning: pointer targets in passing argument 1 of 'strlen' differ in signedness [-Wpointer-sign]
+  141 |     HAL_UART_Transmit(&huart1, RxBuffer, strlen(RxBuffer), 100);
+      |                                                 ^~~~~~~~
+      |                                                 |
+      |                                                 uint8_t * {aka unsigned char *}
+In file included from ../Core/Inc/stm32f0xx_hal_conf.h:276,
+                 from ../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal.h:30,
+                 from ../Core/Inc/main.h:31,
+                 from ../Core/Inc/rfm69.h:11,
+                 from ../Core/Src/rfm69.c:8:
+../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_spi.h:792:70: note: expected 'uint8_t *' {aka 'unsigned char *'} but argument is of type 'int'
+  792 | HAL_StatusTypeDef HAL_SPI_Transmit(SPI_HandleTypeDef *hspi, uint8_t *pData, uint16_t Size, uint32_t Timeout);
+      |                                                             ~~~~~~~~~^~~~~
+../Core/Src/main.c:141:49: note: expected 'const char *' but argument is of type 'uint8_t *' {aka 'unsigned char *'}
+../Core/Src/rfm69.c:396:47: warning: dereferencing 'void *' pointer
+  396 |    HAL_SPI_Transmit(&hspi1, (uint8_t*) &aesKey[i], 1, 100);
+      |                                               ^
+arm-none-eabi-gcc -o "STM32F051R8T6_SPI_RFM69_Receiver.elf" @"objects.list"   -mcpu=cortex-m0 -T"C:\STM32 workspace\STM32 RFM69 SPI TxRx\STM32F051R8T6_SPI_RFM69_Transmitter\STM32F051R8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="STM32F051R8T6_SPI_RFM69_Receiver.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: STM32F051R8T6_SPI_RFM69_Receiver.elf
+ 
+arm-none-eabi-size   STM32F051R8T6_SPI_RFM69_Receiver.elf 
+arm-none-eabi-objdump -h -S  STM32F051R8T6_SPI_RFM69_Receiver.elf  > "STM32F051R8T6_SPI_RFM69_Receiver.list"
+arm-none-eabi-objcopy  -O binary  STM32F051R8T6_SPI_RFM69_Receiver.elf  "STM32F051R8T6_SPI_RFM69_Receiver.bin"
+   text	   data	    bss	    dec	    hex	filename
+  20796	    120	   2112	  23028	   59f4	STM32F051R8T6_SPI_RFM69_Receiver.elf
+Finished building: default.size.stdout
+ 
+Finished building: STM32F051R8T6_SPI_RFM69_Receiver.bin
+ 
+Finished building: STM32F051R8T6_SPI_RFM69_Receiver.list
+ 
+21:41:28 **** Incremental Build of configuration Debug for project STM32F334R8T6_RFM69_Transmitte_HAL ****
+make -j4 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F334x8 -c -I../Core/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F3xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:106:3: warning: implicit declaration of function 'setFrequency'; did you mean 'getFrequency'? [-Wimplicit-function-declaration]
+  106 |   setFrequency(433000000);
+      |   ^~~~~~~~~~~~
+      |   getFrequency
+../Core/Src/main.c:109:3: warning: implicit declaration of function 'sprintf' [-Wimplicit-function-declaration]
+  109 |   sprintf(TxBuffer, "Freq: %d Mhz\r\n", rfm_freq / 1000000);
+      |   ^~~~~~~
+../Core/Src/main.c:109:3: warning: incompatible implicit declaration of built-in function 'sprintf'
+../Core/Src/main.c:27:1: note: include '<stdio.h>' or provide a declaration of 'sprintf'
+   26 | #include "string.h"
+  +++ |+#include <stdio.h>
+   27 | /* USER CODE END Includes */
+../Core/Src/main.c:109:11: warning: pointer targets in passing argument 1 of 'sprintf' differ in signedness [-Wpointer-sign]
+  109 |   sprintf(TxBuffer, "Freq: %d Mhz\r\n", rfm_freq / 1000000);
+      |           ^~~~~~~~
+      |           |
+      |           uint8_t * {aka unsigned char *}
+../Core/Src/main.c:109:11: note: expected 'char *' but argument is of type 'uint8_t *' {aka 'unsigned char *'}
+../Core/Src/main.c:109:29: warning: format '%d' expects argument of type 'int', but argument 3 has type 'long unsigned int' [-Wformat=]
+  109 |   sprintf(TxBuffer, "Freq: %d Mhz\r\n", rfm_freq / 1000000);
+      |                            ~^           ~~~~~~~~~~~~~~~~~~
+      |                             |                    |
+      |                             int                  long unsigned int
+      |                            %ld
+../Core/Src/main.c:110:59: warning: pointer targets in passing argument 1 of 'strlen' differ in signedness [-Wpointer-sign]
+  110 |   HAL_UART_Transmit(&huart1, (uint8_t*) &TxBuffer, strlen(TxBuffer), 100);
+      |                                                           ^~~~~~~~
+      |                                                           |
+      |                                                           uint8_t * {aka unsigned char *}
+In file included from ../Core/Src/main.c:26:
+c:\st\stm32cubeide_1.6.0\stm32cubeide\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.win32_2.0.0.202105311346\tools\arm-none-eabi\include\string.h:41:17: note: expected 'const char *' but argument is of type 'uint8_t *' {aka 'unsigned char *'}
+   41 | size_t  strlen (const char *);
+      |                 ^~~~~~~~~~~~
+arm-none-eabi-gcc -o "STM32F334R8T6_RFM69_Transmitte_HAL.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\STM32 workspace\STM32 RFM69 SPI TxRx\STM32F334R8T6_RFM69_Transmitte_HAL\STM32F334R8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="STM32F334R8T6_RFM69_Transmitte_HAL.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: STM32F334R8T6_RFM69_Transmitte_HAL.elf
+ 
+arm-none-eabi-size   STM32F334R8T6_RFM69_Transmitte_HAL.elf 
+arm-none-eabi-objdump -h -S  STM32F334R8T6_RFM69_Transmitte_HAL.elf  > "STM32F334R8T6_RFM69_Transmitte_HAL.list"
+arm-none-eabi-objcopy  -O binary  STM32F334R8T6_RFM69_Transmitte_HAL.elf  "STM32F334R8T6_RFM69_Transmitte_HAL.bin"
+   text	   data	    bss	    dec	    hex	filename
+  20084	    120	   2112	  22316	   572c	STM32F334R8T6_RFM69_Transmitte_HAL.elf
+Finished building: default.size.stdout
+ 
+Finished building: STM32F334R8T6_RFM69_Transmitte_HAL.bin
+ 
+Finished building: STM32F334R8T6_RFM69_Transmitte_HAL.list
+ 
+21:41:50 **** Incremental Build of configuration Debug for project STM32F051R8T6_SPI_RFM69_Receiver ****
+make -j4 all 
+arm-none-eabi-size   STM32F051R8T6_SPI_RFM69_Receiver.elf 
+   text	   data	    bss	    dec	    hex	filename
+  20796	    120	   2112	  23028	   59f4	STM32F051R8T6_SPI_RFM69_Receiver.elf
+Finished building: default.size.stdout
+ 
+21:41:50 **** Incremental Build of configuration Debug for project STM32F334R8T6_RFM69_Transmitte_HAL ****
+make -j4 all 
+arm-none-eabi-size   STM32F334R8T6_RFM69_Transmitte_HAL.elf 
+   text	   data	    bss	    dec	    hex	filename
+  20084	    120	   2112	  22316	   572c	STM32F334R8T6_RFM69_Transmitte_HAL.elf
+Finished building: default.size.stdout
+ 
+21:55:27 **** Incremental Build of configuration Debug for project STM32F051R8T6_SPI_RFM69_Receiver ****
+make -j4 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F051x8 -c -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:102:3: warning: implicit declaration of function 'sprintf' [-Wimplicit-function-declaration]
+  102 |   sprintf(RxBuffer, "RFM69 Init() -> false\r\n");
+      |   ^~~~~~~
+../Core/Src/main.c:102:3: warning: incompatible implicit declaration of built-in function 'sprintf'
+../Core/Src/main.c:26:1: note: include '<stdio.h>' or provide a declaration of 'sprintf'
+   25 | #include "rfm69.h"
+  +++ |+#include <stdio.h>
+   26 | /* USER CODE END Includes */
+../Core/Src/main.c:102:11: warning: pointer targets in passing argument 1 of 'sprintf' differ in signedness [-Wpointer-sign]
+  102 |   sprintf(RxBuffer, "RFM69 Init() -> false\r\n");
+      |           ^~~~~~~~
+      |           |
+      |           uint8_t * {aka unsigned char *}
+../Core/Src/main.c:102:11: note: expected 'char *' but argument is of type 'uint8_t *' {aka 'unsigned char *'}
+../Core/Src/main.c:109:39: warning: implicit declaration of function 'strlen' [-Wimplicit-function-declaration]
+  109 |  HAL_UART_Transmit(&huart1, RxBuffer, strlen(RxBuffer), 100);
+      |                                       ^~~~~~
+../Core/Src/main.c:109:39: warning: incompatible implicit declaration of built-in function 'strlen'
+../Core/Src/main.c:26:1: note: include '<string.h>' or provide a declaration of 'strlen'
+   25 | #include "rfm69.h"
+  +++ |+#include <string.h>
+   26 | /* USER CODE END Includes */
+../Core/Src/main.c:109:46: warning: pointer targets in passing argument 1 of 'strlen' differ in signedness [-Wpointer-sign]
+  109 |  HAL_UART_Transmit(&huart1, RxBuffer, strlen(RxBuffer), 100);
+      |                                              ^~~~~~~~
+      |                                              |
+      |                                              uint8_t * {aka unsigned char *}
+../Core/Src/main.c:109:46: note: expected 'const char *' but argument is of type 'uint8_t *' {aka 'unsigned char *'}
+../Core/Src/main.c:112:2: warning: incompatible implicit declaration of built-in function 'sprintf'
+  112 |  sprintf(RxBuffer, "RFM Freq: %u Hz\r\n", rfm_freq);
+      |  ^~~~~~~
+../Core/Src/main.c:112:2: note: include '<stdio.h>' or provide a declaration of 'sprintf'
+../Core/Src/main.c:112:10: warning: pointer targets in passing argument 1 of 'sprintf' differ in signedness [-Wpointer-sign]
+  112 |  sprintf(RxBuffer, "RFM Freq: %u Hz\r\n", rfm_freq);
+      |          ^~~~~~~~
+      |          |
+      |          uint8_t * {aka unsigned char *}
+../Core/Src/main.c:112:10: note: expected 'char *' but argument is of type 'uint8_t *' {aka 'unsigned char *'}
+../Core/Src/main.c:112:32: warning: format '%u' expects argument of type 'unsigned int', but argument 3 has type 'uint32_t' {aka 'long unsigned int'} [-Wformat=]
+  112 |  sprintf(RxBuffer, "RFM Freq: %u Hz\r\n", rfm_freq);
+      |                               ~^          ~~~~~~~~
+      |                                |          |
+      |                                |          uint32_t {aka long unsigned int}
+      |                                unsigned int
+      |                               %lu
+../Core/Src/main.c:113:46: warning: pointer targets in passing argument 1 of 'strlen' differ in signedness [-Wpointer-sign]
+  113 |  HAL_UART_Transmit(&huart1, RxBuffer, strlen(RxBuffer), 100);
+      |                                              ^~~~~~~~
+      |                                              |
+      |                                              uint8_t * {aka unsigned char *}
+../Core/Src/main.c:113:46: note: expected 'const char *' but argument is of type 'uint8_t *' {aka 'unsigned char *'}
+../Core/Src/main.c:125:12: warning: pointer targets in passing argument 1 of 'sprintf' differ in signedness [-Wpointer-sign]
+  125 |    sprintf(RxBuffer,
+      |            ^~~~~~~~
+      |            |
+      |            uint8_t * {aka unsigned char *}
+../Core/Src/main.c:125:12: note: expected 'char *' but argument is of type 'uint8_t *' {aka 'unsigned char *'}
+../Core/Src/main.c:135:48: warning: pointer targets in passing argument 1 of 'strlen' differ in signedness [-Wpointer-sign]
+  135 |    HAL_UART_Transmit(&huart1, RxBuffer, strlen(RxBuffer), 100);
+      |                                                ^~~~~~~~
+      |                                                |
+      |                                                uint8_t * {aka unsigned char *}
+../Core/Src/main.c:135:48: note: expected 'const char *' but argument is of type 'uint8_t *' {aka 'unsigned char *'}
+../Core/Src/main.c:137:13: warning: pointer targets in passing argument 1 of 'sprintf' differ in signedness [-Wpointer-sign]
+  137 |     sprintf(RxBuffer, "Data[%d]: 0x%X\r\n", i, receive_data.data[i]);
+      |             ^~~~~~~~
+      |             |
+      |             uint8_t * {aka unsigned char *}
+../Core/Src/main.c:137:13: note: expected 'char *' but argument is of type 'uint8_t *' {aka 'unsigned char *'}
+../Core/Src/main.c:138:49: warning: pointer targets in passing argument 1 of 'strlen' differ in signedness [-Wpointer-sign]
+  138 |     HAL_UART_Transmit(&huart1, RxBuffer, strlen(RxBuffer), 100);
+      |                                                 ^~~~~~~~
+      |                                                 |
+      |                                                 uint8_t * {aka unsigned char *}
+../Core/Src/main.c:138:49: note: expected 'const char *' but argument is of type 'uint8_t *' {aka 'unsigned char *'}
+arm-none-eabi-gcc -o "STM32F051R8T6_SPI_RFM69_Receiver.elf" @"objects.list"   -mcpu=cortex-m0 -T"C:\STM32 workspace\STM32 RFM69 SPI TxRx\STM32F051R8T6_SPI_RFM69_Transmitter\STM32F051R8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="STM32F051R8T6_SPI_RFM69_Receiver.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: STM32F051R8T6_SPI_RFM69_Receiver.elf
+ 
+arm-none-eabi-size   STM32F051R8T6_SPI_RFM69_Receiver.elf 
+arm-none-eabi-objdump -h -S  STM32F051R8T6_SPI_RFM69_Receiver.elf  > "STM32F051R8T6_SPI_RFM69_Receiver.list"
+arm-none-eabi-objcopy  -O binary  STM32F051R8T6_SPI_RFM69_Receiver.elf  "STM32F051R8T6_SPI_RFM69_Receiver.bin"
+   text	   data	    bss	    dec	    hex	filename
+  20796	    120	   2112	  23028	   59f4	STM32F051R8T6_SPI_RFM69_Receiver.elf
+Finished building: default.size.stdout
+ 
+Finished building: STM32F051R8T6_SPI_RFM69_Receiver.bin
+ 
+Finished building: STM32F051R8T6_SPI_RFM69_Receiver.list
+ 
+21:57:25 **** Incremental Build of configuration Debug for project STM32F051R8T6_SPI_RFM69_Receiver ****
+make -j4 all 
+arm-none-eabi-gcc "../Core/Src/rfm69.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F051x8 -c -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/rfm69.d" -MT"Core/Src/rfm69.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/rfm69.o"
+../Core/Src/rfm69.c: In function 'setAESEncryption':
+../Core/Src/rfm69.c:390:37: warning: passing argument 2 of 'HAL_SPI_Transmit' makes pointer from integer without a cast [-Wint-conversion]
+  390 |   HAL_SPI_Transmit(&RFM69_SPI_PORT, 0x3E | 0x80, 1, 100);
+      |                                     ^~~~~~~~~~~
+      |                                     |
+      |                                     int
+In file included from ../Core/Inc/stm32f0xx_hal_conf.h:276,
+                 from ../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal.h:30,
+                 from ../Core/Inc/main.h:31,
+                 from ../Core/Inc/rfm69.h:11,
+                 from ../Core/Src/rfm69.c:8:
+../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_spi.h:792:70: note: expected 'uint8_t *' {aka 'unsigned char *'} but argument is of type 'int'
+  792 | HAL_StatusTypeDef HAL_SPI_Transmit(SPI_HandleTypeDef *hspi, uint8_t *pData, uint16_t Size, uint32_t Timeout);
+      |                                                             ~~~~~~~~~^~~~~
+../Core/Src/rfm69.c:393:47: warning: dereferencing 'void *' pointer
+  393 |    HAL_SPI_Transmit(&hspi1, (uint8_t*) &aesKey[i], 1, 100);
+      |                                               ^
+../Core/Src/rfm69.c:386:10: warning: unused variable 'set_AES_cmd' [-Wunused-variable]
+  386 |  uint8_t set_AES_cmd[] = {0x3E | 0x80};
+      |          ^~~~~~~~~~~
+arm-none-eabi-gcc -o "STM32F051R8T6_SPI_RFM69_Receiver.elf" @"objects.list"   -mcpu=cortex-m0 -T"C:\STM32 workspace\STM32 RFM69 SPI TxRx\STM32F051R8T6_SPI_RFM69_Transmitter\STM32F051R8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="STM32F051R8T6_SPI_RFM69_Receiver.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: STM32F051R8T6_SPI_RFM69_Receiver.elf
+ 
+arm-none-eabi-size   STM32F051R8T6_SPI_RFM69_Receiver.elf 
+arm-none-eabi-objdump -h -S  STM32F051R8T6_SPI_RFM69_Receiver.elf  > "STM32F051R8T6_SPI_RFM69_Receiver.list"
+arm-none-eabi-objcopy  -O binary  STM32F051R8T6_SPI_RFM69_Receiver.elf  "STM32F051R8T6_SPI_RFM69_Receiver.bin"
+   text	   data	    bss	    dec	    hex	filename
+  20816	    120	   2112	  23048	   5a08	STM32F051R8T6_SPI_RFM69_Receiver.elf
+Finished building: default.size.stdout
+ 
+Finished building: STM32F051R8T6_SPI_RFM69_Receiver.bin
+ 
+Finished building: STM32F051R8T6_SPI_RFM69_Receiver.list
+ 
+21:57:27 **** Incremental Build of configuration Debug for project STM32F334R8T6_RFM69_Transmitte_HAL ****
+make -j4 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F334x8 -c -I../Core/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F3xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:105:3: warning: implicit declaration of function 'setFrequency'; did you mean 'getFrequency'? [-Wimplicit-function-declaration]
+  105 |   setFrequency(433000000);
+      |   ^~~~~~~~~~~~
+      |   getFrequency
+../Core/Src/main.c:108:3: warning: implicit declaration of function 'sprintf' [-Wimplicit-function-declaration]
+  108 |   sprintf(TxBuffer, "Freq: %d Mhz\r\n", rfm_freq / 1000000);
+      |   ^~~~~~~
+../Core/Src/main.c:108:3: warning: incompatible implicit declaration of built-in function 'sprintf'
+../Core/Src/main.c:27:1: note: include '<stdio.h>' or provide a declaration of 'sprintf'
+   26 | #include "string.h"
+  +++ |+#include <stdio.h>
+   27 | /* USER CODE END Includes */
+../Core/Src/main.c:108:11: warning: pointer targets in passing argument 1 of 'sprintf' differ in signedness [-Wpointer-sign]
+  108 |   sprintf(TxBuffer, "Freq: %d Mhz\r\n", rfm_freq / 1000000);
+      |           ^~~~~~~~
+      |           |
+      |           uint8_t * {aka unsigned char *}
+../Core/Src/main.c:108:11: note: expected 'char *' but argument is of type 'uint8_t *' {aka 'unsigned char *'}
+../Core/Src/main.c:108:29: warning: format '%d' expects argument of type 'int', but argument 3 has type 'long unsigned int' [-Wformat=]
+  108 |   sprintf(TxBuffer, "Freq: %d Mhz\r\n", rfm_freq / 1000000);
+      |                            ~^           ~~~~~~~~~~~~~~~~~~
+      |                             |                    |
+      |                             int                  long unsigned int
+      |                            %ld
+../Core/Src/main.c:109:59: warning: pointer targets in passing argument 1 of 'strlen' differ in signedness [-Wpointer-sign]
+  109 |   HAL_UART_Transmit(&huart1, (uint8_t*) &TxBuffer, strlen(TxBuffer), 100);
+      |                                                           ^~~~~~~~
+      |                                                           |
+      |                                                           uint8_t * {aka unsigned char *}
+In file included from ../Core/Src/main.c:26:
+c:\st\stm32cubeide_1.6.0\stm32cubeide\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.win32_2.0.0.202105311346\tools\arm-none-eabi\include\string.h:41:17: note: expected 'const char *' but argument is of type 'uint8_t *' {aka 'unsigned char *'}
+   41 | size_t  strlen (const char *);
+      |                 ^~~~~~~~~~~~
+arm-none-eabi-gcc -o "STM32F334R8T6_RFM69_Transmitte_HAL.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\STM32 workspace\STM32 RFM69 SPI TxRx\STM32F334R8T6_RFM69_Transmitte_HAL\STM32F334R8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="STM32F334R8T6_RFM69_Transmitte_HAL.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: STM32F334R8T6_RFM69_Transmitte_HAL.elf
+ 
+arm-none-eabi-size   STM32F334R8T6_RFM69_Transmitte_HAL.elf 
+arm-none-eabi-objdump -h -S  STM32F334R8T6_RFM69_Transmitte_HAL.elf  > "STM32F334R8T6_RFM69_Transmitte_HAL.list"
+arm-none-eabi-objcopy  -O binary  STM32F334R8T6_RFM69_Transmitte_HAL.elf  "STM32F334R8T6_RFM69_Transmitte_HAL.bin"
+   text	   data	    bss	    dec	    hex	filename
+  20084	    120	   2112	  22316	   572c	STM32F334R8T6_RFM69_Transmitte_HAL.elf
+Finished building: default.size.stdout
+ 
+Finished building: STM32F334R8T6_RFM69_Transmitte_HAL.bin
+ 
+Finished building: STM32F334R8T6_RFM69_Transmitte_HAL.list
+ 
+21:57:34 **** Incremental Build of configuration Debug for project STM32F051R8T6_SPI_RFM69_Receiver ****
+make -j4 all 
+arm-none-eabi-gcc "../Core/Src/rfm69.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F051x8 -c -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/rfm69.d" -MT"Core/Src/rfm69.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/rfm69.o"
+../Core/Src/rfm69.c: In function 'setAESEncryption':
+../Core/Src/rfm69.c:393:47: warning: dereferencing 'void *' pointer
+  393 |    HAL_SPI_Transmit(&hspi1, (uint8_t*) &aesKey[i], 1, 100);
+      |                                               ^
+arm-none-eabi-gcc -o "STM32F051R8T6_SPI_RFM69_Receiver.elf" @"objects.list"   -mcpu=cortex-m0 -T"C:\STM32 workspace\STM32 RFM69 SPI TxRx\STM32F051R8T6_SPI_RFM69_Transmitter\STM32F051R8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="STM32F051R8T6_SPI_RFM69_Receiver.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: STM32F051R8T6_SPI_RFM69_Receiver.elf
+ 
+arm-none-eabi-size   STM32F051R8T6_SPI_RFM69_Receiver.elf 
+arm-none-eabi-objdump -h -S  STM32F051R8T6_SPI_RFM69_Receiver.elf  > "STM32F051R8T6_SPI_RFM69_Receiver.list"
+arm-none-eabi-objcopy  -O binary  STM32F051R8T6_SPI_RFM69_Receiver.elf  "STM32F051R8T6_SPI_RFM69_Receiver.bin"
+   text	   data	    bss	    dec	    hex	filename
+  20816	    120	   2112	  23048	   5a08	STM32F051R8T6_SPI_RFM69_Receiver.elf
+Finished building: default.size.stdout
+ 
+Finished building: STM32F051R8T6_SPI_RFM69_Receiver.bin
+ 
+Finished building: STM32F051R8T6_SPI_RFM69_Receiver.list
+ 
+21:57:36 **** Incremental Build of configuration Debug for project STM32F334R8T6_RFM69_Transmitte_HAL ****
+make -j4 all 
+arm-none-eabi-size   STM32F334R8T6_RFM69_Transmitte_HAL.elf 
+   text	   data	    bss	    dec	    hex	filename
+  20084	    120	   2112	  22316	   572c	STM32F334R8T6_RFM69_Transmitte_HAL.elf
+Finished building: default.size.stdout
+ 
+21:57:42 **** Incremental Build of configuration Debug for project STM32F051R8T6_SPI_RFM69_Receiver ****
+make -j4 all 
+arm-none-eabi-gcc "../Core/Src/rfm69.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F051x8 -c -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/rfm69.d" -MT"Core/Src/rfm69.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/rfm69.o"
+../Core/Src/rfm69.c: In function 'setAESEncryption':
+../Core/Src/rfm69.c:393:47: warning: dereferencing 'void *' pointer
+  393 |    HAL_SPI_Transmit(&hspi1, (uint8_t*) &aesKey[i], 1, 100);
+      |                                               ^
+arm-none-eabi-gcc -o "STM32F051R8T6_SPI_RFM69_Receiver.elf" @"objects.list"   -mcpu=cortex-m0 -T"C:\STM32 workspace\STM32 RFM69 SPI TxRx\STM32F051R8T6_SPI_RFM69_Transmitter\STM32F051R8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="STM32F051R8T6_SPI_RFM69_Receiver.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: STM32F051R8T6_SPI_RFM69_Receiver.elf
+ 
+arm-none-eabi-size   STM32F051R8T6_SPI_RFM69_Receiver.elf 
+arm-none-eabi-objdump -h -S  STM32F051R8T6_SPI_RFM69_Receiver.elf  > "STM32F051R8T6_SPI_RFM69_Receiver.list"
+arm-none-eabi-objcopy  -O binary  STM32F051R8T6_SPI_RFM69_Receiver.elf  "STM32F051R8T6_SPI_RFM69_Receiver.bin"
+   text	   data	    bss	    dec	    hex	filename
+  20816	    120	   2112	  23048	   5a08	STM32F051R8T6_SPI_RFM69_Receiver.elf
+Finished building: default.size.stdout
+ 
+Finished building: STM32F051R8T6_SPI_RFM69_Receiver.bin
+ 
+Finished building: STM32F051R8T6_SPI_RFM69_Receiver.list
+ 
+21:57:44 **** Incremental Build of configuration Debug for project STM32F334R8T6_RFM69_Transmitte_HAL ****
+make -j4 all 
+arm-none-eabi-size   STM32F334R8T6_RFM69_Transmitte_HAL.elf 
+   text	   data	    bss	    dec	    hex	filename
+  20084	    120	   2112	  22316	   572c	STM32F334R8T6_RFM69_Transmitte_HAL.elf
+Finished building: default.size.stdout
+ 
+21:57:57 **** Incremental Build of configuration Debug for project STM32F051R8T6_SPI_RFM69_Receiver ****
+make -j4 all 
+arm-none-eabi-gcc "../Core/Src/rfm69.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F051x8 -c -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/rfm69.d" -MT"Core/Src/rfm69.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/rfm69.o"
+../Core/Src/rfm69.c: In function 'setAESEncryption':
+../Core/Src/rfm69.c:393:36: warning: dereferencing 'void *' pointer
+  393 |    HAL_SPI_Transmit(&hspi1, &aesKey[i], 1, 100);
+      |                                    ^
+../Core/Src/rfm69.c:393:29: warning: passing argument 2 of 'HAL_SPI_Transmit' discards 'const' qualifier from pointer target type [-Wdiscarded-qualifiers]
+  393 |    HAL_SPI_Transmit(&hspi1, &aesKey[i], 1, 100);
+      |                             ^~~~~~~~~~
+In file included from ../Core/Inc/stm32f0xx_hal_conf.h:276,
+                 from ../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal.h:30,
+                 from ../Core/Inc/main.h:31,
+                 from ../Core/Inc/rfm69.h:11,
+                 from ../Core/Src/rfm69.c:8:
+../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_spi.h:792:70: note: expected 'uint8_t *' {aka 'unsigned char *'} but argument is of type 'const void *'
+  792 | HAL_StatusTypeDef HAL_SPI_Transmit(SPI_HandleTypeDef *hspi, uint8_t *pData, uint16_t Size, uint32_t Timeout);
+      |                                                             ~~~~~~~~~^~~~~
+arm-none-eabi-gcc -o "STM32F051R8T6_SPI_RFM69_Receiver.elf" @"objects.list"   -mcpu=cortex-m0 -T"C:\STM32 workspace\STM32 RFM69 SPI TxRx\STM32F051R8T6_SPI_RFM69_Transmitter\STM32F051R8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="STM32F051R8T6_SPI_RFM69_Receiver.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: STM32F051R8T6_SPI_RFM69_Receiver.elf
+ 
+arm-none-eabi-size   STM32F051R8T6_SPI_RFM69_Receiver.elf 
+arm-none-eabi-objdump -h -S  STM32F051R8T6_SPI_RFM69_Receiver.elf  > "STM32F051R8T6_SPI_RFM69_Receiver.list"
+arm-none-eabi-objcopy  -O binary  STM32F051R8T6_SPI_RFM69_Receiver.elf  "STM32F051R8T6_SPI_RFM69_Receiver.bin"
+   text	   data	    bss	    dec	    hex	filename
+  20816	    120	   2112	  23048	   5a08	STM32F051R8T6_SPI_RFM69_Receiver.elf
+Finished building: default.size.stdout
+ 
+Finished building: STM32F051R8T6_SPI_RFM69_Receiver.bin
+ 
+Finished building: STM32F051R8T6_SPI_RFM69_Receiver.list
+ 
+21:57:59 **** Incremental Build of configuration Debug for project STM32F334R8T6_RFM69_Transmitte_HAL ****
+make -j4 all 
+arm-none-eabi-size   STM32F334R8T6_RFM69_Transmitte_HAL.elf 
+   text	   data	    bss	    dec	    hex	filename
+  20084	    120	   2112	  22316	   572c	STM32F334R8T6_RFM69_Transmitte_HAL.elf
+Finished building: default.size.stdout
+ 
+21:58:03 **** Incremental Build of configuration Debug for project STM32F051R8T6_SPI_RFM69_Receiver ****
+make -j4 all 
+arm-none-eabi-gcc "../Core/Src/rfm69.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F051x8 -c -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/rfm69.d" -MT"Core/Src/rfm69.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/rfm69.o"
+../Core/Src/rfm69.c: In function 'setAESEncryption':
+../Core/Src/rfm69.c:393:35: warning: dereferencing 'void *' pointer
+  393 |    HAL_SPI_Transmit(&hspi1, aesKey[i], 1, 100);
+      |                                   ^
+../Core/Src/rfm69.c:393:35: error: invalid use of void expression
+  393 |    HAL_SPI_Transmit(&hspi1, aesKey[i], 1, 100);
+      |                             ~~~~~~^~~
+make: *** [Core/Src/subdir.mk:37: Core/Src/rfm69.o] Error 1
+"make -j4 all" terminated with exit code 2. Build might be incomplete.
+21:58:03 **** Incremental Build of configuration Debug for project STM32F334R8T6_RFM69_Transmitte_HAL ****
+make -j4 all 
+arm-none-eabi-size   STM32F334R8T6_RFM69_Transmitte_HAL.elf 
+   text	   data	    bss	    dec	    hex	filename
+  20084	    120	   2112	  22316	   572c	STM32F334R8T6_RFM69_Transmitte_HAL.elf
+Finished building: default.size.stdout
+ 
+21:58:07 **** Incremental Build of configuration Debug for project STM32F051R8T6_SPI_RFM69_Receiver ****
+make -j4 all 
+arm-none-eabi-gcc "../Core/Src/rfm69.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F051x8 -c -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/rfm69.d" -MT"Core/Src/rfm69.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/rfm69.o"
+../Core/Src/rfm69.c: In function 'setAESEncryption':
+../Core/Src/rfm69.c:393:47: warning: dereferencing 'void *' pointer
+  393 |    HAL_SPI_Transmit(&hspi1, (uint8_t*) &aesKey[i], 1, 100);
+      |                                               ^
+arm-none-eabi-gcc -o "STM32F051R8T6_SPI_RFM69_Receiver.elf" @"objects.list"   -mcpu=cortex-m0 -T"C:\STM32 workspace\STM32 RFM69 SPI TxRx\STM32F051R8T6_SPI_RFM69_Transmitter\STM32F051R8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="STM32F051R8T6_SPI_RFM69_Receiver.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: STM32F051R8T6_SPI_RFM69_Receiver.elf
+ 
+arm-none-eabi-size   STM32F051R8T6_SPI_RFM69_Receiver.elf 
+arm-none-eabi-objdump -h -S  STM32F051R8T6_SPI_RFM69_Receiver.elf  > "STM32F051R8T6_SPI_RFM69_Receiver.list"
+arm-none-eabi-objcopy  -O binary  STM32F051R8T6_SPI_RFM69_Receiver.elf  "STM32F051R8T6_SPI_RFM69_Receiver.bin"
+   text	   data	    bss	    dec	    hex	filename
+  20816	    120	   2112	  23048	   5a08	STM32F051R8T6_SPI_RFM69_Receiver.elf
+Finished building: default.size.stdout
+ 
+Finished building: STM32F051R8T6_SPI_RFM69_Receiver.bin
+ 
+Finished building: STM32F051R8T6_SPI_RFM69_Receiver.list
+ 
+21:58:08 **** Incremental Build of configuration Debug for project STM32F334R8T6_RFM69_Transmitte_HAL ****
+make -j4 all 
+arm-none-eabi-size   STM32F334R8T6_RFM69_Transmitte_HAL.elf 
+   text	   data	    bss	    dec	    hex	filename
+  20084	    120	   2112	  22316	   572c	STM32F334R8T6_RFM69_Transmitte_HAL.elf
+Finished building: default.size.stdout
+ 
+21:58:13 **** Incremental Build of configuration Debug for project STM32F051R8T6_SPI_RFM69_Receiver ****
+make -j4 all 
+arm-none-eabi-size   STM32F051R8T6_SPI_RFM69_Receiver.elf 
+   text	   data	    bss	    dec	    hex	filename
+  20816	    120	   2112	  23048	   5a08	STM32F051R8T6_SPI_RFM69_Receiver.elf
+Finished building: default.size.stdout
+ 
+21:58:54 **** Incremental Build of configuration Debug for project STM32F051R8T6_SPI_RFM69_Receiver ****
+make -j4 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F051x8 -c -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:102:3: warning: implicit declaration of function 'sprintf' [-Wimplicit-function-declaration]
+  102 |   sprintf(RxBuffer, "RFM69 Init() -> false\r\n");
+      |   ^~~~~~~
+../Core/Src/main.c:102:3: warning: incompatible implicit declaration of built-in function 'sprintf'
+../Core/Src/main.c:26:1: note: include '<stdio.h>' or provide a declaration of 'sprintf'
+   25 | #include "rfm69.h"
+  +++ |+#include <stdio.h>
+   26 | /* USER CODE END Includes */
+../Core/Src/main.c:102:11: warning: pointer targets in passing argument 1 of 'sprintf' differ in signedness [-Wpointer-sign]
+  102 |   sprintf(RxBuffer, "RFM69 Init() -> false\r\n");
+      |           ^~~~~~~~
+      |           |
+      |           uint8_t * {aka unsigned char *}
+../Core/Src/main.c:102:11: note: expected 'char *' but argument is of type 'uint8_t *' {aka 'unsigned char *'}
+../Core/Src/main.c:109:39: warning: implicit declaration of function 'strlen' [-Wimplicit-function-declaration]
+  109 |  HAL_UART_Transmit(&huart1, RxBuffer, strlen(RxBuffer), 100);
+      |                                       ^~~~~~
+../Core/Src/main.c:109:39: warning: incompatible implicit declaration of built-in function 'strlen'
+../Core/Src/main.c:26:1: note: include '<string.h>' or provide a declaration of 'strlen'
+   25 | #include "rfm69.h"
+  +++ |+#include <string.h>
+   26 | /* USER CODE END Includes */
+../Core/Src/main.c:109:46: warning: pointer targets in passing argument 1 of 'strlen' differ in signedness [-Wpointer-sign]
+  109 |  HAL_UART_Transmit(&huart1, RxBuffer, strlen(RxBuffer), 100);
+      |                                              ^~~~~~~~
+      |                                              |
+      |                                              uint8_t * {aka unsigned char *}
+../Core/Src/main.c:109:46: note: expected 'const char *' but argument is of type 'uint8_t *' {aka 'unsigned char *'}
+../Core/Src/main.c:112:2: warning: incompatible implicit declaration of built-in function 'sprintf'
+  112 |  sprintf(RxBuffer, "RFM Freq: %u Hz\r\n", rfm_freq);
+      |  ^~~~~~~
+../Core/Src/main.c:112:2: note: include '<stdio.h>' or provide a declaration of 'sprintf'
+../Core/Src/main.c:112:10: warning: pointer targets in passing argument 1 of 'sprintf' differ in signedness [-Wpointer-sign]
+  112 |  sprintf(RxBuffer, "RFM Freq: %u Hz\r\n", rfm_freq);
+      |          ^~~~~~~~
+      |          |
+      |          uint8_t * {aka unsigned char *}
+../Core/Src/main.c:112:10: note: expected 'char *' but argument is of type 'uint8_t *' {aka 'unsigned char *'}
+../Core/Src/main.c:112:32: warning: format '%u' expects argument of type 'unsigned int', but argument 3 has type 'uint32_t' {aka 'long unsigned int'} [-Wformat=]
+  112 |  sprintf(RxBuffer, "RFM Freq: %u Hz\r\n", rfm_freq);
+      |                               ~^          ~~~~~~~~
+      |                                |          |
+      |                                |          uint32_t {aka long unsigned int}
+      |                                unsigned int
+      |                               %lu
+../Core/Src/main.c:113:46: warning: pointer targets in passing argument 1 of 'strlen' differ in signedness [-Wpointer-sign]
+  113 |  HAL_UART_Transmit(&huart1, RxBuffer, strlen(RxBuffer), 100);
+      |                                              ^~~~~~~~
+      |                                              |
+      |                                              uint8_t * {aka unsigned char *}
+../Core/Src/main.c:113:46: note: expected 'const char *' but argument is of type 'uint8_t *' {aka 'unsigned char *'}
+../Core/Src/main.c:125:12: warning: pointer targets in passing argument 1 of 'sprintf' differ in signedness [-Wpointer-sign]
+  125 |    sprintf(RxBuffer,
+      |            ^~~~~~~~
+      |            |
+      |            uint8_t * {aka unsigned char *}
+../Core/Src/main.c:125:12: note: expected 'char *' but argument is of type 'uint8_t *' {aka 'unsigned char *'}
+../Core/Src/main.c:135:48: warning: pointer targets in passing argument 1 of 'strlen' differ in signedness [-Wpointer-sign]
+  135 |    HAL_UART_Transmit(&huart1, RxBuffer, strlen(RxBuffer), 100);
+      |                                                ^~~~~~~~
+      |                                                |
+      |                                                uint8_t * {aka unsigned char *}
+../Core/Src/main.c:135:48: note: expected 'const char *' but argument is of type 'uint8_t *' {aka 'unsigned char *'}
+../Core/Src/main.c:137:13: warning: pointer targets in passing argument 1 of 'sprintf' differ in signedness [-Wpointer-sign]
+  137 |     sprintf(RxBuffer, "Data[%d]: 0x%X\r\n", i, receive_data.data[i]);
+      |             ^~~~~~~~
+      |             |
+      |             uint8_t * {aka unsigned char *}
+../Core/Src/main.c:137:13: note: expected 'char *' but argument is of type 'uint8_t *' {aka 'unsigned char *'}
+../Core/Src/main.c:138:49: warning: pointer targets in passing argument 1 of 'strlen' differ in signedness [-Wpointer-sign]
+  138 |     HAL_UART_Transmit(&huart1, RxBuffer, strlen(RxBuffer), 100);
+      |                                                 ^~~~~~~~
+      |                                                 |
+      |                                                 uint8_t * {aka unsigned char *}
+../Core/Src/main.c:138:49: note: expected 'const char *' but argument is of type 'uint8_t *' {aka 'unsigned char *'}
+arm-none-eabi-gcc -o "STM32F051R8T6_SPI_RFM69_Receiver.elf" @"objects.list"   -mcpu=cortex-m0 -T"C:\STM32 workspace\STM32 RFM69 SPI TxRx\STM32F051R8T6_SPI_RFM69_Transmitter\STM32F051R8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="STM32F051R8T6_SPI_RFM69_Receiver.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: STM32F051R8T6_SPI_RFM69_Receiver.elf
+ 
+arm-none-eabi-size   STM32F051R8T6_SPI_RFM69_Receiver.elf 
+arm-none-eabi-objdump -h -S  STM32F051R8T6_SPI_RFM69_Receiver.elf  > "STM32F051R8T6_SPI_RFM69_Receiver.list"
+arm-none-eabi-objcopy  -O binary  STM32F051R8T6_SPI_RFM69_Receiver.elf  "STM32F051R8T6_SPI_RFM69_Receiver.bin"
+   text	   data	    bss	    dec	    hex	filename
+  20816	    120	   2112	  23048	   5a08	STM32F051R8T6_SPI_RFM69_Receiver.elf
+Finished building: default.size.stdout
+ 
+Finished building: STM32F051R8T6_SPI_RFM69_Receiver.bin
+ 
+Finished building: STM32F051R8T6_SPI_RFM69_Receiver.list
+ 
+22:00:30 **** Incremental Build of configuration Debug for project STM32F051R8T6_SPI_RFM69_Receiver ****
+make -j4 all 
+arm-none-eabi-gcc "../Core/Src/rfm69.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F051x8 -c -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/rfm69.d" -MT"Core/Src/rfm69.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/rfm69.o"
+../Core/Src/rfm69.c: In function 'setAESEncryption':
+../Core/Src/rfm69.c:393:46: warning: dereferencing 'void *' pointer
+  393 |    HAL_SPI_Transmit(&hspi1, (uint8_t*) aesKey[i], 1, 100);
+      |                                              ^
+../Core/Src/rfm69.c:393:29: error: invalid use of void expression
+  393 |    HAL_SPI_Transmit(&hspi1, (uint8_t*) aesKey[i], 1, 100);
+      |                             ^
+make: *** [Core/Src/subdir.mk:37: Core/Src/rfm69.o] Error 1
+"make -j4 all" terminated with exit code 2. Build might be incomplete.
+22:00:35 **** Incremental Build of configuration Debug for project STM32F051R8T6_SPI_RFM69_Receiver ****
+make -j4 all 
+arm-none-eabi-gcc "../Core/Src/rfm69.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F051x8 -c -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/rfm69.d" -MT"Core/Src/rfm69.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/rfm69.o"
+../Core/Src/rfm69.c: In function 'setAESEncryption':
+../Core/Src/rfm69.c:393:29: error: expected expression before '=' token
+  393 |    HAL_SPI_Transmit(&hspi1, =aesKey[i], 1, 100);
+      |                             ^
+../Core/Src/rfm69.c:393:36: warning: dereferencing 'void *' pointer
+  393 |    HAL_SPI_Transmit(&hspi1, =aesKey[i], 1, 100);
+      |                                    ^
+make: *** [Core/Src/subdir.mk:37: Core/Src/rfm69.o] Error 1
+"make -j4 all" terminated with exit code 2. Build might be incomplete.
+22:00:37 **** Incremental Build of configuration Debug for project STM32F051R8T6_SPI_RFM69_Receiver ****
+make -j4 all 
+arm-none-eabi-gcc "../Core/Src/rfm69.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F051x8 -c -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/rfm69.d" -MT"Core/Src/rfm69.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/rfm69.o"
+../Core/Src/rfm69.c: In function 'setAESEncryption':
+../Core/Src/rfm69.c:393:35: warning: dereferencing 'void *' pointer
+  393 |    HAL_SPI_Transmit(&hspi1, aesKey[i], 1, 100);
+      |                                   ^
+../Core/Src/rfm69.c:393:35: error: invalid use of void expression
+  393 |    HAL_SPI_Transmit(&hspi1, aesKey[i], 1, 100);
+      |                             ~~~~~~^~~
+make: *** [Core/Src/subdir.mk:37: Core/Src/rfm69.o] Error 1
+"make -j4 all" terminated with exit code 2. Build might be incomplete.
+22:00:42 **** Incremental Build of configuration Debug for project STM32F051R8T6_SPI_RFM69_Receiver ****
+make -j4 all 
+arm-none-eabi-gcc "../Core/Src/rfm69.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F051x8 -c -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/rfm69.d" -MT"Core/Src/rfm69.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/rfm69.o"
+../Core/Src/rfm69.c: In function 'setAESEncryption':
+../Core/Src/rfm69.c:393:36: warning: dereferencing 'void *' pointer
+  393 |    HAL_SPI_Transmit(&hspi1, &aesKey[i], 1, 100);
+      |                                    ^
+../Core/Src/rfm69.c:393:29: warning: passing argument 2 of 'HAL_SPI_Transmit' discards 'const' qualifier from pointer target type [-Wdiscarded-qualifiers]
+  393 |    HAL_SPI_Transmit(&hspi1, &aesKey[i], 1, 100);
+      |                             ^~~~~~~~~~
+In file included from ../Core/Inc/stm32f0xx_hal_conf.h:276,
+                 from ../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal.h:30,
+                 from ../Core/Inc/main.h:31,
+                 from ../Core/Inc/rfm69.h:11,
+                 from ../Core/Src/rfm69.c:8:
+../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_spi.h:792:70: note: expected 'uint8_t *' {aka 'unsigned char *'} but argument is of type 'const void *'
+  792 | HAL_StatusTypeDef HAL_SPI_Transmit(SPI_HandleTypeDef *hspi, uint8_t *pData, uint16_t Size, uint32_t Timeout);
+      |                                                             ~~~~~~~~~^~~~~
+arm-none-eabi-gcc -o "STM32F051R8T6_SPI_RFM69_Receiver.elf" @"objects.list"   -mcpu=cortex-m0 -T"C:\STM32 workspace\STM32 RFM69 SPI TxRx\STM32F051R8T6_SPI_RFM69_Transmitter\STM32F051R8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="STM32F051R8T6_SPI_RFM69_Receiver.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: STM32F051R8T6_SPI_RFM69_Receiver.elf
+ 
+arm-none-eabi-size   STM32F051R8T6_SPI_RFM69_Receiver.elf 
+arm-none-eabi-objdump -h -S  STM32F051R8T6_SPI_RFM69_Receiver.elf  > "STM32F051R8T6_SPI_RFM69_Receiver.list"
+arm-none-eabi-objcopy  -O binary  STM32F051R8T6_SPI_RFM69_Receiver.elf  "STM32F051R8T6_SPI_RFM69_Receiver.bin"
+   text	   data	    bss	    dec	    hex	filename
+  20816	    120	   2112	  23048	   5a08	STM32F051R8T6_SPI_RFM69_Receiver.elf
+Finished building: default.size.stdout
+ 
+Finished building: STM32F051R8T6_SPI_RFM69_Receiver.bin
+ 
+Finished building: STM32F051R8T6_SPI_RFM69_Receiver.list
+ 
+22:00:54 **** Incremental Build of configuration Debug for project STM32F051R8T6_SPI_RFM69_Receiver ****
+make -j4 all 
+arm-none-eabi-gcc "../Core/Src/rfm69.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F051x8 -c -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/rfm69.d" -MT"Core/Src/rfm69.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/rfm69.o"
+../Core/Src/rfm69.c: In function 'setAESEncryption':
+../Core/Src/rfm69.c:393:45: warning: dereferencing 'void *' pointer
+  393 |    HAL_SPI_Transmit(&RFM69_SPI_PORT, &aesKey[i], 1, 100);
+      |                                             ^
+../Core/Src/rfm69.c:393:38: warning: passing argument 2 of 'HAL_SPI_Transmit' discards 'const' qualifier from pointer target type [-Wdiscarded-qualifiers]
+  393 |    HAL_SPI_Transmit(&RFM69_SPI_PORT, &aesKey[i], 1, 100);
+      |                                      ^~~~~~~~~~
+In file included from ../Core/Inc/stm32f0xx_hal_conf.h:276,
+                 from ../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal.h:30,
+                 from ../Core/Inc/main.h:31,
+                 from ../Core/Inc/rfm69.h:11,
+                 from ../Core/Src/rfm69.c:8:
+../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_spi.h:792:70: note: expected 'uint8_t *' {aka 'unsigned char *'} but argument is of type 'const void *'
+  792 | HAL_StatusTypeDef HAL_SPI_Transmit(SPI_HandleTypeDef *hspi, uint8_t *pData, uint16_t Size, uint32_t Timeout);
+      |                                                             ~~~~~~~~~^~~~~
+arm-none-eabi-gcc -o "STM32F051R8T6_SPI_RFM69_Receiver.elf" @"objects.list"   -mcpu=cortex-m0 -T"C:\STM32 workspace\STM32 RFM69 SPI TxRx\STM32F051R8T6_SPI_RFM69_Transmitter\STM32F051R8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="STM32F051R8T6_SPI_RFM69_Receiver.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: STM32F051R8T6_SPI_RFM69_Receiver.elf
+ 
+arm-none-eabi-size   STM32F051R8T6_SPI_RFM69_Receiver.elf 
+arm-none-eabi-objdump -h -S  STM32F051R8T6_SPI_RFM69_Receiver.elf  > "STM32F051R8T6_SPI_RFM69_Receiver.list"
+arm-none-eabi-objcopy  -O binary  STM32F051R8T6_SPI_RFM69_Receiver.elf  "STM32F051R8T6_SPI_RFM69_Receiver.bin"
+   text	   data	    bss	    dec	    hex	filename
+  20816	    120	   2112	  23048	   5a08	STM32F051R8T6_SPI_RFM69_Receiver.elf
+Finished building: default.size.stdout
+ 
+Finished building: STM32F051R8T6_SPI_RFM69_Receiver.bin
+ 
+Finished building: STM32F051R8T6_SPI_RFM69_Receiver.list
+ 
+22:01:13 **** Incremental Build of configuration Debug for project STM32F051R8T6_SPI_RFM69_Receiver ****
+make -j4 all 
+arm-none-eabi-gcc "../Core/Src/rfm69.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F051x8 -c -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/rfm69.d" -MT"Core/Src/rfm69.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/rfm69.o"
+../Core/Src/rfm69.c: In function 'setAESEncryption':
+../Core/Src/rfm69.c:390:48: warning: passing argument 2 of 'HAL_SPI_Transmit' makes pointer from integer without a cast [-Wint-conversion]
+  390 |   HAL_SPI_Transmit(&RFM69_SPI_PORT, set_AES_cmd[0], 1, 100);
+      |                                     ~~~~~~~~~~~^~~
+      |                                                |
+      |                                                uint8_t {aka unsigned char}
+In file included from ../Core/Inc/stm32f0xx_hal_conf.h:276,
+                 from ../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal.h:30,
+                 from ../Core/Inc/main.h:31,
+                 from ../Core/Inc/rfm69.h:11,
+                 from ../Core/Src/rfm69.c:8:
+../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_spi.h:792:70: note: expected 'uint8_t *' {aka 'unsigned char *'} but argument is of type 'uint8_t' {aka 'unsigned char'}
+  792 | HAL_StatusTypeDef HAL_SPI_Transmit(SPI_HandleTypeDef *hspi, uint8_t *pData, uint16_t Size, uint32_t Timeout);
+      |                                                             ~~~~~~~~~^~~~~
+../Core/Src/rfm69.c:393:45: warning: dereferencing 'void *' pointer
+  393 |    HAL_SPI_Transmit(&RFM69_SPI_PORT, &aesKey[i], 1, 100);
+      |                                             ^
+../Core/Src/rfm69.c:393:38: warning: passing argument 2 of 'HAL_SPI_Transmit' discards 'const' qualifier from pointer target type [-Wdiscarded-qualifiers]
+  393 |    HAL_SPI_Transmit(&RFM69_SPI_PORT, &aesKey[i], 1, 100);
+      |                                      ^~~~~~~~~~
+In file included from ../Core/Inc/stm32f0xx_hal_conf.h:276,
+                 from ../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal.h:30,
+                 from ../Core/Inc/main.h:31,
+                 from ../Core/Inc/rfm69.h:11,
+                 from ../Core/Src/rfm69.c:8:
+../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_spi.h:792:70: note: expected 'uint8_t *' {aka 'unsigned char *'} but argument is of type 'const void *'
+  792 | HAL_StatusTypeDef HAL_SPI_Transmit(SPI_HandleTypeDef *hspi, uint8_t *pData, uint16_t Size, uint32_t Timeout);
+      |                                                             ~~~~~~~~~^~~~~
+arm-none-eabi-gcc -o "STM32F051R8T6_SPI_RFM69_Receiver.elf" @"objects.list"   -mcpu=cortex-m0 -T"C:\STM32 workspace\STM32 RFM69 SPI TxRx\STM32F051R8T6_SPI_RFM69_Transmitter\STM32F051R8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="STM32F051R8T6_SPI_RFM69_Receiver.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: STM32F051R8T6_SPI_RFM69_Receiver.elf
+ 
+arm-none-eabi-size   STM32F051R8T6_SPI_RFM69_Receiver.elf 
+arm-none-eabi-objdump -h -S  STM32F051R8T6_SPI_RFM69_Receiver.elf  > "STM32F051R8T6_SPI_RFM69_Receiver.list"
+arm-none-eabi-objcopy  -O binary  STM32F051R8T6_SPI_RFM69_Receiver.elf  "STM32F051R8T6_SPI_RFM69_Receiver.bin"
+   text	   data	    bss	    dec	    hex	filename
+  20820	    120	   2112	  23052	   5a0c	STM32F051R8T6_SPI_RFM69_Receiver.elf
+Finished building: default.size.stdout
+ 
+Finished building: STM32F051R8T6_SPI_RFM69_Receiver.bin
+ 
+Finished building: STM32F051R8T6_SPI_RFM69_Receiver.list
+ 
+22:01:18 **** Incremental Build of configuration Debug for project STM32F051R8T6_SPI_RFM69_Receiver ****
+make -j4 all 
+arm-none-eabi-size   STM32F051R8T6_SPI_RFM69_Receiver.elf 
+   text	   data	    bss	    dec	    hex	filename
+  20820	    120	   2112	  23052	   5a0c	STM32F051R8T6_SPI_RFM69_Receiver.elf
+Finished building: default.size.stdout
+ 
+22:01:37 **** Incremental Build of configuration Debug for project STM32F051R8T6_SPI_RFM69_Receiver ****
+make -j4 all 
+arm-none-eabi-gcc "../Core/Src/rfm69.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F051x8 -c -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/rfm69.d" -MT"Core/Src/rfm69.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/rfm69.o"
+../Core/Src/rfm69.c: In function 'setAESEncryption':
+../Core/Src/rfm69.c:393:45: warning: dereferencing 'void *' pointer
+  393 |    HAL_SPI_Transmit(&RFM69_SPI_PORT, &aesKey[i], 1, 100);
+      |                                             ^
+../Core/Src/rfm69.c:393:38: warning: passing argument 2 of 'HAL_SPI_Transmit' discards 'const' qualifier from pointer target type [-Wdiscarded-qualifiers]
+  393 |    HAL_SPI_Transmit(&RFM69_SPI_PORT, &aesKey[i], 1, 100);
+      |                                      ^~~~~~~~~~
+In file included from ../Core/Inc/stm32f0xx_hal_conf.h:276,
+                 from ../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal.h:30,
+                 from ../Core/Inc/main.h:31,
+                 from ../Core/Inc/rfm69.h:11,
+                 from ../Core/Src/rfm69.c:8:
+../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_spi.h:792:70: note: expected 'uint8_t *' {aka 'unsigned char *'} but argument is of type 'const void *'
+  792 | HAL_StatusTypeDef HAL_SPI_Transmit(SPI_HandleTypeDef *hspi, uint8_t *pData, uint16_t Size, uint32_t Timeout);
+      |                                                             ~~~~~~~~~^~~~~
+../Core/Src/rfm69.c:386:10: warning: unused variable 'set_AES_cmd' [-Wunused-variable]
+  386 |  uint8_t set_AES_cmd[] = {0x3E | 0x80};
+      |          ^~~~~~~~~~~
+arm-none-eabi-gcc -o "STM32F051R8T6_SPI_RFM69_Receiver.elf" @"objects.list"   -mcpu=cortex-m0 -T"C:\STM32 workspace\STM32 RFM69 SPI TxRx\STM32F051R8T6_SPI_RFM69_Transmitter\STM32F051R8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="STM32F051R8T6_SPI_RFM69_Receiver.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: STM32F051R8T6_SPI_RFM69_Receiver.elf
+ 
+arm-none-eabi-size   STM32F051R8T6_SPI_RFM69_Receiver.elf 
+arm-none-eabi-objdump -h -S  STM32F051R8T6_SPI_RFM69_Receiver.elf  > "STM32F051R8T6_SPI_RFM69_Receiver.list"
+arm-none-eabi-objcopy  -O binary  STM32F051R8T6_SPI_RFM69_Receiver.elf  "STM32F051R8T6_SPI_RFM69_Receiver.bin"
+   text	   data	    bss	    dec	    hex	filename
+  20804	    120	   2112	  23036	   59fc	STM32F051R8T6_SPI_RFM69_Receiver.elf
+Finished building: default.size.stdout
+ 
+Finished building: STM32F051R8T6_SPI_RFM69_Receiver.bin
+ 
+Finished building: STM32F051R8T6_SPI_RFM69_Receiver.list
+ 
+22:02:06 **** Incremental Build of configuration Debug for project STM32F051R8T6_SPI_RFM69_Receiver ****
+make -j4 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F051x8 -c -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc "../Core/Src/rfm69.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F051x8 -c -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/rfm69.d" -MT"Core/Src/rfm69.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/rfm69.o"
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:102:3: warning: implicit declaration of function 'sprintf' [-Wimplicit-function-declaration]
+  102 |   sprintf(RxBuffer, "RFM69 Init() -> false\r\n");
+      |   ^~~~~~~
+../Core/Src/main.c:102:3: warning: incompatible implicit declaration of built-in function 'sprintf'
+../Core/Src/main.c:26:1: note: include '<stdio.h>' or provide a declaration of 'sprintf'
+   25 | #include "rfm69.h"
+  +++ |+#include <stdio.h>
+   26 | /* USER CODE END Includes */
+../Core/Src/main.c:102:11: warning: pointer targets in passing argument 1 of 'sprintf' differ in signedness [-Wpointer-sign]
+  102 |   sprintf(RxBuffer, "RFM69 Init() -> false\r\n");
+      |           ^~~~~~~~
+      |           |
+      |           uint8_t * {aka unsigned char *}
+../Core/Src/main.c:102:11: note: expected 'char *' but argument is of type 'uint8_t *' {aka 'unsigned char *'}
+../Core/Src/main.c:107:39: warning: implicit declaration of function 'strlen' [-Wimplicit-function-declaration]
+  107 |  HAL_UART_Transmit(&huart1, RxBuffer, strlen(RxBuffer), 100);
+      |                                       ^~~~~~
+../Core/Src/main.c:107:39: warning: incompatible implicit declaration of built-in function 'strlen'
+../Core/Src/main.c:26:1: note: include '<string.h>' or provide a declaration of 'strlen'
+   25 | #include "rfm69.h"
+  +++ |+#include <string.h>
+   26 | /* USER CODE END Includes */
+../Core/Src/main.c:107:46: warning: pointer targets in passing argument 1 of 'strlen' differ in signedness [-Wpointer-sign]
+  107 |  HAL_UART_Transmit(&huart1, RxBuffer, strlen(RxBuffer), 100);
+      |                                              ^~~~~~~~
+      |                                              |
+      |                                              uint8_t * {aka unsigned char *}
+../Core/Src/main.c:107:46: note: expected 'const char *' but argument is of type 'uint8_t *' {aka 'unsigned char *'}
+../Core/Src/main.c:110:2: warning: incompatible implicit declaration of built-in function 'sprintf'
+  110 |  sprintf(RxBuffer, "RFM Freq: %u Hz\r\n", rfm_freq);
+      |  ^~~~~~~
+../Core/Src/main.c:110:2: note: include '<stdio.h>' or provide a declaration of 'sprintf'
+../Core/Src/main.c:110:10: warning: pointer targets in passing argument 1 of 'sprintf' differ in signedness [-Wpointer-sign]
+  110 |  sprintf(RxBuffer, "RFM Freq: %u Hz\r\n", rfm_freq);
+      |          ^~~~~~~~
+      |          |
+      |          uint8_t * {aka unsigned char *}
+../Core/Src/main.c:110:10: note: expected 'char *' but argument is of type 'uint8_t *' {aka 'unsigned char *'}
+../Core/Src/main.c:110:32: warning: format '%u' expects argument of type 'unsigned int', but argument 3 has type 'uint32_t' {aka 'long unsigned int'} [-Wformat=]
+  110 |  sprintf(RxBuffer, "RFM Freq: %u Hz\r\n", rfm_freq);
+      |                               ~^          ~~~~~~~~
+      |                                |          |
+      |                                |          uint32_t {aka long unsigned int}
+      |                                unsigned int
+      |                               %lu
+../Core/Src/main.c:111:46: warning: pointer targets in passing argument 1 of 'strlen' differ in signedness [-Wpointer-sign]
+  111 |  HAL_UART_Transmit(&huart1, RxBuffer, strlen(RxBuffer), 100);
+      |                                              ^~~~~~~~
+      |                                              |
+      |                                              uint8_t * {aka unsigned char *}
+../Core/Src/main.c:111:46: note: expected 'const char *' but argument is of type 'uint8_t *' {aka 'unsigned char *'}
+../Core/Src/main.c:123:12: warning: pointer targets in passing argument 1 of 'sprintf' differ in signedness [-Wpointer-sign]
+  123 |    sprintf(RxBuffer,
+      |            ^~~~~~~~
+      |            |
+      |            uint8_t * {aka unsigned char *}
+../Core/Src/main.c:123:12: note: expected 'char *' but argument is of type 'uint8_t *' {aka 'unsigned char *'}
+../Core/Src/main.c:133:48: warning: pointer targets in passing argument 1 of 'strlen' differ in signedness [-Wpointer-sign]
+  133 |    HAL_UART_Transmit(&huart1, RxBuffer, strlen(RxBuffer), 100);
+      |                                                ^~~~~~~~
+      |                                                |
+      |                                                uint8_t * {aka unsigned char *}
+../Core/Src/main.c:133:48: note: expected 'const char *' but argument is of type 'uint8_t *' {aka 'unsigned char *'}
+../Core/Src/main.c:135:13: warning: pointer targets in passing argument 1 of 'sprintf' differ in signedness [-Wpointer-sign]
+  135 |     sprintf(RxBuffer, "Data[%d]: 0x%X\r\n", i, receive_data.data[i]);
+      |             ^~~~~~~~
+      |             |
+      |             uint8_t * {aka unsigned char *}
+../Core/Src/main.c:135:13: note: expected 'char *' but argument is of type 'uint8_t *' {aka 'unsigned char *'}
+../Core/Src/rfm69.c: In function 'setAESEncryption':
+../Core/Src/rfm69.c:390:48: warning: passing argument 2 of 'HAL_SPI_Transmit' makes pointer from integer without a cast [-Wint-conversion]
+  390 |   HAL_SPI_Transmit(&RFM69_SPI_PORT, set_AES_cmd[0], 1, 100);
+      |                                     ~~~~~~~~~~~^~~
+      |                                                |
+      |                                                uint8_t {aka unsigned char}
+../Core/Src/main.c:136:49: warning: pointer targets in passing argument 1 of 'strlen' differ in signedness [-Wpointer-sign]
+  136 |     HAL_UART_Transmit(&huart1, RxBuffer, strlen(RxBuffer), 100);
+      |                                                 ^~~~~~~~
+      |                                                 |
+      |                                                 uint8_t * {aka unsigned char *}
+In file included from ../Core/Inc/stm32f0xx_hal_conf.h:276,
+                 from ../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal.h:30,
+                 from ../Core/Inc/main.h:31,
+                 from ../Core/Inc/rfm69.h:11,
+                 from ../Core/Src/rfm69.c:8:
+../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_spi.h:792:70: note: expected 'uint8_t *' {aka 'unsigned char *'} but argument is of type 'uint8_t' {aka 'unsigned char'}
+  792 | HAL_StatusTypeDef HAL_SPI_Transmit(SPI_HandleTypeDef *hspi, uint8_t *pData, uint16_t Size, uint32_t Timeout);
+      |                                                             ~~~~~~~~~^~~~~
+../Core/Src/main.c:136:49: note: expected 'const char *' but argument is of type 'uint8_t *' {aka 'unsigned char *'}
+../Core/Src/rfm69.c:393:45: warning: dereferencing 'void *' pointer
+  393 |    HAL_SPI_Transmit(&RFM69_SPI_PORT, &aesKey[i], 1, 100);
+      |                                             ^
+../Core/Src/rfm69.c:393:38: warning: passing argument 2 of 'HAL_SPI_Transmit' discards 'const' qualifier from pointer target type [-Wdiscarded-qualifiers]
+  393 |    HAL_SPI_Transmit(&RFM69_SPI_PORT, &aesKey[i], 1, 100);
+      |                                      ^~~~~~~~~~
+In file included from ../Core/Inc/stm32f0xx_hal_conf.h:276,
+                 from ../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal.h:30,
+                 from ../Core/Inc/main.h:31,
+                 from ../Core/Inc/rfm69.h:11,
+                 from ../Core/Src/rfm69.c:8:
+../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_spi.h:792:70: note: expected 'uint8_t *' {aka 'unsigned char *'} but argument is of type 'const void *'
+  792 | HAL_StatusTypeDef HAL_SPI_Transmit(SPI_HandleTypeDef *hspi, uint8_t *pData, uint16_t Size, uint32_t Timeout);
+      |                                                             ~~~~~~~~~^~~~~
+arm-none-eabi-gcc -o "STM32F051R8T6_SPI_RFM69_Receiver.elf" @"objects.list"   -mcpu=cortex-m0 -T"C:\STM32 workspace\STM32 RFM69 SPI TxRx\STM32F051R8T6_SPI_RFM69_Transmitter\STM32F051R8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="STM32F051R8T6_SPI_RFM69_Receiver.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: STM32F051R8T6_SPI_RFM69_Receiver.elf
+ 
+arm-none-eabi-size   STM32F051R8T6_SPI_RFM69_Receiver.elf 
+arm-none-eabi-objdump -h -S  STM32F051R8T6_SPI_RFM69_Receiver.elf  > "STM32F051R8T6_SPI_RFM69_Receiver.list"
+arm-none-eabi-objcopy  -O binary  STM32F051R8T6_SPI_RFM69_Receiver.elf  "STM32F051R8T6_SPI_RFM69_Receiver.bin"
+   text	   data	    bss	    dec	    hex	filename
+  20580	    120	   2112	  22812	   591c	STM32F051R8T6_SPI_RFM69_Receiver.elf
+Finished building: default.size.stdout
+ 
+Finished building: STM32F051R8T6_SPI_RFM69_Receiver.bin
+ 
+Finished building: STM32F051R8T6_SPI_RFM69_Receiver.list
+ 
+22:02:34 **** Incremental Build of configuration Debug for project STM32F051R8T6_SPI_RFM69_Receiver ****
+make -j4 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F051x8 -c -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:102:3: warning: implicit declaration of function 'sprintf' [-Wimplicit-function-declaration]
+  102 |   sprintf(RxBuffer, "RFM69 Init() -> false\r\n");
+      |   ^~~~~~~
+../Core/Src/main.c:102:3: warning: incompatible implicit declaration of built-in function 'sprintf'
+../Core/Src/main.c:26:1: note: include '<stdio.h>' or provide a declaration of 'sprintf'
+   25 | #include "rfm69.h"
+  +++ |+#include <stdio.h>
+   26 | /* USER CODE END Includes */
+../Core/Src/main.c:102:11: warning: pointer targets in passing argument 1 of 'sprintf' differ in signedness [-Wpointer-sign]
+  102 |   sprintf(RxBuffer, "RFM69 Init() -> false\r\n");
+      |           ^~~~~~~~
+      |           |
+      |           uint8_t * {aka unsigned char *}
+../Core/Src/main.c:102:11: note: expected 'char *' but argument is of type 'uint8_t *' {aka 'unsigned char *'}
+../Core/Src/main.c:109:39: warning: implicit declaration of function 'strlen' [-Wimplicit-function-declaration]
+  109 |  HAL_UART_Transmit(&huart1, RxBuffer, strlen(RxBuffer), 100);
+      |                                       ^~~~~~
+../Core/Src/main.c:109:39: warning: incompatible implicit declaration of built-in function 'strlen'
+../Core/Src/main.c:26:1: note: include '<string.h>' or provide a declaration of 'strlen'
+   25 | #include "rfm69.h"
+  +++ |+#include <string.h>
+   26 | /* USER CODE END Includes */
+../Core/Src/main.c:109:46: warning: pointer targets in passing argument 1 of 'strlen' differ in signedness [-Wpointer-sign]
+  109 |  HAL_UART_Transmit(&huart1, RxBuffer, strlen(RxBuffer), 100);
+      |                                              ^~~~~~~~
+      |                                              |
+      |                                              uint8_t * {aka unsigned char *}
+../Core/Src/main.c:109:46: note: expected 'const char *' but argument is of type 'uint8_t *' {aka 'unsigned char *'}
+../Core/Src/main.c:112:2: warning: incompatible implicit declaration of built-in function 'sprintf'
+  112 |  sprintf(RxBuffer, "RFM Freq: %u Hz\r\n", rfm_freq);
+      |  ^~~~~~~
+../Core/Src/main.c:112:2: note: include '<stdio.h>' or provide a declaration of 'sprintf'
+../Core/Src/main.c:112:10: warning: pointer targets in passing argument 1 of 'sprintf' differ in signedness [-Wpointer-sign]
+  112 |  sprintf(RxBuffer, "RFM Freq: %u Hz\r\n", rfm_freq);
+      |          ^~~~~~~~
+      |          |
+      |          uint8_t * {aka unsigned char *}
+../Core/Src/main.c:112:10: note: expected 'char *' but argument is of type 'uint8_t *' {aka 'unsigned char *'}
+../Core/Src/main.c:112:32: warning: format '%u' expects argument of type 'unsigned int', but argument 3 has type 'uint32_t' {aka 'long unsigned int'} [-Wformat=]
+  112 |  sprintf(RxBuffer, "RFM Freq: %u Hz\r\n", rfm_freq);
+      |                               ~^          ~~~~~~~~
+      |                                |          |
+      |                                |          uint32_t {aka long unsigned int}
+      |                                unsigned int
+      |                               %lu
+../Core/Src/main.c:113:46: warning: pointer targets in passing argument 1 of 'strlen' differ in signedness [-Wpointer-sign]
+  113 |  HAL_UART_Transmit(&huart1, RxBuffer, strlen(RxBuffer), 100);
+      |                                              ^~~~~~~~
+      |                                              |
+      |                                              uint8_t * {aka unsigned char *}
+../Core/Src/main.c:113:46: note: expected 'const char *' but argument is of type 'uint8_t *' {aka 'unsigned char *'}
+../Core/Src/main.c:125:12: warning: pointer targets in passing argument 1 of 'sprintf' differ in signedness [-Wpointer-sign]
+  125 |    sprintf(RxBuffer,
+      |            ^~~~~~~~
+      |            |
+      |            uint8_t * {aka unsigned char *}
+../Core/Src/main.c:125:12: note: expected 'char *' but argument is of type 'uint8_t *' {aka 'unsigned char *'}
+../Core/Src/main.c:135:48: warning: pointer targets in passing argument 1 of 'strlen' differ in signedness [-Wpointer-sign]
+  135 |    HAL_UART_Transmit(&huart1, RxBuffer, strlen(RxBuffer), 100);
+      |                                                ^~~~~~~~
+      |                                                |
+      |                                                uint8_t * {aka unsigned char *}
+../Core/Src/main.c:135:48: note: expected 'const char *' but argument is of type 'uint8_t *' {aka 'unsigned char *'}
+../Core/Src/main.c:137:13: warning: pointer targets in passing argument 1 of 'sprintf' differ in signedness [-Wpointer-sign]
+  137 |     sprintf(RxBuffer, "Data[%d]: 0x%X\r\n", i, receive_data.data[i]);
+      |             ^~~~~~~~
+      |             |
+      |             uint8_t * {aka unsigned char *}
+../Core/Src/main.c:137:13: note: expected 'char *' but argument is of type 'uint8_t *' {aka 'unsigned char *'}
+../Core/Src/main.c:138:49: warning: pointer targets in passing argument 1 of 'strlen' differ in signedness [-Wpointer-sign]
+  138 |     HAL_UART_Transmit(&huart1, RxBuffer, strlen(RxBuffer), 100);
+      |                                                 ^~~~~~~~
+      |                                                 |
+      |                                                 uint8_t * {aka unsigned char *}
+../Core/Src/main.c:138:49: note: expected 'const char *' but argument is of type 'uint8_t *' {aka 'unsigned char *'}
+arm-none-eabi-gcc -o "STM32F051R8T6_SPI_RFM69_Receiver.elf" @"objects.list"   -mcpu=cortex-m0 -T"C:\STM32 workspace\STM32 RFM69 SPI TxRx\STM32F051R8T6_SPI_RFM69_Transmitter\STM32F051R8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="STM32F051R8T6_SPI_RFM69_Receiver.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: STM32F051R8T6_SPI_RFM69_Receiver.elf
+ 
+arm-none-eabi-size   STM32F051R8T6_SPI_RFM69_Receiver.elf 
+arm-none-eabi-objdump -h -S  STM32F051R8T6_SPI_RFM69_Receiver.elf  > "STM32F051R8T6_SPI_RFM69_Receiver.list"
+arm-none-eabi-objcopy  -O binary  STM32F051R8T6_SPI_RFM69_Receiver.elf  "STM32F051R8T6_SPI_RFM69_Receiver.bin"
+   text	   data	    bss	    dec	    hex	filename
+  20820	    120	   2112	  23052	   5a0c	STM32F051R8T6_SPI_RFM69_Receiver.elf
+Finished building: default.size.stdout
+ 
+Finished building: STM32F051R8T6_SPI_RFM69_Receiver.bin
+ 
+Finished building: STM32F051R8T6_SPI_RFM69_Receiver.list
+ 
+22:02:58 **** Incremental Build of configuration Debug for project STM32F051R8T6_SPI_RFM69_Receiver ****
+make -j4 all 
+arm-none-eabi-gcc "../Core/Src/rfm69.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F051x8 -c -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/rfm69.d" -MT"Core/Src/rfm69.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/rfm69.o"
+../Core/Src/rfm69.c: In function 'setAESEncryption':
+../Core/Src/rfm69.c:390:37: warning: passing argument 2 of 'HAL_SPI_Transmit' makes pointer from integer without a cast [-Wint-conversion]
+  390 |   HAL_SPI_Transmit(&RFM69_SPI_PORT, *&set_AES_cmd[0], 1, 100);
+      |                                     ^~~~~~~~~~~~~~~~
+      |                                     |
+      |                                     uint8_t {aka unsigned char}
+In file included from ../Core/Inc/stm32f0xx_hal_conf.h:276,
+                 from ../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal.h:30,
+                 from ../Core/Inc/main.h:31,
+                 from ../Core/Inc/rfm69.h:11,
+                 from ../Core/Src/rfm69.c:8:
+../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_spi.h:792:70: note: expected 'uint8_t *' {aka 'unsigned char *'} but argument is of type 'uint8_t' {aka 'unsigned char'}
+  792 | HAL_StatusTypeDef HAL_SPI_Transmit(SPI_HandleTypeDef *hspi, uint8_t *pData, uint16_t Size, uint32_t Timeout);
+      |                                                             ~~~~~~~~~^~~~~
+../Core/Src/rfm69.c:393:45: warning: dereferencing 'void *' pointer
+  393 |    HAL_SPI_Transmit(&RFM69_SPI_PORT, &aesKey[i], 1, 100);
+      |                                             ^
+../Core/Src/rfm69.c:393:38: warning: passing argument 2 of 'HAL_SPI_Transmit' discards 'const' qualifier from pointer target type [-Wdiscarded-qualifiers]
+  393 |    HAL_SPI_Transmit(&RFM69_SPI_PORT, &aesKey[i], 1, 100);
+      |                                      ^~~~~~~~~~
+In file included from ../Core/Inc/stm32f0xx_hal_conf.h:276,
+                 from ../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal.h:30,
+                 from ../Core/Inc/main.h:31,
+                 from ../Core/Inc/rfm69.h:11,
+                 from ../Core/Src/rfm69.c:8:
+../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_spi.h:792:70: note: expected 'uint8_t *' {aka 'unsigned char *'} but argument is of type 'const void *'
+  792 | HAL_StatusTypeDef HAL_SPI_Transmit(SPI_HandleTypeDef *hspi, uint8_t *pData, uint16_t Size, uint32_t Timeout);
+      |                                                             ~~~~~~~~~^~~~~
+arm-none-eabi-gcc -o "STM32F051R8T6_SPI_RFM69_Receiver.elf" @"objects.list"   -mcpu=cortex-m0 -T"C:\STM32 workspace\STM32 RFM69 SPI TxRx\STM32F051R8T6_SPI_RFM69_Transmitter\STM32F051R8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="STM32F051R8T6_SPI_RFM69_Receiver.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: STM32F051R8T6_SPI_RFM69_Receiver.elf
+ 
+arm-none-eabi-size   STM32F051R8T6_SPI_RFM69_Receiver.elf 
+arm-none-eabi-objdump -h -S  STM32F051R8T6_SPI_RFM69_Receiver.elf  > "STM32F051R8T6_SPI_RFM69_Receiver.list"
+arm-none-eabi-objcopy  -O binary  STM32F051R8T6_SPI_RFM69_Receiver.elf  "STM32F051R8T6_SPI_RFM69_Receiver.bin"
+   text	   data	    bss	    dec	    hex	filename
+  20820	    120	   2112	  23052	   5a0c	STM32F051R8T6_SPI_RFM69_Receiver.elf
+Finished building: default.size.stdout
+ 
+Finished building: STM32F051R8T6_SPI_RFM69_Receiver.bin
+ 
+Finished building: STM32F051R8T6_SPI_RFM69_Receiver.list
+ 
+22:03:04 **** Incremental Build of configuration Debug for project STM32F051R8T6_SPI_RFM69_Receiver ****
+make -j4 all 
+arm-none-eabi-gcc "../Core/Src/rfm69.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F051x8 -c -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/rfm69.d" -MT"Core/Src/rfm69.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/rfm69.o"
+../Core/Src/rfm69.c: In function 'setAESEncryption':
+../Core/Src/rfm69.c:390:48: warning: passing argument 2 of 'HAL_SPI_Transmit' makes pointer from integer without a cast [-Wint-conversion]
+  390 |   HAL_SPI_Transmit(&RFM69_SPI_PORT, set_AES_cmd[0], 1, 100);
+      |                                     ~~~~~~~~~~~^~~
+      |                                                |
+      |                                                uint8_t {aka unsigned char}
+In file included from ../Core/Inc/stm32f0xx_hal_conf.h:276,
+                 from ../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal.h:30,
+                 from ../Core/Inc/main.h:31,
+                 from ../Core/Inc/rfm69.h:11,
+                 from ../Core/Src/rfm69.c:8:
+../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_spi.h:792:70: note: expected 'uint8_t *' {aka 'unsigned char *'} but argument is of type 'uint8_t' {aka 'unsigned char'}
+  792 | HAL_StatusTypeDef HAL_SPI_Transmit(SPI_HandleTypeDef *hspi, uint8_t *pData, uint16_t Size, uint32_t Timeout);
+      |                                                             ~~~~~~~~~^~~~~
+../Core/Src/rfm69.c:393:45: warning: dereferencing 'void *' pointer
+  393 |    HAL_SPI_Transmit(&RFM69_SPI_PORT, &aesKey[i], 1, 100);
+      |                                             ^
+../Core/Src/rfm69.c:393:38: warning: passing argument 2 of 'HAL_SPI_Transmit' discards 'const' qualifier from pointer target type [-Wdiscarded-qualifiers]
+  393 |    HAL_SPI_Transmit(&RFM69_SPI_PORT, &aesKey[i], 1, 100);
+      |                                      ^~~~~~~~~~
+In file included from ../Core/Inc/stm32f0xx_hal_conf.h:276,
+                 from ../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal.h:30,
+                 from ../Core/Inc/main.h:31,
+                 from ../Core/Inc/rfm69.h:11,
+                 from ../Core/Src/rfm69.c:8:
+../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_spi.h:792:70: note: expected 'uint8_t *' {aka 'unsigned char *'} but argument is of type 'const void *'
+  792 | HAL_StatusTypeDef HAL_SPI_Transmit(SPI_HandleTypeDef *hspi, uint8_t *pData, uint16_t Size, uint32_t Timeout);
+      |                                                             ~~~~~~~~~^~~~~
+arm-none-eabi-gcc -o "STM32F051R8T6_SPI_RFM69_Receiver.elf" @"objects.list"   -mcpu=cortex-m0 -T"C:\STM32 workspace\STM32 RFM69 SPI TxRx\STM32F051R8T6_SPI_RFM69_Transmitter\STM32F051R8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="STM32F051R8T6_SPI_RFM69_Receiver.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: STM32F051R8T6_SPI_RFM69_Receiver.elf
+ 
+arm-none-eabi-size   STM32F051R8T6_SPI_RFM69_Receiver.elf 
+arm-none-eabi-objdump -h -S  STM32F051R8T6_SPI_RFM69_Receiver.elf  > "STM32F051R8T6_SPI_RFM69_Receiver.list"
+arm-none-eabi-objcopy  -O binary  STM32F051R8T6_SPI_RFM69_Receiver.elf  "STM32F051R8T6_SPI_RFM69_Receiver.bin"
+   text	   data	    bss	    dec	    hex	filename
+  20820	    120	   2112	  23052	   5a0c	STM32F051R8T6_SPI_RFM69_Receiver.elf
+Finished building: default.size.stdout
+ 
+Finished building: STM32F051R8T6_SPI_RFM69_Receiver.bin
+ 
+Finished building: STM32F051R8T6_SPI_RFM69_Receiver.list
+ 
+22:03:18 **** Incremental Build of configuration Debug for project STM32F051R8T6_SPI_RFM69_Receiver ****
+make -j4 all 
+arm-none-eabi-gcc "../Core/Src/rfm69.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F051x8 -c -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/rfm69.d" -MT"Core/Src/rfm69.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/rfm69.o"
+../Core/Src/rfm69.c: In function 'setAESEncryption':
+../Core/Src/rfm69.c:390:37: warning: cast to pointer from integer of different size [-Wint-to-pointer-cast]
+  390 |   HAL_SPI_Transmit(&RFM69_SPI_PORT, (uint8_t*)set_AES_cmd[0], 1, 100);
+      |                                     ^
+../Core/Src/rfm69.c:393:45: warning: dereferencing 'void *' pointer
+  393 |    HAL_SPI_Transmit(&RFM69_SPI_PORT, &aesKey[i], 1, 100);
+      |                                             ^
+../Core/Src/rfm69.c:393:38: warning: passing argument 2 of 'HAL_SPI_Transmit' discards 'const' qualifier from pointer target type [-Wdiscarded-qualifiers]
+  393 |    HAL_SPI_Transmit(&RFM69_SPI_PORT, &aesKey[i], 1, 100);
+      |                                      ^~~~~~~~~~
+In file included from ../Core/Inc/stm32f0xx_hal_conf.h:276,
+                 from ../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal.h:30,
+                 from ../Core/Inc/main.h:31,
+                 from ../Core/Inc/rfm69.h:11,
+                 from ../Core/Src/rfm69.c:8:
+../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_spi.h:792:70: note: expected 'uint8_t *' {aka 'unsigned char *'} but argument is of type 'const void *'
+  792 | HAL_StatusTypeDef HAL_SPI_Transmit(SPI_HandleTypeDef *hspi, uint8_t *pData, uint16_t Size, uint32_t Timeout);
+      |                                                             ~~~~~~~~~^~~~~
+arm-none-eabi-gcc -o "STM32F051R8T6_SPI_RFM69_Receiver.elf" @"objects.list"   -mcpu=cortex-m0 -T"C:\STM32 workspace\STM32 RFM69 SPI TxRx\STM32F051R8T6_SPI_RFM69_Transmitter\STM32F051R8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="STM32F051R8T6_SPI_RFM69_Receiver.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: STM32F051R8T6_SPI_RFM69_Receiver.elf
+ 
+arm-none-eabi-size   STM32F051R8T6_SPI_RFM69_Receiver.elf 
+arm-none-eabi-objdump -h -S  STM32F051R8T6_SPI_RFM69_Receiver.elf  > "STM32F051R8T6_SPI_RFM69_Receiver.list"
+arm-none-eabi-objcopy  -O binary  STM32F051R8T6_SPI_RFM69_Receiver.elf  "STM32F051R8T6_SPI_RFM69_Receiver.bin"
+   text	   data	    bss	    dec	    hex	filename
+  20820	    120	   2112	  23052	   5a0c	STM32F051R8T6_SPI_RFM69_Receiver.elf
+Finished building: default.size.stdout
+ 
+Finished building: STM32F051R8T6_SPI_RFM69_Receiver.bin
+ 
+Finished building: STM32F051R8T6_SPI_RFM69_Receiver.list
+ 
+22:03:23 **** Incremental Build of configuration Debug for project STM32F051R8T6_SPI_RFM69_Receiver ****
+make -j4 all 
+arm-none-eabi-gcc "../Core/Src/rfm69.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F051x8 -c -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/rfm69.d" -MT"Core/Src/rfm69.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/rfm69.o"
+../Core/Src/rfm69.c: In function 'setAESEncryption':
+../Core/Src/rfm69.c:390:48: error: 'sset_AES_cmd' undeclared (first use in this function); did you mean 'set_AES_cmd'?
+  390 |   HAL_SPI_Transmit(&RFM69_SPI_PORT, (uint8_t*)&sset_AES_cmd[0], 1, 100);
+      |                                                ^~~~~~~~~~~~
+      |                                                set_AES_cmd
+../Core/Src/rfm69.c:390:48: note: each undeclared identifier is reported only once for each function it appears in
+../Core/Src/rfm69.c:393:45: warning: dereferencing 'void *' pointer
+  393 |    HAL_SPI_Transmit(&RFM69_SPI_PORT, &aesKey[i], 1, 100);
+      |                                             ^
+../Core/Src/rfm69.c:393:38: warning: passing argument 2 of 'HAL_SPI_Transmit' discards 'const' qualifier from pointer target type [-Wdiscarded-qualifiers]
+  393 |    HAL_SPI_Transmit(&RFM69_SPI_PORT, &aesKey[i], 1, 100);
+      |                                      ^~~~~~~~~~
+In file included from ../Core/Inc/stm32f0xx_hal_conf.h:276,
+                 from ../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal.h:30,
+                 from ../Core/Inc/main.h:31,
+                 from ../Core/Inc/rfm69.h:11,
+                 from ../Core/Src/rfm69.c:8:
+../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_spi.h:792:70: note: expected 'uint8_t *' {aka 'unsigned char *'} but argument is of type 'const void *'
+  792 | HAL_StatusTypeDef HAL_SPI_Transmit(SPI_HandleTypeDef *hspi, uint8_t *pData, uint16_t Size, uint32_t Timeout);
+      |                                                             ~~~~~~~~~^~~~~
+../Core/Src/rfm69.c:386:10: warning: unused variable 'set_AES_cmd' [-Wunused-variable]
+  386 |  uint8_t set_AES_cmd[] = {0x3E | 0x80};
+      |          ^~~~~~~~~~~
+make: *** [Core/Src/subdir.mk:37: Core/Src/rfm69.o] Error 1
+"make -j4 all" terminated with exit code 2. Build might be incomplete.
+22:03:25 **** Incremental Build of configuration Debug for project STM32F051R8T6_SPI_RFM69_Receiver ****
+make -j4 all 
+arm-none-eabi-gcc "../Core/Src/rfm69.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F051x8 -c -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/rfm69.d" -MT"Core/Src/rfm69.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/rfm69.o"
+../Core/Src/rfm69.c: In function 'setAESEncryption':
+../Core/Src/rfm69.c:393:45: warning: dereferencing 'void *' pointer
+  393 |    HAL_SPI_Transmit(&RFM69_SPI_PORT, &aesKey[i], 1, 100);
+      |                                             ^
+../Core/Src/rfm69.c:393:38: warning: passing argument 2 of 'HAL_SPI_Transmit' discards 'const' qualifier from pointer target type [-Wdiscarded-qualifiers]
+  393 |    HAL_SPI_Transmit(&RFM69_SPI_PORT, &aesKey[i], 1, 100);
+      |                                      ^~~~~~~~~~
+In file included from ../Core/Inc/stm32f0xx_hal_conf.h:276,
+                 from ../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal.h:30,
+                 from ../Core/Inc/main.h:31,
+                 from ../Core/Inc/rfm69.h:11,
+                 from ../Core/Src/rfm69.c:8:
+../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_spi.h:792:70: note: expected 'uint8_t *' {aka 'unsigned char *'} but argument is of type 'const void *'
+  792 | HAL_StatusTypeDef HAL_SPI_Transmit(SPI_HandleTypeDef *hspi, uint8_t *pData, uint16_t Size, uint32_t Timeout);
+      |                                                             ~~~~~~~~~^~~~~
+arm-none-eabi-gcc -o "STM32F051R8T6_SPI_RFM69_Receiver.elf" @"objects.list"   -mcpu=cortex-m0 -T"C:\STM32 workspace\STM32 RFM69 SPI TxRx\STM32F051R8T6_SPI_RFM69_Transmitter\STM32F051R8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="STM32F051R8T6_SPI_RFM69_Receiver.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: STM32F051R8T6_SPI_RFM69_Receiver.elf
+ 
+arm-none-eabi-size   STM32F051R8T6_SPI_RFM69_Receiver.elf 
+arm-none-eabi-objdump -h -S  STM32F051R8T6_SPI_RFM69_Receiver.elf  > "STM32F051R8T6_SPI_RFM69_Receiver.list"
+arm-none-eabi-objcopy  -O binary  STM32F051R8T6_SPI_RFM69_Receiver.elf  "STM32F051R8T6_SPI_RFM69_Receiver.bin"
+   text	   data	    bss	    dec	    hex	filename
+  20816	    120	   2112	  23048	   5a08	STM32F051R8T6_SPI_RFM69_Receiver.elf
+Finished building: default.size.stdout
+ 
+Finished building: STM32F051R8T6_SPI_RFM69_Receiver.bin
+ 
+Finished building: STM32F051R8T6_SPI_RFM69_Receiver.list
+ 
+22:03:32 **** Incremental Build of configuration Debug for project STM32F051R8T6_SPI_RFM69_Receiver ****
+make -j4 all 
+arm-none-eabi-size   STM32F051R8T6_SPI_RFM69_Receiver.elf 
+   text	   data	    bss	    dec	    hex	filename
+  20816	    120	   2112	  23048	   5a08	STM32F051R8T6_SPI_RFM69_Receiver.elf
+Finished building: default.size.stdout
+ 
+22:04:23 **** Incremental Build of configuration Debug for project STM32F334R8T6_RFM69_Transmitte_HAL ****
+make -j4 all 
+arm-none-eabi-gcc "../Core/Src/rfm69.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F334x8 -c -I../Core/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F3xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/rfm69.d" -MT"Core/Src/rfm69.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/rfm69.o"
+../Core/Src/rfm69.c: In function 'setAESEncryption':
+../Core/Src/rfm69.c:398:45: warning: dereferencing 'void *' pointer
+  398 |    HAL_SPI_Transmit(&RFM69_SPI_PORT, &aesKey[i], 1, 100);
+      |                                             ^
+../Core/Src/rfm69.c:398:38: warning: passing argument 2 of 'HAL_SPI_Transmit' discards 'const' qualifier from pointer target type [-Wdiscarded-qualifiers]
+  398 |    HAL_SPI_Transmit(&RFM69_SPI_PORT, &aesKey[i], 1, 100);
+      |                                      ^~~~~~~~~~
+In file included from ../Core/Inc/stm32f3xx_hal_conf.h:314,
+                 from ../Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_hal.h:30,
+                 from ../Core/Inc/main.h:31,
+                 from ../Core/Inc/rfm69.h:11,
+                 from ../Core/Src/rfm69.c:8:
+../Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_hal_spi.h:792:70: note: expected 'uint8_t *' {aka 'unsigned char *'} but argument is of type 'const void *'
+  792 | HAL_StatusTypeDef HAL_SPI_Transmit(SPI_HandleTypeDef *hspi, uint8_t *pData, uint16_t Size, uint32_t Timeout);
+      |                                                             ~~~~~~~~~^~~~~
+arm-none-eabi-gcc -o "STM32F334R8T6_RFM69_Transmitte_HAL.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\STM32 workspace\STM32 RFM69 SPI TxRx\STM32F334R8T6_RFM69_Transmitte_HAL\STM32F334R8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="STM32F334R8T6_RFM69_Transmitte_HAL.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: STM32F334R8T6_RFM69_Transmitte_HAL.elf
+ 
+arm-none-eabi-size   STM32F334R8T6_RFM69_Transmitte_HAL.elf 
+arm-none-eabi-objdump -h -S  STM32F334R8T6_RFM69_Transmitte_HAL.elf  > "STM32F334R8T6_RFM69_Transmitte_HAL.list"
+arm-none-eabi-objcopy  -O binary  STM32F334R8T6_RFM69_Transmitte_HAL.elf  "STM32F334R8T6_RFM69_Transmitte_HAL.bin"
+   text	   data	    bss	    dec	    hex	filename
+  20092	    120	   2112	  22324	   5734	STM32F334R8T6_RFM69_Transmitte_HAL.elf
+Finished building: default.size.stdout
+ 
+Finished building: STM32F334R8T6_RFM69_Transmitte_HAL.bin
+ 
+Finished building: STM32F334R8T6_RFM69_Transmitte_HAL.list
+ 
+22:04:57 **** Incremental Build of configuration Debug for project STM32F334R8T6_RFM69_Transmitte_HAL ****
+make -j4 all 
+arm-none-eabi-size   STM32F334R8T6_RFM69_Transmitte_HAL.elf 
+   text	   data	    bss	    dec	    hex	filename
+  20092	    120	   2112	  22324	   5734	STM32F334R8T6_RFM69_Transmitte_HAL.elf
+Finished building: default.size.stdout
+ 
+22:05:11 **** Incremental Build of configuration Debug for project STM32F334R8T6_RFM69_Transmitte_HAL ****
+make -j4 all 
+arm-none-eabi-size   STM32F334R8T6_RFM69_Transmitte_HAL.elf 
+   text	   data	    bss	    dec	    hex	filename
+  20092	    120	   2112	  22324	   5734	STM32F334R8T6_RFM69_Transmitte_HAL.elf
+Finished building: default.size.stdout
+ 
+22:05:24 **** Incremental Build of configuration Debug for project STM32F334R8T6_RFM69_Transmitte_HAL ****
+make -j4 all 
+arm-none-eabi-size   STM32F334R8T6_RFM69_Transmitte_HAL.elf 
+   text	   data	    bss	    dec	    hex	filename
+  20092	    120	   2112	  22324	   5734	STM32F334R8T6_RFM69_Transmitte_HAL.elf
+Finished building: default.size.stdout
+ 
+22:06:13 **** Incremental Build of configuration Debug for project STM32F334R8T6_RFM69_Transmitte_HAL ****
+make -j4 all 
+arm-none-eabi-size   STM32F334R8T6_RFM69_Transmitte_HAL.elf 
+   text	   data	    bss	    dec	    hex	filename
+  20092	    120	   2112	  22324	   5734	STM32F334R8T6_RFM69_Transmitte_HAL.elf
+Finished building: default.size.stdout
+ 
+22:08:02 **** Incremental Build of configuration Debug for project STM32F051R8T6_SPI_RFM69_Receiver ****
+make -j4 all 
+arm-none-eabi-gcc "../Core/Src/rfm69.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F051x8 -c -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/rfm69.d" -MT"Core/Src/rfm69.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/rfm69.o"
+../Core/Src/rfm69.c: In function 'setAESEncryption':
+../Core/Src/rfm69.c:393:45: warning: dereferencing 'void *' pointer
+  393 |    HAL_SPI_Transmit(&RFM69_SPI_PORT, &aesKey[i], 1, 100);
+      |                                             ^
+../Core/Src/rfm69.c:393:38: warning: passing argument 2 of 'HAL_SPI_Transmit' discards 'const' qualifier from pointer target type [-Wdiscarded-qualifiers]
+  393 |    HAL_SPI_Transmit(&RFM69_SPI_PORT, &aesKey[i], 1, 100);
+      |                                      ^~~~~~~~~~
+In file included from ../Core/Inc/stm32f0xx_hal_conf.h:276,
+                 from ../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal.h:30,
+                 from ../Core/Inc/main.h:31,
+                 from ../Core/Inc/rfm69.h:11,
+                 from ../Core/Src/rfm69.c:8:
+../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_spi.h:792:70: note: expected 'uint8_t *' {aka 'unsigned char *'} but argument is of type 'const void *'
+  792 | HAL_StatusTypeDef HAL_SPI_Transmit(SPI_HandleTypeDef *hspi, uint8_t *pData, uint16_t Size, uint32_t Timeout);
+      |                                                             ~~~~~~~~~^~~~~
+arm-none-eabi-gcc -o "STM32F051R8T6_SPI_RFM69_Receiver.elf" @"objects.list"   -mcpu=cortex-m0 -T"C:\STM32 workspace\STM32 RFM69 SPI TxRx\STM32F051R8T6_SPI_RFM69_Transmitter\STM32F051R8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="STM32F051R8T6_SPI_RFM69_Receiver.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: STM32F051R8T6_SPI_RFM69_Receiver.elf
+ 
+arm-none-eabi-size   STM32F051R8T6_SPI_RFM69_Receiver.elf 
+arm-none-eabi-objdump -h -S  STM32F051R8T6_SPI_RFM69_Receiver.elf  > "STM32F051R8T6_SPI_RFM69_Receiver.list"
+arm-none-eabi-objcopy  -O binary  STM32F051R8T6_SPI_RFM69_Receiver.elf  "STM32F051R8T6_SPI_RFM69_Receiver.bin"
+   text	   data	    bss	    dec	    hex	filename
+  20816	    120	   2112	  23048	   5a08	STM32F051R8T6_SPI_RFM69_Receiver.elf
+Finished building: default.size.stdout
+ 
+Finished building: STM32F051R8T6_SPI_RFM69_Receiver.bin
+ 
+Finished building: STM32F051R8T6_SPI_RFM69_Receiver.list
+ 
+22:08:16 **** Incremental Build of configuration Debug for project STM32F051R8T6_SPI_RFM69_Receiver ****
+make -j4 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F051x8 -c -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:102:3: warning: implicit declaration of function 'sprintf' [-Wimplicit-function-declaration]
+  102 |   sprintf(RxBuffer, "RFM69 Init() -> false\r\n");
+      |   ^~~~~~~
+../Core/Src/main.c:102:3: warning: incompatible implicit declaration of built-in function 'sprintf'
+../Core/Src/main.c:26:1: note: include '<stdio.h>' or provide a declaration of 'sprintf'
+   25 | #include "rfm69.h"
+  +++ |+#include <stdio.h>
+   26 | /* USER CODE END Includes */
+../Core/Src/main.c:102:11: warning: pointer targets in passing argument 1 of 'sprintf' differ in signedness [-Wpointer-sign]
+  102 |   sprintf(RxBuffer, "RFM69 Init() -> false\r\n");
+      |           ^~~~~~~~
+      |           |
+      |           uint8_t * {aka unsigned char *}
+../Core/Src/main.c:102:11: note: expected 'char *' but argument is of type 'uint8_t *' {aka 'unsigned char *'}
+../Core/Src/main.c:109:39: warning: implicit declaration of function 'strlen' [-Wimplicit-function-declaration]
+  109 |  HAL_UART_Transmit(&huart1, RxBuffer, strlen(RxBuffer), 100);
+      |                                       ^~~~~~
+../Core/Src/main.c:109:39: warning: incompatible implicit declaration of built-in function 'strlen'
+../Core/Src/main.c:26:1: note: include '<string.h>' or provide a declaration of 'strlen'
+   25 | #include "rfm69.h"
+  +++ |+#include <string.h>
+   26 | /* USER CODE END Includes */
+../Core/Src/main.c:109:46: warning: pointer targets in passing argument 1 of 'strlen' differ in signedness [-Wpointer-sign]
+  109 |  HAL_UART_Transmit(&huart1, RxBuffer, strlen(RxBuffer), 100);
+      |                                              ^~~~~~~~
+      |                                              |
+      |                                              uint8_t * {aka unsigned char *}
+../Core/Src/main.c:109:46: note: expected 'const char *' but argument is of type 'uint8_t *' {aka 'unsigned char *'}
+../Core/Src/main.c:112:2: warning: incompatible implicit declaration of built-in function 'sprintf'
+  112 |  sprintf(RxBuffer, "RFM Freq: %u Hz\r\n", rfm_freq);
+      |  ^~~~~~~
+../Core/Src/main.c:112:2: note: include '<stdio.h>' or provide a declaration of 'sprintf'
+../Core/Src/main.c:112:10: warning: pointer targets in passing argument 1 of 'sprintf' differ in signedness [-Wpointer-sign]
+  112 |  sprintf(RxBuffer, "RFM Freq: %u Hz\r\n", rfm_freq);
+      |          ^~~~~~~~
+      |          |
+      |          uint8_t * {aka unsigned char *}
+../Core/Src/main.c:112:10: note: expected 'char *' but argument is of type 'uint8_t *' {aka 'unsigned char *'}
+../Core/Src/main.c:112:32: warning: format '%u' expects argument of type 'unsigned int', but argument 3 has type 'uint32_t' {aka 'long unsigned int'} [-Wformat=]
+  112 |  sprintf(RxBuffer, "RFM Freq: %u Hz\r\n", rfm_freq);
+      |                               ~^          ~~~~~~~~
+      |                                |          |
+      |                                |          uint32_t {aka long unsigned int}
+      |                                unsigned int
+      |                               %lu
+../Core/Src/main.c:113:46: warning: pointer targets in passing argument 1 of 'strlen' differ in signedness [-Wpointer-sign]
+  113 |  HAL_UART_Transmit(&huart1, RxBuffer, strlen(RxBuffer), 100);
+      |                                              ^~~~~~~~
+      |                                              |
+      |                                              uint8_t * {aka unsigned char *}
+../Core/Src/main.c:113:46: note: expected 'const char *' but argument is of type 'uint8_t *' {aka 'unsigned char *'}
+../Core/Src/main.c:125:12: warning: pointer targets in passing argument 1 of 'sprintf' differ in signedness [-Wpointer-sign]
+  125 |    sprintf(RxBuffer,
+      |            ^~~~~~~~
+      |            |
+      |            uint8_t * {aka unsigned char *}
+../Core/Src/main.c:125:12: note: expected 'char *' but argument is of type 'uint8_t *' {aka 'unsigned char *'}
+../Core/Src/main.c:135:48: warning: pointer targets in passing argument 1 of 'strlen' differ in signedness [-Wpointer-sign]
+  135 |    HAL_UART_Transmit(&huart1, RxBuffer, strlen(RxBuffer), 100);
+      |                                                ^~~~~~~~
+      |                                                |
+      |                                                uint8_t * {aka unsigned char *}
+../Core/Src/main.c:135:48: note: expected 'const char *' but argument is of type 'uint8_t *' {aka 'unsigned char *'}
+../Core/Src/main.c:137:13: warning: pointer targets in passing argument 1 of 'sprintf' differ in signedness [-Wpointer-sign]
+  137 |     sprintf(RxBuffer, "Data[%d]: 0x%X\r\n", i, receive_data.data[i]);
+      |             ^~~~~~~~
+      |             |
+      |             uint8_t * {aka unsigned char *}
+../Core/Src/main.c:137:13: note: expected 'char *' but argument is of type 'uint8_t *' {aka 'unsigned char *'}
+../Core/Src/main.c:138:49: warning: pointer targets in passing argument 1 of 'strlen' differ in signedness [-Wpointer-sign]
+  138 |     HAL_UART_Transmit(&huart1, RxBuffer, strlen(RxBuffer), 100);
+      |                                                 ^~~~~~~~
+      |                                                 |
+      |                                                 uint8_t * {aka unsigned char *}
+../Core/Src/main.c:138:49: note: expected 'const char *' but argument is of type 'uint8_t *' {aka 'unsigned char *'}
+arm-none-eabi-gcc -o "STM32F051R8T6_SPI_RFM69_Receiver.elf" @"objects.list"   -mcpu=cortex-m0 -T"C:\STM32 workspace\STM32 RFM69 SPI TxRx\STM32F051R8T6_SPI_RFM69_Transmitter\STM32F051R8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="STM32F051R8T6_SPI_RFM69_Receiver.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: STM32F051R8T6_SPI_RFM69_Receiver.elf
+ 
+arm-none-eabi-size   STM32F051R8T6_SPI_RFM69_Receiver.elf 
+arm-none-eabi-objdump -h -S  STM32F051R8T6_SPI_RFM69_Receiver.elf  > "STM32F051R8T6_SPI_RFM69_Receiver.list"
+arm-none-eabi-objcopy  -O binary  STM32F051R8T6_SPI_RFM69_Receiver.elf  "STM32F051R8T6_SPI_RFM69_Receiver.bin"
+   text	   data	    bss	    dec	    hex	filename
+  20812	    120	   2112	  23044	   5a04	STM32F051R8T6_SPI_RFM69_Receiver.elf
+Finished building: default.size.stdout
+ 
+Finished building: STM32F051R8T6_SPI_RFM69_Receiver.bin
+ 
+Finished building: STM32F051R8T6_SPI_RFM69_Receiver.list
+ 
+22:08:31 **** Incremental Build of configuration Debug for project STM32F051R8T6_SPI_RFM69_Receiver ****
+make -j4 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F051x8 -c -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:102:3: warning: implicit declaration of function 'sprintf' [-Wimplicit-function-declaration]
+  102 |   sprintf(RxBuffer, "RFM69 Init() -> false\r\n");
+      |   ^~~~~~~
+../Core/Src/main.c:102:3: warning: incompatible implicit declaration of built-in function 'sprintf'
+../Core/Src/main.c:26:1: note: include '<stdio.h>' or provide a declaration of 'sprintf'
+   25 | #include "rfm69.h"
+  +++ |+#include <stdio.h>
+   26 | /* USER CODE END Includes */
+../Core/Src/main.c:102:11: warning: pointer targets in passing argument 1 of 'sprintf' differ in signedness [-Wpointer-sign]
+  102 |   sprintf(RxBuffer, "RFM69 Init() -> false\r\n");
+      |           ^~~~~~~~
+      |           |
+      |           uint8_t * {aka unsigned char *}
+../Core/Src/main.c:102:11: note: expected 'char *' but argument is of type 'uint8_t *' {aka 'unsigned char *'}
+../Core/Src/main.c:109:39: warning: implicit declaration of function 'strlen' [-Wimplicit-function-declaration]
+  109 |  HAL_UART_Transmit(&huart1, RxBuffer, strlen(RxBuffer), 100);
+      |                                       ^~~~~~
+../Core/Src/main.c:109:39: warning: incompatible implicit declaration of built-in function 'strlen'
+../Core/Src/main.c:26:1: note: include '<string.h>' or provide a declaration of 'strlen'
+   25 | #include "rfm69.h"
+  +++ |+#include <string.h>
+   26 | /* USER CODE END Includes */
+../Core/Src/main.c:109:46: warning: pointer targets in passing argument 1 of 'strlen' differ in signedness [-Wpointer-sign]
+  109 |  HAL_UART_Transmit(&huart1, RxBuffer, strlen(RxBuffer), 100);
+      |                                              ^~~~~~~~
+      |                                              |
+      |                                              uint8_t * {aka unsigned char *}
+../Core/Src/main.c:109:46: note: expected 'const char *' but argument is of type 'uint8_t *' {aka 'unsigned char *'}
+../Core/Src/main.c:112:2: warning: incompatible implicit declaration of built-in function 'sprintf'
+  112 |  sprintf(RxBuffer, "RFM Freq: %u Hz\r\n", rfm_freq);
+      |  ^~~~~~~
+../Core/Src/main.c:112:2: note: include '<stdio.h>' or provide a declaration of 'sprintf'
+../Core/Src/main.c:112:10: warning: pointer targets in passing argument 1 of 'sprintf' differ in signedness [-Wpointer-sign]
+  112 |  sprintf(RxBuffer, "RFM Freq: %u Hz\r\n", rfm_freq);
+      |          ^~~~~~~~
+      |          |
+      |          uint8_t * {aka unsigned char *}
+../Core/Src/main.c:112:10: note: expected 'char *' but argument is of type 'uint8_t *' {aka 'unsigned char *'}
+../Core/Src/main.c:112:32: warning: format '%u' expects argument of type 'unsigned int', but argument 3 has type 'uint32_t' {aka 'long unsigned int'} [-Wformat=]
+  112 |  sprintf(RxBuffer, "RFM Freq: %u Hz\r\n", rfm_freq);
+      |                               ~^          ~~~~~~~~
+      |                                |          |
+      |                                |          uint32_t {aka long unsigned int}
+      |                                unsigned int
+      |                               %lu
+../Core/Src/main.c:113:46: warning: pointer targets in passing argument 1 of 'strlen' differ in signedness [-Wpointer-sign]
+  113 |  HAL_UART_Transmit(&huart1, RxBuffer, strlen(RxBuffer), 100);
+      |                                              ^~~~~~~~
+      |                                              |
+      |                                              uint8_t * {aka unsigned char *}
+../Core/Src/main.c:113:46: note: expected 'const char *' but argument is of type 'uint8_t *' {aka 'unsigned char *'}
+../Core/Src/main.c:125:12: warning: pointer targets in passing argument 1 of 'sprintf' differ in signedness [-Wpointer-sign]
+  125 |    sprintf(RxBuffer,
+      |            ^~~~~~~~
+      |            |
+      |            uint8_t * {aka unsigned char *}
+../Core/Src/main.c:125:12: note: expected 'char *' but argument is of type 'uint8_t *' {aka 'unsigned char *'}
+../Core/Src/main.c:135:48: warning: pointer targets in passing argument 1 of 'strlen' differ in signedness [-Wpointer-sign]
+  135 |    HAL_UART_Transmit(&huart1, RxBuffer, strlen(RxBuffer), 100);
+      |                                                ^~~~~~~~
+      |                                                |
+      |                                                uint8_t * {aka unsigned char *}
+../Core/Src/main.c:135:48: note: expected 'const char *' but argument is of type 'uint8_t *' {aka 'unsigned char *'}
+../Core/Src/main.c:137:13: warning: pointer targets in passing argument 1 of 'sprintf' differ in signedness [-Wpointer-sign]
+  137 |     sprintf(RxBuffer, "Data[%d]: 0x%X\r\n", i, receive_data.data[i]);
+      |             ^~~~~~~~
+      |             |
+      |             uint8_t * {aka unsigned char *}
+../Core/Src/main.c:137:13: note: expected 'char *' but argument is of type 'uint8_t *' {aka 'unsigned char *'}
+../Core/Src/main.c:138:49: warning: pointer targets in passing argument 1 of 'strlen' differ in signedness [-Wpointer-sign]
+  138 |     HAL_UART_Transmit(&huart1, RxBuffer, strlen(RxBuffer), 100);
+      |                                                 ^~~~~~~~
+      |                                                 |
+      |                                                 uint8_t * {aka unsigned char *}
+../Core/Src/main.c:138:49: note: expected 'const char *' but argument is of type 'uint8_t *' {aka 'unsigned char *'}
+arm-none-eabi-gcc -o "STM32F051R8T6_SPI_RFM69_Receiver.elf" @"objects.list"   -mcpu=cortex-m0 -T"C:\STM32 workspace\STM32 RFM69 SPI TxRx\STM32F051R8T6_SPI_RFM69_Transmitter\STM32F051R8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="STM32F051R8T6_SPI_RFM69_Receiver.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: STM32F051R8T6_SPI_RFM69_Receiver.elf
+ 
+arm-none-eabi-size   STM32F051R8T6_SPI_RFM69_Receiver.elf 
+arm-none-eabi-objdump -h -S  STM32F051R8T6_SPI_RFM69_Receiver.elf  > "STM32F051R8T6_SPI_RFM69_Receiver.list"
+arm-none-eabi-objcopy  -O binary  STM32F051R8T6_SPI_RFM69_Receiver.elf  "STM32F051R8T6_SPI_RFM69_Receiver.bin"
+   text	   data	    bss	    dec	    hex	filename
+  20816	    120	   2112	  23048	   5a08	STM32F051R8T6_SPI_RFM69_Receiver.elf
+Finished building: default.size.stdout
+ 
+Finished building: STM32F051R8T6_SPI_RFM69_Receiver.bin
+ 
+Finished building: STM32F051R8T6_SPI_RFM69_Receiver.list
+ 
+22:09:09 **** Incremental Build of configuration Debug for project STM32F051R8T6_SPI_RFM69_Receiver ****
+make -j4 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F051x8 -c -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:102:3: warning: implicit declaration of function 'sprintf' [-Wimplicit-function-declaration]
+  102 |   sprintf(RxBuffer, "RFM69 Init() -> false\r\n");
+      |   ^~~~~~~
+../Core/Src/main.c:102:3: warning: incompatible implicit declaration of built-in function 'sprintf'
+../Core/Src/main.c:26:1: note: include '<stdio.h>' or provide a declaration of 'sprintf'
+   25 | #include "rfm69.h"
+  +++ |+#include <stdio.h>
+   26 | /* USER CODE END Includes */
+../Core/Src/main.c:102:11: warning: pointer targets in passing argument 1 of 'sprintf' differ in signedness [-Wpointer-sign]
+  102 |   sprintf(RxBuffer, "RFM69 Init() -> false\r\n");
+      |           ^~~~~~~~
+      |           |
+      |           uint8_t * {aka unsigned char *}
+../Core/Src/main.c:102:11: note: expected 'char *' but argument is of type 'uint8_t *' {aka 'unsigned char *'}
+../Core/Src/main.c:109:39: warning: implicit declaration of function 'strlen' [-Wimplicit-function-declaration]
+  109 |  HAL_UART_Transmit(&huart1, RxBuffer, strlen(RxBuffer), 100);
+      |                                       ^~~~~~
+../Core/Src/main.c:109:39: warning: incompatible implicit declaration of built-in function 'strlen'
+../Core/Src/main.c:26:1: note: include '<string.h>' or provide a declaration of 'strlen'
+   25 | #include "rfm69.h"
+  +++ |+#include <string.h>
+   26 | /* USER CODE END Includes */
+../Core/Src/main.c:109:46: warning: pointer targets in passing argument 1 of 'strlen' differ in signedness [-Wpointer-sign]
+  109 |  HAL_UART_Transmit(&huart1, RxBuffer, strlen(RxBuffer), 100);
+      |                                              ^~~~~~~~
+      |                                              |
+      |                                              uint8_t * {aka unsigned char *}
+../Core/Src/main.c:109:46: note: expected 'const char *' but argument is of type 'uint8_t *' {aka 'unsigned char *'}
+../Core/Src/main.c:112:2: warning: incompatible implicit declaration of built-in function 'sprintf'
+  112 |  sprintf(RxBuffer, "RFM Freq: %u Hz\r\n", rfm_freq);
+      |  ^~~~~~~
+../Core/Src/main.c:112:2: note: include '<stdio.h>' or provide a declaration of 'sprintf'
+../Core/Src/main.c:112:10: warning: pointer targets in passing argument 1 of 'sprintf' differ in signedness [-Wpointer-sign]
+  112 |  sprintf(RxBuffer, "RFM Freq: %u Hz\r\n", rfm_freq);
+      |          ^~~~~~~~
+      |          |
+      |          uint8_t * {aka unsigned char *}
+../Core/Src/main.c:112:10: note: expected 'char *' but argument is of type 'uint8_t *' {aka 'unsigned char *'}
+../Core/Src/main.c:112:32: warning: format '%u' expects argument of type 'unsigned int', but argument 3 has type 'uint32_t' {aka 'long unsigned int'} [-Wformat=]
+  112 |  sprintf(RxBuffer, "RFM Freq: %u Hz\r\n", rfm_freq);
+      |                               ~^          ~~~~~~~~
+      |                                |          |
+      |                                |          uint32_t {aka long unsigned int}
+      |                                unsigned int
+      |                               %lu
+../Core/Src/main.c:113:46: warning: pointer targets in passing argument 1 of 'strlen' differ in signedness [-Wpointer-sign]
+  113 |  HAL_UART_Transmit(&huart1, RxBuffer, strlen(RxBuffer), 100);
+      |                                              ^~~~~~~~
+      |                                              |
+      |                                              uint8_t * {aka unsigned char *}
+../Core/Src/main.c:113:46: note: expected 'const char *' but argument is of type 'uint8_t *' {aka 'unsigned char *'}
+../Core/Src/main.c:125:12: warning: pointer targets in passing argument 1 of 'sprintf' differ in signedness [-Wpointer-sign]
+  125 |    sprintf(RxBuffer,
+      |            ^~~~~~~~
+      |            |
+      |            uint8_t * {aka unsigned char *}
+../Core/Src/main.c:125:12: note: expected 'char *' but argument is of type 'uint8_t *' {aka 'unsigned char *'}
+../Core/Src/main.c:135:48: warning: pointer targets in passing argument 1 of 'strlen' differ in signedness [-Wpointer-sign]
+  135 |    HAL_UART_Transmit(&huart1, RxBuffer, strlen(RxBuffer), 100);
+      |                                                ^~~~~~~~
+      |                                                |
+      |                                                uint8_t * {aka unsigned char *}
+../Core/Src/main.c:135:48: note: expected 'const char *' but argument is of type 'uint8_t *' {aka 'unsigned char *'}
+../Core/Src/main.c:137:13: warning: pointer targets in passing argument 1 of 'sprintf' differ in signedness [-Wpointer-sign]
+  137 |     sprintf(RxBuffer, "Data[%d]: 0x%X\r\n", i, receive_data.data[i]);
+      |             ^~~~~~~~
+      |             |
+      |             uint8_t * {aka unsigned char *}
+../Core/Src/main.c:137:13: note: expected 'char *' but argument is of type 'uint8_t *' {aka 'unsigned char *'}
+../Core/Src/main.c:138:49: warning: pointer targets in passing argument 1 of 'strlen' differ in signedness [-Wpointer-sign]
+  138 |     HAL_UART_Transmit(&huart1, RxBuffer, strlen(RxBuffer), 100);
+      |                                                 ^~~~~~~~
+      |                                                 |
+      |                                                 uint8_t * {aka unsigned char *}
+../Core/Src/main.c:138:49: note: expected 'const char *' but argument is of type 'uint8_t *' {aka 'unsigned char *'}
+arm-none-eabi-gcc -o "STM32F051R8T6_SPI_RFM69_Receiver.elf" @"objects.list"   -mcpu=cortex-m0 -T"C:\STM32 workspace\STM32 RFM69 SPI TxRx\STM32F051R8T6_SPI_RFM69_Transmitter\STM32F051R8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="STM32F051R8T6_SPI_RFM69_Receiver.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: STM32F051R8T6_SPI_RFM69_Receiver.elf
+ 
+arm-none-eabi-size   STM32F051R8T6_SPI_RFM69_Receiver.elf 
+arm-none-eabi-objdump -h -S  STM32F051R8T6_SPI_RFM69_Receiver.elf  > "STM32F051R8T6_SPI_RFM69_Receiver.list"
+arm-none-eabi-objcopy  -O binary  STM32F051R8T6_SPI_RFM69_Receiver.elf  "STM32F051R8T6_SPI_RFM69_Receiver.bin"
+   text	   data	    bss	    dec	    hex	filename
+  20816	    120	   2112	  23048	   5a08	STM32F051R8T6_SPI_RFM69_Receiver.elf
+Finished building: default.size.stdout
+ 
+Finished building: STM32F051R8T6_SPI_RFM69_Receiver.bin
+ 
+Finished building: STM32F051R8T6_SPI_RFM69_Receiver.list
+ 
