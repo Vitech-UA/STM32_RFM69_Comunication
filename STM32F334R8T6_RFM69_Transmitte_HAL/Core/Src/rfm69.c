@@ -304,29 +304,39 @@ bool requestACK, bool sendACK) {
 bool readData(Payload *data) {
 	if (_mode == RF69_MODE_RX
 			&& (readReg(REG_IRQFLAGS2) & RF_IRQFLAGS2_PAYLOADREADY)) {
-		// clear output frame
+
 		data->targetId = data->senderId = data->ctlByte = 0xFF;
 
 		data->signalStrength = readRSSI(false);
 		memset(data->data, 0, RF69_MAX_DATA_LEN);
 
-		// read frame
+		// Читаю кадр
 		setMode(RF69_MODE_STANDBY, /*waitForReady=*/true);
-		data->size = readReg(REG_FIFO);
-		rfm69_select();
-		HAL_StatusTypeDef errorCode = HAL_SPI_Receive(&RFM69_SPI_PORT,
-				(uint8_t*) &frame, data->size, HAL_MAX_DELAY);
-		rfm69_release();
-		setMode(RF69_MODE_RX, false);
+		uint8_t zero_byte = 0;
+		uint8_t read_data = REG_FIFO & 0x7F;
 
-		// parse frame
+		rfm69_select();
+		HAL_SPI_Transmit(&rfm_spi, &read_data, 1, 100);
+		HAL_SPI_TransmitReceive(&rfm_spi, (uint8_t*) &zero_byte,
+				(uint8_t*) &data->size, 1, 100);
+
+		HAL_StatusTypeDef errorCode = HAL_SPI_Receive(&RFM69_SPI_PORT, *&frame,
+				data->size, HAL_MAX_DELAY);
+
+		rfm69_release();
+		setMode(RF69_MODE_RX, true);
+
+		//Парсим кадр
+
 		if (errorCode == HAL_OK) {
 			data->targetId = frame[0];
 			data->senderId = frame[1];
 			data->ctlByte = frame[2];
-			for (int i = 3; i < data->size; i++) {
+			for (int8_t i = 3; i < data->size; i++) {
 				data->data[i - 3] = frame[i];
 			}
+			writeReg(REG_DIOMAPPING1, RF_DIOMAPPING1_DIO0_01); // set DIO0 to "PAYLOADREADY" in receive mode
+			setMode(RF69_MODE_RX, false);
 			return true;
 		}
 	}

@@ -301,22 +301,23 @@ bool requestACK, bool sendACK) {
 
 	// write to FIFO
 	rfm69_select();
-	HAL_SPI_Transmit(&RFM69_SPI_PORT, (uint8_t*) &cmd, 5, 1000);
-	HAL_SPI_Transmit(&RFM69_SPI_PORT, (uint8_t*) buffer, bufferSize, 1000);
+	HAL_SPI_Transmit(&RFM69_SPI_PORT, (uint8_t*) &cmd, 5, HAL_MAX_DELAY);
+	HAL_SPI_Transmit(&RFM69_SPI_PORT, buffer, bufferSize, HAL_MAX_DELAY);
 	rfm69_release();
 
 	// no need to wait for transmit mode to be ready since its handled by the radio
-	setMode(RF69_MODE_TX, false);
+	setMode(RF69_MODE_TX, true);
 
 	uint32_t txStart = HAL_GetTick();
-	while (!HAL_GPIO_ReadPin(DIO0_GPIO_Port, DIO0_Pin)
+	while (HAL_GPIO_ReadPin(DIO0_GPIO_Port, DIO0_Pin) == GPIO_PIN_SET
 			&& HAL_GetTick() - txStart < RF69_TX_LIMIT_MS)
-		; // wait for DIO0 to turn HIGH signalling transmission finish
+		; // Очікую підняття DIO0 що сигналізуватиме про завершення передачі
 	setMode(RF69_MODE_STANDBY, /*waitForReady=*/true);
 	receiveBegin();
 
 	return (HAL_GetTick() - txStart);
 }
+
 
 bool readData(Payload *data) {
 	if (_mode == RF69_MODE_RX
