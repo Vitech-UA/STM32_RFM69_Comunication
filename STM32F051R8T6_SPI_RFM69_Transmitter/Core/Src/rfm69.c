@@ -47,7 +47,7 @@ uint8_t _powerLevel;
 uint8_t _address;
 uint8_t _interruptPin;
 uint8_t _interruptNum;
-uint8_t _address;
+
 bool _isRFM69HW = false;
 bool _promiscuousMode;
 uint8_t frame[256];
@@ -82,24 +82,6 @@ uint8_t readReg(uint8_t reg) {
 	return regval;
 
 }
-
-uint8_t readReg_withselect(uint8_t reg, bool _unselect) {
-
-	uint8_t out[2] = { (uint8_t) (reg & 0x7F), 0 };
-	uint8_t in[2] = { 0, 0 };
-	rfm69_select();
-	HAL_SPI_Transmit(&rfm_spi, (uint8_t*) &out, 1, 100);
-	HAL_Delay(10);
-	HAL_SPI_TransmitReceive(&rfm_spi, 0, (uint8_t*) &in, 1, 100);
-
-	if (_unselect) {
-		rfm69_release();
-	}
-
-	return in[0];
-
-}
-
 void writeReg(uint8_t reg, uint8_t value) {
 	rfm69_select();
 	uint8_t write_data = reg | 0x80;
@@ -151,8 +133,8 @@ bool rfm69_init(uint8_t freqBand, uint8_t nodeID, uint8_t networkID) {
 					// +13dBm formula: Pout = -18 + OutputPower (with PA0 or PA1**)
 					// +17dBm formula: Pout = -14 + OutputPower (with PA1 and PA2)**
 					// +20dBm formula: Pout = -11 + OutputPower (with PA1 and PA2)** and high power PA settings (section 3.3.7 in datasheet)
-					/* 0x11 */ { REG_PALEVEL, RF_PALEVEL_PA0_ON | RF_PALEVEL_PA1_OFF | RF_PALEVEL_PA2_OFF | RF_PALEVEL_OUTPUTPOWER_11111},
-					///* 0x13 */ { REG_OCP, RF_OCP_ON | RF_OCP_TRIM_95 }, // over current protection (default is 95mA)
+					{ REG_PALEVEL, RF_PALEVEL_PA0_ON | RF_PALEVEL_PA1_OFF| RF_PALEVEL_PA2_OFF | RF_PALEVEL_OUTPUTPOWER_11111 },
+					/* 0x13 */ { REG_OCP, RF_OCP_ON | RF_OCP_TRIM_95 }, // over current protection (default is 95mA)
 
 					// RXBW defaults are { REG_RXBW, RF_RXBW_DCCFREQ_010 | RF_RXBW_MANT_24 | RF_RXBW_EXP_5} (RxBw: 10.4KHz)
 					/* 0x19 */{ REG_RXBW, RF_RXBW_DCCFREQ_010 | RF_RXBW_MANT_16
@@ -205,6 +187,7 @@ bool rfm69_init(uint8_t freqBand, uint8_t nodeID, uint8_t networkID) {
 	if (HAL_GetTick() - start >= timeout) {
 		return false;
 	}
+    setHighPowerRegs(true);
     setPowerLevel(13);
 	setAddress(nodeID);
 	return true;
@@ -318,7 +301,6 @@ bool requestACK, bool sendACK) {
 	return (HAL_GetTick() - txStart);
 }
 
-
 bool readData(Payload *data) {
 	if (_mode == RF69_MODE_RX
 			&& (readReg(REG_IRQFLAGS2) & RF_IRQFLAGS2_PAYLOADREADY)) {
@@ -367,42 +349,12 @@ bool waitForResponce(Payload *data, uint32_t timeout) {
 			continue;
 		}
 
-		if (readData(*&data)) {
+		if (readData(data)) {
 			return true;
 		}
 	}
 	return false;
 }
-
-bool setAESEncryption(const void *aesKey, unsigned int keyLength) {
-	bool enable = false;
-
-
-	if ((0 != aesKey) && (16 == keyLength))
-		enable = true;
-
-
-	setMode(RF69_MODE_STANDBY, false);
-
-	uint8_t set_AES_cmd[] = {0x3E | 0x80};
-	if (true == enable) {
-
-		rfm69_select();
-		HAL_SPI_Transmit(&RFM69_SPI_PORT, (uint8_t*)&set_AES_cmd[0], 1, 100);
-
-		for (unsigned int i = 0; i < keyLength; i++) {
-			HAL_SPI_Transmit(&RFM69_SPI_PORT, &aesKey[i], 1, 100);
-		}
-
-		rfm69_release();
-	}
-
-
-	writeReg(0x3D, (readReg(0x3D) & 0xFE) | (enable ? 1 : 0));
-
-	return enable;
-}
-
 void receiveBegin() {
 	if (readReg(REG_IRQFLAGS2) & RF_IRQFLAGS2_PAYLOADREADY) {
 		writeReg(REG_PACKETCONFIG2,
@@ -436,6 +388,32 @@ void setHighPower(bool onOff) {
 				RF_PALEVEL_PA0_ON | RF_PALEVEL_PA1_OFF | RF_PALEVEL_PA2_OFF
 						| _powerLevel); // enable P0 only
 	}
+}
+
+bool setAESEncryption(const void *aesKey, unsigned int keyLength) {
+	bool enable = false;
+
+	if ((0 != aesKey) && (16 == keyLength))
+		enable = true;
+
+	setMode(RF69_MODE_STANDBY, false);
+
+	uint8_t set_AES_cmd[] = { 0x3E | 0x80 };
+	if (true == enable) {
+
+		rfm69_select();
+		HAL_SPI_Transmit(&RFM69_SPI_PORT, (uint8_t*) &set_AES_cmd[0], 1, 100);
+
+		for (unsigned int i = 0; i < keyLength; i++) {
+			HAL_SPI_Transmit(&RFM69_SPI_PORT, &aesKey[i], 1, 100);
+		}
+
+		rfm69_release();
+	}
+
+	writeReg(0x3D, (readReg(0x3D) & 0xFE) | (enable ? 1 : 0));
+
+	return enable;
 }
 
 void setHighPowerRegs(bool onOff) {

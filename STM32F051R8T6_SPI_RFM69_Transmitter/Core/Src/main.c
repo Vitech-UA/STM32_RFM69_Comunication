@@ -23,6 +23,8 @@
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include "rfm69.h"
+#include "stdio.h"
+#include "string.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -95,7 +97,7 @@ int main(void) {
 	MX_SPI1_Init();
 	MX_USART1_UART_Init();
 	/* USER CODE BEGIN 2 */
-	uint8_t RxBuffer[150] = { };
+	char RxBuffer[150] = { };
 	if (rfm69_init(FREQUENCY, RECEIVER_ID, NETWORKID)) {
 		HAL_GPIO_WritePin(LED_GPIO_Port, LED_Pin, GPIO_PIN_SET);
 	} else {
@@ -106,11 +108,11 @@ int main(void) {
 			Error_Handler();
 		}
 
-	HAL_UART_Transmit(&huart1, RxBuffer, strlen(RxBuffer), 100);
+	HAL_UART_Transmit(&huart1, (uint8_t*)&RxBuffer, strlen(RxBuffer), 100);
 
-	uint32_t rfm_freq = getFrequency();
+	int rfm_freq = getFrequency();
 	sprintf(RxBuffer, "RFM Freq: %u Hz\r\n", rfm_freq);
-	HAL_UART_Transmit(&huart1, RxBuffer, strlen(RxBuffer), 100);
+	HAL_UART_Transmit(&huart1, (uint8_t*)&RxBuffer, strlen(RxBuffer), 100);
 	Payload receive_data;
 
 	receiveBegin();
@@ -132,10 +134,10 @@ int main(void) {
 					receive_data.senderId, receive_data.size,
 					receive_data.signalStrength,receive_data.targetId, receive_data.ctlByte);
 
-			HAL_UART_Transmit(&huart1, RxBuffer, strlen(RxBuffer), 100);
+			HAL_UART_Transmit(&huart1, (uint8_t*)&RxBuffer, strlen(RxBuffer), 100);
 			for (uint8_t i = 0; i <= receive_data.size; i++) {
 				sprintf(RxBuffer, "Data[%d]: 0x%X\r\n", i, receive_data.data[i]);
-				HAL_UART_Transmit(&huart1, RxBuffer, strlen(RxBuffer), 100);
+				HAL_UART_Transmit(&huart1, (uint8_t*)&RxBuffer, strlen(RxBuffer), 100);
 			}
 
 
