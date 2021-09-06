@@ -11,8 +11,8 @@
 extern SPI_HandleTypeDef hspi1;
 
 #define rfm_spi hspi1
-#define RFM69_XO               32000000    ///< Internal clock frequency [Hz]
-#define RFM69_FSTEP            61.03515625 ///< Step width of synthesizer [Hz]
+#define RFM69_XO               32000000    ///< Внутрішня тактова частота RFM [Hz]
+#define RFM69_FSTEP            61.03515625 ///< Крок синтезатора [Hz]
 #define CSMA_LIMIT              -90 // upper RX signal sensitivity threshold in dBm for carrier sense access
 #define RF69_MODE_SLEEP         0 // XTAL OFF
 #define RF69_MODE_STANDBY       1 // XTAL ON
@@ -28,28 +28,15 @@ extern SPI_HandleTypeDef hspi1;
 #define RF69_CSMA_LIMIT_MS 1000
 #define RF69_BROADCAST_ADDR 255
 
-volatile uint8_t _mode;        // current transceiver state
+volatile uint8_t _mode;        // тут міститься поточний статус модуля
 volatile bool _inISR;
 volatile uint8_t PAYLOADLEN;
-
-volatile uint8_t DATALEN;
-volatile uint8_t SENDERID;
-volatile uint8_t TARGETID;
-volatile uint8_t PAYLOADLEN;
-volatile uint8_t ACK_REQUESTED;
-volatile uint8_t ACK_RECEIVED;
-volatile uint8_t ctlByte;
-volatile int16_t RSSI; // most accurate RSSI during reception (closest to the reception)
-volatile bool _inISR;
-volatile bool _haveData;
 
 uint8_t _powerLevel;
 uint8_t _address;
 uint8_t _interruptPin;
 uint8_t _interruptNum;
-
 bool _isRFM69HW = false;
-bool _promiscuousMode;
 uint8_t frame[256];
 
 void rfm69_select(void) {
@@ -98,7 +85,7 @@ bool rfm69_init(uint8_t freqBand, uint8_t nodeID, uint8_t networkID) {
 					/* 0x02 */{ REG_DATAMODUL, RF_DATAMODUL_DATAMODE_PACKET
 							| RF_DATAMODUL_MODULATIONTYPE_FSK
 							| RF_DATAMODUL_MODULATIONSHAPING_00 }, // no shaping
-					/* 0x03 */{ REG_BITRATEMSB, RF_BITRATEMSB_1200 }, // default: 4.8 KBPS
+					/* 0x03 */{ REG_BITRATEMSB, RF_BITRATEMSB_1200 }, // Швидкість передачі 1,2 кБ/с
 					/* 0x04 */{ REG_BITRATELSB, RF_BITRATELSB_1200 },
 					/* 0x05 */{ REG_FDEVMSB, RF_FDEVMSB_50000 }, // default: 5KHz, (FDEV + BitRate / 2 <= 500KHz)
 					/* 0x06 */{ REG_FDEVLSB, RF_FDEVLSB_50000 },
@@ -126,17 +113,11 @@ bool rfm69_init(uint8_t freqBand, uint8_t nodeID, uint8_t networkID) {
 											RF_FRFLSB_433 :
 											(freqBand == RF69_868MHZ ?
 													RF_FRFLSB_868 :
-													RF_FRFLSB_915))) },
-
-					// looks like PA1 and PA2 are not implemented on RFM69W, hence the max output power is 13dBm
-					// +17dBm and +20dBm are possible on RFM69HW
-					// +13dBm formula: Pout = -18 + OutputPower (with PA0 or PA1**)
-					// +17dBm formula: Pout = -14 + OutputPower (with PA1 and PA2)**
-					// +20dBm formula: Pout = -11 + OutputPower (with PA1 and PA2)** and high power PA settings (section 3.3.7 in datasheet)
-					{ REG_PALEVEL, RF_PALEVEL_PA0_ON | RF_PALEVEL_PA1_OFF| RF_PALEVEL_PA2_OFF | RF_PALEVEL_OUTPUTPOWER_11111 },
-					/* 0x13 */ { REG_OCP, RF_OCP_ON | RF_OCP_TRIM_95 }, // over current protection (default is 95mA)
-
-					// RXBW defaults are { REG_RXBW, RF_RXBW_DCCFREQ_010 | RF_RXBW_MANT_24 | RF_RXBW_EXP_5} (RxBw: 10.4KHz)
+													RF_FRFLSB_915))) }, {
+							REG_PALEVEL, RF_PALEVEL_PA0_ON | RF_PALEVEL_PA1_OFF
+									| RF_PALEVEL_PA2_OFF
+									| RF_PALEVEL_OUTPUTPOWER_11111 },
+					/* 0x13 */{ REG_OCP, RF_OCP_ON | RF_OCP_TRIM_95 }, // over current protection (default is 95mA)
 					/* 0x19 */{ REG_RXBW, RF_RXBW_DCCFREQ_010 | RF_RXBW_MANT_16
 							| RF_RXBW_EXP_2 }, // (BitRate < 2 * RxBw)
 					//for BR-19200: /* 0x19 */ { REG_RXBW, RF_RXBW_DCCFREQ_010 | RF_RXBW_MANT_24 | RF_RXBW_EXP_3 },
@@ -144,7 +125,6 @@ bool rfm69_init(uint8_t freqBand, uint8_t nodeID, uint8_t networkID) {
 					/* 0x26 */{ REG_DIOMAPPING2, RF_DIOMAPPING2_CLKOUT_OFF }, // DIO5 ClkOut disable for power saving
 					/* 0x28 */{ REG_IRQFLAGS2, RF_IRQFLAGS2_FIFOOVERRUN }, // writing to this bit ensures that the FIFO & status flags are reset
 					/* 0x29 */{ REG_RSSITHRESH, 220 }, // must be set to dBm = (-Sensitivity / 2), default is 0xE4 = 228 so -114dBm
-					///* 0x2D */ { REG_PREAMBLELSB, RF_PREAMBLESIZE_LSB_VALUE } // default 3 preamble bytes 0xAAAAAA
 					/* 0x2E */{ REG_SYNCCONFIG, RF_SYNC_ON
 							| RF_SYNC_FIFOFILL_AUTO | RF_SYNC_SIZE_2
 							| RF_SYNC_TOL_0 },
@@ -155,13 +135,12 @@ bool rfm69_init(uint8_t freqBand, uint8_t nodeID, uint8_t networkID) {
 							| RF_PACKET1_CRC_ON | RF_PACKET1_CRCAUTOCLEAR_ON
 							| RF_PACKET1_ADRSFILTERING_OFF },
 					/* 0x38 */{ REG_PAYLOADLENGTH, RF69_MAX_DATA_LEN + 5 }, // in variable length mode: the max frame size, not used in TX
-					///* 0x39 */ { REG_NODEADRS, nodeID }, // turned off because we're not using address filtering
+					/* 0x39 */{ REG_NODEADRS, nodeID }, // turned off because we're not using address filtering
 					/* 0x3C */{ REG_FIFOTHRESH,
 					RF_FIFOTHRESH_TXSTART_FIFONOTEMPTY | RF_FIFOTHRESH_VALUE }, // TX on FIFO not empty
 					/* 0x3D */{ REG_PACKETCONFIG2,
 					RF_PACKET2_RXRESTARTDELAY_2BITS
 							| RF_PACKET2_AUTORXRESTART_ON | RF_PACKET2_AES_OFF }, // RXRESTARTDELAY must match transmitter PA ramp-down time (bitrate dependent)
-					//for BR-19200: /* 0x3D */ { REG_PACKETCONFIG2, RF_PACKET2_RXRESTARTDELAY_NONE | RF_PACKET2_AUTORXRESTART_ON | RF_PACKET2_AES_OFF }, // RXRESTARTDELAY must match transmitter PA ramp-down time (bitrate dependent)
 					/* 0x6F */{ REG_TESTDAGC, RF_DAGC_IMPROVED_LOWBETA0 }, // run DAGC continuously in RX mode for Fading Margin Improvement, recommended default for AfcLowBetaOn=0
 					{ 255, 0 } };
 
@@ -187,8 +166,8 @@ bool rfm69_init(uint8_t freqBand, uint8_t nodeID, uint8_t networkID) {
 	if (HAL_GetTick() - start >= timeout) {
 		return false;
 	}
-    setHighPowerRegs(true);
-    setPowerLevel(13);
+	setHighPowerRegs(true);
+	setPowerLevel(13);
 	setAddress(nodeID);
 	return true;
 }

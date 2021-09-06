@@ -11360,3 +11360,953 @@ arm-none-eabi-size   STM32F051R8T6_SPI_RFM69_Receiver.elf
   20952	    120	   2112	  23184	   5a90	STM32F051R8T6_SPI_RFM69_Receiver.elf
 Finished building: default.size.stdout
  
+21:59:47 **** Incremental Build of configuration Debug for project STM32F051R8T6_SPI_RFM69_Receiver ****
+make -j4 all 
+arm-none-eabi-gcc "../Core/Src/rfm69.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F051x8 -c -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/rfm69.d" -MT"Core/Src/rfm69.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/rfm69.o"
+../Core/Src/rfm69.c: In function 'readReg':
+../Core/Src/rfm69.c:76:20: error: 'rfm_spi' undeclared (first use in this function)
+   76 |  HAL_SPI_Transmit(&rfm_spi, &read_data, 1, 100);
+      |                    ^~~~~~~
+../Core/Src/rfm69.c:76:20: note: each undeclared identifier is reported only once for each function it appears in
+../Core/Src/rfm69.c: In function 'writeReg':
+../Core/Src/rfm69.c:87:20: error: 'rfm_spi' undeclared (first use in this function)
+   87 |  HAL_SPI_Transmit(&rfm_spi, (uint8_t*) &write_data, 1, 100);
+      |                    ^~~~~~~
+../Core/Src/rfm69.c: In function 'readData':
+../Core/Src/rfm69.c:318:21: error: 'rfm_spi' undeclared (first use in this function)
+  318 |   HAL_SPI_Transmit(&rfm_spi, &read_data, 1, 100);
+      |                     ^~~~~~~
+../Core/Src/rfm69.c: In function 'setAESEncryption':
+../Core/Src/rfm69.c:407:45: warning: dereferencing 'void *' pointer
+  407 |    HAL_SPI_Transmit(&RFM69_SPI_PORT, &aesKey[i], 1, 100);
+      |                                             ^
+../Core/Src/rfm69.c:407:38: warning: passing argument 2 of 'HAL_SPI_Transmit' discards 'const' qualifier from pointer target type [-Wdiscarded-qualifiers]
+  407 |    HAL_SPI_Transmit(&RFM69_SPI_PORT, &aesKey[i], 1, 100);
+      |                                      ^~~~~~~~~~
+In file included from ../Core/Inc/stm32f0xx_hal_conf.h:276,
+                 from ../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal.h:30,
+                 from ../Core/Inc/main.h:31,
+                 from ../Core/Inc/rfm69.h:11,
+                 from ../Core/Src/rfm69.c:8:
+../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_spi.h:792:70: note: expected 'uint8_t *' {aka 'unsigned char *'} but argument is of type 'const void *'
+  792 | HAL_StatusTypeDef HAL_SPI_Transmit(SPI_HandleTypeDef *hspi, uint8_t *pData, uint16_t Size, uint32_t Timeout);
+      |                                                             ~~~~~~~~~^~~~~
+make: *** [Core/Src/subdir.mk:37: Core/Src/rfm69.o] Error 1
+"make -j4 all" terminated with exit code 2. Build might be incomplete.
+21:59:52 **** Incremental Build of configuration Debug for project STM32F051R8T6_SPI_RFM69_Receiver ****
+make -j4 all 
+arm-none-eabi-gcc "../Core/Src/rfm69.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F051x8 -c -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/rfm69.d" -MT"Core/Src/rfm69.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/rfm69.o"
+../Core/Src/rfm69.c: In function 'setAESEncryption':
+../Core/Src/rfm69.c:408:45: warning: dereferencing 'void *' pointer
+  408 |    HAL_SPI_Transmit(&RFM69_SPI_PORT, &aesKey[i], 1, 100);
+      |                                             ^
+../Core/Src/rfm69.c:408:38: warning: passing argument 2 of 'HAL_SPI_Transmit' discards 'const' qualifier from pointer target type [-Wdiscarded-qualifiers]
+  408 |    HAL_SPI_Transmit(&RFM69_SPI_PORT, &aesKey[i], 1, 100);
+      |                                      ^~~~~~~~~~
+In file included from ../Core/Inc/stm32f0xx_hal_conf.h:276,
+                 from ../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal.h:30,
+                 from ../Core/Inc/main.h:31,
+                 from ../Core/Inc/rfm69.h:11,
+                 from ../Core/Src/rfm69.c:8:
+../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_spi.h:792:70: note: expected 'uint8_t *' {aka 'unsigned char *'} but argument is of type 'const void *'
+  792 | HAL_StatusTypeDef HAL_SPI_Transmit(SPI_HandleTypeDef *hspi, uint8_t *pData, uint16_t Size, uint32_t Timeout);
+      |                                                             ~~~~~~~~~^~~~~
+arm-none-eabi-gcc -o "STM32F051R8T6_SPI_RFM69_Receiver.elf" @"objects.list"   -mcpu=cortex-m0 -T"C:\STM32 workspace\STM32 RFM69 SPI TxRx\STM32F051R8T6_SPI_RFM69_Transmitter\STM32F051R8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="STM32F051R8T6_SPI_RFM69_Receiver.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: STM32F051R8T6_SPI_RFM69_Receiver.elf
+ 
+arm-none-eabi-size   STM32F051R8T6_SPI_RFM69_Receiver.elf 
+arm-none-eabi-objdump -h -S  STM32F051R8T6_SPI_RFM69_Receiver.elf  > "STM32F051R8T6_SPI_RFM69_Receiver.list"
+arm-none-eabi-objcopy  -O binary  STM32F051R8T6_SPI_RFM69_Receiver.elf  "STM32F051R8T6_SPI_RFM69_Receiver.bin"
+   text	   data	    bss	    dec	    hex	filename
+  20952	    120	   2112	  23184	   5a90	STM32F051R8T6_SPI_RFM69_Receiver.elf
+Finished building: default.size.stdout
+ 
+Finished building: STM32F051R8T6_SPI_RFM69_Receiver.bin
+ 
+Finished building: STM32F051R8T6_SPI_RFM69_Receiver.list
+ 
+21:59:54 **** Incremental Build of configuration Debug for project STM32F334R8T6_RFM69_Transmitte_HAL ****
+make -j4 all 
+arm-none-eabi-size   STM32F334R8T6_RFM69_Transmitte_HAL.elf 
+   text	   data	    bss	    dec	    hex	filename
+  20200	    120	   2112	  22432	   57a0	STM32F334R8T6_RFM69_Transmitte_HAL.elf
+Finished building: default.size.stdout
+ 
+22:00:05 **** Incremental Build of configuration Debug for project STM32F051R8T6_SPI_RFM69_Receiver ****
+make -j4 all 
+arm-none-eabi-gcc "../Core/Src/rfm69.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F051x8 -c -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/rfm69.d" -MT"Core/Src/rfm69.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/rfm69.o"
+../Core/Src/rfm69.c: In function 'setAESEncryption':
+../Core/Src/rfm69.c:408:45: warning: dereferencing 'void *' pointer
+  408 |    HAL_SPI_Transmit(&RFM69_SPI_PORT, &aesKey[i], 1, 100);
+      |                                             ^
+../Core/Src/rfm69.c:408:38: warning: passing argument 2 of 'HAL_SPI_Transmit' discards 'const' qualifier from pointer target type [-Wdiscarded-qualifiers]
+  408 |    HAL_SPI_Transmit(&RFM69_SPI_PORT, &aesKey[i], 1, 100);
+      |                                      ^~~~~~~~~~
+In file included from ../Core/Inc/stm32f0xx_hal_conf.h:276,
+                 from ../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal.h:30,
+                 from ../Core/Inc/main.h:31,
+                 from ../Core/Inc/rfm69.h:11,
+                 from ../Core/Src/rfm69.c:8:
+../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_spi.h:792:70: note: expected 'uint8_t *' {aka 'unsigned char *'} but argument is of type 'const void *'
+  792 | HAL_StatusTypeDef HAL_SPI_Transmit(SPI_HandleTypeDef *hspi, uint8_t *pData, uint16_t Size, uint32_t Timeout);
+      |                                                             ~~~~~~~~~^~~~~
+arm-none-eabi-gcc -o "STM32F051R8T6_SPI_RFM69_Receiver.elf" @"objects.list"   -mcpu=cortex-m0 -T"C:\STM32 workspace\STM32 RFM69 SPI TxRx\STM32F051R8T6_SPI_RFM69_Transmitter\STM32F051R8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="STM32F051R8T6_SPI_RFM69_Receiver.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: STM32F051R8T6_SPI_RFM69_Receiver.elf
+ 
+arm-none-eabi-size   STM32F051R8T6_SPI_RFM69_Receiver.elf 
+arm-none-eabi-objdump -h -S  STM32F051R8T6_SPI_RFM69_Receiver.elf  > "STM32F051R8T6_SPI_RFM69_Receiver.list"
+arm-none-eabi-objcopy  -O binary  STM32F051R8T6_SPI_RFM69_Receiver.elf  "STM32F051R8T6_SPI_RFM69_Receiver.bin"
+   text	   data	    bss	    dec	    hex	filename
+  20952	    120	   2112	  23184	   5a90	STM32F051R8T6_SPI_RFM69_Receiver.elf
+Finished building: default.size.stdout
+ 
+Finished building: STM32F051R8T6_SPI_RFM69_Receiver.bin
+ 
+Finished building: STM32F051R8T6_SPI_RFM69_Receiver.list
+ 
+22:00:06 **** Incremental Build of configuration Debug for project STM32F334R8T6_RFM69_Transmitte_HAL ****
+make -j4 all 
+arm-none-eabi-size   STM32F334R8T6_RFM69_Transmitte_HAL.elf 
+   text	   data	    bss	    dec	    hex	filename
+  20200	    120	   2112	  22432	   57a0	STM32F334R8T6_RFM69_Transmitte_HAL.elf
+Finished building: default.size.stdout
+ 
+22:00:13 **** Incremental Build of configuration Debug for project STM32F051R8T6_SPI_RFM69_Receiver ****
+make -j4 all 
+arm-none-eabi-gcc "../Core/Src/rfm69.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F051x8 -c -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/rfm69.d" -MT"Core/Src/rfm69.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/rfm69.o"
+../Core/Src/rfm69.c: In function 'getFrequency':
+../Core/Src/rfm69.c:195:9: error: 'RFM69_FSTEP' undeclared (first use in this function)
+  195 |  return RFM69_FSTEP
+      |         ^~~~~~~~~~~
+../Core/Src/rfm69.c:195:9: note: each undeclared identifier is reported only once for each function it appears in
+../Core/Src/rfm69.c: In function 'setFrequency':
+../Core/Src/rfm69.c:205:12: error: 'RFM69_FSTEP' undeclared (first use in this function)
+  205 |  freqHz /= RFM69_FSTEP; // divide down by FSTEP to get FRF
+      |            ^~~~~~~~~~~
+../Core/Src/rfm69.c: In function 'setAESEncryption':
+../Core/Src/rfm69.c:407:45: warning: dereferencing 'void *' pointer
+  407 |    HAL_SPI_Transmit(&RFM69_SPI_PORT, &aesKey[i], 1, 100);
+      |                                             ^
+../Core/Src/rfm69.c:407:38: warning: passing argument 2 of 'HAL_SPI_Transmit' discards 'const' qualifier from pointer target type [-Wdiscarded-qualifiers]
+  407 |    HAL_SPI_Transmit(&RFM69_SPI_PORT, &aesKey[i], 1, 100);
+      |                                      ^~~~~~~~~~
+In file included from ../Core/Inc/stm32f0xx_hal_conf.h:276,
+                 from ../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal.h:30,
+                 from ../Core/Inc/main.h:31,
+                 from ../Core/Inc/rfm69.h:11,
+                 from ../Core/Src/rfm69.c:8:
+../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_spi.h:792:70: note: expected 'uint8_t *' {aka 'unsigned char *'} but argument is of type 'const void *'
+  792 | HAL_StatusTypeDef HAL_SPI_Transmit(SPI_HandleTypeDef *hspi, uint8_t *pData, uint16_t Size, uint32_t Timeout);
+      |                                                             ~~~~~~~~~^~~~~
+../Core/Src/rfm69.c: In function 'getFrequency':
+../Core/Src/rfm69.c:199:1: warning: control reaches end of non-void function [-Wreturn-type]
+  199 | }
+      | ^
+make: *** [Core/Src/subdir.mk:37: Core/Src/rfm69.o] Error 1
+"make -j4 all" terminated with exit code 2. Build might be incomplete.
+22:00:14 **** Incremental Build of configuration Debug for project STM32F334R8T6_RFM69_Transmitte_HAL ****
+make -j4 all 
+arm-none-eabi-size   STM32F334R8T6_RFM69_Transmitte_HAL.elf 
+   text	   data	    bss	    dec	    hex	filename
+  20200	    120	   2112	  22432	   57a0	STM32F334R8T6_RFM69_Transmitte_HAL.elf
+Finished building: default.size.stdout
+ 
+22:00:23 **** Incremental Build of configuration Debug for project STM32F051R8T6_SPI_RFM69_Receiver ****
+make -j4 all 
+arm-none-eabi-gcc "../Core/Src/rfm69.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F051x8 -c -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/rfm69.d" -MT"Core/Src/rfm69.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/rfm69.o"
+../Core/Src/rfm69.c: In function 'rfm69_init':
+../Core/Src/rfm69.c:174:10: error: 'RF69_MODE_STANDBY' undeclared (first use in this function); did you mean 'RF_OPMODE_STANDBY'?
+  174 |  setMode(RF69_MODE_STANDBY, false);
+      |          ^~~~~~~~~~~~~~~~~
+      |          RF_OPMODE_STANDBY
+../Core/Src/rfm69.c:174:10: note: each undeclared identifier is reported only once for each function it appears in
+../Core/Src/rfm69.c: In function 'getFrequency':
+../Core/Src/rfm69.c:188:9: error: 'RFM69_FSTEP' undeclared (first use in this function)
+  188 |  return RFM69_FSTEP
+      |         ^~~~~~~~~~~
+../Core/Src/rfm69.c: In function 'setFrequency':
+../Core/Src/rfm69.c:195:17: error: 'RF69_MODE_TX' undeclared (first use in this function); did you mean 'UART_MODE_TX'?
+  195 |  if (oldMode == RF69_MODE_TX) {
+      |                 ^~~~~~~~~~~~
+      |                 UART_MODE_TX
+../Core/Src/rfm69.c:196:11: error: 'RF69_MODE_RX' undeclared (first use in this function); did you mean 'UART_MODE_RX'?
+  196 |   setMode(RF69_MODE_RX, false);
+      |           ^~~~~~~~~~~~
+      |           UART_MODE_RX
+../Core/Src/rfm69.c:198:12: error: 'RFM69_FSTEP' undeclared (first use in this function)
+  198 |  freqHz /= RFM69_FSTEP; // divide down by FSTEP to get FRF
+      |            ^~~~~~~~~~~
+../Core/Src/rfm69.c:203:11: error: 'RF69_MODE_SYNTH' undeclared (first use in this function)
+  203 |   setMode(RF69_MODE_SYNTH, false);
+      |           ^~~~~~~~~~~~~~~
+../Core/Src/rfm69.c: In function 'setMode':
+../Core/Src/rfm69.c:212:7: error: 'RF69_MODE_TX' undeclared (first use in this function); did you mean 'UART_MODE_TX'?
+  212 |  case RF69_MODE_TX:
+      |       ^~~~~~~~~~~~
+      |       UART_MODE_TX
+../Core/Src/rfm69.c:218:7: error: 'RF69_MODE_RX' undeclared (first use in this function); did you mean 'UART_MODE_RX'?
+  218 |  case RF69_MODE_RX:
+      |       ^~~~~~~~~~~~
+      |       UART_MODE_RX
+../Core/Src/rfm69.c:223:7: error: 'RF69_MODE_SYNTH' undeclared (first use in this function)
+  223 |  case RF69_MODE_SYNTH:
+      |       ^~~~~~~~~~~~~~~
+../Core/Src/rfm69.c:227:7: error: 'RF69_MODE_STANDBY' undeclared (first use in this function); did you mean 'RF_OPMODE_STANDBY'?
+  227 |  case RF69_MODE_STANDBY:
+      |       ^~~~~~~~~~~~~~~~~
+      |       RF_OPMODE_STANDBY
+../Core/Src/rfm69.c:230:7: error: 'RF69_MODE_SLEEP' undeclared (first use in this function); did you mean 'RF_OPMODE_SLEEP'?
+  230 |  case RF69_MODE_SLEEP:
+      |       ^~~~~~~~~~~~~~~
+      |       RF_OPMODE_SLEEP
+../Core/Src/rfm69.c: In function 'send':
+../Core/Src/rfm69.c:259:10: error: 'RF69_MODE_STANDBY' undeclared (first use in this function); did you mean 'RF_OPMODE_STANDBY'?
+  259 |  setMode(RF69_MODE_STANDBY, /*waitForReady=*/true); // turn off receiver to prevent reception while filling fifo
+      |          ^~~~~~~~~~~~~~~~~
+      |          RF_OPMODE_STANDBY
+../Core/Src/rfm69.c:284:10: error: 'RF69_MODE_TX' undeclared (first use in this function); did you mean 'UART_MODE_TX'?
+  284 |  setMode(RF69_MODE_TX, true);
+      |          ^~~~~~~~~~~~
+      |          UART_MODE_TX
+../Core/Src/rfm69.c: In function 'readData':
+../Core/Src/rfm69.c:297:15: error: 'RF69_MODE_RX' undeclared (first use in this function); did you mean 'UART_MODE_RX'?
+  297 |  if (_mode == RF69_MODE_RX
+      |               ^~~~~~~~~~~~
+      |               UART_MODE_RX
+../Core/Src/rfm69.c:306:11: error: 'RF69_MODE_STANDBY' undeclared (first use in this function); did you mean 'RF_OPMODE_STANDBY'?
+  306 |   setMode(RF69_MODE_STANDBY, /*waitForReady=*/true);
+      |           ^~~~~~~~~~~~~~~~~
+      |           RF_OPMODE_STANDBY
+../Core/Src/rfm69.c: In function 'receiveBegin':
+../Core/Src/rfm69.c:356:10: error: 'RF69_MODE_RX' undeclared (first use in this function); did you mean 'UART_MODE_RX'?
+  356 |  setMode(RF69_MODE_RX, false);
+      |          ^~~~~~~~~~~~
+      |          UART_MODE_RX
+../Core/Src/rfm69.c: In function 'setAESEncryption':
+../Core/Src/rfm69.c:391:10: error: 'RF69_MODE_STANDBY' undeclared (first use in this function); did you mean 'RF_OPMODE_STANDBY'?
+  391 |  setMode(RF69_MODE_STANDBY, false);
+      |          ^~~~~~~~~~~~~~~~~
+      |          RF_OPMODE_STANDBY
+../Core/Src/rfm69.c:400:45: warning: dereferencing 'void *' pointer
+  400 |    HAL_SPI_Transmit(&RFM69_SPI_PORT, &aesKey[i], 1, 100);
+      |                                             ^
+../Core/Src/rfm69.c:400:38: warning: passing argument 2 of 'HAL_SPI_Transmit' discards 'const' qualifier from pointer target type [-Wdiscarded-qualifiers]
+  400 |    HAL_SPI_Transmit(&RFM69_SPI_PORT, &aesKey[i], 1, 100);
+      |                                      ^~~~~~~~~~
+In file included from ../Core/Inc/stm32f0xx_hal_conf.h:276,
+                 from ../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal.h:30,
+                 from ../Core/Inc/main.h:31,
+                 from ../Core/Inc/rfm69.h:11,
+                 from ../Core/Src/rfm69.c:8:
+../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_spi.h:792:70: note: expected 'uint8_t *' {aka 'unsigned char *'} but argument is of type 'const void *'
+  792 | HAL_StatusTypeDef HAL_SPI_Transmit(SPI_HandleTypeDef *hspi, uint8_t *pData, uint16_t Size, uint32_t Timeout);
+      |                                                             ~~~~~~~~~^~~~~
+../Core/Src/rfm69.c: In function 'readTemperature':
+../Core/Src/rfm69.c:417:10: error: 'RF69_MODE_STANDBY' undeclared (first use in this function); did you mean 'RF_OPMODE_STANDBY'?
+  417 |  setMode(RF69_MODE_STANDBY, /*waitForReady=*/true);
+      |          ^~~~~~~~~~~~~~~~~
+      |          RF_OPMODE_STANDBY
+../Core/Src/rfm69.c:421:31: error: 'COURSE_TEMP_COEF' undeclared (first use in this function)
+  421 |  return ~readReg(REG_TEMP2) + COURSE_TEMP_COEF + calFactor; // 'complement' corrects the slope, rising temp = rising val
+      |                               ^~~~~~~~~~~~~~~~
+../Core/Src/rfm69.c: In function 'getFrequency':
+../Core/Src/rfm69.c:192:1: warning: control reaches end of non-void function [-Wreturn-type]
+  192 | }
+      | ^
+../Core/Src/rfm69.c: In function 'readTemperature':
+../Core/Src/rfm69.c:422:1: warning: control reaches end of non-void function [-Wreturn-type]
+  422 | }
+      | ^
+make: *** [Core/Src/subdir.mk:37: Core/Src/rfm69.o] Error 1
+"make -j4 all" terminated with exit code 2. Build might be incomplete.
+22:00:24 **** Incremental Build of configuration Debug for project STM32F334R8T6_RFM69_Transmitte_HAL ****
+make -j4 all 
+arm-none-eabi-size   STM32F334R8T6_RFM69_Transmitte_HAL.elf 
+   text	   data	    bss	    dec	    hex	filename
+  20200	    120	   2112	  22432	   57a0	STM32F334R8T6_RFM69_Transmitte_HAL.elf
+Finished building: default.size.stdout
+ 
+22:00:36 **** Incremental Build of configuration Debug for project STM32F051R8T6_SPI_RFM69_Receiver ****
+make -j4 all 
+arm-none-eabi-gcc "../Core/Src/rfm69.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F051x8 -c -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/rfm69.d" -MT"Core/Src/rfm69.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/rfm69.o"
+../Core/Src/rfm69.c: In function 'rfm69_init':
+../Core/Src/rfm69.c:167:10: error: 'RF69_MODE_STANDBY' undeclared (first use in this function); did you mean 'RF_OPMODE_STANDBY'?
+  167 |  setMode(RF69_MODE_STANDBY, false);
+      |          ^~~~~~~~~~~~~~~~~
+      |          RF_OPMODE_STANDBY
+../Core/Src/rfm69.c:167:10: note: each undeclared identifier is reported only once for each function it appears in
+../Core/Src/rfm69.c: In function 'getFrequency':
+../Core/Src/rfm69.c:181:9: error: 'RFM69_FSTEP' undeclared (first use in this function)
+  181 |  return RFM69_FSTEP
+      |         ^~~~~~~~~~~
+../Core/Src/rfm69.c: In function 'setFrequency':
+../Core/Src/rfm69.c:188:17: error: 'RF69_MODE_TX' undeclared (first use in this function); did you mean 'UART_MODE_TX'?
+  188 |  if (oldMode == RF69_MODE_TX) {
+      |                 ^~~~~~~~~~~~
+      |                 UART_MODE_TX
+../Core/Src/rfm69.c:189:11: error: 'RF69_MODE_RX' undeclared (first use in this function); did you mean 'UART_MODE_RX'?
+  189 |   setMode(RF69_MODE_RX, false);
+      |           ^~~~~~~~~~~~
+      |           UART_MODE_RX
+../Core/Src/rfm69.c:191:12: error: 'RFM69_FSTEP' undeclared (first use in this function)
+  191 |  freqHz /= RFM69_FSTEP; // divide down by FSTEP to get FRF
+      |            ^~~~~~~~~~~
+../Core/Src/rfm69.c:196:11: error: 'RF69_MODE_SYNTH' undeclared (first use in this function)
+  196 |   setMode(RF69_MODE_SYNTH, false);
+      |           ^~~~~~~~~~~~~~~
+../Core/Src/rfm69.c: In function 'setMode':
+../Core/Src/rfm69.c:205:7: error: 'RF69_MODE_TX' undeclared (first use in this function); did you mean 'UART_MODE_TX'?
+  205 |  case RF69_MODE_TX:
+      |       ^~~~~~~~~~~~
+      |       UART_MODE_TX
+../Core/Src/rfm69.c:211:7: error: 'RF69_MODE_RX' undeclared (first use in this function); did you mean 'UART_MODE_RX'?
+  211 |  case RF69_MODE_RX:
+      |       ^~~~~~~~~~~~
+      |       UART_MODE_RX
+../Core/Src/rfm69.c:216:7: error: 'RF69_MODE_SYNTH' undeclared (first use in this function)
+  216 |  case RF69_MODE_SYNTH:
+      |       ^~~~~~~~~~~~~~~
+../Core/Src/rfm69.c:220:7: error: 'RF69_MODE_STANDBY' undeclared (first use in this function); did you mean 'RF_OPMODE_STANDBY'?
+  220 |  case RF69_MODE_STANDBY:
+      |       ^~~~~~~~~~~~~~~~~
+      |       RF_OPMODE_STANDBY
+../Core/Src/rfm69.c:223:7: error: 'RF69_MODE_SLEEP' undeclared (first use in this function); did you mean 'RF_OPMODE_SLEEP'?
+  223 |  case RF69_MODE_SLEEP:
+      |       ^~~~~~~~~~~~~~~
+      |       RF_OPMODE_SLEEP
+../Core/Src/rfm69.c: In function 'send':
+../Core/Src/rfm69.c:252:10: error: 'RF69_MODE_STANDBY' undeclared (first use in this function); did you mean 'RF_OPMODE_STANDBY'?
+  252 |  setMode(RF69_MODE_STANDBY, /*waitForReady=*/true); // turn off receiver to prevent reception while filling fifo
+      |          ^~~~~~~~~~~~~~~~~
+      |          RF_OPMODE_STANDBY
+../Core/Src/rfm69.c:262:13: error: 'RFM69_CTL_SENDACK' undeclared (first use in this function)
+  262 |   CTLbyte = RFM69_CTL_SENDACK;
+      |             ^~~~~~~~~~~~~~~~~
+../Core/Src/rfm69.c:264:13: error: 'RFM69_CTL_REQACK' undeclared (first use in this function)
+  264 |   CTLbyte = RFM69_CTL_REQACK;
+      |             ^~~~~~~~~~~~~~~~
+../Core/Src/rfm69.c:277:10: error: 'RF69_MODE_TX' undeclared (first use in this function); did you mean 'UART_MODE_TX'?
+  277 |  setMode(RF69_MODE_TX, true);
+      |          ^~~~~~~~~~~~
+      |          UART_MODE_TX
+../Core/Src/rfm69.c:281:33: error: 'RF69_TX_LIMIT_MS' undeclared (first use in this function)
+  281 |    && HAL_GetTick() - txStart < RF69_TX_LIMIT_MS)
+      |                                 ^~~~~~~~~~~~~~~~
+../Core/Src/rfm69.c: In function 'readData':
+../Core/Src/rfm69.c:290:15: error: 'RF69_MODE_RX' undeclared (first use in this function); did you mean 'UART_MODE_RX'?
+  290 |  if (_mode == RF69_MODE_RX
+      |               ^~~~~~~~~~~~
+      |               UART_MODE_RX
+../Core/Src/rfm69.c:299:11: error: 'RF69_MODE_STANDBY' undeclared (first use in this function); did you mean 'RF_OPMODE_STANDBY'?
+  299 |   setMode(RF69_MODE_STANDBY, /*waitForReady=*/true);
+      |           ^~~~~~~~~~~~~~~~~
+      |           RF_OPMODE_STANDBY
+../Core/Src/rfm69.c: In function 'receiveBegin':
+../Core/Src/rfm69.c:349:10: error: 'RF69_MODE_RX' undeclared (first use in this function); did you mean 'UART_MODE_RX'?
+  349 |  setMode(RF69_MODE_RX, false);
+      |          ^~~~~~~~~~~~
+      |          UART_MODE_RX
+../Core/Src/rfm69.c: In function 'setAESEncryption':
+../Core/Src/rfm69.c:384:10: error: 'RF69_MODE_STANDBY' undeclared (first use in this function); did you mean 'RF_OPMODE_STANDBY'?
+  384 |  setMode(RF69_MODE_STANDBY, false);
+      |          ^~~~~~~~~~~~~~~~~
+      |          RF_OPMODE_STANDBY
+../Core/Src/rfm69.c:393:45: warning: dereferencing 'void *' pointer
+  393 |    HAL_SPI_Transmit(&RFM69_SPI_PORT, &aesKey[i], 1, 100);
+      |                                             ^
+../Core/Src/rfm69.c:393:38: warning: passing argument 2 of 'HAL_SPI_Transmit' discards 'const' qualifier from pointer target type [-Wdiscarded-qualifiers]
+  393 |    HAL_SPI_Transmit(&RFM69_SPI_PORT, &aesKey[i], 1, 100);
+      |                                      ^~~~~~~~~~
+In file included from ../Core/Inc/stm32f0xx_hal_conf.h:276,
+                 from ../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal.h:30,
+                 from ../Core/Inc/main.h:31,
+                 from ../Core/Inc/rfm69.h:11,
+                 from ../Core/Src/rfm69.c:8:
+../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_spi.h:792:70: note: expected 'uint8_t *' {aka 'unsigned char *'} but argument is of type 'const void *'
+  792 | HAL_StatusTypeDef HAL_SPI_Transmit(SPI_HandleTypeDef *hspi, uint8_t *pData, uint16_t Size, uint32_t Timeout);
+      |                                                             ~~~~~~~~~^~~~~
+../Core/Src/rfm69.c: In function 'readTemperature':
+../Core/Src/rfm69.c:410:10: error: 'RF69_MODE_STANDBY' undeclared (first use in this function); did you mean 'RF_OPMODE_STANDBY'?
+  410 |  setMode(RF69_MODE_STANDBY, /*waitForReady=*/true);
+      |          ^~~~~~~~~~~~~~~~~
+      |          RF_OPMODE_STANDBY
+../Core/Src/rfm69.c:414:31: error: 'COURSE_TEMP_COEF' undeclared (first use in this function)
+  414 |  return ~readReg(REG_TEMP2) + COURSE_TEMP_COEF + calFactor; // 'complement' corrects the slope, rising temp = rising val
+      |                               ^~~~~~~~~~~~~~~~
+../Core/Src/rfm69.c: In function 'getFrequency':
+../Core/Src/rfm69.c:185:1: warning: control reaches end of non-void function [-Wreturn-type]
+  185 | }
+      | ^
+../Core/Src/rfm69.c: In function 'readTemperature':
+../Core/Src/rfm69.c:415:1: warning: control reaches end of non-void function [-Wreturn-type]
+  415 | }
+      | ^
+make: *** [Core/Src/subdir.mk:37: Core/Src/rfm69.o] Error 1
+"make -j4 all" terminated with exit code 2. Build might be incomplete.
+22:00:44 **** Incremental Build of configuration Debug for project STM32F051R8T6_SPI_RFM69_Receiver ****
+make -j4 all 
+arm-none-eabi-gcc "../Core/Src/rfm69.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F051x8 -c -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/rfm69.d" -MT"Core/Src/rfm69.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/rfm69.o"
+../Core/Src/rfm69.c: In function 'rfm69_init':
+../Core/Src/rfm69.c:172:10: error: 'RF69_MODE_STANDBY' undeclared (first use in this function); did you mean 'RF_OPMODE_STANDBY'?
+  172 |  setMode(RF69_MODE_STANDBY, false);
+      |          ^~~~~~~~~~~~~~~~~
+      |          RF_OPMODE_STANDBY
+../Core/Src/rfm69.c:172:10: note: each undeclared identifier is reported only once for each function it appears in
+../Core/Src/rfm69.c: In function 'getFrequency':
+../Core/Src/rfm69.c:186:9: error: 'RFM69_FSTEP' undeclared (first use in this function)
+  186 |  return RFM69_FSTEP
+      |         ^~~~~~~~~~~
+../Core/Src/rfm69.c: In function 'setFrequency':
+../Core/Src/rfm69.c:193:17: error: 'RF69_MODE_TX' undeclared (first use in this function); did you mean 'UART_MODE_TX'?
+  193 |  if (oldMode == RF69_MODE_TX) {
+      |                 ^~~~~~~~~~~~
+      |                 UART_MODE_TX
+../Core/Src/rfm69.c:194:11: error: 'RF69_MODE_RX' undeclared (first use in this function); did you mean 'UART_MODE_RX'?
+  194 |   setMode(RF69_MODE_RX, false);
+      |           ^~~~~~~~~~~~
+      |           UART_MODE_RX
+../Core/Src/rfm69.c:196:12: error: 'RFM69_FSTEP' undeclared (first use in this function)
+  196 |  freqHz /= RFM69_FSTEP; // divide down by FSTEP to get FRF
+      |            ^~~~~~~~~~~
+../Core/Src/rfm69.c:201:11: error: 'RF69_MODE_SYNTH' undeclared (first use in this function)
+  201 |   setMode(RF69_MODE_SYNTH, false);
+      |           ^~~~~~~~~~~~~~~
+../Core/Src/rfm69.c: In function 'setMode':
+../Core/Src/rfm69.c:210:7: error: 'RF69_MODE_TX' undeclared (first use in this function); did you mean 'UART_MODE_TX'?
+  210 |  case RF69_MODE_TX:
+      |       ^~~~~~~~~~~~
+      |       UART_MODE_TX
+../Core/Src/rfm69.c:216:7: error: 'RF69_MODE_RX' undeclared (first use in this function); did you mean 'UART_MODE_RX'?
+  216 |  case RF69_MODE_RX:
+      |       ^~~~~~~~~~~~
+      |       UART_MODE_RX
+../Core/Src/rfm69.c:221:7: error: 'RF69_MODE_SYNTH' undeclared (first use in this function)
+  221 |  case RF69_MODE_SYNTH:
+      |       ^~~~~~~~~~~~~~~
+../Core/Src/rfm69.c:225:7: error: 'RF69_MODE_STANDBY' undeclared (first use in this function); did you mean 'RF_OPMODE_STANDBY'?
+  225 |  case RF69_MODE_STANDBY:
+      |       ^~~~~~~~~~~~~~~~~
+      |       RF_OPMODE_STANDBY
+../Core/Src/rfm69.c:228:7: error: 'RF69_MODE_SLEEP' undeclared (first use in this function); did you mean 'RF_OPMODE_SLEEP'?
+  228 |  case RF69_MODE_SLEEP:
+      |       ^~~~~~~~~~~~~~~
+      |       RF_OPMODE_SLEEP
+../Core/Src/rfm69.c: In function 'send':
+../Core/Src/rfm69.c:257:10: error: 'RF69_MODE_STANDBY' undeclared (first use in this function); did you mean 'RF_OPMODE_STANDBY'?
+  257 |  setMode(RF69_MODE_STANDBY, /*waitForReady=*/true); // turn off receiver to prevent reception while filling fifo
+      |          ^~~~~~~~~~~~~~~~~
+      |          RF_OPMODE_STANDBY
+../Core/Src/rfm69.c:282:10: error: 'RF69_MODE_TX' undeclared (first use in this function); did you mean 'UART_MODE_TX'?
+  282 |  setMode(RF69_MODE_TX, true);
+      |          ^~~~~~~~~~~~
+      |          UART_MODE_TX
+../Core/Src/rfm69.c: In function 'readData':
+../Core/Src/rfm69.c:295:15: error: 'RF69_MODE_RX' undeclared (first use in this function); did you mean 'UART_MODE_RX'?
+  295 |  if (_mode == RF69_MODE_RX
+      |               ^~~~~~~~~~~~
+      |               UART_MODE_RX
+../Core/Src/rfm69.c:304:11: error: 'RF69_MODE_STANDBY' undeclared (first use in this function); did you mean 'RF_OPMODE_STANDBY'?
+  304 |   setMode(RF69_MODE_STANDBY, /*waitForReady=*/true);
+      |           ^~~~~~~~~~~~~~~~~
+      |           RF_OPMODE_STANDBY
+../Core/Src/rfm69.c: In function 'receiveBegin':
+../Core/Src/rfm69.c:354:10: error: 'RF69_MODE_RX' undeclared (first use in this function); did you mean 'UART_MODE_RX'?
+  354 |  setMode(RF69_MODE_RX, false);
+      |          ^~~~~~~~~~~~
+      |          UART_MODE_RX
+../Core/Src/rfm69.c: In function 'setAESEncryption':
+../Core/Src/rfm69.c:389:10: error: 'RF69_MODE_STANDBY' undeclared (first use in this function); did you mean 'RF_OPMODE_STANDBY'?
+  389 |  setMode(RF69_MODE_STANDBY, false);
+      |          ^~~~~~~~~~~~~~~~~
+      |          RF_OPMODE_STANDBY
+../Core/Src/rfm69.c:398:45: warning: dereferencing 'void *' pointer
+  398 |    HAL_SPI_Transmit(&RFM69_SPI_PORT, &aesKey[i], 1, 100);
+      |                                             ^
+../Core/Src/rfm69.c:398:38: warning: passing argument 2 of 'HAL_SPI_Transmit' discards 'const' qualifier from pointer target type [-Wdiscarded-qualifiers]
+  398 |    HAL_SPI_Transmit(&RFM69_SPI_PORT, &aesKey[i], 1, 100);
+      |                                      ^~~~~~~~~~
+In file included from ../Core/Inc/stm32f0xx_hal_conf.h:276,
+                 from ../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal.h:30,
+                 from ../Core/Inc/main.h:31,
+                 from ../Core/Inc/rfm69.h:11,
+                 from ../Core/Src/rfm69.c:8:
+../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_spi.h:792:70: note: expected 'uint8_t *' {aka 'unsigned char *'} but argument is of type 'const void *'
+  792 | HAL_StatusTypeDef HAL_SPI_Transmit(SPI_HandleTypeDef *hspi, uint8_t *pData, uint16_t Size, uint32_t Timeout);
+      |                                                             ~~~~~~~~~^~~~~
+../Core/Src/rfm69.c: In function 'readTemperature':
+../Core/Src/rfm69.c:415:10: error: 'RF69_MODE_STANDBY' undeclared (first use in this function); did you mean 'RF_OPMODE_STANDBY'?
+  415 |  setMode(RF69_MODE_STANDBY, /*waitForReady=*/true);
+      |          ^~~~~~~~~~~~~~~~~
+      |          RF_OPMODE_STANDBY
+../Core/Src/rfm69.c:419:31: error: 'COURSE_TEMP_COEF' undeclared (first use in this function)
+  419 |  return ~readReg(REG_TEMP2) + COURSE_TEMP_COEF + calFactor; // 'complement' corrects the slope, rising temp = rising val
+      |                               ^~~~~~~~~~~~~~~~
+../Core/Src/rfm69.c: In function 'getFrequency':
+../Core/Src/rfm69.c:190:1: warning: control reaches end of non-void function [-Wreturn-type]
+  190 | }
+      | ^
+../Core/Src/rfm69.c: In function 'readTemperature':
+../Core/Src/rfm69.c:420:1: warning: control reaches end of non-void function [-Wreturn-type]
+  420 | }
+      | ^
+make: *** [Core/Src/subdir.mk:37: Core/Src/rfm69.o] Error 1
+"make -j4 all" terminated with exit code 2. Build might be incomplete.
+22:00:57 **** Incremental Build of configuration Debug for project STM32F051R8T6_SPI_RFM69_Receiver ****
+make -j4 all 
+arm-none-eabi-gcc "../Core/Src/rfm69.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F051x8 -c -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/rfm69.d" -MT"Core/Src/rfm69.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/rfm69.o"
+../Core/Src/rfm69.c: In function 'getFrequency':
+../Core/Src/rfm69.c:195:9: error: 'RFM69_FSTEP' undeclared (first use in this function)
+  195 |  return RFM69_FSTEP
+      |         ^~~~~~~~~~~
+../Core/Src/rfm69.c:195:9: note: each undeclared identifier is reported only once for each function it appears in
+../Core/Src/rfm69.c: In function 'setFrequency':
+../Core/Src/rfm69.c:205:12: error: 'RFM69_FSTEP' undeclared (first use in this function)
+  205 |  freqHz /= RFM69_FSTEP; // divide down by FSTEP to get FRF
+      |            ^~~~~~~~~~~
+../Core/Src/rfm69.c: In function 'setAESEncryption':
+../Core/Src/rfm69.c:407:45: warning: dereferencing 'void *' pointer
+  407 |    HAL_SPI_Transmit(&RFM69_SPI_PORT, &aesKey[i], 1, 100);
+      |                                             ^
+../Core/Src/rfm69.c:407:38: warning: passing argument 2 of 'HAL_SPI_Transmit' discards 'const' qualifier from pointer target type [-Wdiscarded-qualifiers]
+  407 |    HAL_SPI_Transmit(&RFM69_SPI_PORT, &aesKey[i], 1, 100);
+      |                                      ^~~~~~~~~~
+In file included from ../Core/Inc/stm32f0xx_hal_conf.h:276,
+                 from ../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal.h:30,
+                 from ../Core/Inc/main.h:31,
+                 from ../Core/Inc/rfm69.h:11,
+                 from ../Core/Src/rfm69.c:8:
+../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_spi.h:792:70: note: expected 'uint8_t *' {aka 'unsigned char *'} but argument is of type 'const void *'
+  792 | HAL_StatusTypeDef HAL_SPI_Transmit(SPI_HandleTypeDef *hspi, uint8_t *pData, uint16_t Size, uint32_t Timeout);
+      |                                                             ~~~~~~~~~^~~~~
+../Core/Src/rfm69.c: In function 'getFrequency':
+../Core/Src/rfm69.c:199:1: warning: control reaches end of non-void function [-Wreturn-type]
+  199 | }
+      | ^
+make: *** [Core/Src/subdir.mk:37: Core/Src/rfm69.o] Error 1
+"make -j4 all" terminated with exit code 2. Build might be incomplete.
+22:01:06 **** Incremental Build of configuration Debug for project STM32F051R8T6_SPI_RFM69_Receiver ****
+make -j4 all 
+arm-none-eabi-gcc "../Core/Src/rfm69.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F051x8 -c -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/rfm69.d" -MT"Core/Src/rfm69.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/rfm69.o"
+../Core/Src/rfm69.c: In function 'setAESEncryption':
+../Core/Src/rfm69.c:408:45: warning: dereferencing 'void *' pointer
+  408 |    HAL_SPI_Transmit(&RFM69_SPI_PORT, &aesKey[i], 1, 100);
+      |                                             ^
+../Core/Src/rfm69.c:408:38: warning: passing argument 2 of 'HAL_SPI_Transmit' discards 'const' qualifier from pointer target type [-Wdiscarded-qualifiers]
+  408 |    HAL_SPI_Transmit(&RFM69_SPI_PORT, &aesKey[i], 1, 100);
+      |                                      ^~~~~~~~~~
+In file included from ../Core/Inc/stm32f0xx_hal_conf.h:276,
+                 from ../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal.h:30,
+                 from ../Core/Inc/main.h:31,
+                 from ../Core/Inc/rfm69.h:11,
+                 from ../Core/Src/rfm69.c:8:
+../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_spi.h:792:70: note: expected 'uint8_t *' {aka 'unsigned char *'} but argument is of type 'const void *'
+  792 | HAL_StatusTypeDef HAL_SPI_Transmit(SPI_HandleTypeDef *hspi, uint8_t *pData, uint16_t Size, uint32_t Timeout);
+      |                                                             ~~~~~~~~~^~~~~
+arm-none-eabi-gcc -o "STM32F051R8T6_SPI_RFM69_Receiver.elf" @"objects.list"   -mcpu=cortex-m0 -T"C:\STM32 workspace\STM32 RFM69 SPI TxRx\STM32F051R8T6_SPI_RFM69_Transmitter\STM32F051R8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="STM32F051R8T6_SPI_RFM69_Receiver.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: STM32F051R8T6_SPI_RFM69_Receiver.elf
+ 
+arm-none-eabi-size   STM32F051R8T6_SPI_RFM69_Receiver.elf 
+arm-none-eabi-objdump -h -S  STM32F051R8T6_SPI_RFM69_Receiver.elf  > "STM32F051R8T6_SPI_RFM69_Receiver.list"
+arm-none-eabi-objcopy  -O binary  STM32F051R8T6_SPI_RFM69_Receiver.elf  "STM32F051R8T6_SPI_RFM69_Receiver.bin"
+   text	   data	    bss	    dec	    hex	filename
+  20952	    120	   2112	  23184	   5a90	STM32F051R8T6_SPI_RFM69_Receiver.elf
+Finished building: default.size.stdout
+ 
+Finished building: STM32F051R8T6_SPI_RFM69_Receiver.bin
+ 
+Finished building: STM32F051R8T6_SPI_RFM69_Receiver.list
+ 
+22:02:14 **** Incremental Build of configuration Debug for project STM32F051R8T6_SPI_RFM69_Receiver ****
+make -j4 all 
+arm-none-eabi-gcc "../Core/Src/rfm69.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F051x8 -c -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/rfm69.d" -MT"Core/Src/rfm69.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/rfm69.o"
+../Core/Src/rfm69.c: In function 'setAESEncryption':
+../Core/Src/rfm69.c:398:45: warning: dereferencing 'void *' pointer
+  398 |    HAL_SPI_Transmit(&RFM69_SPI_PORT, &aesKey[i], 1, 100);
+      |                                             ^
+../Core/Src/rfm69.c:398:38: warning: passing argument 2 of 'HAL_SPI_Transmit' discards 'const' qualifier from pointer target type [-Wdiscarded-qualifiers]
+  398 |    HAL_SPI_Transmit(&RFM69_SPI_PORT, &aesKey[i], 1, 100);
+      |                                      ^~~~~~~~~~
+In file included from ../Core/Inc/stm32f0xx_hal_conf.h:276,
+                 from ../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal.h:30,
+                 from ../Core/Inc/main.h:31,
+                 from ../Core/Inc/rfm69.h:11,
+                 from ../Core/Src/rfm69.c:8:
+../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_spi.h:792:70: note: expected 'uint8_t *' {aka 'unsigned char *'} but argument is of type 'const void *'
+  792 | HAL_StatusTypeDef HAL_SPI_Transmit(SPI_HandleTypeDef *hspi, uint8_t *pData, uint16_t Size, uint32_t Timeout);
+      |                                                             ~~~~~~~~~^~~~~
+arm-none-eabi-gcc -o "STM32F051R8T6_SPI_RFM69_Receiver.elf" @"objects.list"   -mcpu=cortex-m0 -T"C:\STM32 workspace\STM32 RFM69 SPI TxRx\STM32F051R8T6_SPI_RFM69_Transmitter\STM32F051R8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="STM32F051R8T6_SPI_RFM69_Receiver.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: STM32F051R8T6_SPI_RFM69_Receiver.elf
+ 
+arm-none-eabi-size   STM32F051R8T6_SPI_RFM69_Receiver.elf 
+arm-none-eabi-objdump -h -S  STM32F051R8T6_SPI_RFM69_Receiver.elf  > "STM32F051R8T6_SPI_RFM69_Receiver.list"
+arm-none-eabi-objcopy  -O binary  STM32F051R8T6_SPI_RFM69_Receiver.elf  "STM32F051R8T6_SPI_RFM69_Receiver.bin"
+   text	   data	    bss	    dec	    hex	filename
+  20952	    120	   2096	  23168	   5a80	STM32F051R8T6_SPI_RFM69_Receiver.elf
+Finished building: default.size.stdout
+ 
+Finished building: STM32F051R8T6_SPI_RFM69_Receiver.bin
+ 
+Finished building: STM32F051R8T6_SPI_RFM69_Receiver.list
+ 
+22:02:15 **** Incremental Build of configuration Debug for project STM32F334R8T6_RFM69_Transmitte_HAL ****
+make -j4 all 
+arm-none-eabi-size   STM32F334R8T6_RFM69_Transmitte_HAL.elf 
+   text	   data	    bss	    dec	    hex	filename
+  20200	    120	   2112	  22432	   57a0	STM32F334R8T6_RFM69_Transmitte_HAL.elf
+Finished building: default.size.stdout
+ 
+22:02:20 **** Incremental Build of configuration Debug for project STM32F051R8T6_SPI_RFM69_Receiver ****
+make -j4 all 
+arm-none-eabi-gcc "../Core/Src/rfm69.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F051x8 -c -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/rfm69.d" -MT"Core/Src/rfm69.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/rfm69.o"
+../Core/Src/rfm69.c: In function 'setAddress':
+../Core/Src/rfm69.c:239:2: error: '_address' undeclared (first use in this function); did you mean 'setAddress'?
+  239 |  _address = addr;
+      |  ^~~~~~~~
+      |  setAddress
+../Core/Src/rfm69.c:239:2: note: each undeclared identifier is reported only once for each function it appears in
+../Core/Src/rfm69.c: In function 'setPowerLevel':
+../Core/Src/rfm69.c:246:2: error: '_powerLevel' undeclared (first use in this function); did you mean 'powerLevel'?
+  246 |  _powerLevel = (powerLevel > 31 ? 31 : _powerLevel);
+      |  ^~~~~~~~~~~
+      |  powerLevel
+../Core/Src/rfm69.c: In function 'send':
+../Core/Src/rfm69.c:269:15: error: '_address' undeclared (first use in this function); did you mean 'toAddress'?
+  269 |    toAddress, _address, CTLbyte, 0 };
+      |               ^~~~~~~~
+      |               toAddress
+../Core/Src/rfm69.c: In function 'setHighPower':
+../Core/Src/rfm69.c:375:9: error: '_powerLevel' undeclared (first use in this function); did you mean 'setPowerLevel'?
+  375 |       | _powerLevel); // enable P0 only
+      |         ^~~~~~~~~~~
+      |         setPowerLevel
+../Core/Src/rfm69.c: In function 'setAESEncryption':
+../Core/Src/rfm69.c:394:45: warning: dereferencing 'void *' pointer
+  394 |    HAL_SPI_Transmit(&RFM69_SPI_PORT, &aesKey[i], 1, 100);
+      |                                             ^
+../Core/Src/rfm69.c:394:38: warning: passing argument 2 of 'HAL_SPI_Transmit' discards 'const' qualifier from pointer target type [-Wdiscarded-qualifiers]
+  394 |    HAL_SPI_Transmit(&RFM69_SPI_PORT, &aesKey[i], 1, 100);
+      |                                      ^~~~~~~~~~
+In file included from ../Core/Inc/stm32f0xx_hal_conf.h:276,
+                 from ../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal.h:30,
+                 from ../Core/Inc/main.h:31,
+                 from ../Core/Inc/rfm69.h:11,
+                 from ../Core/Src/rfm69.c:8:
+../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_spi.h:792:70: note: expected 'uint8_t *' {aka 'unsigned char *'} but argument is of type 'const void *'
+  792 | HAL_StatusTypeDef HAL_SPI_Transmit(SPI_HandleTypeDef *hspi, uint8_t *pData, uint16_t Size, uint32_t Timeout);
+      |                                                             ~~~~~~~~~^~~~~
+make: *** [Core/Src/subdir.mk:37: Core/Src/rfm69.o] Error 1
+"make -j4 all" terminated with exit code 2. Build might be incomplete.
+22:02:21 **** Incremental Build of configuration Debug for project STM32F334R8T6_RFM69_Transmitte_HAL ****
+make -j4 all 
+arm-none-eabi-size   STM32F334R8T6_RFM69_Transmitte_HAL.elf 
+   text	   data	    bss	    dec	    hex	filename
+  20200	    120	   2112	  22432	   57a0	STM32F334R8T6_RFM69_Transmitte_HAL.elf
+Finished building: default.size.stdout
+ 
+22:02:25 **** Incremental Build of configuration Debug for project STM32F051R8T6_SPI_RFM69_Receiver ****
+make -j4 all 
+arm-none-eabi-gcc "../Core/Src/rfm69.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F051x8 -c -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/rfm69.d" -MT"Core/Src/rfm69.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/rfm69.o"
+../Core/Src/rfm69.c: In function 'setAddress':
+../Core/Src/rfm69.c:239:2: error: '_address' undeclared (first use in this function); did you mean 'setAddress'?
+  239 |  _address = addr;
+      |  ^~~~~~~~
+      |  setAddress
+../Core/Src/rfm69.c:239:2: note: each undeclared identifier is reported only once for each function it appears in
+../Core/Src/rfm69.c: In function 'setPowerLevel':
+../Core/Src/rfm69.c:246:2: error: '_powerLevel' undeclared (first use in this function); did you mean 'powerLevel'?
+  246 |  _powerLevel = (powerLevel > 31 ? 31 : _powerLevel);
+      |  ^~~~~~~~~~~
+      |  powerLevel
+../Core/Src/rfm69.c: In function 'send':
+../Core/Src/rfm69.c:269:15: error: '_address' undeclared (first use in this function); did you mean 'toAddress'?
+  269 |    toAddress, _address, CTLbyte, 0 };
+      |               ^~~~~~~~
+      |               toAddress
+../Core/Src/rfm69.c: In function 'setHighPower':
+../Core/Src/rfm69.c:375:9: error: '_powerLevel' undeclared (first use in this function); did you mean 'setPowerLevel'?
+  375 |       | _powerLevel); // enable P0 only
+      |         ^~~~~~~~~~~
+      |         setPowerLevel
+../Core/Src/rfm69.c: In function 'setAESEncryption':
+../Core/Src/rfm69.c:394:45: warning: dereferencing 'void *' pointer
+  394 |    HAL_SPI_Transmit(&RFM69_SPI_PORT, &aesKey[i], 1, 100);
+      |                                             ^
+../Core/Src/rfm69.c:394:38: warning: passing argument 2 of 'HAL_SPI_Transmit' discards 'const' qualifier from pointer target type [-Wdiscarded-qualifiers]
+  394 |    HAL_SPI_Transmit(&RFM69_SPI_PORT, &aesKey[i], 1, 100);
+      |                                      ^~~~~~~~~~
+In file included from ../Core/Inc/stm32f0xx_hal_conf.h:276,
+                 from ../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal.h:30,
+                 from ../Core/Inc/main.h:31,
+                 from ../Core/Inc/rfm69.h:11,
+                 from ../Core/Src/rfm69.c:8:
+../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_spi.h:792:70: note: expected 'uint8_t *' {aka 'unsigned char *'} but argument is of type 'const void *'
+  792 | HAL_StatusTypeDef HAL_SPI_Transmit(SPI_HandleTypeDef *hspi, uint8_t *pData, uint16_t Size, uint32_t Timeout);
+      |                                                             ~~~~~~~~~^~~~~
+make: *** [Core/Src/subdir.mk:37: Core/Src/rfm69.o] Error 1
+"make -j4 all" terminated with exit code 2. Build might be incomplete.
+22:02:31 **** Incremental Build of configuration Debug for project STM32F051R8T6_SPI_RFM69_Receiver ****
+make -j4 all 
+arm-none-eabi-gcc "../Core/Src/rfm69.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F051x8 -c -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/rfm69.d" -MT"Core/Src/rfm69.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/rfm69.o"
+../Core/Src/rfm69.c: In function 'setAESEncryption':
+../Core/Src/rfm69.c:398:45: warning: dereferencing 'void *' pointer
+  398 |    HAL_SPI_Transmit(&RFM69_SPI_PORT, &aesKey[i], 1, 100);
+      |                                             ^
+../Core/Src/rfm69.c:398:38: warning: passing argument 2 of 'HAL_SPI_Transmit' discards 'const' qualifier from pointer target type [-Wdiscarded-qualifiers]
+  398 |    HAL_SPI_Transmit(&RFM69_SPI_PORT, &aesKey[i], 1, 100);
+      |                                      ^~~~~~~~~~
+In file included from ../Core/Inc/stm32f0xx_hal_conf.h:276,
+                 from ../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal.h:30,
+                 from ../Core/Inc/main.h:31,
+                 from ../Core/Inc/rfm69.h:11,
+                 from ../Core/Src/rfm69.c:8:
+../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_spi.h:792:70: note: expected 'uint8_t *' {aka 'unsigned char *'} but argument is of type 'const void *'
+  792 | HAL_StatusTypeDef HAL_SPI_Transmit(SPI_HandleTypeDef *hspi, uint8_t *pData, uint16_t Size, uint32_t Timeout);
+      |                                                             ~~~~~~~~~^~~~~
+arm-none-eabi-gcc -o "STM32F051R8T6_SPI_RFM69_Receiver.elf" @"objects.list"   -mcpu=cortex-m0 -T"C:\STM32 workspace\STM32 RFM69 SPI TxRx\STM32F051R8T6_SPI_RFM69_Transmitter\STM32F051R8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="STM32F051R8T6_SPI_RFM69_Receiver.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: STM32F051R8T6_SPI_RFM69_Receiver.elf
+ 
+arm-none-eabi-size   STM32F051R8T6_SPI_RFM69_Receiver.elf 
+arm-none-eabi-objdump -h -S  STM32F051R8T6_SPI_RFM69_Receiver.elf  > "STM32F051R8T6_SPI_RFM69_Receiver.list"
+arm-none-eabi-objcopy  -O binary  STM32F051R8T6_SPI_RFM69_Receiver.elf  "STM32F051R8T6_SPI_RFM69_Receiver.bin"
+   text	   data	    bss	    dec	    hex	filename
+  20952	    120	   2096	  23168	   5a80	STM32F051R8T6_SPI_RFM69_Receiver.elf
+Finished building: default.size.stdout
+ 
+Finished building: STM32F051R8T6_SPI_RFM69_Receiver.bin
+ 
+Finished building: STM32F051R8T6_SPI_RFM69_Receiver.list
+ 
+22:02:33 **** Incremental Build of configuration Debug for project STM32F334R8T6_RFM69_Transmitte_HAL ****
+make -j4 all 
+arm-none-eabi-size   STM32F334R8T6_RFM69_Transmitte_HAL.elf 
+   text	   data	    bss	    dec	    hex	filename
+  20200	    120	   2112	  22432	   57a0	STM32F334R8T6_RFM69_Transmitte_HAL.elf
+Finished building: default.size.stdout
+ 
+22:02:34 **** Incremental Build of configuration Debug for project STM32F051R8T6_SPI_RFM69_Receiver ****
+make -j4 all 
+arm-none-eabi-size   STM32F051R8T6_SPI_RFM69_Receiver.elf 
+   text	   data	    bss	    dec	    hex	filename
+  20952	    120	   2096	  23168	   5a80	STM32F051R8T6_SPI_RFM69_Receiver.elf
+Finished building: default.size.stdout
+ 
+22:03:17 **** Incremental Build of configuration Debug for project STM32F051R8T6_SPI_RFM69_Receiver ****
+make -j4 all 
+arm-none-eabi-gcc "../Core/Src/rfm69.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F051x8 -c -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/rfm69.d" -MT"Core/Src/rfm69.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/rfm69.o"
+../Core/Src/rfm69.c: In function 'setAESEncryption':
+../Core/Src/rfm69.c:396:45: warning: dereferencing 'void *' pointer
+  396 |    HAL_SPI_Transmit(&RFM69_SPI_PORT, &aesKey[i], 1, 100);
+      |                                             ^
+../Core/Src/rfm69.c:396:38: warning: passing argument 2 of 'HAL_SPI_Transmit' discards 'const' qualifier from pointer target type [-Wdiscarded-qualifiers]
+  396 |    HAL_SPI_Transmit(&RFM69_SPI_PORT, &aesKey[i], 1, 100);
+      |                                      ^~~~~~~~~~
+In file included from ../Core/Inc/stm32f0xx_hal_conf.h:276,
+                 from ../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal.h:30,
+                 from ../Core/Inc/main.h:31,
+                 from ../Core/Inc/rfm69.h:11,
+                 from ../Core/Src/rfm69.c:8:
+../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_spi.h:792:70: note: expected 'uint8_t *' {aka 'unsigned char *'} but argument is of type 'const void *'
+  792 | HAL_StatusTypeDef HAL_SPI_Transmit(SPI_HandleTypeDef *hspi, uint8_t *pData, uint16_t Size, uint32_t Timeout);
+      |                                                             ~~~~~~~~~^~~~~
+arm-none-eabi-gcc -o "STM32F051R8T6_SPI_RFM69_Receiver.elf" @"objects.list"   -mcpu=cortex-m0 -T"C:\STM32 workspace\STM32 RFM69 SPI TxRx\STM32F051R8T6_SPI_RFM69_Transmitter\STM32F051R8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="STM32F051R8T6_SPI_RFM69_Receiver.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: STM32F051R8T6_SPI_RFM69_Receiver.elf
+ 
+arm-none-eabi-size   STM32F051R8T6_SPI_RFM69_Receiver.elf 
+arm-none-eabi-objdump -h -S  STM32F051R8T6_SPI_RFM69_Receiver.elf  > "STM32F051R8T6_SPI_RFM69_Receiver.list"
+arm-none-eabi-objcopy  -O binary  STM32F051R8T6_SPI_RFM69_Receiver.elf  "STM32F051R8T6_SPI_RFM69_Receiver.bin"
+   text	   data	    bss	    dec	    hex	filename
+  20952	    120	   2096	  23168	   5a80	STM32F051R8T6_SPI_RFM69_Receiver.elf
+Finished building: default.size.stdout
+ 
+Finished building: STM32F051R8T6_SPI_RFM69_Receiver.bin
+ 
+Finished building: STM32F051R8T6_SPI_RFM69_Receiver.list
+ 
+22:03:19 **** Incremental Build of configuration Debug for project STM32F334R8T6_RFM69_Transmitte_HAL ****
+make -j4 all 
+arm-none-eabi-size   STM32F334R8T6_RFM69_Transmitte_HAL.elf 
+   text	   data	    bss	    dec	    hex	filename
+  20200	    120	   2112	  22432	   57a0	STM32F334R8T6_RFM69_Transmitte_HAL.elf
+Finished building: default.size.stdout
+ 
+22:03:24 **** Incremental Build of configuration Debug for project STM32F051R8T6_SPI_RFM69_Receiver ****
+make -j4 all 
+arm-none-eabi-gcc "../Core/Src/rfm69.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F051x8 -c -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/rfm69.d" -MT"Core/Src/rfm69.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/rfm69.o"
+../Core/Src/rfm69.c: In function 'readData':
+../Core/Src/rfm69.c:311:68: error: 'frame' undeclared (first use in this function)
+  311 |   HAL_StatusTypeDef errorCode = HAL_SPI_Receive(&RFM69_SPI_PORT, *&frame,
+      |                                                                    ^~~~~
+../Core/Src/rfm69.c:311:68: note: each undeclared identifier is reported only once for each function it appears in
+../Core/Src/rfm69.c: In function 'setAESEncryption':
+../Core/Src/rfm69.c:396:45: warning: dereferencing 'void *' pointer
+  396 |    HAL_SPI_Transmit(&RFM69_SPI_PORT, &aesKey[i], 1, 100);
+      |                                             ^
+../Core/Src/rfm69.c:396:38: warning: passing argument 2 of 'HAL_SPI_Transmit' discards 'const' qualifier from pointer target type [-Wdiscarded-qualifiers]
+  396 |    HAL_SPI_Transmit(&RFM69_SPI_PORT, &aesKey[i], 1, 100);
+      |                                      ^~~~~~~~~~
+In file included from ../Core/Inc/stm32f0xx_hal_conf.h:276,
+                 from ../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal.h:30,
+                 from ../Core/Inc/main.h:31,
+                 from ../Core/Inc/rfm69.h:11,
+                 from ../Core/Src/rfm69.c:8:
+../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_spi.h:792:70: note: expected 'uint8_t *' {aka 'unsigned char *'} but argument is of type 'const void *'
+  792 | HAL_StatusTypeDef HAL_SPI_Transmit(SPI_HandleTypeDef *hspi, uint8_t *pData, uint16_t Size, uint32_t Timeout);
+      |                                                             ~~~~~~~~~^~~~~
+make: *** [Core/Src/subdir.mk:37: Core/Src/rfm69.o] Error 1
+"make -j4 all" terminated with exit code 2. Build might be incomplete.
+22:03:25 **** Incremental Build of configuration Debug for project STM32F334R8T6_RFM69_Transmitte_HAL ****
+make -j4 all 
+arm-none-eabi-size   STM32F334R8T6_RFM69_Transmitte_HAL.elf 
+   text	   data	    bss	    dec	    hex	filename
+  20200	    120	   2112	  22432	   57a0	STM32F334R8T6_RFM69_Transmitte_HAL.elf
+Finished building: default.size.stdout
+ 
+22:03:30 **** Incremental Build of configuration Debug for project STM32F051R8T6_SPI_RFM69_Receiver ****
+make -j4 all 
+arm-none-eabi-gcc "../Core/Src/rfm69.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F051x8 -c -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/rfm69.d" -MT"Core/Src/rfm69.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/rfm69.o"
+../Core/Src/rfm69.c: In function 'readData':
+../Core/Src/rfm69.c:311:68: error: 'frame' undeclared (first use in this function)
+  311 |   HAL_StatusTypeDef errorCode = HAL_SPI_Receive(&RFM69_SPI_PORT, *&frame,
+      |                                                                    ^~~~~
+../Core/Src/rfm69.c:311:68: note: each undeclared identifier is reported only once for each function it appears in
+../Core/Src/rfm69.c: In function 'setAESEncryption':
+../Core/Src/rfm69.c:396:45: warning: dereferencing 'void *' pointer
+  396 |    HAL_SPI_Transmit(&RFM69_SPI_PORT, &aesKey[i], 1, 100);
+      |                                             ^
+../Core/Src/rfm69.c:396:38: warning: passing argument 2 of 'HAL_SPI_Transmit' discards 'const' qualifier from pointer target type [-Wdiscarded-qualifiers]
+  396 |    HAL_SPI_Transmit(&RFM69_SPI_PORT, &aesKey[i], 1, 100);
+      |                                      ^~~~~~~~~~
+In file included from ../Core/Inc/stm32f0xx_hal_conf.h:276,
+                 from ../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal.h:30,
+                 from ../Core/Inc/main.h:31,
+                 from ../Core/Inc/rfm69.h:11,
+                 from ../Core/Src/rfm69.c:8:
+../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_spi.h:792:70: note: expected 'uint8_t *' {aka 'unsigned char *'} but argument is of type 'const void *'
+  792 | HAL_StatusTypeDef HAL_SPI_Transmit(SPI_HandleTypeDef *hspi, uint8_t *pData, uint16_t Size, uint32_t Timeout);
+      |                                                             ~~~~~~~~~^~~~~
+make: *** [Core/Src/subdir.mk:37: Core/Src/rfm69.o] Error 1
+"make -j4 all" terminated with exit code 2. Build might be incomplete.
+22:03:44 **** Incremental Build of configuration Debug for project STM32F051R8T6_SPI_RFM69_Receiver ****
+make -j4 all 
+arm-none-eabi-gcc "../Core/Src/rfm69.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F051x8 -c -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/rfm69.d" -MT"Core/Src/rfm69.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/rfm69.o"
+../Core/Src/rfm69.c: In function 'setAESEncryption':
+../Core/Src/rfm69.c:396:45: warning: dereferencing 'void *' pointer
+  396 |    HAL_SPI_Transmit(&RFM69_SPI_PORT, &aesKey[i], 1, 100);
+      |                                             ^
+../Core/Src/rfm69.c:396:38: warning: passing argument 2 of 'HAL_SPI_Transmit' discards 'const' qualifier from pointer target type [-Wdiscarded-qualifiers]
+  396 |    HAL_SPI_Transmit(&RFM69_SPI_PORT, &aesKey[i], 1, 100);
+      |                                      ^~~~~~~~~~
+In file included from ../Core/Inc/stm32f0xx_hal_conf.h:276,
+                 from ../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal.h:30,
+                 from ../Core/Inc/main.h:31,
+                 from ../Core/Inc/rfm69.h:11,
+                 from ../Core/Src/rfm69.c:8:
+../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_spi.h:792:70: note: expected 'uint8_t *' {aka 'unsigned char *'} but argument is of type 'const void *'
+  792 | HAL_StatusTypeDef HAL_SPI_Transmit(SPI_HandleTypeDef *hspi, uint8_t *pData, uint16_t Size, uint32_t Timeout);
+      |                                                             ~~~~~~~~~^~~~~
+arm-none-eabi-gcc -o "STM32F051R8T6_SPI_RFM69_Receiver.elf" @"objects.list"   -mcpu=cortex-m0 -T"C:\STM32 workspace\STM32 RFM69 SPI TxRx\STM32F051R8T6_SPI_RFM69_Transmitter\STM32F051R8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="STM32F051R8T6_SPI_RFM69_Receiver.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: STM32F051R8T6_SPI_RFM69_Receiver.elf
+ 
+arm-none-eabi-size   STM32F051R8T6_SPI_RFM69_Receiver.elf 
+arm-none-eabi-objdump -h -S  STM32F051R8T6_SPI_RFM69_Receiver.elf  > "STM32F051R8T6_SPI_RFM69_Receiver.list"
+arm-none-eabi-objcopy  -O binary  STM32F051R8T6_SPI_RFM69_Receiver.elf  "STM32F051R8T6_SPI_RFM69_Receiver.bin"
+   text	   data	    bss	    dec	    hex	filename
+  20952	    120	   2096	  23168	   5a80	STM32F051R8T6_SPI_RFM69_Receiver.elf
+Finished building: default.size.stdout
+ 
+Finished building: STM32F051R8T6_SPI_RFM69_Receiver.bin
+ 
+Finished building: STM32F051R8T6_SPI_RFM69_Receiver.list
+ 
+22:04:49 **** Incremental Build of configuration Debug for project STM32F051R8T6_SPI_RFM69_Receiver ****
+make -j4 all 
+arm-none-eabi-gcc "../Core/Src/rfm69.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F051x8 -c -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/rfm69.d" -MT"Core/Src/rfm69.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/rfm69.o"
+../Core/Src/rfm69.c: In function 'setAESEncryption':
+../Core/Src/rfm69.c:392:45: warning: dereferencing 'void *' pointer
+  392 |    HAL_SPI_Transmit(&RFM69_SPI_PORT, &aesKey[i], 1, 100);
+      |                                             ^
+../Core/Src/rfm69.c:392:38: warning: passing argument 2 of 'HAL_SPI_Transmit' discards 'const' qualifier from pointer target type [-Wdiscarded-qualifiers]
+  392 |    HAL_SPI_Transmit(&RFM69_SPI_PORT, &aesKey[i], 1, 100);
+      |                                      ^~~~~~~~~~
+In file included from ../Core/Inc/stm32f0xx_hal_conf.h:276,
+                 from ../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal.h:30,
+                 from ../Core/Inc/main.h:31,
+                 from ../Core/Inc/rfm69.h:11,
+                 from ../Core/Src/rfm69.c:8:
+../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_spi.h:792:70: note: expected 'uint8_t *' {aka 'unsigned char *'} but argument is of type 'const void *'
+  792 | HAL_StatusTypeDef HAL_SPI_Transmit(SPI_HandleTypeDef *hspi, uint8_t *pData, uint16_t Size, uint32_t Timeout);
+      |                                                             ~~~~~~~~~^~~~~
+arm-none-eabi-gcc -o "STM32F051R8T6_SPI_RFM69_Receiver.elf" @"objects.list"   -mcpu=cortex-m0 -T"C:\STM32 workspace\STM32 RFM69 SPI TxRx\STM32F051R8T6_SPI_RFM69_Transmitter\STM32F051R8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="STM32F051R8T6_SPI_RFM69_Receiver.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: STM32F051R8T6_SPI_RFM69_Receiver.elf
+ 
+arm-none-eabi-size   STM32F051R8T6_SPI_RFM69_Receiver.elf 
+arm-none-eabi-objdump -h -S  STM32F051R8T6_SPI_RFM69_Receiver.elf  > "STM32F051R8T6_SPI_RFM69_Receiver.list"
+arm-none-eabi-objcopy  -O binary  STM32F051R8T6_SPI_RFM69_Receiver.elf  "STM32F051R8T6_SPI_RFM69_Receiver.bin"
+   text	   data	    bss	    dec	    hex	filename
+  20972	    120	   2096	  23188	   5a94	STM32F051R8T6_SPI_RFM69_Receiver.elf
+Finished building: default.size.stdout
+ 
+Finished building: STM32F051R8T6_SPI_RFM69_Receiver.bin
+ 
+Finished building: STM32F051R8T6_SPI_RFM69_Receiver.list
+ 
+22:04:55 **** Incremental Build of configuration Debug for project STM32F051R8T6_SPI_RFM69_Receiver ****
+make -j4 all 
+arm-none-eabi-size   STM32F051R8T6_SPI_RFM69_Receiver.elf 
+   text	   data	    bss	    dec	    hex	filename
+  20972	    120	   2096	  23188	   5a94	STM32F051R8T6_SPI_RFM69_Receiver.elf
+Finished building: default.size.stdout
+ 
+22:05:56 **** Incremental Build of configuration Debug for project STM32F051R8T6_SPI_RFM69_Receiver ****
+make -j4 all 
+arm-none-eabi-gcc "../Core/Src/rfm69.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F051x8 -c -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/rfm69.d" -MT"Core/Src/rfm69.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/rfm69.o"
+../Core/Src/rfm69.c: In function 'setAESEncryption':
+../Core/Src/rfm69.c:387:45: warning: dereferencing 'void *' pointer
+  387 |    HAL_SPI_Transmit(&RFM69_SPI_PORT, &aesKey[i], 1, 100);
+      |                                             ^
+../Core/Src/rfm69.c:387:38: warning: passing argument 2 of 'HAL_SPI_Transmit' discards 'const' qualifier from pointer target type [-Wdiscarded-qualifiers]
+  387 |    HAL_SPI_Transmit(&RFM69_SPI_PORT, &aesKey[i], 1, 100);
+      |                                      ^~~~~~~~~~
+In file included from ../Core/Inc/stm32f0xx_hal_conf.h:276,
+                 from ../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal.h:30,
+                 from ../Core/Inc/main.h:31,
+                 from ../Core/Inc/rfm69.h:11,
+                 from ../Core/Src/rfm69.c:8:
+../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_spi.h:792:70: note: expected 'uint8_t *' {aka 'unsigned char *'} but argument is of type 'const void *'
+  792 | HAL_StatusTypeDef HAL_SPI_Transmit(SPI_HandleTypeDef *hspi, uint8_t *pData, uint16_t Size, uint32_t Timeout);
+      |                                                             ~~~~~~~~~^~~~~
+arm-none-eabi-gcc -o "STM32F051R8T6_SPI_RFM69_Receiver.elf" @"objects.list"   -mcpu=cortex-m0 -T"C:\STM32 workspace\STM32 RFM69 SPI TxRx\STM32F051R8T6_SPI_RFM69_Transmitter\STM32F051R8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="STM32F051R8T6_SPI_RFM69_Receiver.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: STM32F051R8T6_SPI_RFM69_Receiver.elf
+ 
+arm-none-eabi-size   STM32F051R8T6_SPI_RFM69_Receiver.elf 
+arm-none-eabi-objdump -h -S  STM32F051R8T6_SPI_RFM69_Receiver.elf  > "STM32F051R8T6_SPI_RFM69_Receiver.list"
+arm-none-eabi-objcopy  -O binary  STM32F051R8T6_SPI_RFM69_Receiver.elf  "STM32F051R8T6_SPI_RFM69_Receiver.bin"
+   text	   data	    bss	    dec	    hex	filename
+  20972	    120	   2096	  23188	   5a94	STM32F051R8T6_SPI_RFM69_Receiver.elf
+Finished building: default.size.stdout
+ 
+Finished building: STM32F051R8T6_SPI_RFM69_Receiver.bin
+ 
+Finished building: STM32F051R8T6_SPI_RFM69_Receiver.list
+ 
+22:05:58 **** Incremental Build of configuration Debug for project STM32F334R8T6_RFM69_Transmitte_HAL ****
+make -j4 all 
+arm-none-eabi-size   STM32F334R8T6_RFM69_Transmitte_HAL.elf 
+   text	   data	    bss	    dec	    hex	filename
+  20200	    120	   2112	  22432	   57a0	STM32F334R8T6_RFM69_Transmitte_HAL.elf
+Finished building: default.size.stdout
+ 
+22:06:03 **** Incremental Build of configuration Debug for project STM32F051R8T6_SPI_RFM69_Receiver ****
+make -j4 all 
+arm-none-eabi-size   STM32F051R8T6_SPI_RFM69_Receiver.elf 
+   text	   data	    bss	    dec	    hex	filename
+  20972	    120	   2096	  23188	   5a94	STM32F051R8T6_SPI_RFM69_Receiver.elf
+Finished building: default.size.stdout
+ 
+22:06:34 **** Incremental Build of configuration Debug for project STM32F051R8T6_SPI_RFM69_Receiver ****
+make -j4 all 
+arm-none-eabi-size   STM32F051R8T6_SPI_RFM69_Receiver.elf 
+   text	   data	    bss	    dec	    hex	filename
+  20972	    120	   2096	  23188	   5a94	STM32F051R8T6_SPI_RFM69_Receiver.elf
+Finished building: default.size.stdout
+ 
