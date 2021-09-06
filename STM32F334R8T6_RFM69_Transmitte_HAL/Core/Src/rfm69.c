@@ -188,7 +188,8 @@ bool rfm69_init(uint8_t freqBand, uint8_t nodeID, uint8_t networkID) {
 	if (HAL_GetTick() - start >= timeout) {
 		return false;
 	}
-
+	setHighPower(true);
+    setPowerLevel(13);
 	setAddress(nodeID);
 	return true;
 }

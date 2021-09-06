@@ -23,7 +23,7 @@
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include "rfm69.h"
-#include "string.h"
+#include <string.h>
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -105,7 +105,7 @@ int main(void) {
 		setFrequency(433000000);
 
 		uint32_t rfm_freq = getFrequency();
-		sprintf(TxBuffer, "Freq: %d Mhz\r\n", rfm_freq / 1000000);
+		sprintf(TxBuffer, "Freq: %u Hz\r\n", rfm_freq);
 		HAL_UART_Transmit(&huart1, (uint8_t*) &TxBuffer, strlen(TxBuffer), 100);
 
 	}
