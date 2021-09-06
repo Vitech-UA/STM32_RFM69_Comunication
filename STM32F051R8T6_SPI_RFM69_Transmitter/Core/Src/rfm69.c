@@ -116,8 +116,8 @@ bool rfm69_init(uint8_t freqBand, uint8_t nodeID, uint8_t networkID) {
 					/* 0x02 */{ REG_DATAMODUL, RF_DATAMODUL_DATAMODE_PACKET
 							| RF_DATAMODUL_MODULATIONTYPE_FSK
 							| RF_DATAMODUL_MODULATIONSHAPING_00 }, // no shaping
-					/* 0x03 */{ REG_BITRATEMSB, RF_BITRATEMSB_55555 }, // default: 4.8 KBPS
-					/* 0x04 */{ REG_BITRATELSB, RF_BITRATELSB_55555 },
+					/* 0x03 */{ REG_BITRATEMSB, RF_BITRATEMSB_1200 }, // default: 4.8 KBPS
+					/* 0x04 */{ REG_BITRATELSB, RF_BITRATELSB_1200 },
 					/* 0x05 */{ REG_FDEVMSB, RF_FDEVMSB_50000 }, // default: 5KHz, (FDEV + BitRate / 2 <= 500KHz)
 					/* 0x06 */{ REG_FDEVLSB, RF_FDEVLSB_50000 },
 
@@ -151,7 +151,7 @@ bool rfm69_init(uint8_t freqBand, uint8_t nodeID, uint8_t networkID) {
 					// +13dBm formula: Pout = -18 + OutputPower (with PA0 or PA1**)
 					// +17dBm formula: Pout = -14 + OutputPower (with PA1 and PA2)**
 					// +20dBm formula: Pout = -11 + OutputPower (with PA1 and PA2)** and high power PA settings (section 3.3.7 in datasheet)
-					///* 0x11 */ { REG_PALEVEL, RF_PALEVEL_PA0_ON | RF_PALEVEL_PA1_OFF | RF_PALEVEL_PA2_OFF | RF_PALEVEL_OUTPUTPOWER_11111},
+					/* 0x11 */ { REG_PALEVEL, RF_PALEVEL_PA0_ON | RF_PALEVEL_PA1_OFF | RF_PALEVEL_PA2_OFF | RF_PALEVEL_OUTPUTPOWER_11111},
 					///* 0x13 */ { REG_OCP, RF_OCP_ON | RF_OCP_TRIM_95 }, // over current protection (default is 95mA)
 
 					// RXBW defaults are { REG_RXBW, RF_RXBW_DCCFREQ_010 | RF_RXBW_MANT_24 | RF_RXBW_EXP_5} (RxBw: 10.4KHz)
@@ -205,7 +205,7 @@ bool rfm69_init(uint8_t freqBand, uint8_t nodeID, uint8_t networkID) {
 	if (HAL_GetTick() - start >= timeout) {
 		return false;
 	}
-
+    setPowerLevel(13);
 	setAddress(nodeID);
 	return true;
 }
