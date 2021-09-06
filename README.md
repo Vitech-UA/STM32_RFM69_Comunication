@@ -1,6 +1,10 @@
 # STM32 RFM69 HAL Library
 Проєкт бібліотеки радіомодуля RFM69 на С, для мікроконтролерів STM32. Використовує HAL.
 Протестовано на STM32F051R8 та STM32F334R8.
+Модулі для відладки купував тут: 
+ - RFM: https://www.rcscomponents.kiev.ua/product/rfm69w-433s2-hoperf-trx-module_54636.html
+ - Плата-адаптер: https://www.rcscomponents.kiev.ua/product/hopeduino-adapter-dlya-radiomodulya-rfm69hw_126909.html
+ - Антена 433 Мгц: https://www.rcscomponents.kiev.ua/product/sma-antenna-433mhz-40901000005_121801.html
 
 # Установка
 1) Тягнемо у проєкт файли: 
