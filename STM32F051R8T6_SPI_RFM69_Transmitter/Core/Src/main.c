@@ -29,11 +29,12 @@
 
 /* Private typedef -----------------------------------------------------------*/
 /* USER CODE BEGIN PTD */
-#define RECEIVER_ID        0xAB
+#define HUB_ID   0xAB
+#define DEVICE_ID 0xCB
 #define NETWORKID     0x10
 #define FREQUENCY     RF69_433MHZ
 #define ENCRYPTKEY    "sampleEncryptKey" //exactly the same 16 characters/bytes on all nodes!
-
+#define LED_CTRL_CMD_POS 0
 /* USER CODE END PTD */
 
 /* Private define ------------------------------------------------------------*/
@@ -98,59 +99,45 @@ int main(void) {
 	MX_USART1_UART_Init();
 	/* USER CODE BEGIN 2 */
 	char RxBuffer[150] = { };
-	if (rfm69_init(FREQUENCY, RECEIVER_ID, NETWORKID)) {
+	if (rfm69_init(FREQUENCY, DEVICE_ID, NETWORKID)) {
 		HAL_GPIO_WritePin(LED_GPIO_Port, LED_Pin, GPIO_PIN_SET);
 	} else {
 		sprintf(RxBuffer, "RFM69 Init() -> false\r\n");
 	}
 
-	if(!setAESEncryption(ENCRYPTKEY, 16)){
-			Error_Handler();
-		}
+	if (!setAESEncryption(ENCRYPTKEY, 16)) {
+		Error_Handler();
+	}
 
-	HAL_UART_Transmit(&huart1, (uint8_t*)&RxBuffer, strlen(RxBuffer), 100);
+	HAL_UART_Transmit(&huart1, (uint8_t*) &RxBuffer, strlen(RxBuffer), 100);
 
 	int rfm_freq = getFrequency();
 	sprintf(RxBuffer, "RFM Freq: %u Hz\r\n", rfm_freq);
-	HAL_UART_Transmit(&huart1, (uint8_t*)&RxBuffer, strlen(RxBuffer), 100);
+	HAL_UART_Transmit(&huart1, (uint8_t*) &RxBuffer, strlen(RxBuffer), 100);
 	Payload receive_data;
-
 	receiveBegin();
-
+	char data_to_transmit[] = { 0x01, 0xBB };
 	/* USER CODE END 2 */
 
 	/* Infinite loop */
 	/* USER CODE BEGIN WHILE */
 	while (1) {
-
-		if (waitForResponce(&receive_data, 1000)) {
-			sprintf(RxBuffer,
-					"-------------------------------\r\n"
-					"Received from sender: 0x%X\r\n"
-					"Received length: %d bytes\r\n"
-					"RSSI: %d\r\n"
-					"Receive to: 0x%X\r\n"
-					"CTL_BYTE: 0x%X\r\n",
-					receive_data.senderId, receive_data.size,
-					receive_data.signalStrength,receive_data.targetId, receive_data.ctlByte);
-
-			HAL_UART_Transmit(&huart1, (uint8_t*)&RxBuffer, strlen(RxBuffer), 100);
-			for (uint8_t i = 0; i <= receive_data.size; i++) {
-				sprintf(RxBuffer, "Data[%d]: 0x%X\r\n", i, receive_data.data[i]);
-				HAL_UART_Transmit(&huart1, (uint8_t*)&RxBuffer, strlen(RxBuffer), 100);
-			}
-
-
-
-
-		}
-
-		/* USER CODE END WHILE */
-
-		/* USER CODE BEGIN 3 */
+		/*
+		 if (waitForResponce(&receive_data, 1000)) {
+		 if (receive_data.data[LED_CTRL_CMD_POS] == 0x01) {
+		 HAL_GPIO_TogglePin(LED_GPIO_Port, LED_Pin);
+		 }
+		 */
+		send(HUB_ID, (uint8_t*) &data_to_transmit, sizeof(data_to_transmit),false, true);
+		HAL_GPIO_TogglePin(LED_GPIO_Port, LED_Pin);
+		HAL_Delay(1000);
 	}
-	/* USER CODE END 3 */
+
+	/* USER CODE END WHILE */
+
+	/* USER CODE BEGIN 3 */
 }
+/* USER CODE END 3 */
 
 /**
  * @brief System Clock Configuration

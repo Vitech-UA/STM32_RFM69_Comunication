@@ -28,9 +28,9 @@
 
 /* Private typedef -----------------------------------------------------------*/
 /* USER CODE BEGIN PTD */
-#define MYID        0xCB    /* (range up to 254)*/
+#define HUB_ID   0xAB
+#define DEVICE_ID 0xCB
 #define NETWORKID     0x10  /* (range up to 255)*/
-#define GATEWAYID     0xAB
 #define FREQUENCY   RF69_433MHZ
 #define ENCRYPTKEY    "sampleEncryptKey"
 
@@ -98,12 +98,15 @@ int main(void) {
 	MX_SPI1_Init();
 	MX_USART1_UART_Init();
 	/* USER CODE BEGIN 2 */
+	typedef enum {
+		LED_ENABLE_CMD = 0x01, LED_DISABLE_CMD = 0x02
+	} led_cmd_t;
+
 
 	uint8_t TxBuffer[30] = { };
 	rfm69_down_reset_pin();
-	if (rfm69_init(FREQUENCY, MYID, NETWORKID)) {
+	if (rfm69_init(FREQUENCY, HUB_ID, NETWORKID)) {
 		setFrequency(433000000);
-
 		uint32_t rfm_freq = getFrequency();
 		sprintf(TxBuffer, "Freq: %u Hz\r\n", rfm_freq);
 		HAL_UART_Transmit(&huart1, (uint8_t*) &TxBuffer, strlen(TxBuffer), 100);
@@ -113,18 +116,37 @@ int main(void) {
 		Error_Handler();
 	}
 
-	char data_to_transmit[] = { 0xAA, 0xBB, 0xCC, 0xDD, 0xEE, 0xFF, 0x01, 0x02,
-			0x03 };
-	/* USER CODE END 2 */
+	char data_to_transmit[] = { 0x01, 0x02 };
 
+	uint8_t RxBuffer[150] = { };
+	Payload receive_data;
+
+	/* USER CODE END 2 */
+	receiveBegin();
 	/* Infinite loop */
 	/* USER CODE BEGIN WHILE */
 	while (1) {
 
-		send(GATEWAYID, (uint8_t*) &data_to_transmit, sizeof(data_to_transmit),false, true);
-		HAL_GPIO_TogglePin(LED_GPIO_Port, LED_Pin);
-		HAL_Delay(1000);
+		if (waitForResponce(&receive_data, 1000)) {
+			sprintf(RxBuffer, "-------------------------------\r\n"
+					"Received from sender: 0x%X\r\n"
+					"Received length: %d bytes\r\n"
+					"RSSI: %d\r\n"
+					"Receive to: 0x%X\r\n"
+					"CTL_BYTE: 0x%X\r\n", receive_data.senderId,
+					receive_data.size, receive_data.signalStrength,
+					receive_data.targetId, receive_data.ctlByte);
 
+			HAL_UART_Transmit(&huart1, (uint8_t*) &RxBuffer, strlen(RxBuffer),
+					100);
+			for (uint8_t i = 0; i <= receive_data.size; i++) {
+				sprintf(RxBuffer, "Data[%d]: 0x%X\r\n", i,
+						receive_data.data[i]);
+				HAL_UART_Transmit(&huart1, (uint8_t*) &RxBuffer,
+						strlen(RxBuffer), 100);
+			}
+
+		}
 		/* USER CODE END WHILE */
 
 		/* USER CODE BEGIN 3 */
