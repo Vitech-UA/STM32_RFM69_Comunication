@@ -7,5 +7,7 @@ Thumbs.db
 *.bin
 .settings
 .metadata
+settings
+metadata
 Debug
 Release
