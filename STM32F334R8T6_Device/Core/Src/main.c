@@ -113,17 +113,36 @@ int main(void) {
 		Error_Handler();
 	}
 
-	char data_to_transmit[] = { 0xAA, 0xBB, 0xCC, 0xDD, 0xEE, 0xFF, 0x01, 0x02,
-			0x03 };
+	char RxBuffer[150] = { };
+	Payload receive_data;
+
+	receiveBegin();
 	/* USER CODE END 2 */
 
 	/* Infinite loop */
 	/* USER CODE BEGIN WHILE */
 	while (1) {
 
-		send(HUB_ID, (uint8_t*) &data_to_transmit, sizeof(data_to_transmit),false, true);
-		HAL_GPIO_TogglePin(LED_GPIO_Port, LED_Pin);
-		HAL_Delay(1000);
+		if (waitForResponce(&receive_data, 1000)) {
+			sprintf(RxBuffer, "-------------------------------\r\n"
+					"Received from sender: 0x%X\r\n"
+					"Received length: %d bytes\r\n"
+					"RSSI: %d\r\n"
+					"Receive to: 0x%X\r\n"
+					"CTL_BYTE: 0x%X\r\n", receive_data.senderId,
+					receive_data.size, receive_data.signalStrength,
+					receive_data.targetId, receive_data.ctlByte);
+
+			HAL_UART_Transmit(&huart1, (uint8_t*) &RxBuffer, strlen(RxBuffer),
+					100);
+			for (uint8_t i = 0; i <= receive_data.size; i++) {
+				sprintf(RxBuffer, "Data[%d]: 0x%X\r\n", i,
+						receive_data.data[i]);
+				HAL_UART_Transmit(&huart1, (uint8_t*) &RxBuffer,
+						strlen(RxBuffer), 100);
+			}
+
+		}
 
 		/* USER CODE END WHILE */
 
