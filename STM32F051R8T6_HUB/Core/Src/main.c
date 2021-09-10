@@ -115,8 +115,7 @@ int main(void) {
 	int rfm_freq = getFrequency();
 	sprintf(RxBuffer, "RFM Freq: %u Hz\r\n", rfm_freq);
 	HAL_UART_Transmit(&huart1, (uint8_t*)&RxBuffer, strlen(RxBuffer), 100);
-	char data_to_transmit[] = { 0xAA, 0xBB, 0xCC, 0xDD, 0xEE, 0xFF, 0x01, 0x02,
-				0x03 };
+	char data_to_transmit[] = { 0x01, 0x02 };
 
 	/* USER CODE END 2 */
 
