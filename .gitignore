@@ -5,6 +5,7 @@ Thumbs.db
 *.elf
 *.hex
 *.bin
-
+.metadata
+metadata
 Debug
 Release
