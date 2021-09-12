@@ -54,7 +54,7 @@ uint8_t readTemperature (uint8_t calFactor);
 void setHighPowerRegs(bool onOff);
 void setPowerLevel(uint8_t powerLevel);
 int16_t readRSSI(bool forceTrigger);
-bool readData(Payload *data);
+bool read_data(Payload *data);
 bool waitForResponce(Payload *data , uint32_t timeout);
 bool setAESEncryption(const void* aesKey, unsigned int keyLength);
 void receiveBegin();

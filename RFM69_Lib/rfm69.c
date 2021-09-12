@@ -11,13 +11,8 @@
 extern SPI_HandleTypeDef hspi1;
 
 #define rfm_spi hspi1
-<<<<<<< HEAD
-#define RFM69_XO               32000000    ///< Внутрішня тактова частота RFM [Hz]
-#define RFM69_FSTEP            61.03515625 ///< Крок синтезатора [Hz]
-=======
 #define RFM69_XO               32000000    ///< Internal clock frequency [Hz]
 #define RFM69_FSTEP            61.03515625 ///< Step width of synthesizer [Hz]
->>>>>>> 06.09.2021
 #define CSMA_LIMIT              -90 // upper RX signal sensitivity threshold in dBm for carrier sense access
 #define RF69_MODE_SLEEP         0 // XTAL OFF
 #define RF69_MODE_STANDBY       1 // XTAL ON
@@ -33,12 +28,6 @@ extern SPI_HandleTypeDef hspi1;
 #define RF69_CSMA_LIMIT_MS 1000
 #define RF69_BROADCAST_ADDR 255
 
-<<<<<<< HEAD
-volatile uint8_t _mode;        // тут міститься поточний статус модуля
-volatile bool _inISR;
-volatile uint8_t PAYLOADLEN;
-
-=======
 volatile uint8_t _mode;        // current transceiver state
 volatile bool _inISR;
 volatile uint8_t PAYLOADLEN;
@@ -54,18 +43,13 @@ volatile int16_t RSSI; // most accurate RSSI during reception (closest to the re
 volatile bool _inISR;
 volatile bool _haveData;
 
->>>>>>> 06.09.2021
 uint8_t _powerLevel;
 uint8_t _address;
 uint8_t _interruptPin;
 uint8_t _interruptNum;
-<<<<<<< HEAD
-bool _isRFM69HW = false;
-=======
 
 bool _isRFM69HW = false;
 bool _promiscuousMode;
->>>>>>> 06.09.2021
 uint8_t frame[256];
 
 void rfm69_select(void) {
@@ -83,11 +67,7 @@ void rfm69_up_reset_pin(void) {
 void rfm69_down_reset_pin(void) {
 	RFM69_RESET_GPIO->BSRR |= RFM69_RESET_PIN << 16U; //SET
 }
-<<<<<<< HEAD
-uint8_t readReg(uint8_t reg) {
-=======
 uint8_t read_reg(uint8_t reg) {
->>>>>>> 06.09.2021
 
 	uint8_t regval = 0;
 	uint8_t zero_byte = 0;
@@ -118,11 +98,7 @@ bool rfm69_init(uint8_t freqBand, uint8_t nodeID, uint8_t networkID) {
 					/* 0x02 */{ REG_DATAMODUL, RF_DATAMODUL_DATAMODE_PACKET
 							| RF_DATAMODUL_MODULATIONTYPE_FSK
 							| RF_DATAMODUL_MODULATIONSHAPING_00 }, // no shaping
-<<<<<<< HEAD
-					/* 0x03 */{ REG_BITRATEMSB, RF_BITRATEMSB_1200 }, // Швидкість передачі 1,2 кБ/с
-=======
 					/* 0x03 */{ REG_BITRATEMSB, RF_BITRATEMSB_1200 }, // default: 4.8 KBPS
->>>>>>> 06.09.2021
 					/* 0x04 */{ REG_BITRATELSB, RF_BITRATELSB_1200 },
 					/* 0x05 */{ REG_FDEVMSB, RF_FDEVMSB_50000 }, // default: 5KHz, (FDEV + BitRate / 2 <= 500KHz)
 					/* 0x06 */{ REG_FDEVLSB, RF_FDEVLSB_50000 },
@@ -150,13 +126,6 @@ bool rfm69_init(uint8_t freqBand, uint8_t nodeID, uint8_t networkID) {
 											RF_FRFLSB_433 :
 											(freqBand == RF69_868MHZ ?
 													RF_FRFLSB_868 :
-<<<<<<< HEAD
-													RF_FRFLSB_915))) }, {
-							REG_PALEVEL, RF_PALEVEL_PA0_ON | RF_PALEVEL_PA1_OFF
-									| RF_PALEVEL_PA2_OFF
-									| RF_PALEVEL_OUTPUTPOWER_11111 },
-					/* 0x13 */{ REG_OCP, RF_OCP_ON | RF_OCP_TRIM_95 }, // over current protection (default is 95mA)
-=======
 													RF_FRFLSB_915))) },
 
 					// looks like PA1 and PA2 are not implemented on RFM69W, hence the max output power is 13dBm
@@ -168,7 +137,6 @@ bool rfm69_init(uint8_t freqBand, uint8_t nodeID, uint8_t networkID) {
 					/* 0x13 */ { REG_OCP, RF_OCP_ON | RF_OCP_TRIM_95 }, // over current protection (default is 95mA)
 
 					// RXBW defaults are { REG_RXBW, RF_RXBW_DCCFREQ_010 | RF_RXBW_MANT_24 | RF_RXBW_EXP_5} (RxBw: 10.4KHz)
->>>>>>> 06.09.2021
 					/* 0x19 */{ REG_RXBW, RF_RXBW_DCCFREQ_010 | RF_RXBW_MANT_16
 							| RF_RXBW_EXP_2 }, // (BitRate < 2 * RxBw)
 					//for BR-19200: /* 0x19 */ { REG_RXBW, RF_RXBW_DCCFREQ_010 | RF_RXBW_MANT_24 | RF_RXBW_EXP_3 },
@@ -176,10 +144,7 @@ bool rfm69_init(uint8_t freqBand, uint8_t nodeID, uint8_t networkID) {
 					/* 0x26 */{ REG_DIOMAPPING2, RF_DIOMAPPING2_CLKOUT_OFF }, // DIO5 ClkOut disable for power saving
 					/* 0x28 */{ REG_IRQFLAGS2, RF_IRQFLAGS2_FIFOOVERRUN }, // writing to this bit ensures that the FIFO & status flags are reset
 					/* 0x29 */{ REG_RSSITHRESH, 220 }, // must be set to dBm = (-Sensitivity / 2), default is 0xE4 = 228 so -114dBm
-<<<<<<< HEAD
-=======
 					///* 0x2D */ { REG_PREAMBLELSB, RF_PREAMBLESIZE_LSB_VALUE } // default 3 preamble bytes 0xAAAAAA
->>>>>>> 06.09.2021
 					/* 0x2E */{ REG_SYNCCONFIG, RF_SYNC_ON
 							| RF_SYNC_FIFOFILL_AUTO | RF_SYNC_SIZE_2
 							| RF_SYNC_TOL_0 },
@@ -190,20 +155,13 @@ bool rfm69_init(uint8_t freqBand, uint8_t nodeID, uint8_t networkID) {
 							| RF_PACKET1_CRC_ON | RF_PACKET1_CRCAUTOCLEAR_ON
 							| RF_PACKET1_ADRSFILTERING_OFF },
 					/* 0x38 */{ REG_PAYLOADLENGTH, RF69_MAX_DATA_LEN + 5 }, // in variable length mode: the max frame size, not used in TX
-<<<<<<< HEAD
-					/* 0x39 */{ REG_NODEADRS, nodeID }, // turned off because we're not using address filtering
-=======
 					///* 0x39 */ { REG_NODEADRS, nodeID }, // turned off because we're not using address filtering
->>>>>>> 06.09.2021
 					/* 0x3C */{ REG_FIFOTHRESH,
 					RF_FIFOTHRESH_TXSTART_FIFONOTEMPTY | RF_FIFOTHRESH_VALUE }, // TX on FIFO not empty
 					/* 0x3D */{ REG_PACKETCONFIG2,
 					RF_PACKET2_RXRESTARTDELAY_2BITS
 							| RF_PACKET2_AUTORXRESTART_ON | RF_PACKET2_AES_OFF }, // RXRESTARTDELAY must match transmitter PA ramp-down time (bitrate dependent)
-<<<<<<< HEAD
-=======
 					//for BR-19200: /* 0x3D */ { REG_PACKETCONFIG2, RF_PACKET2_RXRESTARTDELAY_NONE | RF_PACKET2_AUTORXRESTART_ON | RF_PACKET2_AES_OFF }, // RXRESTARTDELAY must match transmitter PA ramp-down time (bitrate dependent)
->>>>>>> 06.09.2021
 					/* 0x6F */{ REG_TESTDAGC, RF_DAGC_IMPROVED_LOWBETA0 }, // run DAGC continuously in RX mode for Fading Margin Improvement, recommended default for AfcLowBetaOn=0
 					{ 255, 0 } };
 
@@ -211,19 +169,11 @@ bool rfm69_init(uint8_t freqBand, uint8_t nodeID, uint8_t networkID) {
 	uint32_t timeout = 50;
 	do {
 		writeReg(REG_SYNCVALUE1, 0xAA);
-<<<<<<< HEAD
-	} while (readReg(REG_SYNCVALUE1) != 0xaa && HAL_GetTick() - start < timeout);
-	start = HAL_GetTick();
-	do {
-		writeReg(REG_SYNCVALUE1, 0x55);
-	} while (readReg(REG_SYNCVALUE1) != 0x55 && HAL_GetTick() - start < timeout);
-=======
 	} while (read_reg(REG_SYNCVALUE1) != 0xaa && HAL_GetTick() - start < timeout);
 	start = HAL_GetTick();
 	do {
 		writeReg(REG_SYNCVALUE1, 0x55);
 	} while (read_reg(REG_SYNCVALUE1) != 0x55 && HAL_GetTick() - start < timeout);
->>>>>>> 06.09.2021
 
 	for (uint8_t i = 0; CONFIG[i][0] != 255; i++) {
 		writeReg(CONFIG[i][0], CONFIG[i][1]);
@@ -231,37 +181,22 @@ bool rfm69_init(uint8_t freqBand, uint8_t nodeID, uint8_t networkID) {
 
 	setMode(RF69_MODE_STANDBY, false);
 	start = HAL_GetTick();
-<<<<<<< HEAD
-	while (((readReg(REG_IRQFLAGS1) & RF_IRQFLAGS1_MODEREADY) == 0x00)
-=======
 	while (((read_reg(REG_IRQFLAGS1) & RF_IRQFLAGS1_MODEREADY) == 0x00)
->>>>>>> 06.09.2021
 			&& HAL_GetTick() - start < timeout)
 		; // wait for ModeReady
 	if (HAL_GetTick() - start >= timeout) {
 		return false;
 	}
-<<<<<<< HEAD
-	setHighPowerRegs(true);
-	setPowerLevel(13);
-=======
     setHighPowerRegs(true);
     setPowerLevel(13);
->>>>>>> 06.09.2021
 	setAddress(nodeID);
 	return true;
 }
 uint32_t getFrequency(void) {
 	return RFM69_FSTEP
-<<<<<<< HEAD
-			* (((uint32_t) readReg(REG_FRFMSB) << 16)
-					+ ((uint16_t) readReg(REG_FRFMID) << 8)
-					+ readReg(REG_FRFLSB));
-=======
 			* (((uint32_t) read_reg(REG_FRFMSB) << 16)
 					+ ((uint16_t) read_reg(REG_FRFMID) << 8)
 					+ read_reg(REG_FRFLSB));
->>>>>>> 06.09.2021
 }
 void setFrequency(uint32_t freqHz) {
 	uint8_t oldMode = _mode;
@@ -284,34 +219,17 @@ void setMode(uint8_t newMode, bool waitForReady) {
 	switch (newMode) {
 	case RF69_MODE_TX:
 		writeReg(REG_OPMODE,
-<<<<<<< HEAD
-				(readReg(REG_OPMODE) & 0xE3) | RF_OPMODE_TRANSMITTER);
-=======
 				(read_reg(REG_OPMODE) & 0xE3) | RF_OPMODE_TRANSMITTER);
->>>>>>> 06.09.2021
 		if (_isRFM69HW)
 			setHighPowerRegs(true);
 		break;
 	case RF69_MODE_RX:
-<<<<<<< HEAD
-		writeReg(REG_OPMODE, (readReg(REG_OPMODE) & 0xE3) | RF_OPMODE_RECEIVER);
-=======
 		writeReg(REG_OPMODE, (read_reg(REG_OPMODE) & 0xE3) | RF_OPMODE_RECEIVER);
->>>>>>> 06.09.2021
 		if (_isRFM69HW)
 			setHighPowerRegs(false);
 		break;
 	case RF69_MODE_SYNTH:
 		writeReg(REG_OPMODE,
-<<<<<<< HEAD
-				(readReg(REG_OPMODE) & 0xE3) | RF_OPMODE_SYNTHESIZER);
-		break;
-	case RF69_MODE_STANDBY:
-		writeReg(REG_OPMODE, (readReg(REG_OPMODE) & 0xE3) | RF_OPMODE_STANDBY);
-		break;
-	case RF69_MODE_SLEEP:
-		writeReg(REG_OPMODE, (readReg(REG_OPMODE) & 0xE3) | RF_OPMODE_SLEEP);
-=======
 				(read_reg(REG_OPMODE) & 0xE3) | RF_OPMODE_SYNTHESIZER);
 		break;
 	case RF69_MODE_STANDBY:
@@ -319,18 +237,13 @@ void setMode(uint8_t newMode, bool waitForReady) {
 		break;
 	case RF69_MODE_SLEEP:
 		writeReg(REG_OPMODE, (read_reg(REG_OPMODE) & 0xE3) | RF_OPMODE_SLEEP);
->>>>>>> 06.09.2021
 		break;
 	default:
 		return;
 	}
 
 	if (waitForReady) {
-<<<<<<< HEAD
-		while ((readReg(REG_IRQFLAGS1) & RF_IRQFLAGS1_MODEREADY) == 0x00)
-=======
 		while ((read_reg(REG_IRQFLAGS1) & RF_IRQFLAGS1_MODEREADY) == 0x00)
->>>>>>> 06.09.2021
 			; // wait for ModeReady
 	}
 
@@ -347,11 +260,7 @@ void setPowerLevel(uint8_t powerLevel) {
 	_powerLevel = (powerLevel > 31 ? 31 : _powerLevel);
 	if (_isRFM69HW)
 		_powerLevel /= 2;
-<<<<<<< HEAD
-	writeReg(REG_PALEVEL, (readReg(REG_PALEVEL) & 0xE0) | _powerLevel);
-=======
 	writeReg(REG_PALEVEL, (read_reg(REG_PALEVEL) & 0xE0) | _powerLevel);
->>>>>>> 06.09.2021
 }
 uint32_t send(uint8_t toAddress, uint8_t *buffer, uint16_t bufferSize,
 bool requestACK, bool sendACK) {
@@ -383,12 +292,8 @@ bool requestACK, bool sendACK) {
 	setMode(RF69_MODE_TX, true);
 
 	uint32_t txStart = HAL_GetTick();
-	while (HAL_GPIO_ReadPin(DIO0_GPIO_Port, DIO0_Pin) == GPIO_PIN_SET
-<<<<<<< HEAD
+	while (HAL_GPIO_ReadPin(DIO0_GPIO_Port, DIO0_Pin) == GPIO_PIN_RESET
 			&& HAL_GetTick() - txStart < RF69_TX_LIMIT_MS)
-=======
-			|| HAL_GetTick() - txStart < RF69_TX_LIMIT_MS)
->>>>>>> 06.09.2021
 		; // Очікую підняття DIO0 що сигналізуватиме про завершення передачі
 	setMode(RF69_MODE_STANDBY, /*waitForReady=*/true);
 	receiveBegin();
@@ -398,8 +303,7 @@ bool requestACK, bool sendACK) {
 
 bool readData(Payload *data) {
 	if (_mode == RF69_MODE_RX
-<<<<<<< HEAD
-			&& (readReg(REG_IRQFLAGS2) & RF_IRQFLAGS2_PAYLOADREADY)) {
+			&& (read_reg(REG_IRQFLAGS2) & RF_IRQFLAGS2_PAYLOADREADY)) {
 
 		data->targetId = data->senderId = data->ctlByte = 0xFF;
 
@@ -437,55 +341,11 @@ bool readData(Payload *data) {
 		}
 	}
 	return false;
-=======
-<<<<<<<< HEAD:RFM69_Lib/rfm69.c
-			&& (read_reg(REG_IRQFLAGS2) & RF_IRQFLAGS2_PAYLOADREADY)) {
-========
-				&& (readReg(REG_IRQFLAGS2) & RF_IRQFLAGS2_PAYLOADREADY)) {
->>>>>>>> 06.09.2021:STM32F334R8T6_RFM69_Transmitte_HAL/Core/Src/rfm69.c
-
-			data->targetId = data->senderId = data->ctlByte = 0xFF;
-
-			data->signalStrength = readRSSI(false);
-			memset(data->data, 0, RF69_MAX_DATA_LEN);
-
-			// Читаю кадр
-			setMode(RF69_MODE_STANDBY, /*waitForReady=*/true);
-			uint8_t zero_byte = 0;
-			uint8_t read_data = REG_FIFO & 0x7F;
-
-			rfm69_select();
-			HAL_SPI_Transmit(&rfm_spi, &read_data, 1, 100);
-			HAL_SPI_TransmitReceive(&rfm_spi, (uint8_t*) &zero_byte,
-					(uint8_t*) &data->size, 1, 100);
-
-			HAL_StatusTypeDef errorCode = HAL_SPI_Receive(&RFM69_SPI_PORT, *&frame,
-					data->size, HAL_MAX_DELAY);
-
-			rfm69_release();
-			setMode(RF69_MODE_RX, true);
-
-			//Парсим кадр
-
-			if (errorCode == HAL_OK) {
-				data->targetId = frame[0];
-				data->senderId = frame[1];
-				data->ctlByte = frame[2];
-				for (int8_t i = 3; i < data->size; i++) {
-					data->data[i - 3] = frame[i];
-				}
-				writeReg(REG_DIOMAPPING1, RF_DIOMAPPING1_DIO0_01); // set DIO0 to "PAYLOADREADY" in receive mode
-				setMode(RF69_MODE_RX, false);
-				return true;
-			}
-		}
-		return false;
->>>>>>> 06.09.2021
 }
 bool waitForResponce(Payload *data, uint32_t timeout) {
 	uint32_t start = HAL_GetTick();
 	while (timeout == __UINT32_MAX__ || HAL_GetTick() - start < timeout) {
-		if (!HAL_GPIO_ReadPin(DIO0_GPIO_Port, DIO0_Pin)) {
+		if (HAL_GPIO_ReadPin(DIO0_GPIO_Port, DIO0_Pin) == GPIO_PIN_RESET) {
 			continue;
 		}
 
@@ -496,15 +356,9 @@ bool waitForResponce(Payload *data, uint32_t timeout) {
 	return false;
 }
 void receiveBegin() {
-<<<<<<< HEAD
-	if (readReg(REG_IRQFLAGS2) & RF_IRQFLAGS2_PAYLOADREADY) {
-		writeReg(REG_PACKETCONFIG2,
-				(readReg(REG_PACKETCONFIG2) & 0xFB) | RF_PACKET2_RXRESTART); // avoid RX deadlocks
-=======
 	if (read_reg(REG_IRQFLAGS2) & RF_IRQFLAGS2_PAYLOADREADY) {
 		writeReg(REG_PACKETCONFIG2,
 				(read_reg(REG_PACKETCONFIG2) & 0xFB) | RF_PACKET2_RXRESTART); // avoid RX deadlocks
->>>>>>> 06.09.2021
 	}
 	writeReg(REG_DIOMAPPING1, RF_DIOMAPPING1_DIO0_01); // set DIO0 to "PAYLOADREADY" in receive mode
 	setMode(RF69_MODE_RX, false);
@@ -514,17 +368,10 @@ int16_t readRSSI(bool forceTrigger) {
 	if (forceTrigger) {
 		// RSSI trigger not needed if DAGC is in continuous mode
 		writeReg(REG_RSSICONFIG, RF_RSSI_START);
-<<<<<<< HEAD
-		while ((readReg(REG_RSSICONFIG) & RF_RSSI_DONE) == 0x00)
-			; // wait for RSSI_Ready
-	}
-	rssi = -readReg(REG_RSSIVALUE);
-=======
 		while ((read_reg(REG_RSSICONFIG) & RF_RSSI_DONE) == 0x00)
 			; // wait for RSSI_Ready
 	}
 	rssi = -read_reg(REG_RSSIVALUE);
->>>>>>> 06.09.2021
 	rssi >>= 1;
 	return rssi;
 }
@@ -534,11 +381,7 @@ void setHighPower(bool onOff) {
 	if (_isRFM69HW) // turning ON
 	{
 		writeReg(REG_PALEVEL,
-<<<<<<< HEAD
-				(readReg(REG_PALEVEL) & 0x1F) | RF_PALEVEL_PA1_ON
-=======
 				(read_reg(REG_PALEVEL) & 0x1F) | RF_PALEVEL_PA1_ON
->>>>>>> 06.09.2021
 						| RF_PALEVEL_PA2_ON); // enable P1 & P2 amplifier stages
 	} else {
 		writeReg(REG_PALEVEL,
@@ -568,11 +411,7 @@ bool setAESEncryption(const void *aesKey, unsigned int keyLength) {
 		rfm69_release();
 	}
 
-<<<<<<< HEAD
-	writeReg(0x3D, (readReg(0x3D) & 0xFE) | (enable ? 1 : 0));
-=======
 	writeReg(0x3D, (read_reg(0x3D) & 0xFE) | (enable ? 1 : 0));
->>>>>>> 06.09.2021
 
 	return enable;
 }
@@ -585,23 +424,13 @@ uint8_t readTemperature(uint8_t calFactor) // returns centigrade
 {
 	setMode(RF69_MODE_STANDBY, /*waitForReady=*/true);
 	writeReg(REG_TEMP1, RF_TEMP1_MEAS_START);
-<<<<<<< HEAD
-	while ((readReg(REG_TEMP1) & RF_TEMP1_MEAS_RUNNING))
-		;
-	return ~readReg(REG_TEMP2) + COURSE_TEMP_COEF + calFactor; // 'complement' corrects the slope, rising temp = rising val
-=======
 	while ((read_reg(REG_TEMP1) & RF_TEMP1_MEAS_RUNNING))
 		;
 	return ~read_reg(REG_TEMP2) + COURSE_TEMP_COEF + calFactor; // 'complement' corrects the slope, rising temp = rising val
->>>>>>> 06.09.2021
 }
 
 void rcCalibration() {
 	writeReg(REG_OSC1, RF_OSC1_RCCAL_START);
-<<<<<<< HEAD
-	while ((readReg(REG_OSC1) & RF_OSC1_RCCAL_DONE) == 0x00)
-=======
 	while ((read_reg(REG_OSC1) & RF_OSC1_RCCAL_DONE) == 0x00)
->>>>>>> 06.09.2021
 		;
 }

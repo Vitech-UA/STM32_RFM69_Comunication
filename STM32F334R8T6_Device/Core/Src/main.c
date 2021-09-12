@@ -129,7 +129,7 @@ int main(void) {
 =======
 	char RxBuffer[150] = { };
 	Payload receive_data;
-
+    char send_data[2] = {0xCC, 0xAA};
 	receiveBegin();
 	/* USER CODE END 2 */
 >>>>>>> 06.09.2021:STM32F334R8T6_Device/Core/Src/main.c
@@ -161,7 +161,9 @@ int main(void) {
 				HAL_UART_Transmit(&huart1, (uint8_t*) &RxBuffer,
 						strlen(RxBuffer), 100);
 			}
-
+			sprintf(RxBuffer, "Send response to HUB\r\n");
+			HAL_UART_Transmit(&huart1, (uint8_t*) &RxBuffer,strlen(RxBuffer), 100);
+          send(HUB_ID, (uint8_t*)&send_data, strlen(send_data), false, true);
 		}
 <<<<<<< HEAD:STM32F334R8T6_RFM69_Transmitte_HAL/Core/Src/main.c
 =======

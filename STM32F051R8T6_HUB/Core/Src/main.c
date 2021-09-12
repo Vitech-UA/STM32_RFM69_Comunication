@@ -30,15 +30,11 @@
 /* Private typedef -----------------------------------------------------------*/
 /* USER CODE BEGIN PTD */
 #define HUB_ID   0xAB
-<<<<<<< HEAD:STM32F051R8T6_SPI_RFM69_Transmitter/Core/Src/main.c
-#define DEVICE_ID 0xCB
-=======
 #define DEVICE_ID   0xCB
->>>>>>> 06.09.2021:STM32F051R8T6_HUB/Core/Src/main.c
 #define NETWORKID     0x10
 #define FREQUENCY     RF69_433MHZ
 #define ENCRYPTKEY    "sampleEncryptKey" //exactly the same 16 characters/bytes on all nodes!
-#define LED_CTRL_CMD_POS 0
+
 /* USER CODE END PTD */
 
 /* Private define ------------------------------------------------------------*/
@@ -102,13 +98,8 @@ int main(void) {
 	MX_SPI1_Init();
 	MX_USART1_UART_Init();
 	/* USER CODE BEGIN 2 */
-<<<<<<< HEAD:STM32F051R8T6_SPI_RFM69_Transmitter/Core/Src/main.c
 	char RxBuffer[150] = { };
-	if (rfm69_init(FREQUENCY, DEVICE_ID, NETWORKID)) {
-=======
-    char RxBuffer[150]={};
 	if (rfm69_init(FREQUENCY, HUB_ID, NETWORKID)) {
->>>>>>> 06.09.2021:STM32F051R8T6_HUB/Core/Src/main.c
 		HAL_GPIO_WritePin(LED_GPIO_Port, LED_Pin, GPIO_PIN_SET);
 		sprintf(RxBuffer, "RFM69 Init() -> true\r\n");
 	} else {
@@ -123,48 +114,34 @@ int main(void) {
 
 	int rfm_freq = getFrequency();
 	sprintf(RxBuffer, "RFM Freq: %u Hz\r\n", rfm_freq);
-<<<<<<< HEAD:STM32F051R8T6_SPI_RFM69_Transmitter/Core/Src/main.c
 	HAL_UART_Transmit(&huart1, (uint8_t*) &RxBuffer, strlen(RxBuffer), 100);
-	Payload receive_data;
-	receiveBegin();
-	char data_to_transmit[] = { 0x01, 0xBB };
-=======
-	HAL_UART_Transmit(&huart1, (uint8_t*)&RxBuffer, strlen(RxBuffer), 100);
 	char data_to_transmit[] = { 0x01, 0x02 };
-
->>>>>>> 06.09.2021:STM32F051R8T6_HUB/Core/Src/main.c
+	Payload receive_data;
 	/* USER CODE END 2 */
 
 	/* Infinite loop */
 	/* USER CODE BEGIN WHILE */
 	while (1) {
-<<<<<<< HEAD:STM32F051R8T6_SPI_RFM69_Transmitter/Core/Src/main.c
-		/*
-		 if (waitForResponce(&receive_data, 1000)) {
-		 if (receive_data.data[LED_CTRL_CMD_POS] == 0x01) {
-		 HAL_GPIO_TogglePin(LED_GPIO_Port, LED_Pin);
-		 }
-		 */
-		send(HUB_ID, (uint8_t*) &data_to_transmit, sizeof(data_to_transmit),false, true);
-		HAL_GPIO_TogglePin(LED_GPIO_Port, LED_Pin);
-		HAL_Delay(1000);
-	}
+		sprintf(RxBuffer, "Send command\r\n");
 
-	/* USER CODE END WHILE */
-=======
+		HAL_UART_Transmit(&huart1, (uint8_t*) &RxBuffer, strlen(RxBuffer),100);
+
 		send(DEVICE_ID, (uint8_t*) &data_to_transmit, sizeof(data_to_transmit),false, true);
-		HAL_GPIO_TogglePin(LED_GPIO_Port, LED_Pin);
-		HAL_Delay(1000);
 
+HAL_GPIO_TogglePin(LED_GPIO_Port, LED_Pin);
 
+		if (waitForResponce(&receive_data, 1000)) {
+			sprintf(RxBuffer, "Response Received\r\n");
 
-		/* USER CODE END WHILE */
->>>>>>> 06.09.2021:STM32F051R8T6_HUB/Core/Src/main.c
+			HAL_UART_Transmit(&huart1, (uint8_t*) &RxBuffer, strlen(RxBuffer),100);
+		} else {
+			sprintf(RxBuffer, "Response not received\r\n");
 
-	/* USER CODE BEGIN 3 */
+			HAL_UART_Transmit(&huart1, (uint8_t*) &RxBuffer, strlen(RxBuffer), 100);
+		}
+		/* USER CODE END 3 */
+	}
 }
-/* USER CODE END 3 */
-
 /**
  * @brief System Clock Configuration
  * @retval None
