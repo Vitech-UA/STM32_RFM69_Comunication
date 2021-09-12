@@ -9617,3 +9617,7 @@
 2021-09-10 23:20:36,874 [INFO] IPUIPlugin:74 - create IPUIPlugin
 2021-09-10 23:20:37,042 [INFO] OpenFileManager:333 - Restore cursor
 2021-09-10 23:21:10,818 [INFO] Gpio:254 - dependency for GPIO [RCC, SPI1, SYS, USART1]
+2021-09-12 20:25:37,350 [INFO] Activator:177 - 
+
+
+2021-09-12 20:25:37,366 [INFO] Activator:178 - !SESSION log4j initialized

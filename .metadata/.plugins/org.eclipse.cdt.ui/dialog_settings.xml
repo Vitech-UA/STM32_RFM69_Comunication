@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
 	<item key="LastUsedHeaderTemplate" value="Default C++ header template"/>
-	<item key="org.eclipse.cdt.utils.ui.controls.FileListControl" value="${workspace_loc:/${ProjName}/RFM69/RFM69.cpp}"/>
+	<item key="org.eclipse.cdt.utils.ui.controls.FileListControl" value="C:\STM32 workspace\STM32 RFM69 SPI TxRx\RFM69_Lib"/>
 	<item key="LastUsedSourceTemplate" value="Default C++ source template"/>
 	<section name="completion_proposal_size">
 	</section>

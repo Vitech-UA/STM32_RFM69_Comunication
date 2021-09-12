@@ -122,7 +122,7 @@ int main(void) {
 	/* Infinite loop */
 	/* USER CODE BEGIN WHILE */
 	while (1) {
-		send(DEVICE_ID, (uint8_t*) &data_to_transmit, sizeof(data_to_transmit),false, true);
+		send(DEVICE_ID, (uint8_t*) &data_to_transmit, sizeof(data_to_transmit),false, false);
 		HAL_GPIO_TogglePin(LED_GPIO_Port, LED_Pin);
 		HAL_Delay(1000);
 

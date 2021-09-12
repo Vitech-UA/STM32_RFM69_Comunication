@@ -292,7 +292,7 @@ bool requestACK, bool sendACK) {
 	setMode(RF69_MODE_TX, true);
 
 	uint32_t txStart = HAL_GetTick();
-	while (HAL_GPIO_ReadPin(DIO0_GPIO_Port, DIO0_Pin) == GPIO_PIN_SET
+	while (HAL_GPIO_ReadPin(DIO0_GPIO_Port, DIO0_Pin) == GPIO_PIN_RESET
 			|| HAL_GetTick() - txStart < RF69_TX_LIMIT_MS)
 		; // Очікую підняття DIO0 що сигналізуватиме про завершення передачі
 	setMode(RF69_MODE_STANDBY, /*waitForReady=*/true);
