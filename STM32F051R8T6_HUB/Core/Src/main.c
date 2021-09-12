@@ -98,7 +98,7 @@ int main(void) {
 	MX_SPI1_Init();
 	MX_USART1_UART_Init();
 	/* USER CODE BEGIN 2 */
-    char RxBuffer[150]={};
+	char RxBuffer[150] = { };
 	if (rfm69_init(FREQUENCY, HUB_ID, NETWORKID)) {
 		HAL_GPIO_WritePin(LED_GPIO_Port, LED_Pin, GPIO_PIN_SET);
 		sprintf(RxBuffer, "RFM69 Init() -> true\r\n");
@@ -106,35 +106,42 @@ int main(void) {
 		sprintf(RxBuffer, "RFM69 Init() -> false\r\n");
 	}
 
-	if(!setAESEncryption(ENCRYPTKEY, 16)){
-			Error_Handler();
-		}
+	if (!setAESEncryption(ENCRYPTKEY, 16)) {
+		Error_Handler();
+	}
 
-	HAL_UART_Transmit(&huart1, (uint8_t*)&RxBuffer, strlen(RxBuffer), 100);
+	HAL_UART_Transmit(&huart1, (uint8_t*) &RxBuffer, strlen(RxBuffer), 100);
 
 	int rfm_freq = getFrequency();
 	sprintf(RxBuffer, "RFM Freq: %u Hz\r\n", rfm_freq);
-	HAL_UART_Transmit(&huart1, (uint8_t*)&RxBuffer, strlen(RxBuffer), 100);
+	HAL_UART_Transmit(&huart1, (uint8_t*) &RxBuffer, strlen(RxBuffer), 100);
 	char data_to_transmit[] = { 0x01, 0x02 };
-
+	Payload receive_data;
 	/* USER CODE END 2 */
 
 	/* Infinite loop */
 	/* USER CODE BEGIN WHILE */
 	while (1) {
-		send(DEVICE_ID, (uint8_t*) &data_to_transmit, sizeof(data_to_transmit),false, false);
-		HAL_GPIO_TogglePin(LED_GPIO_Port, LED_Pin);
-		HAL_Delay(1000);
+		sprintf(RxBuffer, "Send command\r\n");
 
+		HAL_UART_Transmit(&huart1, (uint8_t*) &RxBuffer, strlen(RxBuffer),100);
 
+		send(DEVICE_ID, (uint8_t*) &data_to_transmit, sizeof(data_to_transmit),false, true);
 
-		/* USER CODE END WHILE */
+HAL_GPIO_TogglePin(LED_GPIO_Port, LED_Pin);
 
-		/* USER CODE BEGIN 3 */
+		if (waitForResponce(&receive_data, 1000)) {
+			sprintf(RxBuffer, "Response Received\r\n");
+
+			HAL_UART_Transmit(&huart1, (uint8_t*) &RxBuffer, strlen(RxBuffer),100);
+		} else {
+			sprintf(RxBuffer, "Response not received\r\n");
+
+			HAL_UART_Transmit(&huart1, (uint8_t*) &RxBuffer, strlen(RxBuffer), 100);
+		}
+		/* USER CODE END 3 */
 	}
-	/* USER CODE END 3 */
 }
-
 /**
  * @brief System Clock Configuration
  * @retval None
