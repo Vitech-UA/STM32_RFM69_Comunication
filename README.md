@@ -64,6 +64,7 @@ b) Для приймача, оголошуємо елемент структур
 ![Снимок](https://user-images.githubusercontent.com/74230330/128074874-38a1fd05-f855-40c2-ac01-00b0569efd6f.JPG)
 6) Налаштування SPI
 ![SPI_Settings](https://user-images.githubusercontent.com/74230330/128081021-bec453f8-cec2-41f5-8124-864e07bdbdc8.JPG)
+
 #Приклади:
 У папці Example міститься 2 проєкти, 
 -STM32F051R8T6_HUB - Пуляє запит і очікує відповіді. Транслює статус у термінал на PB6
